@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/dimen_10"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dimen_5"
+        app:cardElevation="@dimen/dimen_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/screen_horizontal_padding"
+            android:background="@color/day_gainsboro_night_Gunmetal">
+
+            <ImageView
+                android:id="@+id/imageView50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/roundedImageView8"
+                app:layout_constraintStart_toStartOf="@+id/roundedImageView8"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_vertical_rectangle" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView8"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/dimen_30"
+                android:layout_marginVertical="@dimen/screen_horizontal_padding"
+                android:background="@color/perl_aqua"
+                android:src="@drawable/carry_beg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView101"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="@dimen/dimen_5" />
+
+            <TextView
+                android:id="@+id/textView101"
+                style="@style/roboto_normal_10_sonic_silver"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_height="wrap_content"
+                android:text="With a rich history, the brand is \nfamous for its Swiss quality \nbags"
+                android:textColor="@color/day_dark_blue_night_diamond"
+                app:layout_constraintBottom_toBottomOf="@+id/roundedImageView8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/roundedImageView8" />
+
+            <TextView
+                android:id="@+id/productName"
+                style="@style/spinnaker_normal_12_black"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_15"
+                android:text="ACQUA DI PARMA"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toTopOf="@+id/textView101"
+                app:layout_constraintEnd_toEndOf="@+id/textView101"
+                app:layout_constraintStart_toStartOf="@+id/textView101" />
+
+            <TextView
+                android:id="@+id/wishListNow"
+                style="@style/arya_normal_12_black"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:text="@string/wishlist_now"
+                app:layout_constraintEnd_toEndOf="@+id/textView101"
+                app:layout_constraintStart_toStartOf="@+id/textView101"
+                app:layout_constraintTop_toBottomOf="@+id/textView101" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_between_views"
+        app:cardCornerRadius="@dimen/dimen_5"
+        app:cardElevation="@dimen/dimen_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView13">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/day_gainsboro_night_Gunmetal"
+            android:paddingHorizontal="@dimen/screen_horizontal_padding">
+
+            <ImageView
+                android:id="@+id/imageView501"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/roundedImageView81"
+                app:layout_constraintStart_toStartOf="@+id/roundedImageView81"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_vertical_rectangle" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView81"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/screen_horizontal_padding"
+                android:layout_marginStart="@dimen/dimen_30"
+                android:background="@color/Coral"
+                android:src="@drawable/carry_beg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView1011"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="@dimen/dimen_5" />
+
+            <TextView
+                android:id="@+id/textView1011"
+                style="@style/roboto_normal_10_sonic_silver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="With a rich history, the brand is \nfamous for its Swiss quality \nbags"
+                android:textColor="@color/day_dark_blue_night_diamond"
+                app:layout_constraintBottom_toBottomOf="@+id/roundedImageView81"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/roundedImageView81" />
+
+            <TextView
+                android:id="@+id/productName1"
+                style="@style/spinnaker_normal_12_black"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_15"
+                android:text="ACQUA DI PARMA"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toTopOf="@+id/textView1011"
+                app:layout_constraintEnd_toEndOf="@+id/textView1011"
+                app:layout_constraintStart_toStartOf="@+id/textView1011" />
+
+            <TextView
+                android:id="@+id/wishListNow1"
+                style="@style/arya_normal_12_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/wishlist_now"
+                app:layout_constraintEnd_toEndOf="@+id/textView1011"
+                app:layout_constraintStart_toStartOf="@+id/textView1011"
+                app:layout_constraintTop_toBottomOf="@+id/textView1011" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

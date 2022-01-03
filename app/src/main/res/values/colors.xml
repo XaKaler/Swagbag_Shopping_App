@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="main_bg_color">#F5F5F5</color>
+    <color name="dark_green">#504B00</color>
+    <color name="blue_grey">#D9DFE2</color>
+    <color name="dark_grey">#7C7C7C</color>
+    <color name="dark_blue">#00344F</color>
+    <color name="state_green">#003830</color>
+    <color name="dark_liver">#4D4D4D</color>
+    <color name="mid_night_green">#004962</color>
+    <color name="smokey_black">#1C0000</color>
+    <color name="harvest_gold">#D28B00</color>
+    <color name="dutch_white">#F1E0BF</color>
+    <color name="steel_teal">#577D8A</color>
+    <color name="prussian_blue">#00344F</color>
+    <color name="sonic_silver">#777777</color>
+    <color name="dim_grey">#6C6C6C</color>
+    <color name="cultured">#F5F5F5</color>
+    <color name="queen_blue">#38638E</color>
+    <color name="spanish_grey">#999999</color>
+    <color name="red">#C70000</color>
+    <color name="tiffany_blue">#00B1AB</color>
+    <color name="viridian_green">#179691</color>
+    <color name="ulca_gold">#FDB302</color>
+    <color name="pastel_red">#F16564</color>
+    <color name="red_light">#FF0000</color>
+    <color name="platinum">#E3E3E3</color>
+    <color name="outer_space">#444444</color>
+    <color name="davys_grey">#555555</color>
+    <color name="dark_charcoal">#333333</color>
+    <color name="Tiffany_Blue">#14CCA8</color>
+    <color name="pale_pink">#F6D8D8</color>
+    <color name="deep_space_sparkle">#455A64</color>
+    <color name="pearl_aqua">#73CAB9</color>
+    <color name="anti_flash_white">#F2F2F2</color>
+    <color name="Lotion">#FAFAFA</color>
+    <color name="chinese_silver">#CBCBCB</color>
+    <color name="medium_electric_blue">#005B8C</color>
+    <color name="Paolo_Veronese_Green">#05A685</color>
+    <color name="han_blue">#556DC6</color>
+    <color name="bubble_gum">#F9C6CD</color>
+    <color name="jungle_green">#1D9A94</color>
+    <color name="silver_foil">#B0B0B0</color>
+    <color name="islamic_green">#039800</color>
+    <color name="pal_spring_bud">#EDE6B8</color>
+    <color name="vempire_black">#050505 </color>
+    <color name="gainsboro">#D9DFE2 </color>
+    <color name="powder_blue">#B0E4E7 </color>
+    <color name="carmine">#9E0016 </color>
+    <color name="chinese_silver1">#C9C9C9 </color>
+    <color name="perl_aqua">#88CABE </color>
+    <color name="united_state_blue">#5994DA</color>
+    <color name="Azureish_White">#D6E2F0</color>
+    <color name="Tea_Green">#C4F0C8</color>
+    <color name="Tan">#CCB489</color>
+    <color name="Coral">#FF7F50</color>
+    <color name="Raisin_Black">#222222</color>
+    <color name="Granite_Gray">#666666</color>
+    <color name="Nickel">#737373</color>
+
+    <color name="Ecru">#CBC281</color>
+    <color name="grey_x11">#B7B8BD</color>
+    <color name="Eerie_Black">#1B1B1B</color>
+    <color name="Diamond">#C5E6FA</color>
+    <color name="Gunmetal">#2F3437</color>
+    <color name="Chinese_Black">#161616</color>
+    <color name="Chinese_silver">#CACACA</color>
+    <color name="jet">#353535</color>
+    <color name="Cambridge_Blue">#98BCB5</color>
+    <color name="Spanish_Gray">#989898</color>
+    <color name="Pewter_Blue">#84A5B9</color>
+    <color name="Argent">#C3BFBE</color>
+    <color name="Zinnwaldite_Brown">#2B230E</color>
+    <color name="Camel">#C49B6F</color>
+    <color name="Charleston_Green">#25292C</color>
+    <color name="Tuscany">#CB9EA1</color>
+    <color name="Sacramento_State_Green">#033033</color>
+    <color name="Philippine_Gray">#888E8E</color>
+    <color name="Diamond1">#C2E7FD</color>
+    <color name="Pewter_Blue1">#84A8BE</color>
+    <color name="Puce_Red">#802B3E</color>
+    <color name="Silver_Chalice">#ABABAB</color>
+    <color name="Han_Blue">#546DC8</color>
+
+
+    <color name="nav_icon_and_text_color">#555555</color>
+    <color name="heading_txt">#515256</color>
+    <color name="bg_screen">#f5f5f5</color>
+    <color name="horizontal_line_color">#6C6C6C</color>
+    <color name="auth_bg_color">#38638E</color>
+    <color name="google_btn_color">#C70000</color>
+    <color name="facebook_btn_color">#004EE5</color>
+
+
+    <!--navigation drawer-->
+    <color name="day_dark_liver_night_white">#4D4D4D</color>
+    <color name="day_white_night_black">#ffffff</color>
+    <color name="day_black_night_white">#000000</color>
+    <color name="day_heading_text_night_grey_x11">#515256</color>
+    <color name="day_dark_green_night_white">#504B00</color>
+
+    <color name="day_dark_green_night_Ecru">#504B00</color>
+    <color name="day_white_night_Eerie_Black">#ffffff</color>
+    <color name="day_dark_blue_night_diamond">#00344F</color>
+    <color name="day_blue_grey_night_Gunmetal">#D9DFE2</color>
+    <color name="day_white_night_chinese_black">#ffffff</color>
+    <color name="day_black_night_chinese_silver">#000000</color>
+    <color name="day_white_night_jet">#ffffff</color>
+    <color name="day_state_green_night_Cambridge_Blue">#003830</color>
+    <color name="day_dark_liver_night_Spanish_Gray">#4D4D4D</color>
+    <color name="day_midnight_green_night_Pewter_Blue">#004962</color>
+    <color name="day_smoky_black_night_Argent">#1C0000</color>
+    <color name="day_dutch_white_night_Zinnwaldite_Brown">#F1E0BF</color>
+    <color name="day_harvest_gold_night_Camel">#D28B00</color>
+    <color name="day_gainsboro_night_Charleston_Green">#D9DFE2</color>
+    <color name="day_smokey_black_night_grey_x11">#1C0000</color>
+    <color name="day_carmine_night_tuskany">#9E0016</color>
+    <color name="day_powder_blue_night_Sacramento_State_Green">#B0E4E7</color>
+    <color name="day_davys_grey_night_Philippine_Gray">#555555</color>
+    <color name="day_vempire_black_night_jet">#050505</color>
+    <color name="day_pal_spring_bud_night_Gunmetal">#EDE6B8</color>
+    <color name="day_prussian_blue_night_diamond1">#00344F</color>
+    <color name="day_mid_night_green_night_Pewter_Blue">#004962</color>
+    <color name="day_bubble_gum_night_Puce_Red">#F9C6CD</color>
+    <color name="day_harvest_gold_night_Antique_Brass">#D28B00</color>
+    <color name="day_dutch_white_night_Antique_Zinnwaldite_Brown">#F1E0BF</color>
+    <color name="day_pale_pink_night_Antique_Old_Burgundy">#F6D8D8</color>
+    <color name="day_dark_liver_night_Antique_grey_x11">#4D4D4D</color>
+    <color name="day_deep_space_sparkle_night_Cadet_Blue">#455A64</color>
+    <color name="day_pearl_aqua_night_Bangladesh_Green">#73CAB9</color>
+    <color name="day_davys_grey_night_Silver_Chalice">#555555</color>
+    <color name="day_harvest_gold_night_Peach_Orange">#D28B00</color>
+    <color name="day_dutch_white_night_Pullman_Green">#F1E0BF</color>
+    <color name="day_davys_grey_night_white">#555555</color>
+    <color name="day_smokey_black_night_white">#1C0000</color>
+    <color name="day_blue_grey_Dark_Gunmetal">#D9DFE2</color>
+    <color name="day_Black_Olive_Silver_Chalice">#3F3F3F</color>
+    <color name="day_white_Raisin_Black">#ffffff</color>
+    <color name="day_dim_grey_night_Dark_Silver">#6C6C6C</color>
+    <color name="day_dim_grey_night_Dark_gray_x11">#6C6C6C</color>
+    <color name="day_Nickel_night_Dark_white">#737373</color>
+    <color name="day_gainsboro_night_Gunmetal">#D9DFE2</color>
+    <color name="day_tea_green_night_chinese_black">#D9DFE2</color>
+
+
+
+
+</resources>

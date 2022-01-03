@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/screen_horizontal_padding"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/dimen_15">
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView9"
+                android:layout_width="@dimen/cancellation_order_image_width"
+                android:layout_height="@dimen/cancellation_order_image_height"
+                android:layout_margin="@dimen/dimen_15"
+                android:scaleType="matrix"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="@dimen/image_corner_radius" />
+
+            <TextView
+                android:id="@+id/textView193"
+                style="@style/autowide_normal_12_state_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_between_views"
+                android:text="KENSTAR"
+                app:layout_constraintStart_toEndOf="@+id/roundedImageView9"
+                app:layout_constraintTop_toTopOf="@+id/roundedImageView9" />
+
+            <TextView
+                android:id="@+id/textView194"
+                style="@style/snigiet_normal_14_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_view_and_subview_5"
+                android:text="Washing machine small white color."
+                app:layout_constraintStart_toStartOf="@+id/textView193"
+                app:layout_constraintTop_toBottomOf="@+id/textView193" />
+
+            <TextView
+                android:id="@+id/textView195"
+                style="@style/elmsri_normal_18_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_view_and_subview_15"
+                android:text="@string/Rs"
+                app:layout_constraintStart_toStartOf="@+id/textView194"
+                app:layout_constraintTop_toBottomOf="@+id/textView194" />
+
+            <TextView
+                android:id="@+id/productPrice"
+                style="@style/elmsri_normal_18_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15,999"
+                app:layout_constraintBottom_toBottomOf="@+id/textView195"
+                app:layout_constraintStart_toEndOf="@+id/textView195"
+                app:layout_constraintTop_toTopOf="@+id/textView195" />
+
+            <View
+                android:id="@+id/view38"
+                style="@style/line_horizontal"
+                android:layout_marginTop="@dimen/space_between_view_and_subview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roundedImageView9" />
+
+            <ImageView
+                android:id="@+id/imageView63"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view38"
+                app:srcCompat="@drawable/cross_sign"
+                app:tint="@color/Paolo_Veronese_Green" />
+
+            <TextView
+                android:id="@+id/textView197"
+                style="@style/roboto_normal_12_sonic_silver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_between_view_and_subview"
+                android:text="Eligible for cancellation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView63"
+                app:layout_constraintTop_toTopOf="@+id/imageView63" />
+
+            <TextView
+                android:id="@+id/viewPolicy"
+                style="@style/roboto_medium_12_red_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_15"
+                android:text="VIEW POLICY"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView197" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

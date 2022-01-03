@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".helpcenter.without_queries.HelpCenterWithoutQueries">
+
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_with_no_menu_white_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="811dp"
+        android:padding="@dimen/screen_horizontal_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include">
+
+        <TextView
+            android:id="@+id/textView41"
+            style="@style/roboto_medium_16_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/queries_from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvFromLastDays"
+            style="@style/roboto_medium_18_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:text="Last 30 Days"
+            app:layout_constraintBottom_toBottomOf="@+id/textView41"
+            app:layout_constraintStart_toEndOf="@+id/textView41"
+            app:layout_constraintTop_toTopOf="@+id/textView41" />
+
+        <TextView
+            android:id="@+id/textView43"
+            style="@style/roboto_medium_14_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="change"
+            android:textAllCaps="true"
+            android:textColor="@color/red_light"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFromLastDays"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvFromLastDays" />
+
+        <TextView
+            android:id="@+id/textView44"
+            style="@style/roboto_normal_15_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/there_were_no_queries_raised_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFromLastDays" />
+
+        <TextView
+            android:id="@+id/tvQueryLastFrom"
+            style="@style/roboto_medium_14_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:textColor="@color/black"
+            android:text="Last 30 Days"
+            app:layout_constraintEnd_toEndOf="@+id/textView44"
+            app:layout_constraintStart_toStartOf="@+id/textView44"
+            app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
+        <ImageView
+            android:id="@+id/imageView32"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="@dimen/space_between_views"
+            android:layout_height="wrap_content"
+            android:src="@drawable/found_nothing"
+            app:layout_constraintBottom_toTopOf="@+id/textView44"
+            app:layout_constraintEnd_toEndOf="@+id/textView44"
+            app:layout_constraintStart_toStartOf="@+id/textView44" />
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/roboto_normal_15_davys_grey"
+            android:text="@string/search_queries_from"
+            android:layout_marginTop="@dimen/dimen_30"
+            app:layout_constraintStart_toStartOf="@+id/textView44"
+            app:layout_constraintTop_toBottomOf="@+id/tvQueryLastFrom" />
+
+        <TextView
+            android:id="@+id/differentDates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/different_dates"
+            style="@style/roboto_medium_15_davys_grey"
+            android:textColor="@color/red_light"
+            app:layout_constraintBottom_toBottomOf="@+id/textView46"
+            app:layout_constraintStart_toEndOf="@+id/textView46"
+            app:layout_constraintTop_toTopOf="@+id/textView46" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_1">1dp</dimen>
+    <dimen name="dimen_0.5">0.5dp</dimen>
+
+    <!--user-->
+    <dimen name="user_profile_background_height">150dp</dimen>
+    <dimen name="profile_page_user_image_size">85dp</dimen>
+    <dimen name="profile_page_user_image_border">4dp</dimen>
+    <dimen name="profile_gender_size">50dp</dimen>
+
+    <!--common-->
+    <dimen name="space_between_views">20dp</dimen>
+    <dimen name="screen_horizontal_padding">20dp</dimen>
+    <dimen name="recycle_view_horizontal_space">12dp</dimen>
+    <dimen name="view_in_half_screen">175dp</dimen>
+    <dimen name="all_time_slider_width">200dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="image_corner_radius">5dp</dimen>
+    <dimen name="horizontal_line_width">0.3dp</dimen>
+    <dimen name="vertical_line_width">0.3dp</dimen>
+    <dimen name="button_width">45dp</dimen>
+    <dimen name="space_between_view_and_subview">10dp</dimen>
+    <dimen name="space_between_view_and_subview_15">15dp</dimen>
+    <dimen name="space_between_view_and_subview_5">5dp</dimen>
+    <dimen name="button_vertical_padding">10dp</dimen>
+
+    <!--auth-->
+    <dimen name="auth_horizontal_padding">30dp</dimen>
+    <dimen name="auth_vertical_padding">20dp</dimen>
+
+    <!--navigation drawer-->
+    <dimen name="nav_header_img_corners">5dp</dimen>
+    <dimen name="nav_header_user_img_size">50dp</dimen>
+    <dimen name="nav_padding">20dp</dimen>
+    <dimen name="nav_radius">20dp</dimen>
+    <dimen name="nav_icon_size">23dp</dimen>
+
+    <!--for image view-->
+    <dimen name="home_category_slider">65dp</dimen>
+    <dimen name="grid_circle_image">111dp</dimen>
+    <dimen name="collage_spacing">2dp</dimen>
+
+    <dimen name="help_center_with_order_image_width">60dp</dimen>
+    <dimen name="help_center_with_order_image_height">80dp</dimen>
+
+    <!--splash screen-->
+    <dimen name="splash_app_logo_width">188dp</dimen>
+    <dimen name="splash_app_logo_height">160dp</dimen>
+    <dimen name="dimen_15">15dp</dimen>
+
+    <dimen name="dimen_6">6dp</dimen>
+
+
+    <!--text view-->
+    <dimen name="txt_30">30sp</dimen>
+    <dimen name="txt_10">10sp</dimen>
+    <dimen name="txt_18">18sp</dimen>
+    <dimen name="txt_8">8sp</dimen>
+    <dimen name="txt_24">24sp</dimen>
+    <dimen name="txt_14">14sp</dimen>
+    <dimen name="txt_12">12sp</dimen>
+    <dimen name="txt_15">15sp</dimen>
+    <dimen name="txt_20">20sp</dimen>
+
+    <dimen name="dimen_190">190dp</dimen>
+
+
+    <!--edit text-->
+    <dimen name="verification_code_edt_txt">45dp</dimen>
+    <dimen name="dimen_24">24dp</dimen>
+
+    <!--Banner-->
+    <dimen name="big_banner">275dp</dimen>
+    <dimen name="banner_172">172dp</dimen>
+    <dimen name="banner_108">108dp</dimen>
+    <dimen name="banner_135">135dp</dimen>
+
+
+    <!--card-->
+    <dimen name="card_1_image_size">157dp</dimen>
+
+    <dimen name="card_2_width">175dp</dimen>
+
+    <dimen name="card_3_height">215dp</dimen>
+    <dimen name="card_3_width">200dp</dimen>
+    <dimen name="card_3_background_rectangle_width">100dp</dimen>
+
+    <dimen name="card_3_image_height">176dp</dimen>
+
+
+    <dimen name="card_5_image_height">157dp</dimen>
+    <dimen name="card_5_height">200dp</dimen>
+    <dimen name="card_5_image_width">177dp</dimen>
+
+    <dimen name="card_6_height">215dp</dimen>
+    <dimen name="card_6_width">200dp</dimen>
+
+    <dimen name="card_7_background_image_height">80dp</dimen>
+    <dimen name="card_7_image_height">137dp</dimen>
+    <dimen name="card_7_image_width">155dp</dimen>
+
+    <dimen name="card_8_wave_image_width">121dp</dimen>
+    <dimen name="card_8_wave_image_height">40dp</dimen>
+
+
+    <dimen name="card_9_image_width">175dp</dimen>
+
+    <dimen name="card_11_image_width">175dp</dimen>
+    <dimen name="card_11_image_height">111dp</dimen>
+
+    <dimen name="card_12_image_width">165dp</dimen>
+    <dimen name="card_12_image_height">137dp</dimen>
+
+    <dimen name="card_13_image_height">181dp</dimen>
+    <dimen name="card_13_image_width">175dp</dimen>
+
+    <dimen name="card_14_image_width">157dp</dimen>
+    <dimen name="card_14_image_height">154dp</dimen>
+
+    <dimen name="card_15_width">182dp</dimen>
+    <dimen name="card_15_height">215dp</dimen>
+
+
+    <dimen name="card_15_image_width">155dp</dimen>
+    <dimen name="card_15_image_height">145dp</dimen>
+
+
+
+    <dimen name="card_17_width">115dp</dimen>
+    <dimen name="card_17_height">140dp</dimen>
+
+
+    <dimen name="card_20_width">115dp</dimen>
+    <dimen name="card_20_height">140dp</dimen>
+
+
+    <dimen name="card_22_background_re_height">100dp</dimen>
+    <dimen name="card_22_image_height">185dp</dimen>
+    <dimen name="card_22_image_width">152dp</dimen>
+
+
+    <dimen name="travel_card_1s_card_width">195dp</dimen>
+    <dimen name="travel_card_1s_card_height">129dp</dimen>
+    <dimen name="travel_card_2s_card_image_height">149dp</dimen>
+    <dimen name="travel_card_2s_card_image_width">165dp</dimen>
+
+    <dimen name="dimen_16">16dp</dimen>
+
+    <dimen name="product_top">46dp</dimen>
+    <dimen name="product_image_width">207dp</dimen>
+    <dimen name="product_image_height">225dp</dimen>
+    <dimen name="product_sale_rating_size">24dp</dimen>
+
+    <dimen name="product_category_image_height">300dp</dimen>
+
+
+    <dimen name="dimen_2">2dp</dimen>
+    <dimen name="dimen_7">7dp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_3">3dp</dimen>
+    <dimen name="txt_16">16sp</dimen>
+    <dimen name="dimen_30">30dp</dimen>
+    <dimen name="dimen_50">50dp</dimen>
+
+    <dimen name="space_between_two_cards">5dp</dimen>
+
+    
+    <!--product page-->
+    <dimen name="product_details_image_height">500dp</dimen>
+    <dimen name="dimen_25">25dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+
+    <dimen name="small_image_width">33dp</dimen>
+    <dimen name="small_image_height">38dp</dimen>
+    
+    <dimen name="product_size_type">35dp</dimen>
+
+    <dimen name="rating_star_size">15dp</dimen>
+    
+    <dimen name="review_image_height">58dp</dimen>
+    <dimen name="review_image_width">50dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    
+    <dimen name="product_details_size_chart_height">82dp</dimen>
+    <dimen name="product_details_size_chart_width">100dp</dimen>
+
+    
+    
+    <!--shopping beg with products-->
+    <dimen name="shopping_beg_product_image_width">115dp</dimen>
+    <dimen name="shopping_beg_product_image_height">150dp</dimen>
+    <dimen name="dimen_18">18dp</dimen>
+    <dimen name="captcha_code_space_between">40dp</dimen>
+    
+    
+    <!--shipping-->
+    <dimen name="shipping_view_item_details_image_height">147dp</dimen>
+    <dimen name="shipping_view_item_details_image_width">120dp</dimen>
+    
+    
+    <!--order-->
+    <dimen name="cancellation_order_image_width">85dp</dimen>
+    <dimen name="cancellation_order_image_height">103dp</dimen>
+
+
+</resources>

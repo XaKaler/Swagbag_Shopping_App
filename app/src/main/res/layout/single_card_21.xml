@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/dimen_5"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/day_tea_green_night_chinese_black"
+        app:cardElevation="@dimen/dimen_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView3"
+                android:layout_width="@dimen/card_20_width"
+                android:layout_height="@dimen/card_20_height"
+                android:src="@drawable/air_pod"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius_top_left="@dimen/dimen_5"
+                app:riv_corner_radius_top_right="@dimen/dimen_5" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:id="@+id/textView102"
+        style="@style/asap_normal_10_davys_grey"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_width="0dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:text="Bags"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:textColor="@color/day_davys_grey_night_white"
+        app:layout_constraintEnd_toEndOf="@+id/materialCardView12"
+        app:layout_constraintStart_toStartOf="@+id/materialCardView12"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView12" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

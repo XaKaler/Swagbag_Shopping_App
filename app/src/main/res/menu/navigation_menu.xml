@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single"
+        android:enabled="true">
+
+        <item
+            android:id="@+id/navMenuHome"
+            android:icon="@drawable/ic_hoem_png_to_svg"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/navMenuCategory"
+            android:icon="@drawable/ic_outline_category_24"
+            android:title="Category" />
+
+        <item
+            android:id="@+id/navMenuOrder"
+            android:icon="@drawable/ic_shopping_bag"
+            android:title="Order" />
+
+        <item
+            android:id="@+id/navMenuWishlist"
+            android:icon="@drawable/ic_heart"
+            android:title="Wishlist" />
+
+        <item
+            android:id="@+id/navMenuSavedCards"
+            android:icon="@drawable/ic_atm_card"
+            android:title="Saved Cards" />
+
+        <item
+            android:id="@+id/navMenuAddress"
+            android:icon="@drawable/ic_location"
+            android:title="Address" />
+
+        <item
+            android:id="@+id/navMenuCoupons"
+            android:icon="@drawable/ic_coupons"
+            android:title="Coupons" />
+
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single"
+        android:enabled="true">
+
+        <item
+            android:id="@+id/navMenuProfile"
+            android:icon="@drawable/ic_person"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/navMenuHelpCenter"
+            android:icon="@drawable/ic_help_center"
+            android:title="Help Center" />
+
+        <item
+            android:id="@+id/navMenuSettings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings" />
+
+    </group>
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single"
+        android:enabled="true">
+
+        <item
+            android:id="@+id/navMenuFaqs"
+            android:icon="@drawable/ic_question_answer"
+            android:title="FAQs" />
+
+        <item
+            android:id="@+id/navMenuAboutUs"
+            android:icon="@drawable/ic_info"
+            android:title="About Us" />
+
+        <item
+            android:id="@+id/navMenuContactUs"
+            android:icon="@drawable/ic_contact_phone"
+            android:title="Contact Us" />
+
+        <item
+            android:id="@+id/navMenuTermsOfUses"
+            android:icon="@drawable/ic_terms"
+            android:title="Terms Of Uses" />
+
+        <item
+            android:id="@+id/navMenuPrivacyPolicy"
+            android:icon="@drawable/ic_outline_privacy_tip_24"
+            android:title="Privacy Policy" />
+
+    </group>
+
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single"
+        android:enabled="true">
+
+        <item
+            android:id="@+id/navMenuLogout"
+            android:icon="@drawable/ic_log_out"
+            android:title="Log Out" />
+
+    </group>
+
+
+
+
+
+
+
+</menu>

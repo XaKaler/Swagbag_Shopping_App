@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:cardElevation="@dimen/dimen_5"
+    android:background="@drawable/rec_white_5"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_15">
+
+
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_cube_blue" />
+
+        <TextView
+            android:id="@+id/tvOrderStatus"
+            style="@style/roboto_medium_14_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:text="@string/confirmed"
+            android:textColor="@color/Paolo_Veronese_Green"
+            app:layout_constraintStart_toEndOf="@+id/imageView30"
+            app:layout_constraintTop_toTopOf="@+id/imageView30" />
+
+        <TextView
+            android:id="@+id/tvOrderDate"
+            style="@style/roboto_normal_12_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On Sat, 27 Nov as per your request."
+            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
+            app:layout_constraintStart_toStartOf="@+id/tvOrderStatus"
+            app:layout_constraintTop_toBottomOf="@+id/tvOrderStatus" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@drawable/rec_cultured_white_5"
+            android:padding="@dimen/dimen_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOrderDate">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/productImg"
+                android:layout_width="@dimen/help_center_with_order_image_width"
+                android:layout_height="@dimen/help_center_with_order_image_height"
+                android:scaleType="center"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="5dp" />
+
+            <TextView
+                android:id="@+id/tvProductCompnayName"
+                style="@style/snigiet_normal_14_davys_grey"
+                android:maxLines="1"
+                android:minLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:text="Kenster"
+                android:textAllCaps="true"
+                android:textColor="@color/state_green"
+                app:layout_constraintStart_toEndOf="@+id/productImg"
+                app:layout_constraintTop_toTopOf="@+id/productImg" />
+
+            <TextView
+                android:id="@+id/tvProductName"
+                style="@style/snigiet_normal_14_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_10"
+                android:text="Washing machine white color"
+                app:layout_constraintEnd_toStartOf="@+id/imageView31"
+                app:layout_constraintStart_toEndOf="@+id/productImg"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductCompnayName" />
+
+            <ImageView
+                android:id="@+id/imageView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_right_arrow" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

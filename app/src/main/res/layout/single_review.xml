@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_15">
+
+    <TextView
+        android:id="@+id/customerName"
+        style="@style/roboto_normal_10_sonic_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHEFALI"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view21"
+        android:layout_width="@dimen/horizontal_line_width"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/dimen_5"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/customerName"
+        app:layout_constraintEnd_toStartOf="@+id/reviewDate"
+        app:layout_constraintStart_toEndOf="@+id/customerName"
+        app:layout_constraintTop_toTopOf="@+id/customerName"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/reviewDate"
+        android:layout_marginStart="@dimen/dimen_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01 Dec, 2021"
+        style="@style/roboto_normal_10_sonic_silver"
+        app:layout_constraintBottom_toBottomOf="@+id/view21"
+        app:layout_constraintStart_toEndOf="@+id/view21"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/customerReview"
+        style="@style/roboto_normal_10_sonic_silver"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:text="@string/empty_wishlist_lines"
+        app:layout_constraintEnd_toStartOf="@+id/customerRatingCount"
+        app:layout_constraintStart_toStartOf="@+id/customerName"
+        app:layout_constraintTop_toBottomOf="@+id/customerName" />
+
+
+    <TextView
+        android:id="@+id/customerRatingCount"
+        style="@style/roboto_normal_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rec_outline_5_light"
+        android:drawablePadding="@dimen/dimen_2"
+        android:paddingHorizontal="@dimen/dimen_10"
+        android:paddingVertical="@dimen/dimen_1"
+        android:text="3"
+        android:textColor="@color/tiffany_blue"
+        app:drawableEndCompat="@drawable/ic_star"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/reviewDate" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReviewImages"
+        android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/like"
+        app:layout_constraintStart_toStartOf="@+id/customerReview"
+        app:layout_constraintTop_toBottomOf="@+id/customerReview"
+        tools:itemCount="1"
+        tools:listitem="@layout/single_reiview_image" />
+
+    <TextView
+        android:id="@+id/dislikeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        style="@style/roboto_normal_10_sonic_silver"
+        app:layout_constraintBottom_toBottomOf="@+id/rvReviewImages"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/dislike"
+        android:layout_width="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_5"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/dislikeCount"
+        app:layout_constraintEnd_toStartOf="@+id/dislikeCount"
+        app:layout_constraintTop_toTopOf="@+id/dislikeCount"
+        app:srcCompat="@drawable/ic_dislike_outline" />
+
+    <TextView
+        android:id="@+id/likeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:text="155"
+        app:layout_constraintBottom_toBottomOf="@+id/dislike"
+        app:layout_constraintEnd_toStartOf="@+id/dislike"
+        app:layout_constraintTop_toTopOf="@+id/dislike" />
+
+    <ImageView
+        android:id="@+id/like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_5"
+        app:layout_constraintBottom_toBottomOf="@+id/likeCount"
+        app:layout_constraintEnd_toStartOf="@+id/likeCount"
+        app:layout_constraintTop_toTopOf="@+id/likeCount"
+        app:srcCompat="@drawable/ic_like_outline" />
+
+    <View
+        android:id="@+id/view22"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:layout_height="@dimen/horizontal_line_width"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/like" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

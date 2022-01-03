@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/screen_horizontal_padding">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/productImage"
+                    android:layout_width="@dimen/product_details_size_chart_height"
+                    android:layout_height="@dimen/product_details_size_chart_width"
+                    android:scaleType="center"
+                    android:src="@mipmap/navigation_header_user_img_foreground"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="@dimen/image_corner_radius" />
+
+                <TextView
+                    android:id="@+id/productName"
+                    style="@style/roboto_medium_14_davys_grey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10"
+                    android:text="Vergana"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/productImage"
+                    app:layout_constraintTop_toTopOf="@+id/productImage" />
+
+                <TextView
+                    android:id="@+id/productDetails"
+                    style="@style/roboto_normal_14_sonic_silver"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/varanga_women_magenta_n_gold_toned_embroidered_kurta_with_ntrousers_dupatta"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/productName"
+                    app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+                <TextView
+                    android:id="@+id/textView170"
+                    style="@style/roboto_medium_14_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_between_view_and_subview"
+                    android:text="@string/Rs"
+                    app:layout_constraintStart_toStartOf="@+id/productDetails"
+                    app:layout_constraintTop_toBottomOf="@+id/productDetails" />
+
+                <TextView
+                    android:id="@+id/productPric"
+                    style="@style/roboto_medium_14_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5999"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView170"
+                    app:layout_constraintStart_toEndOf="@+id/textView170"
+                    app:layout_constraintTop_toTopOf="@+id/textView170" />
+
+                <TextView
+                    android:id="@+id/textView172"
+                    style="@style/roboto_normal_14_sonic_silver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_between_view_and_subview"
+                    android:text="@string/Rs"
+                    app:layout_constraintBottom_toBottomOf="@+id/productPric"
+                    app:layout_constraintStart_toEndOf="@+id/productPric"
+                    app:layout_constraintTop_toTopOf="@+id/productPric" />
+
+                <TextView
+                    android:id="@+id/oldPrice"
+                    style="@style/roboto_normal_14_sonic_silver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9999"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView172"
+                    app:layout_constraintStart_toEndOf="@+id/textView172"
+                    app:layout_constraintTop_toTopOf="@+id/textView172" />
+
+                <TextView
+                    android:id="@+id/textView174"
+                    style="@style/roboto_normal_14_red_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_between_view_and_subview"
+                    android:text="("
+                    app:layout_constraintBottom_toBottomOf="@+id/oldPrice"
+                    app:layout_constraintStart_toEndOf="@+id/oldPrice"
+                    app:layout_constraintTop_toTopOf="@+id/oldPrice" />
+
+                <TextView
+                    android:id="@+id/produtOff"
+                    style="@style/roboto_normal_14_red_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="55"
+                    app:layout_constraintBottom_toBottomOf="@+id/oldPrice"
+                    app:layout_constraintStart_toEndOf="@+id/textView174"
+                    app:layout_constraintTop_toTopOf="@+id/oldPrice" />
+
+                <TextView
+                    android:id="@+id/produtOff2"
+                    style="@style/roboto_normal_14_red_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="% Off)"
+                    android:textAllCaps="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/oldPrice"
+                    app:layout_constraintStart_toEndOf="@+id/produtOff"
+                    app:layout_constraintTop_toTopOf="@+id/oldPrice" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                android:id="@+id/sizeChartButtons"
+                layout="@layout/size_chart_buttons"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/product"
+                 />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sizeChart"
+                android:layout_width="match_parent"
+                android:paddingVertical="@dimen/space_between_views"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/sizeChartButtons"
+                tools:layout_editor_absoluteX="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sizeType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rec_outline_15"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/cm"
+                        style="@style/roboto_medium_14_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/dimen_5"
+                        android:text="cm"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/in"
+                        style="@style/roboto_medium_14_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rec_fully_round_fill"
+                        android:paddingHorizontal="@dimen/dimen_10"
+                        android:text="in"
+                        android:textColor="@color/day_white_night_black"
+                        app:layout_constraintBottom_toBottomOf="@+id/cm"
+                        app:layout_constraintEnd_toStartOf="@+id/cm"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintTop_toTopOf="@+id/cm" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sizeType">
+
+
+                    <include
+                        android:id="@+id/include7"
+                        layout="@layout/size_chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_views"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:layout_constraintTop_toBottomOf="@+id/materialCardView20">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="@dimen/screen_horizontal_padding"
+                        android:paddingVertical="@dimen/dimen_15">
+
+
+                        <TextView
+                            android:id="@+id/textView180"
+                            style="@style/roboto_normal_12_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Seller: "
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/sellerName"
+                            style="@style/roboto_medium_12_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ABC electonics"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView180"
+                            app:layout_constraintStart_toEndOf="@+id/textView180"
+                            app:layout_constraintTop_toTopOf="@+id/textView180" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

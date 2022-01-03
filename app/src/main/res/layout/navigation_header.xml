@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/nav_header_background"
+    android:backgroundTint="@color/black"
+    android:paddingStart="@dimen/nav_padding"
+    android:paddingEnd="@dimen/nav_padding"
+    android:paddingVertical="@dimen/nav_padding">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/navHeaderUserImg"
+        android:layout_width="@dimen/nav_header_user_img_size"
+        android:layout_height="@dimen/nav_header_user_img_size"
+        android:layout_marginVertical="30dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/navigation_header_user_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="@dimen/nav_header_img_corners"
+        app:riv_tile_mode="repeat" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="@dimen/nav_padding"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cross_sign"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/navHeaderUserName"
+        style="@style/rbt_normal_18_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/navHeaderUserImg"
+        app:layout_constraintStart_toEndOf="@+id/navHeaderUserImg"
+        app:layout_constraintTop_toTopOf="@+id/navHeaderUserImg" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/navHeaderUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/navHeaderUserName"
+        app:srcCompat="@drawable/ic_right_arrow" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

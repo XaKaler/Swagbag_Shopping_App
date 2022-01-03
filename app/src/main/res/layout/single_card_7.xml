@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/dimen_5"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/imageView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/rec_5_light_grey" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgBestProduct"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/card_7_image_height"
+        android:layout_margin="@dimen/dimen_10"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/navigation_header_user_img"
+        app:circularflow_radiusInDP="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="@dimen/dimen_5" />
+
+
+    <TextView
+        android:id="@+id/tvBestProductDetails"
+        style="@style/spinnaker_normal_10_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:paddingHorizontal="5dp"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintBottom_toTopOf="@+id/textView47"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBestProduct" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:fontFamily="@font/roboto_regular"
+        style="@style/elmsri_normal_13_dark_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="+Wishlist Now"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/tvBestProductDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="164dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

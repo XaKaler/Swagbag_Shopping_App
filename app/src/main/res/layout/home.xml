@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_elipse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategorySlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_category_slider" />
+
+
+        <!--app:sliderAutoCycleDirection="right"-->
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/sliderView"
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvCategorySlider"
+            app:sliderIndicatorEnabled="true"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="#577D8A"
+            app:sliderIndicatorUnselectedColor="#DFDFDF"/>
+
+        <ImageView
+            android:id="@+id/homeImg1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/navigation_header_background_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sliderView" />
+
+        <ImageView
+            android:id="@+id/homeImg2"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/navigation_header_background_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeImg1" />
+
+        <TextView
+            android:id="@+id/heading1"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="winter wear special deals"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homeImg2" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDeals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/single_slider_products"
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            android:layout_marginStart="@dimen/recycle_view_horizontal_space"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading1" />
+
+        <TextView
+            android:id="@+id/heading2"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Best of Grooming and personal care"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvDeals" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/dimen_15"
+            android:paddingVertical="@dimen/dimen_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading2"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_best_products" />
+
+        <ImageView
+            android:id="@+id/homeImg3"
+            android:layout_width="match_parent"
+            android:layout_height="275dp"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/navigation_header_background_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvBest" />
+
+        <TextView
+            android:id="@+id/heading3"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Deals of the day"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homeImg3" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDealOfDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/dimen_15"
+            tools:listitem="@layout/single_deal_of_the_day"
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading3" />
+
+
+        <TextView
+            android:id="@+id/heading4"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Feature Brands"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvDealOfDay" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFeatureBrands"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/single_feature_brands"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/dimen_15"
+            tools:itemCount="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading4" />
+
+        <TextView
+            android:id="@+id/heading5"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Category to bag"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvFeatureBrands" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategoryToBag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/single_category_to_beg"
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            android:layout_marginStart="@dimen/recycle_view_horizontal_space"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading5" />
+
+
+        <TextView
+            android:id="@+id/heading6"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Best offers"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvCategoryToBag" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBestOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/single_slider_products"
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            android:layout_marginStart="@dimen/recycle_view_horizontal_space"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading6" />
+
+
+        <TextView
+            android:id="@+id/heading7"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Promoted Brands"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvBestOffer" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPromotedBrands"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/single_feature_brands"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/dimen_15"
+            tools:itemCount="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading7" />
+
+
+        <TextView
+            android:id="@+id/heading8"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="kidswear picks"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvPromotedBrands" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvKidsPicks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/single_kids_wear_picks"
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            android:layout_marginHorizontal="@dimen/dimen_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading8" />
+
+        <TextView
+            android:id="@+id/heading9"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="perfect picks for home"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvKidsPicks" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCollage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/single_with_image_collase"
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            android:layout_marginHorizontal="@dimen/dimen_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading9" />
+
+
+        <ImageView
+            android:id="@+id/homeImg4"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/navigation_header_background_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvCollage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

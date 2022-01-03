@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/dimen_10"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_10">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/imageView52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rec_outline_5"
+                android:padding="@dimen/dimen_15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/code1"
+                    style="@style/roboto_medium_18_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView112"
+                    style="@style/roboto_medium_18_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/captcha_code_space_between"
+                    android:text="5"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView52"
+                    app:layout_constraintStart_toEndOf="@+id/code1"
+                    app:layout_constraintTop_toBottomOf="@+id/code1" />
+
+                <TextView
+                    android:id="@+id/textView115"
+                    style="@style/roboto_medium_18_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/captcha_code_space_between"
+                    android:text="6"
+                    app:layout_constraintBottom_toTopOf="@+id/textView112"
+                    app:layout_constraintStart_toEndOf="@+id/textView112" />
+
+                <TextView
+                    android:id="@+id/textView116"
+                    style="@style/roboto_medium_18_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/captcha_code_space_between"
+                    android:text="7"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView52"
+                    app:layout_constraintStart_toEndOf="@+id/textView115"
+                    app:layout_constraintTop_toBottomOf="@+id/textView115" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView119"
+                style="@style/roboto_medium_12_red_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_15"
+                android:text="@string/change_image"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView52"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView52"
+                app:layout_constraintTop_toTopOf="@+id/imageView52" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout14"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:hint="Enter code shown in above image*"
+                app:layout_constraintStart_toStartOf="@+id/imageView52"
+                app:layout_constraintTop_toBottomOf="@+id/imageView52">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/enterCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView121"
+                style="@style/roboto_normal_10_sonic_silver"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:text="You can pay via Cash/Card or UPI enabled app at the time of delivery. Ask your delivery executive for these options."
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout14"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout14"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout14" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,1423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".products.product_details.ProductDetailsFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/card4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/sliderView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/product_details_image_height"
+
+                android:paddingHorizontal="@dimen/space_between_views"
+                android:paddingVertical="@dimen/dimen_15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sliderIndicatorEnabled="true"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#577D8A"
+                app:sliderIndicatorUnselectedColor="#DFDFDF" />
+
+
+            <ImageView
+                android:id="@+id/imgBackBackground"
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/space_between_views"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/circle_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_left_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBackBackground"
+                app:layout_constraintEnd_toEndOf="@+id/imgBackBackground"
+                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
+                app:layout_constraintTop_toTopOf="@+id/imgBackBackground" />
+
+
+            <ImageView
+                android:id="@+id/imgBegBackground"
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginEnd="@dimen/space_between_views"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/circle_white"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBackBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgBackBackground" />
+
+            <ImageView
+                android:id="@+id/imgBeg"
+                android:layout_width="@dimen/dimen_12"
+                android:layout_height="@dimen/dimen_12"
+                android:src="@drawable/ic_shopping_bag"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBegBackground"
+                app:layout_constraintEnd_toEndOf="@+id/imgBegBackground"
+                app:layout_constraintStart_toStartOf="@+id/imgBegBackground"
+                app:layout_constraintTop_toTopOf="@+id/imgBegBackground" />
+
+
+            <ImageView
+                android:id="@+id/imgWishlistBackground"
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginEnd="@dimen/dimen_15"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/circle_white"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBackBackground"
+                app:layout_constraintEnd_toStartOf="@+id/imgBegBackground"
+                app:layout_constraintTop_toTopOf="@+id/imgBackBackground" />
+
+            <ImageView
+                android:id="@+id/imgWishlist"
+                android:layout_width="@dimen/dimen_12"
+                android:layout_height="@dimen/dimen_12"
+                android:src="@drawable/ic_heart"
+                app:layout_constraintBottom_toBottomOf="@+id/imgWishlistBackground"
+                app:layout_constraintEnd_toEndOf="@+id/imgWishlistBackground"
+                app:layout_constraintStart_toStartOf="@+id/imgWishlistBackground"
+                app:layout_constraintTop_toTopOf="@+id/imgWishlistBackground" />
+
+
+            <ImageView
+                android:id="@+id/imgShareBackground"
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginEnd="@dimen/dimen_15"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/circle_white"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBackBackground"
+                app:layout_constraintEnd_toStartOf="@+id/imgWishlistBackground"
+                app:layout_constraintTop_toTopOf="@+id/imgBackBackground" />
+
+            <ImageView
+                android:id="@+id/imgShare"
+                android:layout_width="@dimen/dimen_12"
+                android:layout_height="@dimen/dimen_12"
+                android:src="@drawable/ic_share"
+                app:layout_constraintBottom_toBottomOf="@+id/imgShareBackground"
+                app:layout_constraintEnd_toEndOf="@+id/imgShareBackground"
+                app:layout_constraintStart_toStartOf="@+id/imgShareBackground"
+                app:layout_constraintTop_toTopOf="@+id/imgShareBackground" />
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView4"
+                android:layout_width="@dimen/small_image_width"
+                android:layout_height="@dimen/small_image_height"
+                android:layout_marginVertical="@dimen/dimen_15"
+                android:scaleType="center"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintBottom_toBottomOf="@+id/sliderView"
+                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
+                app:layout_constraintTop_toTopOf="@+id/sliderView"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="@dimen/dimen_0.5"
+                app:riv_corner_radius="@dimen/dimen_5" />
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView5"
+                android:layout_width="@dimen/small_image_width"
+                android:layout_height="@dimen/small_image_height"
+                android:layout_marginVertical="@dimen/dimen_15"
+                android:scaleType="center"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintBottom_toTopOf="@+id/roundedImageView4"
+                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="@dimen/dimen_0.5"
+                app:riv_corner_radius="@dimen/dimen_5" />
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView6"
+                android:layout_width="@dimen/small_image_width"
+                android:layout_height="@dimen/small_image_height"
+                android:layout_marginVertical="@dimen/dimen_15"
+                android:scaleType="center"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintBottom_toTopOf="@+id/roundedImageView5"
+                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="@dimen/dimen_0.5"
+                app:riv_corner_radius="@dimen/dimen_5" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView7"
+                android:layout_width="@dimen/small_image_width"
+                android:layout_height="@dimen/small_image_height"
+                android:layout_marginVertical="@dimen/dimen_15"
+                android:scaleType="center"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
+                app:layout_constraintTop_toBottomOf="@+id/roundedImageView4"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="@dimen/dimen_0.5"
+                app:riv_corner_radius="@dimen/dimen_5" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageView"
+                android:layout_width="@dimen/small_image_width"
+                android:layout_height="@dimen/small_image_height"
+                android:layout_marginVertical="@dimen/dimen_15"
+                android:scaleType="center"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
+                app:layout_constraintTop_toBottomOf="@+id/roundedImageView7"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="@dimen/dimen_0.5"
+                app:riv_corner_radius="@dimen/dimen_5" />
+
+
+            <ImageView
+                android:id="@+id/imgCrusialBackground"
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/space_between_views"
+                android:layout_marginBottom="@dimen/space_between_views"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/circle_white"
+                app:layout_constraintBottom_toBottomOf="@+id/sliderView"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgCrusial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_crusial"
+                app:layout_constraintBottom_toBottomOf="@+id/imgCrusialBackground"
+                app:layout_constraintEnd_toEndOf="@+id/imgCrusialBackground"
+                app:layout_constraintStart_toStartOf="@+id/imgCrusialBackground"
+                app:layout_constraintTop_toTopOf="@+id/imgCrusialBackground" />
+
+            <include
+                layout="@layout/custom_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/screen_horizontal_padding"
+                app:layout_constraintBottom_toBottomOf="@+id/sliderView"
+                app:layout_constraintEnd_toEndOf="@+id/imgBegBackground" />
+
+            <TextView
+                android:id="@+id/textView56"
+                style="@style/roboto_normal_18_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:letterSpacing="0.05"
+                android:text="@string/varanga_women_magenta_gold_toned_embroidered_kurta_with_trousers_dupatta"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/sliderView"
+                app:layout_constraintTop_toBottomOf="@+id/sliderView" />
+
+            <TextView
+                android:id="@+id/textView59"
+                style="@style/roboto_normal_18_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:text="@string/Rs"
+                android:textColor="@color/spanish_grey"
+                app:layout_constraintStart_toStartOf="@+id/textView56"
+                app:layout_constraintTop_toBottomOf="@+id/textView56" />
+
+            <TextView
+                android:id="@+id/oldRate"
+                style="@style/roboto_normal_18_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9999"
+                android:textColor="@color/spanish_grey"
+                app:layout_constraintBottom_toBottomOf="@+id/textView59"
+                app:layout_constraintStart_toEndOf="@+id/textView59"
+                app:layout_constraintTop_toTopOf="@+id/textView59" />
+
+            <TextView
+                android:id="@+id/textView63"
+                style="@style/roboto_normal_18_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_7"
+                android:text="@string/Rs"
+                app:layout_constraintBottom_toBottomOf="@+id/oldRate"
+                app:layout_constraintStart_toEndOf="@+id/oldRate"
+                app:layout_constraintTop_toTopOf="@+id/oldRate" />
+
+            <TextView
+                android:id="@+id/newRate"
+                style="@style/roboto_normal_18_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9999"
+                app:layout_constraintBottom_toBottomOf="@+id/textView63"
+                app:layout_constraintStart_toEndOf="@+id/textView63"
+                app:layout_constraintTop_toTopOf="@+id/textView63" />
+
+            <TextView
+                android:id="@+id/textView65"
+                style="@style/roboto_normal_14_red_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_7"
+                android:text="(55% OFF)"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toBottomOf="@+id/newRate"
+                app:layout_constraintStart_toEndOf="@+id/newRate"
+                app:layout_constraintTop_toTopOf="@+id/newRate" />
+
+            <TextView
+                android:id="@+id/textView66"
+                style="@style/roboto_normal_10_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inclusive_of_all_taxes"
+                android:textColor="@color/jungle_green"
+                app:layout_constraintStart_toStartOf="@+id/textView59"
+                app:layout_constraintTop_toBottomOf="@+id/oldRate" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView66">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
+
+
+                    <TextView
+                        android:id="@+id/textView67"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/size"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XL"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView67"
+                        app:layout_constraintStart_toEndOf="@+id/textView67"
+                        app:layout_constraintTop_toTopOf="@+id/textView67" />
+
+                    <TextView
+                        android:id="@+id/sizeChart"
+                        style="@style/roboto_medium_13_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/size_chart"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView70"
+                        style="@style/roboto_normal_14_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:text="Garment Measurement: Bust 45.0in"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView67" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@+id/textView70"
+                        app:layout_constraintTop_toBottomOf="@+id/textView70"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/single_product_size" />
+
+
+                    <TextView
+                        android:id="@+id/textView590"
+                        style="@style/roboto_normal_18_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_7"
+                        android:text="@string/Rs"
+                        android:textColor="@color/spanish_grey"
+                        app:layout_constraintStart_toEndOf="@+id/newRate1"
+                        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+
+                    <TextView
+                        android:id="@+id/oldRate1"
+                        style="@style/roboto_normal_18_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9999"
+                        android:textColor="@color/spanish_grey"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView590"
+                        app:layout_constraintStart_toEndOf="@+id/textView590"
+                        app:layout_constraintTop_toTopOf="@+id/textView590" />
+
+                    <TextView
+                        android:id="@+id/textView631"
+                        style="@style/roboto_normal_18_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Rs"
+                        app:layout_constraintBottom_toBottomOf="@+id/oldRate1"
+                        app:layout_constraintStart_toStartOf="@+id/recyclerView2"
+                        app:layout_constraintTop_toTopOf="@+id/oldRate1" />
+
+                    <TextView
+                        android:id="@+id/newRate1"
+                        style="@style/roboto_normal_18_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9999"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView631"
+                        app:layout_constraintStart_toEndOf="@+id/textView631"
+                        app:layout_constraintTop_toTopOf="@+id/textView631" />
+
+                    <TextView
+                        android:id="@+id/textView651"
+                        style="@style/roboto_normal_14_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(55% OFF)"
+                        android:textAllCaps="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/newRate1"
+                        app:layout_constraintStart_toEndOf="@+id/oldRate1"
+                        app:layout_constraintTop_toTopOf="@+id/newRate1" />
+
+                    <TextView
+                        android:id="@+id/textView71"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:text="Seller: "
+                        app:layout_constraintStart_toStartOf="@+id/textView631"
+                        app:layout_constraintTop_toBottomOf="@+id/newRate1" />
+
+                    <TextView
+                        android:id="@+id/textView72"
+                        style="@style/roboto_medium_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ABC Fashion"
+                        android:textColor="@color/red"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView71"
+                        app:layout_constraintStart_toEndOf="@+id/textView71"
+                        app:layout_constraintTop_toTopOf="@+id/textView71" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="@dimen/dimen_15">
+
+
+                    <TextView
+                        android:id="@+id/textView73"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_15"
+                        android:text="You Pay Only: "
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView74"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Rs"
+                        android:textColor="@color/red_light"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView73"
+                        app:layout_constraintStart_toEndOf="@+id/textView73"
+                        app:layout_constraintTop_toTopOf="@+id/textView73" />
+
+                    <TextView
+                        android:id="@+id/productPrice"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="899"
+                        android:textColor="@color/red_light"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView74"
+                        app:layout_constraintStart_toEndOf="@+id/textView74"
+                        app:layout_constraintTop_toTopOf="@+id/textView74" />
+
+                    <TextView
+                        android:id="@+id/savePrice"
+                        style="@style/roboto_medium_13_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimen_15"
+                        android:text="500"
+                        android:textColor="@color/jungle_green"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/productPrice" />
+
+                    <TextView
+                        android:id="@+id/textView77"
+                        style="@style/roboto_medium_13_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Rs"
+                        android:textColor="@color/jungle_green"
+                        app:layout_constraintBottom_toBottomOf="@+id/savePrice"
+                        app:layout_constraintEnd_toStartOf="@+id/savePrice"
+                        app:layout_constraintTop_toTopOf="@+id/savePrice" />
+
+                    <TextView
+                        android:id="@+id/textView78"
+                        style="@style/roboto_medium_13_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save: "
+                        android:textColor="@color/jungle_green"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView77"
+                        app:layout_constraintEnd_toStartOf="@+id/textView77"
+                        app:layout_constraintTop_toTopOf="@+id/textView77" />
+
+                    <TextView
+                        android:id="@+id/textView79"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:layout_marginEnd="@dimen/dimen_24"
+                        android:text="@string/apply_the_coupon_during_checkout_orders_above_rs_5_999_only_on_first_purchase_t_c_apply"
+                        app:layout_constraintEnd_toStartOf="@+id/textView80"
+                        app:layout_constraintStart_toStartOf="@+id/textView73"
+                        app:layout_constraintTop_toBottomOf="@+id/textView73" />
+
+                    <TextView
+                        android:id="@+id/textView80"
+                        style="@style/roboto_medium_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View Products"
+                        android:textColor="@color/red_light"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView79"
+                        app:layout_constraintEnd_toEndOf="@+id/savePrice"
+                        app:layout_constraintTop_toTopOf="@+id/textView79" />
+
+                    <ImageView
+                        android:id="@+id/imageView41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_views"
+                        android:src="@drawable/ic_rectange_dotted"
+                        app:layout_constraintStart_toStartOf="@+id/textView79"
+                        app:layout_constraintTop_toBottomOf="@+id/textView79" />
+
+                    <ImageView
+                        android:id="@+id/imageView42"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_10"
+                        android:src="@drawable/ic_scissors"
+                        app:layout_constraintBottom_toTopOf="@+id/imageView41"
+                        app:layout_constraintStart_toStartOf="@+id/imageView41"
+                        app:layout_constraintTop_toTopOf="@+id/imageView41" />
+
+                    <TextView
+                        android:id="@+id/couponCode"
+                        style="@style/roboto_medium_12_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SWAG500"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView41"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView41"
+                        app:layout_constraintStart_toStartOf="@+id/imageView41"
+                        app:layout_constraintTop_toTopOf="@+id/imageView41" />
+
+                    <TextView
+                        android:id="@+id/textView82"
+                        style="@style/roboto_medium_11_silver_foil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_7"
+                        android:text="@string/tap_to_copy"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView41"
+                        app:layout_constraintStart_toEndOf="@+id/imageView41"
+                        app:layout_constraintTop_toTopOf="@+id/imageView41" />
+
+                    <View
+                        android:id="@+id/view18"
+                        style="@style/line_horizontal"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView41" />
+
+                    <TextView
+                        android:id="@+id/textView83"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:text="10% Instant Savings on Credit Cards"
+                        app:layout_constraintStart_toStartOf="@+id/imageView41"
+                        app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+                    <TextView
+                        android:id="@+id/textView84"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Min. Spend Rs 3,000; Max Savings Rs 1,000"
+                        app:layout_constraintStart_toStartOf="@+id/textView83"
+                        app:layout_constraintTop_toBottomOf="@+id/textView83" />
+
+                    <TextView
+                        android:id="@+id/textView85"
+                        style="@style/roboto_medium_13_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/t_c"
+                        app:layout_constraintEnd_toEndOf="@+id/textView80"
+                        app:layout_constraintTop_toTopOf="@+id/textView83" />
+
+
+                    <View
+                        android:id="@+id/view189"
+                        style="@style/line_horizontal"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView84" />
+
+                    <TextView
+                        android:id="@+id/textView831"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:text="EMI Option Available"
+                        app:layout_constraintStart_toStartOf="@+id/imageView41"
+                        app:layout_constraintTop_toBottomOf="@+id/view189" />
+
+                    <TextView
+                        android:id="@+id/textView841"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EMI Starting from Rs. 34/month"
+                        app:layout_constraintStart_toStartOf="@+id/textView831"
+                        app:layout_constraintTop_toBottomOf="@+id/textView831" />
+
+                    <TextView
+                        android:id="@+id/textView851"
+                        style="@style/roboto_medium_13_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/view_plan"
+                        app:layout_constraintEnd_toEndOf="@+id/textView80"
+                        app:layout_constraintTop_toTopOf="@+id/textView831" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
+
+                    <TextView
+                        android:id="@+id/textView832"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Easy 30 days returns and exchanges"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView842"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:text="Choose to return or exchange for a different size (if available)within 30 dyas."
+                        app:layout_constraintStart_toStartOf="@+id/textView832"
+                        app:layout_constraintTop_toBottomOf="@+id/textView832" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView6">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
+
+                    <TextView
+                        android:id="@+id/textView833"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check Delivery"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView843"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:text="Pay on delivery might be available"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView833"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout13" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout13"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:hint="Enter PIN Code"
+                        android:textColorHint="@color/red"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView833">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/pinCode"
+                            style="@style/roboto_normal_14_davys_grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/red_light" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/productDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView7">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
+
+                    <TextView
+                        android:id="@+id/textView834"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/product_details"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/productInDetail"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:text="@string/product_paragrah"
+                        app:layout_constraintStart_toStartOf="@+id/textView834"
+                        app:layout_constraintTop_toBottomOf="@+id/textView834" />
+
+                    <TextView
+                        android:id="@+id/material_care"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:text="@string/material_care"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/productInDetail" />
+
+                    <TextView
+                        android:id="@+id/textView844"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:text="@string/product_paragrah"
+                        app:layout_constraintStart_toStartOf="@+id/material_care"
+                        app:layout_constraintTop_toBottomOf="@+id/material_care" />
+
+                    <TextView
+                        android:id="@+id/size_fit"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:text="@string/material_care"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView844" />
+
+                    <TextView
+                        android:id="@+id/textView845"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:text="@string/product_paragrah"
+                        app:layout_constraintStart_toStartOf="@+id/size_fit"
+                        app:layout_constraintTop_toBottomOf="@+id/size_fit" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/verify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/productDetails">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
+
+
+                    <ImageView
+                        android:id="@+id/imageView43"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_genine_product"
+                        app:layout_constraintEnd_toStartOf="@+id/view19"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/view19"
+                        style="@style/line_vertical"
+                        android:layout_height="@dimen/dimen_50"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView86"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView44"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageView43"
+                        app:layout_constraintTop_toTopOf="@+id/imageView43" />
+
+                    <ImageView
+                        android:id="@+id/imageView44"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_quality_checked"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/view19"
+                        app:layout_constraintTop_toTopOf="@+id/view19" />
+
+                    <TextView
+                        android:id="@+id/textView86"
+                        style="@style/roboto_medium_10_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_7"
+                        android:text="Genine Product"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView43"
+                        app:layout_constraintStart_toStartOf="@+id/imageView43"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView43" />
+
+                    <TextView
+                        android:id="@+id/textView87"
+                        style="@style/roboto_medium_10_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_7"
+                        android:text="Quality Checked"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView44"
+                        app:layout_constraintStart_toStartOf="@+id/imageView44"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView44" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/verify">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
+
+
+                    <TextView
+                        android:id="@+id/textView61"
+                        style="@style/roboto_medium_14_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rating_review"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView64"
+                        style="@style/roboto_normal_48_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.1"
+                        app:layout_constraintStart_toStartOf="@+id/textView61"
+                        app:layout_constraintTop_toBottomOf="@+id/textView61" />
+
+                    <ImageView
+                        android:id="@+id/imageView40"
+                        android:layout_width="@dimen/rating_star_size"
+                        android:layout_height="@dimen/rating_star_size"
+                        android:src="@drawable/ic_star"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView64"
+                        app:layout_constraintStart_toEndOf="@+id/textView64" />
+
+                    <TextView
+                        android:id="@+id/verifiedBuyersCount"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="1000"
+                        app:layout_constraintStart_toStartOf="@+id/textView64"
+                        app:layout_constraintTop_toBottomOf="@+id/textView64" />
+
+                    <TextView
+                        android:id="@+id/textView69"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Verified Buyers"
+                        app:layout_constraintBottom_toBottomOf="@+id/verifiedBuyersCount"
+                        app:layout_constraintStart_toEndOf="@+id/verifiedBuyersCount"
+                        app:layout_constraintTop_toTopOf="@+id/verifiedBuyersCount" />
+
+                    <View
+                        android:id="@+id/view20"
+                        android:layout_width="@dimen/vertical_line_width"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="@dimen/space_between_views"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView61"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView75"
+                        style="@style/roboto_medium_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dimen_10"
+                        android:layout_marginStart="@dimen/space_between_views"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@+id/view20"
+                        app:layout_constraintStart_toEndOf="@+id/view20"
+                        app:layout_constraintTop_toTopOf="@+id/view20" />
+
+                    <ImageView
+                        android:id="@+id/imageView45"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_2"
+                        android:src="@drawable/ic_star"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView75"
+                        app:layout_constraintStart_toEndOf="@+id/textView75"
+                        app:layout_constraintTop_toTopOf="@+id/textView75"
+                        app:tint="@color/tiffany_blue" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_5"
+                        android:progress="10"
+                        android:progressTint="@color/tiffany_blue"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView45"
+                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                        app:layout_constraintStart_toEndOf="@+id/imageView45"
+                        app:layout_constraintTop_toTopOf="@+id/imageView45" />
+
+                    <TextView
+                        android:id="@+id/ratingCount"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="655"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/progressBar" />
+
+
+                    <TextView
+                        android:id="@+id/textView751"
+                        style="@style/roboto_medium_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dimen_10"
+                        android:layout_marginStart="@dimen/space_between_views"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/textView75"
+                        app:layout_constraintStart_toEndOf="@+id/view20" />
+
+                    <ImageView
+                        android:id="@+id/imageView451"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_2"
+                        android:src="@drawable/ic_star"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView751"
+                        app:layout_constraintStart_toEndOf="@+id/textView751"
+                        app:layout_constraintTop_toTopOf="@+id/textView751"
+                        app:tint="@color/viridian_green" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar1"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_5"
+                        android:progress="30"
+                        android:progressTint="@color/viridian_green"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView451"
+                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                        app:layout_constraintStart_toEndOf="@+id/imageView451"
+                        app:layout_constraintTop_toTopOf="@+id/imageView451" />
+
+                    <TextView
+                        android:id="@+id/fourStarRatingCount"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="655"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBar1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/progressBar1" />
+
+
+                    <TextView
+                        android:id="@+id/textView752"
+                        style="@style/roboto_medium_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dimen_10"
+                        android:layout_marginStart="@dimen/space_between_views"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/textView751"
+                        app:layout_constraintStart_toEndOf="@+id/view20" />
+
+                    <ImageView
+                        android:id="@+id/imageView452"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_2"
+                        android:src="@drawable/ic_star"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView752"
+                        app:layout_constraintStart_toEndOf="@+id/textView752"
+                        app:layout_constraintTop_toTopOf="@+id/textView752"
+                        app:tint="@color/islamic_green" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_5"
+                        android:progress="60"
+                        android:progressTint="@color/islamic_green"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView452"
+                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                        app:layout_constraintStart_toEndOf="@+id/imageView452"
+                        app:layout_constraintTop_toTopOf="@+id/imageView452" />
+
+                    <TextView
+                        android:id="@+id/fiveStarRatingCount"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="655"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBar2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/progressBar2" />
+
+
+                    <TextView
+                        android:id="@+id/textView753"
+                        style="@style/roboto_medium_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dimen_10"
+                        android:layout_marginStart="@dimen/space_between_views"
+                        android:text="2"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/view20"
+                        app:layout_constraintTop_toBottomOf="@+id/textView75" />
+
+                    <ImageView
+                        android:id="@+id/imageView453"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_2"
+                        android:src="@drawable/ic_star"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView753"
+                        app:layout_constraintStart_toEndOf="@+id/textView753"
+                        app:layout_constraintTop_toTopOf="@+id/textView753"
+                        app:tint="@color/ulca_gold" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar3"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_5"
+                        android:progress="25"
+                        android:progressTint="@color/ulca_gold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView453"
+                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                        app:layout_constraintStart_toEndOf="@+id/imageView453"
+                        app:layout_constraintTop_toTopOf="@+id/imageView453" />
+
+                    <TextView
+                        android:id="@+id/twoStarRatingCount"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="655"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBar3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/progressBar3" />
+
+
+                    <TextView
+                        android:id="@+id/textView754"
+                        style="@style/roboto_medium_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dimen_10"
+                        android:layout_marginStart="@dimen/space_between_views"
+                        android:text="2"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/view20"
+                        app:layout_constraintTop_toBottomOf="@+id/textView753" />
+
+                    <ImageView
+                        android:id="@+id/imageView454"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_2"
+                        android:src="@drawable/ic_star"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView754"
+                        app:layout_constraintStart_toEndOf="@+id/textView754"
+                        app:layout_constraintTop_toTopOf="@+id/textView754"
+                        app:tint="@color/pastel_red" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar4"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_5"
+                        android:progress="25"
+                        android:progressTint="@color/pastel_red"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView454"
+                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                        app:layout_constraintStart_toEndOf="@+id/imageView454"
+                        app:layout_constraintTop_toTopOf="@+id/imageView454" />
+
+                    <TextView
+                        android:id="@+id/oneStarRatingCount"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="655"
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBar4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/progressBar4" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rating">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvReviewImages"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView81"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/single_reiview_image" />
+
+                    <TextView
+                        android:id="@+id/textView81"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Customer Photos "
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/reviewImageCount"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="55"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView81"
+                        app:layout_constraintStart_toEndOf="@+id/textView81"
+                        app:layout_constraintTop_toTopOf="@+id/textView81" />
+
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Customer Reviews "
+                        app:layout_constraintStart_toStartOf="@+id/rvReviewImages"
+                        app:layout_constraintTop_toBottomOf="@+id/rvReviewImages" />
+
+                    <TextView
+                        android:id="@+id/reviewCount"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="155"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                        app:layout_constraintStart_toEndOf="@+id/textView8"
+                        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvUserReview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@+id/textView8"
+                        app:layout_constraintTop_toBottomOf="@+id/textView8"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/single_review" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/textView89"
+                style="@style/sunflower_normal_14_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:text="View Similar"
+                app:layout_constraintStart_toStartOf="@+id/review"
+                app:layout_constraintTop_toBottomOf="@+id/review" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvViewSimilar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView89"
+                app:layout_constraintTop_toBottomOf="@+id/textView89"
+                tools:itemCount="1"
+                tools:listitem="@layout/single_card_10" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/dimen_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/wishlist"
+                style="@style/roboto_medium_14_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/rec_white_fill_top_round"
+                android:paddingVertical="@dimen/space_between_views"
+                android:text="Wishlist"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/addToBeg"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/addToBeg"
+                style="@style/roboto_medium_14_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rec_red_fill_top_round"
+                android:gravity="center"
+                android:paddingVertical="@dimen/space_between_views"
+                android:text="@string/add_to_beg"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/wishlist"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

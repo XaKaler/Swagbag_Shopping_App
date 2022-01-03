@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:stretchColumns="1,2,3,4"
+    android:layout_height="match_parent">
+
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+        android:padding="@dimen/dimen_5">
+
+        <TextView
+            android:id="@+id/months"
+            style="@style/roboto_normal_12_davys_grey"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="Months" />
+
+        <TextView
+            android:id="@+id/interest"
+            style="@style/roboto_normal_12_davys_grey"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_marginEnd="2dp"
+            android:text="Interest" />
+
+        <TextView
+            android:id="@+id/monthlyEMI"
+            style="@style/roboto_normal_12_davys_grey"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_marginEnd="2dp"
+            android:text="Monthly EMI" />
+
+        <TextView
+            android:id="@+id/overallCost"
+            style="@style/roboto_normal_12_davys_grey"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_marginEnd="2dp"
+            android:text="Overall Cost" />
+
+    </TableRow>
+
+</TableLayout>

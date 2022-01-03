@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardFeatureBrand"
+        android:layout_width="@dimen/view_in_half_screen"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="10dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgFeatureBrand"
+                android:layout_width="match_parent"
+                android:layout_height="157dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/navigation_header_user_img" />
+
+            <TextView
+                android:id="@+id/productName"
+                style="@style/autowide_normal_10_state_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/imgFeatureBrand"
+                app:layout_constraintTop_toBottomOf="@+id/imgFeatureBrand" />
+
+            <TextView
+                android:id="@+id/textView59"
+                style="@style/roboto_normal_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Rs"
+                android:textColor="@color/spanish_grey"
+                app:layout_constraintStart_toStartOf="@id/productName"
+                app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+            <TextView
+                android:id="@+id/oldRate"
+                style="@style/roboto_normal_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9999"
+                android:textColor="@color/spanish_grey"
+                app:layout_constraintBottom_toBottomOf="@+id/textView59"
+                app:layout_constraintStart_toEndOf="@+id/textView59"
+                app:layout_constraintTop_toTopOf="@+id/textView59" />
+
+            <TextView
+                android:id="@+id/textView63"
+                style="@style/roboto_normal_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_7"
+                android:text="@string/Rs"
+                app:layout_constraintBottom_toBottomOf="@+id/oldRate"
+                app:layout_constraintStart_toEndOf="@+id/oldRate"
+                app:layout_constraintTop_toTopOf="@+id/oldRate" />
+
+            <TextView
+                android:id="@+id/newRate"
+                style="@style/roboto_normal_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9999"
+                app:layout_constraintBottom_toBottomOf="@+id/textView63"
+                app:layout_constraintStart_toEndOf="@+id/textView63"
+                app:layout_constraintTop_toTopOf="@+id/textView63" />
+
+            <TextView
+                android:id="@+id/textView65"
+                style="@style/roboto_normal_12_red_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_7"
+                android:text="(55% OFF)"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toBottomOf="@+id/newRate"
+                app:layout_constraintStart_toEndOf="@+id/newRate"
+                app:layout_constraintTop_toTopOf="@+id/newRate" />
+
+            <TextView
+                android:id="@+id/productDetails"
+                style="@style/roboto_normal_10_sonic_silver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_7"
+                android:maxLines="1"
+                android:text="Women Embroidered Kurthas....."
+                app:layout_constraintStart_toStartOf="@+id/textView59"
+                app:layout_constraintTop_toBottomOf="@+id/oldRate" />
+
+            <TextView
+                android:id="@+id/ratingCount"
+                android:drawablePadding="@dimen/dimen_3"
+                android:background="@drawable/rec_outline_5_light_fill_white"
+                style="@style/roboto_normal_10_sonic_silver"
+                android:textColor="@color/tiffany_blue"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_7"
+                android:layout_marginBottom="@dimen/dimen_7"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dimen_3"
+                android:paddingHorizontal="@dimen/dimen_7"
+                android:text="3.5"
+                app:layout_constraintBottom_toBottomOf="@+id/imgFeatureBrand"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:drawableEndCompat="@drawable/ic_star" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardFeatureBrand" />
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toEndOf="@+id/cardFeatureBrand"
+        app:layout_constraintTop_toBottomOf="@+id/cardFeatureBrand" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

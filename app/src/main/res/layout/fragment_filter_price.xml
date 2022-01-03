@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/space_between_views"
+    android:padding="@dimen/screen_horizontal_padding"
+    tools:context=".products.filter.filter_price.FilterPriceFragment">
+
+
+    <TextView
+        android:id="@+id/textView51"
+        style="@style/roboto_normal_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Price Range"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView55"
+        style="@style/roboto_medium_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:text="@string/Rs"
+        app:layout_constraintStart_toStartOf="@+id/textView51"
+        app:layout_constraintTop_toBottomOf="@+id/textView51" />
+
+    <TextView
+        android:id="@+id/minPrice"
+        style="@style/roboto_medium_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="200"
+        app:layout_constraintBottom_toBottomOf="@+id/textView55"
+        app:layout_constraintStart_toEndOf="@+id/textView55"
+        app:layout_constraintTop_toTopOf="@+id/textView55" />
+
+    <TextView
+        android:id="@+id/textView57"
+        style="@style/roboto_medium_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_5"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/minPrice"
+        app:layout_constraintEnd_toStartOf="@+id/textView58"
+        app:layout_constraintStart_toEndOf="@+id/minPrice"
+        app:layout_constraintTop_toTopOf="@+id/minPrice" />
+
+    <TextView
+        android:id="@+id/textView58"
+        style="@style/roboto_medium_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_5"
+        android:text="@string/Rs"
+        app:layout_constraintBottom_toBottomOf="@+id/textView57"
+        app:layout_constraintStart_toEndOf="@+id/textView57"
+        app:layout_constraintTop_toTopOf="@+id/textView57" />
+
+    <TextView
+        android:id="@+id/maxPrice"
+        style="@style/roboto_medium_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10200"
+        app:layout_constraintBottom_toBottomOf="@+id/textView58"
+        app:layout_constraintStart_toEndOf="@+id/textView58"
+        app:layout_constraintTop_toTopOf="@+id/textView58" />
+
+    <TextView
+        android:id="@+id/textView60"
+        style="@style/roboto_medium_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="@+id/maxPrice"
+        app:layout_constraintStart_toEndOf="@+id/maxPrice"
+        app:layout_constraintTop_toTopOf="@+id/maxPrice" />
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/rangeSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_between_views"
+        android:stepSize="100.0"
+        android:valueFrom="200"
+        android:valueTo="10000.0"
+        app:thumbStrokeColor="@color/red_light"
+        app:tickVisible="false"
+        app:thumbColor="@color/white"
+        app:thumbStrokeWidth="@dimen/dimen_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:trackColor="@color/red_light"
+        app:layout_constraintTop_toBottomOf="@+id/textView57"
+        app:values="@array/initial_slider_values" />
+
+    <TextView
+        android:id="@+id/tvProductCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8000"
+        android:layout_marginTop="@dimen/space_between_views"
+        style="@style/roboto_normal_12_davys_grey"
+        app:layout_constraintStart_toStartOf="@+id/rangeSlider"
+        app:layout_constraintTop_toBottomOf="@+id/rangeSlider" />
+
+    <TextView
+        android:id="@+id/textView62"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Product found"
+        style="@style/roboto_normal_12_davys_grey"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProductCount"
+        app:layout_constraintStart_toEndOf="@+id/tvProductCount"
+        app:layout_constraintTop_toTopOf="@+id/tvProductCount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".order.with_items.without_filter_items.OrderWithoutFilterItemFragment">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_with_no_menu_white_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/screen_horizontal_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include">
+
+
+        <ImageView
+            android:id="@+id/imageView62"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nothing_in_filter"
+            android:layout_marginBottom="@dimen/space_between_views"
+            app:layout_constraintBottom_toTopOf="@+id/textView192"
+            app:layout_constraintEnd_toEndOf="@+id/textView192"
+            app:layout_constraintStart_toStartOf="@+id/textView192" />
+
+        <include
+            android:id="@+id/include11"
+            layout="@layout/lyt_order_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView191"
+            style="@style/roboto_normal_15_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Try using different filter or go to back to \norders"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include11" />
+
+        <TextView
+            android:id="@+id/textView192"
+            style="@style/roboto_medium_20_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:text="Sorry! orders not found"
+            app:layout_constraintBottom_toTopOf="@+id/textView191"
+            app:layout_constraintEnd_toEndOf="@+id/textView191"
+            app:layout_constraintStart_toStartOf="@+id/textView191"
+            app:layout_goneMarginBottom="@dimen/space_between_view_and_subview_15" />
+
+        <TextView
+            android:id="@+id/textView190"
+            style="@style/asap_medium_14_davys_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:background="@drawable/rec_light_red_background_5"
+            android:paddingVertical="@dimen/button_vertical_padding"
+            android:text="BACK TO ORDERS"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="@+id/textView191"
+            app:layout_constraintStart_toStartOf="@+id/textView191"
+            app:layout_constraintTop_toBottomOf="@+id/textView191" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

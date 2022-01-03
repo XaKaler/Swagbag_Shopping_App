@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/dimen_7"
+    >
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimen_10"
+        app:cardElevation="@dimen/dimen_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/dimen_15"
+            android:paddingVertical="@dimen/dimen_10">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/productImage"
+                android:layout_width="@dimen/shopping_beg_product_image_width"
+                android:layout_height="@dimen/shopping_beg_product_image_height"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="@dimen/dimen_5" />
+
+            <TextView
+                android:id="@+id/productName"
+                style="@style/autowide_normal_12_state_green"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_15"
+                android:layout_marginEnd="@dimen/dimen_7"
+                android:maxLines="1"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/productImage"
+                app:layout_constraintTop_toTopOf="@+id/productImage" />
+
+            <TextView
+                android:id="@+id/productDetails"
+                style="@style/snigiet_normal_15_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:maxLines="1"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/productName"
+                app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+            <TextView
+                android:id="@+id/textView91"
+                style="@style/sniglet_normal_12_dark_liver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_3"
+                android:text="Sold by: "
+                android:textColor="@color/sonic_silver"
+                app:layout_constraintStart_toStartOf="@+id/productDetails"
+                app:layout_constraintTop_toBottomOf="@+id/productDetails" />
+
+            <TextView
+                android:id="@+id/sellerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_7"
+                android:maxLines="1"
+                android:text="Seller name"
+                app:layout_constraintBottom_toBottomOf="@+id/textView91"
+                app:layout_constraintStart_toEndOf="@+id/textView91"
+                app:layout_constraintTop_toTopOf="@+id/textView91" />
+
+            <TextView
+                android:id="@+id/size"
+                style="@style/asap_normal_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@drawable/rec_grey_5"
+                android:drawablePadding="@dimen/dimen_7"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dimen_10"
+                android:paddingVertical="@dimen/dimen_5"
+                android:text="Size: L"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_down_arrow_black"
+                app:drawableTint="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/textView91"
+                app:layout_constraintTop_toBottomOf="@+id/textView91" />
+
+
+            <TextView
+                android:id="@+id/quantity"
+                style="@style/asap_normal_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:background="@drawable/rec_grey_5"
+                android:drawablePadding="@dimen/dimen_7"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dimen_10"
+                android:paddingVertical="@dimen/dimen_5"
+                android:text="Qty: 1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_down_arrow_black"
+                app:drawableTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/size"
+                app:layout_constraintStart_toEndOf="@+id/size"
+                app:layout_constraintTop_toTopOf="@+id/size" />
+
+            <TextView
+                android:id="@+id/textView94"
+                style="@style/elmsri_normal_20_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:text="@string/Rs"
+                app:layout_constraintStart_toStartOf="@+id/size"
+                app:layout_constraintTop_toBottomOf="@+id/size" />
+
+            <TextView
+                android:id="@+id/newPrice"
+                style="@style/elmsri_normal_20_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15,999"
+                app:layout_constraintBottom_toBottomOf="@+id/textView94"
+                app:layout_constraintStart_toEndOf="@+id/textView94"
+                app:layout_constraintTop_toTopOf="@+id/textView94" />
+
+            <TextView
+                android:id="@+id/textView96"
+                style="@style/elmsri_normal_18_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_7"
+                android:text="@string/Rs"
+                android:textColor="@color/spanish_grey"
+                app:layout_constraintBottom_toBottomOf="@+id/newPrice"
+                app:layout_constraintStart_toEndOf="@+id/newPrice"
+                app:layout_constraintTop_toTopOf="@+id/newPrice" />
+
+            <TextView
+                android:id="@+id/oldPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19,999"
+                android:textColor="@color/spanish_grey"
+                app:layout_constraintBottom_toBottomOf="@+id/textView96"
+                app:layout_constraintStart_toEndOf="@+id/textView96"
+                app:layout_constraintTop_toTopOf="@+id/textView96" />
+
+            <TextView
+                android:id="@+id/off"
+                style="@style/asap_normal_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1"
+                android:text="15% Off"
+                android:textColor="@color/red_light"
+                app:layout_constraintBottom_toBottomOf="@+id/productImage"
+                app:layout_constraintStart_toStartOf="@+id/textView94"
+                app:layout_constraintTop_toBottomOf="@+id/newPrice" />
+
+            <ImageView
+                android:id="@+id/remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cross_sign" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

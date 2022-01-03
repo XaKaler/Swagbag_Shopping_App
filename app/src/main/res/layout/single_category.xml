@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:id="@+id/cateConstLayout"
+    android:padding="@dimen/dimen_1"
+    android:layout_height="wrap_content"
+    >
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cateConstLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/category_background"
+            android:padding="@dimen/screen_horizontal_padding"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCat"
+            app:layout_constraintCircleRadius="50dp"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tvCatName"
+                style="@style/roboto_normal_30_queen_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/womens"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCateDetails"
+                style="@style/roboto_normal_12_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:maxLines="2"
+                android:text="@string/lectus_tempus_fusce_lobortis_convallis"
+                app:layout_constraintStart_toStartOf="@+id/tvCatName"
+                app:layout_constraintTop_toBottomOf="@+id/tvCatName" />
+
+            <ImageView
+                android:id="@+id/imgArrowUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_15"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCatName"
+                app:layout_constraintStart_toEndOf="@+id/tvCatName"
+                app:layout_constraintTop_toTopOf="@+id/tvCatName"
+                app:srcCompat="@drawable/ic_arrow_up_white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/imgCat"
+            android:layout_width="wrap_content"
+            android:layout_height="140dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/categroy_woman" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSubCategory"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/screen_horizontal_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cateConstLayout"
+        tools:listitem="@layout/single_category_drop_down" />-->
+
+
+    <ImageView
+        android:id="@+id/imgCat"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/product_category_image_height"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/found_nothing" />
+
+    <View
+        android:id="@+id/view37"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:alpha="0.2"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCat"
+        app:layout_constraintEnd_toEndOf="@+id/imgCat"
+        app:layout_constraintStart_toStartOf="@+id/imgCat"
+        app:layout_constraintTop_toTopOf="@+id/imgCat" />
+
+        <TextView
+            android:id="@+id/tvCatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shop man"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/dimen_5"
+            android:textAllCaps="true"
+            style="@style/roboto_medium_18_davys_grey."
+            app:layout_constraintBottom_toBottomOf="@+id/imgCat"
+            app:layout_constraintEnd_toEndOf="@+id/imgCat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgCat" />
+</androidx.constraintlayout.widget.ConstraintLayout>

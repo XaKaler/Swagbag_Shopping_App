@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginVertical="@dimen/dimen_7"
+    android:background="@drawable/rec_dark_white_5"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/tvCatName"
+        style="@style/roboto_medium_18_dim_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/screen_horizontal_padding"
+        android:paddingStart="@dimen/screen_horizontal_padding"
+        android:text="@string/clothing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgCatArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/screen_horizontal_padding"
+        android:src="@drawable/ic_bottom_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCatName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvCatName" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5"
+        android:background="@color/chinese_silver"
+        app:layout_constraintTop_toBottomOf="@id/tvCatName" />
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:padding="@dimen/screen_horizontal_padding"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_wishlist_lines"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

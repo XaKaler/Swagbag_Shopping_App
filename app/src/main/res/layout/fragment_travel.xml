@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg_color"
+    tools:context=".category.travel.TravelFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_with_three_menus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/travelSliderView"
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:sliderIndicatorEnabled="true"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="#577D8A"
+            app:sliderIndicatorUnselectedColor="#DFDFDF" />
+
+
+        <TextView
+            android:id="@+id/heading"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="@string/new_arrivals"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout5" />
+
+
+        <TextView
+            android:id="@+id/heading11"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="@string/recommended_for_you"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeImg3" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/dimen_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/travelSliderView">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="1dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCateDropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/single_category_drop_down" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/rvMenNewArrivals"
+            layout="@layout/travel_card_1"
+            android:layout_width="0dp"
+            android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_feature_brands" />
+
+        <ImageView
+            android:id="@+id/homeImg3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/banner_108"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:src="@drawable/poster_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvMenNewArrivals" />
+
+        <ImageView
+            android:id="@+id/homeImg10"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/banner_108"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poster_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/dimen_10"
+            app:layout_constraintTop_toBottomOf="@+id/rvAppliances" />
+
+        <ImageView
+            android:id="@+id/homeImg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/banner_172"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:src="@drawable/poster2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvRecommendForYou" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecommendForYou"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_between_views"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/heading11"
+            app:layout_constraintTop_toBottomOf="@+id/heading11"
+            app:layout_goneMarginTop="@dimen/space_between_views"
+            tools:itemCount="1"
+            tools:listitem="@layout/travle_card_2" />
+
+
+        <TextView
+            android:id="@+id/heading8"
+            android:textAllCaps="true"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Category to Bag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeImg" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategoryToBeg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/recycle_view_horizontal_space"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading8"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_card_21" />
+
+        <ImageView
+            android:id="@+id/homeImg4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/banner_135"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:src="@drawable/poster_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvCategoryToBeg" />
+
+        <TextView
+            android:id="@+id/textView103"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Accessories"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="@+id/heading8"
+            app:layout_constraintTop_toBottomOf="@+id/homeImg4" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAccessories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_15"
+            android:layout_marginTop="@dimen/dimen_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView103"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_best_products" />
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="APPLIANCES"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="@+id/heading8"
+            app:layout_constraintTop_toBottomOf="@+id/rvAccessories" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAppliances"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_15"
+            android:layout_marginTop="@dimen/dimen_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_best_products" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

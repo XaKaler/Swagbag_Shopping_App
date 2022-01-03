@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/dimen_5"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/imageView36"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/card_22_background_re_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rec_brown_sharp_corner" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgBestProduct"
+        android:layout_width="@dimen/card_22_image_width"
+        android:layout_height="@dimen/card_22_image_height"
+        android:layout_margin="@dimen/dimen_10"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/navigation_header_user_img"
+        app:circularflow_radiusInDP="5"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView36"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView36"
+        app:riv_corner_radius="@dimen/dimen_5" />
+
+
+    <TextView
+        android:id="@+id/tvBestProductDetails"
+        style="@style/asap_normal_14_davys_grey"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/day_smokey_black_night_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:maxLines="1"
+        android:paddingHorizontal="5dp"
+        android:text="TextView"
+        android:minLines="2"
+        android:gravity="center"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBestProduct" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

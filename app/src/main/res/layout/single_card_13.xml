@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/dimen_5"
+    android:layout_height="wrap_content">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/productImage"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/card_13_image_height"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/navigation_header_user_img_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="@dimen/dimen_5"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_10"
+        android:padding="@dimen/dimen_10"
+        android:background="@drawable/rec_white_5"
+        app:layout_constraintBottom_toBottomOf="@+id/productImage"
+        app:layout_constraintEnd_toEndOf="@+id/productImage"
+        app:layout_constraintStart_toStartOf="@+id/productImage"
+        app:layout_constraintTop_toBottomOf="@+id/productImage">
+
+
+        <TextView
+            android:id="@+id/tvProductCategory"
+            android:fontFamily="@font/roboto_regular"
+            style="@style/autowide_normal_10_state_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_24"
+            android:maxLines="1"
+            android:minLines="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="+ Shop Now"
+            android:layout_marginTop="@dimen/dimen_8"
+            style="@style/sniglet_normal_8_dark_liver"
+            app:layout_constraintEnd_toEndOf="@+id/tvProductCategory"
+            app:layout_constraintStart_toStartOf="@+id/tvProductCategory"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductCategory" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

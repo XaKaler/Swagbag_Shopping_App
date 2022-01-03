@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_10"
+    android:elevation="@dimen/dimen_5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RadioButton
+            android:id="@+id/userAddress"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/addressType"
+            style="@style/roboto_normal_10_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rec_grey_10"
+            android:layout_marginEnd="@dimen/screen_horizontal_padding"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/dimen_10"
+            android:paddingVertical="@dimen/dimen_5"
+            android:text="@string/home"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/userAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/userAddress" />
+
+        <TextView
+            android:id="@+id/textView48"
+            style="@style/roboto_medium_14_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xa Kaler"
+            app:layout_constraintBottom_toBottomOf="@+id/userAddress"
+            app:layout_constraintStart_toEndOf="@+id/userAddress"
+            app:layout_constraintTop_toTopOf="@+id/userAddress" />
+
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="House.No: 123,\nVillage, Mandal, District,\nState - 12345\n\nMobile: 9876543210"
+            app:layout_constraintStart_toEndOf="@+id/userAddress"
+            app:layout_constraintTop_toBottomOf="@+id/userAddress" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lytconst"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view12">
+
+
+            <TextView
+                android:id="@+id/btnCancel"
+                style="@style/roboto_medium_12_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Cancel"
+                android:textAlignment="center"
+                android:textColor="@color/han_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/view11"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view11"
+                style="@style/line_vertical"
+                android:layout_marginHorizontal="@dimen/dimen_5"
+                android:layout_marginVertical="@dimen/dimen_5"
+                android:paddingHorizontal="@dimen/dimen_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnSave"
+                app:layout_constraintStart_toEndOf="@+id/btnCancel"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/btnSave"
+                style="@style/roboto_medium_14_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/save"
+                android:textAlignment="center"
+                android:textColor="@color/han_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/view11"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view12"
+            style="@style/line_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

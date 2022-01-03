@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view36"
+        style="@style/line_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/size"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view36" />
+
+    <TextView
+        android:id="@+id/size"
+        style="@style/roboto_normal_12_sonic_silver"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="S"
+        app:layout_constraintBottom_toBottomOf="@+id/radioButton"
+        app:layout_constraintEnd_toStartOf="@+id/brandSize"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radioButton"
+        app:layout_constraintTop_toTopOf="@+id/radioButton" />
+
+    <TextView
+        android:id="@+id/brandSize"
+        style="@style/roboto_normal_12_sonic_silver"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="XS"
+        app:layout_constraintBottom_toBottomOf="@+id/size"
+        app:layout_constraintEnd_toStartOf="@+id/chest"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/size"
+        app:layout_constraintTop_toTopOf="@+id/size" />
+
+    <TextView
+        android:id="@+id/chest"
+        style="@style/roboto_normal_12_sonic_silver"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="37.0"
+        app:layout_constraintBottom_toBottomOf="@+id/brandSize"
+        app:layout_constraintEnd_toStartOf="@+id/chest2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/brandSize"
+        app:layout_constraintTop_toTopOf="@+id/brandSize" />
+
+    <TextView
+        android:id="@+id/chest2"
+        style="@style/roboto_normal_12_sonic_silver"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="25.0"
+        app:layout_constraintBottom_toBottomOf="@+id/brandSize"
+        app:layout_constraintEnd_toStartOf="@+id/chest3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chest"
+        app:layout_constraintTop_toTopOf="@+id/brandSize" />
+
+    <TextView
+        android:id="@+id/chest3"
+        style="@style/roboto_normal_12_sonic_silver"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="25.0"
+        app:layout_constraintBottom_toBottomOf="@+id/brandSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chest2"
+        app:layout_constraintTop_toTopOf="@+id/brandSize" />
+</androidx.constraintlayout.widget.ConstraintLayout>

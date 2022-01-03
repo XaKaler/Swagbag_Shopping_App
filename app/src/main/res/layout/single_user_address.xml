@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/dimen_5">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimen_20"
+        android:background="@drawable/rec_white_5"
+        android:elevation="@dimen/dimen_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_10">
+
+
+            <RadioButton
+                android:id="@+id/userAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/addressType"
+                style="@style/roboto_normal_10_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rec_light_green_10"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dimen_10"
+                android:paddingVertical="@dimen/dimen_5"
+                android:text="@string/home"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/userAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/userAddress" />
+
+            <TextView
+                android:id="@+id/userName"
+                style="@style/roboto_medium_14_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                app:layout_constraintBottom_toBottomOf="@+id/userAddress"
+                app:layout_constraintStart_toEndOf="@+id/userAddress"
+                app:layout_constraintTop_toTopOf="@+id/userAddress" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="House.No: 123,\nVillage, Mandal, District,\nState - 12345\n\nMobile: 9876543210"
+                app:layout_constraintStart_toEndOf="@+id/userAddress"
+                app:layout_constraintTop_toBottomOf="@+id/userAddress" />
+
+
+            <TextView
+                android:id="@+id/btnCancel"
+                style="@style/roboto_medium_12_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:background="@drawable/rec_outline_5_light"
+                android:gravity="center"
+                android:paddingVertical="@dimen/dimen_12"
+                android:text="Change or add address"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/tiffany_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/addressType"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/userAddress"
+                app:layout_constraintTop_toBottomOf="@+id/address" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

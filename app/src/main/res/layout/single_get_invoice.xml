@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/dimen_7"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:paddingVertical="@dimen/screen_horizontal_padding"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/invoice" />
+
+        <TextView
+            android:id="@+id/textView129"
+            style="@style/roboto_medium_14_nickel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_15"
+            android:text="Invoice 1"
+            app:layout_constraintStart_toEndOf="@+id/imageView55"
+            app:layout_constraintTop_toTopOf="@+id/imageView55" />
+
+        <TextView
+            android:id="@+id/billNo"
+            style="@style/roboto_normal_12_nickel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="6566656d6d95d1154d4sdsf1654s6df231sd"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView55"
+            app:layout_constraintStart_toEndOf="@+id/imageView55"
+            app:layout_constraintStart_toStartOf="@+id/textView129"
+            app:layout_constraintTop_toBottomOf="@+id/textView129" />
+
+        <View
+            android:id="@+id/view30"
+            style="@style/line_horizontal"
+            android:layout_marginTop="@dimen/dimen_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView55" />
+
+        <TextView
+            android:id="@+id/textView144"
+            style="@style/roboto_normal_12_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:text="Charge"
+            app:layout_constraintStart_toStartOf="@+id/imageView55"
+            app:layout_constraintTop_toBottomOf="@+id/view30" />
+
+        <TextView
+            android:id="@+id/textView146"
+            style="@style/roboto_normal_12_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:text="Amount"
+            app:layout_constraintStart_toStartOf="@+id/imageView55"
+            app:layout_constraintTop_toBottomOf="@+id/textView144" />
+
+        <TextView
+            android:id="@+id/charge"
+            style="@style/roboto_medium_12_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_30"
+            android:text="Delivery Charge"
+            app:layout_constraintBottom_toBottomOf="@+id/textView144"
+            app:layout_constraintStart_toEndOf="@+id/textView144"
+            app:layout_constraintTop_toTopOf="@+id/textView144" />
+
+        <TextView
+            android:id="@+id/charge4"
+            style="@style/roboto_medium_12_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery Charge"
+            app:layout_constraintBottom_toBottomOf="@+id/textView148"
+            app:layout_constraintStart_toStartOf="@+id/charge3"
+            app:layout_constraintTop_toTopOf="@+id/textView148" />
+
+        <TextView
+            android:id="@+id/charge2"
+            style="@style/roboto_medium_12_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Rs"
+            app:layout_constraintBottom_toBottomOf="@+id/textView146"
+            app:layout_constraintStart_toStartOf="@+id/charge"
+            app:layout_constraintTop_toTopOf="@+id/textView146" />
+
+        <TextView
+            android:id="@+id/charge3"
+            style="@style/roboto_medium_12_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="999"
+            app:layout_constraintBottom_toBottomOf="@+id/textView146"
+            app:layout_constraintStart_toEndOf="@+id/charge2"
+            app:layout_constraintTop_toTopOf="@+id/textView146" />
+
+        <TextView
+            android:id="@+id/textView148"
+            style="@style/roboto_normal_12_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:text="Invoice Date"
+            app:layout_constraintStart_toStartOf="@+id/textView146"
+            app:layout_constraintTop_toBottomOf="@+id/textView146" />
+
+        <View
+            android:id="@+id/view31"
+            style="@style/line_horizontal"
+            android:layout_marginTop="@dimen/dimen_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView148" />
+
+        <TextView
+            android:id="@+id/download"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Download"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:layout_margin="@dimen/dimen_20"
+            android:background="@drawable/rec_light_red_background_5"
+            android:textColor="@color/white"
+            style="@style/roboto_medium_13_red_light"
+            android:drawablePadding="@dimen/dimen_5"
+            android:paddingVertical="@dimen/dimen_15"
+            android:paddingHorizontal="@dimen/dimen_30"
+            android:layout_marginTop="@dimen/space_between_views"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view31" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

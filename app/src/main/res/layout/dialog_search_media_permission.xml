@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/screen_horizontal_padding"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_mike_attentions" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/roboto_normal_18_outer_space"
+        android:layout_marginTop="@dimen/space_between_views"
+        android:text="@string/media_storage_permission_required"
+        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+        app:layout_constraintStart_toStartOf="@+id/imageView11"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_between_views"
+        android:text="@string/camera_permission_setting"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+
+    <TextView
+        android:id="@+id/btnEnablePermission"
+        style="@style/roboto_normal_18_white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_width"
+        android:layout_marginTop="@dimen/space_between_views"
+        android:background="@drawable/google_button_background"
+        android:gravity="center"
+        android:backgroundTint="@color/red_light"
+        android:text="@string/enable_permission"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_width"
+        android:layout_marginTop="@dimen/space_between_views"
+        android:elevation="@dimen/dimen_10"
+        app:layout_constraintEnd_toEndOf="@+id/btnEnablePermission"
+        app:layout_constraintStart_toStartOf="@+id/btnEnablePermission"
+        app:layout_constraintTop_toBottomOf="@+id/btnEnablePermission">
+
+        <TextView
+            android:id="@+id/btnNotNow"
+            style="@style/roboto_normal_14_davys_grey"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/not_now"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/textView9"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
