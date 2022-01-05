@@ -15,7 +15,11 @@
         android:id="@+id/menFragment"
         android:name="com.shopping.swagbag.category.men.MenFragment"
         android:label="fragment_men"
-        tools:layout="@layout/fragment_men" />
+        tools:layout="@layout/fragment_men" >
+        <action
+            android:id="@+id/action_menFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.shopping.swagbag.auth.signin.SignInFragment"
@@ -84,20 +88,22 @@
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
-            android:id="@+id/action_searchFragment_to_camera_permission_dialog"
-            app:destination="@id/camera_permission_dialog" />
-        <action
             android:id="@+id/action_searchFragment_to_media_and_storage_permission_dialog"
             app:destination="@id/media_and_storage_permission_dialog" />
+        <action
+            android:id="@+id/action_searchFragment_to_dialogSearchCameraPermission"
+            app:destination="@id/dialogSearchCameraPermission" />
+        <action
+            android:id="@+id/action_searchFragment_to_dialogSearchUsing"
+            app:destination="@id/dialogSearchUsing" />
+        <action
+            android:id="@+id/action_searchFragment_to_search_using_microphone"
+            app:destination="@id/search_using_microphone" />
+        <action
+            android:id="@+id/action_searchFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
 
-
-    <dialog android:id="@+id/camera_permission_dialog"
-        tools:layout="@layout/dialog_search_camera_permission">
-        <action
-            android:id="@+id/action_camera_permission_dialog_to_search_using_images"
-            app:destination="@id/search_using_images" />
-    </dialog>
 
     <dialog android:id="@+id/media_and_storage_permission_dialog"
         tools:layout="@layout/dialog_search_media_permission">
@@ -108,11 +114,9 @@
 
 
     <dialog android:id="@+id/search_using_microphone"
+        android:name="com.shopping.swagbag.search.DialogSearchUsingMicrophone"
         tools:layout="@layout/dialog_search_using_microphone"/>
 
-
-    <dialog android:id="@+id/search_using_images"
-        tools:layout="@layout/dialog_search_using_image"/>
 
     <fragment
         android:id="@+id/categoryFragment"
@@ -193,7 +197,17 @@
         android:id="@+id/wishlistWithoutProductFragment"
         android:name="com.shopping.swagbag.wishlist.withoutproduct.WishlistWithoutProductFragment"
         android:label="fragment_wishtlist_without_product"
-        tools:layout="@layout/fragment_wishtlist_without_product" />
+        tools:layout="@layout/fragment_wishtlist_without_product" >
+        <action
+            android:id="@+id/action_wishlistWithoutProductFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_wishlistWithoutProductFragment_to_shoppingBegWithoutProductFragment"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
+        <action
+            android:id="@+id/action_wishlistWithoutProductFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/savedCardsWithoutCards"
         android:name="com.shopping.swagbag.cards.savedcards.without_cards.SavedCardsWithoutCards"
@@ -221,6 +235,9 @@
         <action
             android:id="@+id/action_shoppingBegWithProductFragment_to_shoppingBegSelectAddressFragment"
             app:destination="@id/shoppingBegSelectAddressFragment" />
+        <action
+            android:id="@+id/action_shoppingBegWithProductFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/wishlistWithProductFragment"
@@ -252,7 +269,17 @@
         android:id="@+id/shoppingBegSelectAddressFragment"
         android:name="com.shopping.swagbag.shoppingbeg.withproduct.select_address.ShoppingBegSelectAddressFragment"
         android:label="fragment_shopping_beg_select_address"
-        tools:layout="@layout/fragment_shopping_beg_select_address" />
+        tools:layout="@layout/fragment_shopping_beg_select_address" >
+        <action
+            android:id="@+id/action_shoppingBegSelectAddressFragment_to_paymentModeFragment"
+            app:destination="@id/paymentModeFragment" />
+        <action
+            android:id="@+id/action_shoppingBegSelectAddressFragment_to_termsOfUsesFragment"
+            app:destination="@id/termsOfUsesFragment" />
+        <action
+            android:id="@+id/action_shoppingBegSelectAddressFragment_to_privacyPolicyFragment"
+            app:destination="@id/privacyPolicyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/viewUserDetailsFragment"
         android:name="com.shopping.swagbag.order.user_details.ViewUserDetailsFragment"
@@ -311,27 +338,62 @@
         android:id="@+id/womenFragment"
         android:name="com.shopping.swagbag.category.women.WomenFragment"
         android:label="fragment_women"
-        tools:layout="@layout/fragment_women" />
+        tools:layout="@layout/fragment_women" >
+        <action
+            android:id="@+id/action_womenFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/kidsFragment"
         android:name="com.shopping.swagbag.category.kids.KidsFragment"
         android:label="fragment_kids"
-        tools:layout="@layout/fragment_kids" />
+        tools:layout="@layout/fragment_kids" >
+        <action
+            android:id="@+id/action_kidsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/petsFragment"
         android:name="com.shopping.swagbag.category.pets.PetsFragment"
         android:label="fragment_pets"
-        tools:layout="@layout/fragment_pets" />
+        tools:layout="@layout/fragment_pets" >
+        <action
+            android:id="@+id/action_petsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/travelFragment"
         android:name="com.shopping.swagbag.category.travel.TravelFragment"
         android:label="fragment_travel"
-        tools:layout="@layout/fragment_travel" />
+        tools:layout="@layout/fragment_travel" >
+        <action
+            android:id="@+id/action_travelFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.shopping.swagbag.category.home.HomeFragment"
         android:label="fragment_home_category"
-        tools:layout="@layout/fragment_home_category" />
+        tools:layout="@layout/fragment_home_category" >
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/dialogSearchCameraPermission"
+        android:name="com.shopping.swagbag.search.DialogSearchCameraPermission"
+        android:label="dialog_search_camera_permission"
+        tools:layout="@layout/dialog_search_camera_permission" />
+    <dialog
+        android:id="@+id/dialogSearchUsing"
+        android:name="com.shopping.swagbag.search.DialogSearchUsingImage"
+        android:label="DialogSearchUsing"
+        tools:layout="@layout/dialog_search_using_image"/>
+    <fragment
+        android:id="@+id/paymentModeFragment"
+        android:name="com.shopping.swagbag.shipping.payment_mode.PaymentModeFragment"
+        android:label="fragment_payment_mode"
+        tools:layout="@layout/fragment_payment_mode" />
 
 
 </navigation>

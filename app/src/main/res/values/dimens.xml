@@ -14,8 +14,16 @@
 
     <!--common-->
     <dimen name="space_between_views">20dp</dimen>
+    <dimen name="space_between_views_30">30dp</dimen>
+    <dimen name="current_tracking_position_image_size">10dp</dimen>
     <dimen name="screen_horizontal_padding">20dp</dimen>
     <dimen name="recycle_view_horizontal_space">12dp</dimen>
+    <dimen name="screen_padding_10">10dp</dimen>
+    <dimen name="screen_padding_15">15dp</dimen>
+    <dimen name="drawable_padding_10">10dp</dimen>
+    <dimen name="screen_margin_10">10dp</dimen>
+    <dimen name="screen_margin_5">5dp</dimen>
+    <dimen name="screen_margin_15">15dp</dimen>
     <dimen name="view_in_half_screen">175dp</dimen>
     <dimen name="all_time_slider_width">200dp</dimen>
     <dimen name="card_elevation">5dp</dimen>

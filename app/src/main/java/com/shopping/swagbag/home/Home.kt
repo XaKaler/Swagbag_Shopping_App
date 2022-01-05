@@ -1,23 +1,16 @@
 package com.shopping.swagbag.home
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.View
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
-import com.shopping.swagbag.ShowToolbar
-import com.shopping.swagbag.common.FreeData
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentHomeBinding
@@ -25,13 +18,9 @@ import com.shopping.swagbag.databinding.HomeBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.dummy.DummySlider
-import com.shopping.swagbag.service.RetrofitSingleton
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
 
@@ -211,7 +200,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         with(viewBinding2) {
             rvBestOffer.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = AllTimeSliderAdapter(context, data)
+                adapter = AllTimeSliderAdapter(context, data, this@Home)
             }
         }
 
@@ -239,7 +228,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         with(viewBinding2) {
             rvBest.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@Home)
             }
         }
     }
@@ -249,7 +238,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
             rvDeals.apply {
                 //isNestedScrollingEnabled = false
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = AllTimeSliderAdapter(context, data)
+                adapter = AllTimeSliderAdapter(context, data, this@Home)
             }
         }
     }

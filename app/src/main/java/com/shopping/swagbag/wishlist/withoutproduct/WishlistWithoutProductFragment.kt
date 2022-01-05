@@ -2,12 +2,9 @@ package com.shopping.swagbag.wishlist.withoutproduct
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.adapter.FeatureProductAdapter
 import com.shopping.swagbag.databinding.*
@@ -17,7 +14,7 @@ import com.shopping.swagbag.dummy.DummyData
 class WishlistWithoutProductFragment : Fragment(R.layout.fragment_wishtlist_without_product) {
 
     private lateinit var viewBinding: FragmentWishtlistWithoutProductBinding
-    private lateinit var toolbarBinding: ToolbarWithTwoMenusBinding
+    private lateinit var toolbarBinding: ToolbarWithTwoMenusDeleteAndCartBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +28,13 @@ class WishlistWithoutProductFragment : Fragment(R.layout.fragment_wishtlist_with
     }
 
     private fun initViews() {
-        setToolbar()
+        with(viewBinding){
+            btnShopNow.setOnClickListener{
+                findNavController().navigate(R.id.action_wishlistWithoutProductFragment_to_categoryFragment)
+            }
+        }
+
+        toolbar()
 
         setItemViewed()
     }
@@ -45,15 +48,22 @@ class WishlistWithoutProductFragment : Fragment(R.layout.fragment_wishtlist_with
         }
     }
 
-    private fun setToolbar() {
+    private fun toolbar() {
         with(toolbarBinding){
             // set title
             tvTitle.text = getString(R.string.wishlist)
 
-            // back button click
+            //click listeners
             imgBack.setOnClickListener{
                 findNavController().popBackStack()
             }
+
+            delete.setOnClickListener{}
+
+            imgCart.setOnClickListener{
+                findNavController().navigate(R.id.action_wishlistWithoutProductFragment_to_shoppingBegWithoutProductFragment)
+            }
+
         }
     }
 

@@ -243,7 +243,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCollage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimen_15"
             android:layout_marginTop="@dimen/dimen_10"

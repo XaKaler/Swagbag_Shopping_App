@@ -2,16 +2,14 @@ package com.shopping.swagbag.category.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentHomeCategoryBinding
-import com.shopping.swagbag.databinding.FragmentPetsBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
 import com.shopping.swagbag.dummy.DummyChild
 import com.shopping.swagbag.dummy.DummyData
@@ -22,7 +20,7 @@ import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import java.util.ArrayList
 
-class HomeFragment : Fragment(R.layout.fragment_home_category) {
+class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentHomeCategoryBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
@@ -137,7 +135,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category) {
         with(viewBinding) {
             rvNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -146,7 +144,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category) {
         with(viewBinding) {
             rvMostPopular.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -155,7 +153,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category) {
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -174,7 +172,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category) {
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -183,9 +181,13 @@ class HomeFragment : Fragment(R.layout.fragment_home_category) {
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
+    }
+
+    override fun onSingleItemClickListener(position: Int) {
+        findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment)
     }
 
 }

@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentPetsBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
@@ -19,7 +20,7 @@ import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import java.util.*
 
-class PetsFragment : Fragment(R.layout.fragment_pets) {
+class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentPetsBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
@@ -31,6 +32,10 @@ class PetsFragment : Fragment(R.layout.fragment_pets) {
         toolbarBinding = viewBinding.include
 
         initViews()
+    }
+
+    override fun onSingleItemClickListener(position: Int) {
+        findNavController().navigate(R.id.action_petsFragment_to_productDetailsFragment)
     }
 
     private fun initViews() {
@@ -118,7 +123,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets) {
         with(viewBinding) {
             rvMostWanted.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter =  BestProductAdapter(context, data)
+                adapter =  BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -136,7 +141,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets) {
         with(viewBinding) {
             rvNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -145,7 +150,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets) {
         with(viewBinding) {
             rvMostPopular.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = AllTimeSliderAdapter(context, data)
+                adapter = AllTimeSliderAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -154,7 +159,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets) {
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -173,7 +178,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets) {
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -182,7 +187,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets) {
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }

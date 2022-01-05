@@ -2,16 +2,14 @@ package com.shopping.swagbag.category.kids
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentKidsBinding
-import com.shopping.swagbag.databinding.FragmentWomenBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
 import com.shopping.swagbag.dummy.DummyChild
 import com.shopping.swagbag.dummy.DummyData
@@ -22,7 +20,7 @@ import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import java.util.ArrayList
 
-class KidsFragment : Fragment(R.layout.fragment_kids) {
+class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentKidsBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
@@ -36,6 +34,11 @@ class KidsFragment : Fragment(R.layout.fragment_kids) {
         initViews()
 
 
+    }
+
+
+    override fun onSingleItemClickListener(position: Int) {
+        findNavController().navigate(R.id.action_kidsFragment_to_productDetailsFragment)
     }
 
     private fun initViews() {
@@ -95,7 +98,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids) {
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -104,7 +107,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids) {
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context,2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -123,7 +126,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids) {
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -132,7 +135,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids) {
         with(viewBinding) {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter =  AllTimeSliderAdapter(context, data)
+                adapter =  AllTimeSliderAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -141,7 +144,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids) {
         with(viewBinding) {
             rvMenNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -159,15 +162,13 @@ class KidsFragment : Fragment(R.layout.fragment_kids) {
         with(viewBinding) {
             rvBest.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
 
     private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
         with(viewBinding) {
-
-
             kidsSliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR;
 
             // below method is used to

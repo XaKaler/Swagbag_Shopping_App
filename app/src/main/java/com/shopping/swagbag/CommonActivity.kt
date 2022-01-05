@@ -17,7 +17,7 @@ class CommonActivity : AppCompatActivity() {
         Handler().postDelayed({
             startActivity(Intent(this@CommonActivity, MainActivity::class.java))
             finish()
-        }, 3000)
+        }, 2000)
     }
 
     private fun setSplashScreen() {

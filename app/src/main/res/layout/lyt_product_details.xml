@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_10"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_15">
+
+
+            <TextView
+                android:id="@+id/textView145"
+                style="@style/roboto_medium_14_nickel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rec_outline_5"
+                android:drawableEnd="@drawable/ic_headphone_with_right_side_mike_fill"
+                android:drawablePadding="@dimen/dimen_10"
+                android:paddingHorizontal="@dimen/screen_horizontal_padding"
+                android:paddingVertical="@dimen/dimen_10"
+                android:text="Help"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/productImage"
+                android:layout_width="@dimen/shipping_view_item_details_image_width"
+                android:layout_height="@dimen/shipping_view_item_details_image_height"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/navigation_header_user_img_foreground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView145"
+                app:riv_corner_radius="@dimen/image_corner_radius" />
+
+            <TextView
+                android:id="@+id/textView142"
+                style="@style/autowide_normal_12_state_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:text="KENSTAR"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="@+id/productImage"
+                app:layout_constraintStart_toStartOf="@+id/productImage"
+                app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
+            <TextView
+                android:id="@+id/productDetails"
+                style="@style/snigiet_normal_14_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:text="Washing machine small white color."
+                app:layout_constraintEnd_toEndOf="@+id/productImage"
+                app:layout_constraintStart_toStartOf="@+id/productImage"
+                app:layout_constraintTop_toBottomOf="@+id/textView142" />
+
+            <TextView
+                android:id="@+id/textView149"
+                style="@style/elmsri_normal_18_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Rs"
+                app:layout_constraintEnd_toStartOf="@+id/price"
+                app:layout_constraintTop_toBottomOf="@+id/productDetails" />
+
+            <TextView
+                android:id="@+id/price"
+                style="@style/elmsri_normal_18_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15,999"
+                app:layout_constraintEnd_toEndOf="@+id/productDetails"
+                app:layout_constraintStart_toStartOf="@+id/productDetails"
+                app:layout_constraintTop_toBottomOf="@+id/productDetails" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

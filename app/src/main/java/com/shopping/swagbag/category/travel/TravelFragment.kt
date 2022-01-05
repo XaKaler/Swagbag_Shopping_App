@@ -2,14 +2,12 @@ package com.shopping.swagbag.category.travel
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewbinding.ViewBinding
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentTravelBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
@@ -20,7 +18,7 @@ import com.smarteist.autoimageslider.SliderView
 import java.util.ArrayList
 
 
-class TravelFragment : Fragment(R.layout.fragment_travel) {
+class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentTravelBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
@@ -140,7 +138,7 @@ class TravelFragment : Fragment(R.layout.fragment_travel) {
         with(viewBinding) {
             rvAccessories.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@TravelFragment)
             }
         }
     }
@@ -149,8 +147,12 @@ class TravelFragment : Fragment(R.layout.fragment_travel) {
         with(viewBinding) {
             rvAppliances.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@TravelFragment)
             }
         }
+    }
+
+    override fun onSingleItemClickListener(position: Int) {
+        findNavController().navigate(R.id.action_travelFragment_to_productDetailsFragment)
     }
 }

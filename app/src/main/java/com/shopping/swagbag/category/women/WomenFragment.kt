@@ -7,10 +7,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
-import com.shopping.swagbag.databinding.FragmentCreatePasswordBinding
 import com.shopping.swagbag.databinding.FragmentWomenBinding
-import com.shopping.swagbag.databinding.ToolbarWithNoMenuBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
@@ -20,7 +19,7 @@ import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import java.util.ArrayList
 
-class WomenFragment : Fragment(R.layout.fragment_women) {
+class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentWomenBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
@@ -34,6 +33,10 @@ class WomenFragment : Fragment(R.layout.fragment_women) {
         initViews()
 
 
+    }
+
+    override fun onSingleItemClickListener(position: Int) {
+        findNavController().navigate(R.id.action_womenFragment_to_productDetailsFragment)
     }
 
     private fun initViews() {
@@ -88,7 +91,7 @@ class WomenFragment : Fragment(R.layout.fragment_women) {
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -97,7 +100,7 @@ class WomenFragment : Fragment(R.layout.fragment_women) {
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -116,7 +119,7 @@ class WomenFragment : Fragment(R.layout.fragment_women) {
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -125,7 +128,7 @@ class WomenFragment : Fragment(R.layout.fragment_women) {
         with(viewBinding) {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter =  AllTimeSliderAdapter(context, data)
+                adapter =  AllTimeSliderAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -134,7 +137,7 @@ class WomenFragment : Fragment(R.layout.fragment_women) {
         with(viewBinding) {
             rvMenNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -161,7 +164,7 @@ class WomenFragment : Fragment(R.layout.fragment_women) {
         with(viewBinding) {
             rvBest.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }

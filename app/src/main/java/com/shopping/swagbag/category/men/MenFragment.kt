@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentMenBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
@@ -17,7 +18,7 @@ import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import java.util.*
 
-class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men) {
+class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentMenBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
@@ -75,7 +76,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men) {
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -84,7 +85,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men) {
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -103,7 +104,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men) {
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -112,7 +113,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men) {
         with(viewBinding) {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = DummyData().getDummyData()?.let { AllTimeSliderAdapter(context, it) }
+                adapter = DummyData().getDummyData()?.let { AllTimeSliderAdapter(context, it, this@MenFragment) }
             }
         }
     }
@@ -121,7 +122,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men) {
         with(viewBinding) {
             rvMenNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -148,7 +149,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men) {
         with(viewBinding) {
             rvBest.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -180,6 +181,10 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men) {
             // to start auto cycle below method is used.
             menSliderView.startAutoCycle()
         }
+    }
+
+    override fun onSingleItemClickListener(position: Int) {
+        findNavController().navigate(R.id.action_menFragment_to_productDetailsFragment)
     }
 
 }

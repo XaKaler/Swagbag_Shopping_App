@@ -16,7 +16,7 @@ import com.shopping.swagbag.databinding.ToolbarWithOneMenusBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.shoppingbeg.withproduct.UserAddressAdapter
 
-class ShoppingBegSelectAddressFragment : Fragment(R.layout.fragment_shopping_beg_select_address) {
+class ShoppingBegSelectAddressFragment : Fragment(R.layout.fragment_shopping_beg_select_address), View.OnClickListener {
 
     private lateinit var viewBinding: FragmentShoppingBegSelectAddressBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
@@ -33,6 +33,12 @@ class ShoppingBegSelectAddressFragment : Fragment(R.layout.fragment_shopping_beg
     }
 
     private fun initViews() {
+        with(viewBinding){
+            btnContinue.setOnClickListener(this@ShoppingBegSelectAddressFragment)
+            termsOfUse.setOnClickListener(this@ShoppingBegSelectAddressFragment)
+            privacyPolicy.setOnClickListener(this@ShoppingBegSelectAddressFragment)
+        }
+
         setToolbar()
 
         setAddresses()
@@ -47,10 +53,7 @@ class ShoppingBegSelectAddressFragment : Fragment(R.layout.fragment_shopping_beg
     }
 
     private fun setAddresses() {
-
         with(viewBinding){
-
-
             rvAddress.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = UserAddressAdapter(context, DummyData().getUserAddress())
@@ -67,6 +70,14 @@ class ShoppingBegSelectAddressFragment : Fragment(R.layout.fragment_shopping_beg
             imgBack.setOnClickListener{
                 findNavController().popBackStack()
             }
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.termsOfUse -> findNavController().navigate(R.id.action_shoppingBegSelectAddressFragment_to_termsOfUsesFragment)
+            R.id.btnContinue -> findNavController().navigate(R.id.action_shoppingBegSelectAddressFragment_to_paymentModeFragment)
+            R.id.privacyPolicy -> findNavController().navigate(R.id.action_shoppingBegSelectAddressFragment_to_privacyPolicyFragment)
         }
     }
 }

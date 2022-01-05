@@ -27,7 +27,7 @@ class ShoppingBegWithProductFragment : Fragment(R.layout.fragment_shopping_beg_w
     }
 
     private fun initViews() {
-        setToolbar()
+        toolbar()
 
         setItems()
 
@@ -49,14 +49,18 @@ class ShoppingBegWithProductFragment : Fragment(R.layout.fragment_shopping_beg_w
         }
     }
 
-    private fun setToolbar() {
+    private fun toolbar() {
         with(toolbarBinding){
             // set title
             tvTitle.text = getString(R.string.shopping_beg)
 
-            // back button click
+            //click listeners
             imgBack.setOnClickListener{
                 findNavController().popBackStack()
+            }
+
+            imgWishlist.setOnClickListener{
+                findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_wishlistWithProductFragment)
             }
         }
     }

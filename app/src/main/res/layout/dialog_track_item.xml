@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rec_white_5"
+    android:paddingVertical="@dimen/screen_padding_15">
+
+    <TextView
+        android:id="@+id/textView216"
+        style="@style/roboto_medium_14_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screen_margin_15"
+        android:text="Track Item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView217"
+        style="@style/roboto_normal_12_sonic_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_between_view_and_subview_5"
+        android:text="Tracking No: "
+        app:layout_constraintStart_toStartOf="@+id/textView216"
+        app:layout_constraintTop_toBottomOf="@+id/textView216" />
+
+    <TextView
+        android:id="@+id/trackingNo"
+        style="@style/roboto_normal_12_sonic_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SWAG0031085583"
+        app:layout_constraintBottom_toBottomOf="@+id/textView217"
+        app:layout_constraintStart_toEndOf="@+id/textView217"
+        app:layout_constraintTop_toTopOf="@+id/textView217" />
+
+    <ImageView
+        android:id="@+id/trackItemCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/screen_margin_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cross_sign" />
+
+    <View
+        android:id="@+id/view43"
+        style="@style/line_horizontal"
+        android:layout_marginTop="@dimen/space_between_view_and_subview_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trackingNo" />
+
+    <View
+        android:id="@+id/view44"
+        style="@style/line_vertical"
+        android:layout_height="0dp"
+        android:background="@color/tiffany_blue"
+        android:layout_width="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView217"
+        app:layout_constraintTop_toBottomOf="@+id/view43" />
+
+    <ImageView
+        android:id="@+id/imageView66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/imageView67"
+        app:layout_constraintEnd_toEndOf="@+id/view44"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view44"
+        app:layout_constraintTop_toBottomOf="@+id/textView217"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:srcCompat="@drawable/right_tick_in_circle" />
+
+    <ImageView
+        android:id="@+id/imageView67"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/imageView68"
+        app:layout_constraintEnd_toEndOf="@+id/view44"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view44"
+        app:layout_constraintTop_toBottomOf="@+id/imageView66"
+        app:srcCompat="@drawable/right_tick_in_circle" />
+
+    <ImageView
+        android:id="@+id/imageView68"
+        android:layout_width="@dimen/current_tracking_position_image_size"
+        android:layout_height="@dimen/current_tracking_position_image_size"
+        app:layout_constraintBottom_toTopOf="@+id/imageView69"
+        app:layout_constraintEnd_toEndOf="@+id/imageView67"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageView67"
+        app:layout_constraintTop_toBottomOf="@+id/imageView67"
+        app:srcCompat="@drawable/circle_tiffny_blue" />
+
+    <ImageView
+        android:id="@+id/imageView69"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView67"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageView67"
+        app:layout_constraintTop_toBottomOf="@+id/imageView68"
+        app:srcCompat="@drawable/ic_tick_with_round_fill" />
+
+    <TextView
+        android:id="@+id/textView222"
+        style="@style/roboto_medium_13_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_between_view_and_subview"
+        android:text="Arriving"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView66"
+        app:layout_constraintStart_toEndOf="@+id/imageView66"
+        app:layout_constraintTop_toTopOf="@+id/imageView66" />
+
+    <TextView
+        android:id="@+id/textView227"
+        style="@style/roboto_medium_13_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_between_view_and_subview"
+        android:text="Shipped"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView67"
+        app:layout_constraintStart_toEndOf="@+id/imageView67"
+        app:layout_constraintTop_toTopOf="@+id/imageView67" />
+
+    <TextView
+        android:id="@+id/textView229"
+        style="@style/roboto_medium_13_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_between_view_and_subview"
+        android:text="10:54 a.m"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView68"
+        app:layout_constraintStart_toEndOf="@+id/imageView68"
+        app:layout_constraintTop_toTopOf="@+id/imageView68" />
+
+    <TextView
+        android:id="@+id/textView231"
+        style="@style/roboto_medium_13_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/space_between_view_and_subview"
+        android:layout_height="wrap_content"
+        android:text="Order Placed"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView69"
+        app:layout_constraintStart_toEndOf="@+id/imageView69"
+        app:layout_constraintTop_toTopOf="@+id/imageView69" />
+
+    <TextView
+        android:id="@+id/textView224"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/roboto_normal_11_sonic_silver"
+        android:text=" on "
+        app:layout_constraintBottom_toBottomOf="@+id/textView222"
+        app:layout_constraintStart_toEndOf="@+id/textView222"
+        app:layout_constraintTop_toTopOf="@+id/textView222" />
+
+    <TextView
+        android:id="@+id/textView228"
+        style="@style/roboto_normal_11_sonic_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" on "
+        app:layout_constraintBottom_toBottomOf="@+id/textView227"
+        app:layout_constraintStart_toEndOf="@+id/textView227"
+        app:layout_constraintTop_toTopOf="@+id/textView227" />
+
+    <TextView
+        android:id="@+id/textView230"
+        style="@style/roboto_normal_11_sonic_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Item Packed in Store "
+        app:layout_constraintBottom_toBottomOf="@+id/textView229"
+        app:layout_constraintStart_toEndOf="@+id/textView229"
+        app:layout_constraintTop_toTopOf="@+id/textView229" />
+
+    <TextView
+        android:id="@+id/orderPlaceTime"
+        style="@style/roboto_normal_11_sonic_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" on Sat, 27 Nov"
+        app:layout_constraintBottom_toBottomOf="@+id/textView231"
+        app:layout_constraintStart_toEndOf="@+id/textView231"
+        app:layout_constraintTop_toTopOf="@+id/textView231" />
+
+    <TextView
+        android:id="@+id/arrivingDate"
+        style="@style/roboto_normal_11_sonic_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wed, 1 Dec"
+        app:layout_constraintBottom_toBottomOf="@+id/textView222"
+        app:layout_constraintStart_toEndOf="@+id/textView224"
+        app:layout_constraintTop_toTopOf="@+id/textView222" />
+
+    <TextView
+        android:id="@+id/arrivingDate2"
+        style="@style/roboto_normal_11_sonic_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wed, 1 Dec"
+        app:layout_constraintBottom_toBottomOf="@+id/textView228"
+        app:layout_constraintStart_toEndOf="@+id/textView228"
+        app:layout_constraintTop_toTopOf="@+id/textView228" />
+</androidx.constraintlayout.widget.ConstraintLayout>

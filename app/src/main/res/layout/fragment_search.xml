@@ -14,7 +14,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/include2"
+        android:id="@+id/searchBar"
+        android:layout_marginTop="@dimen/dimen_2"
         layout="@layout/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2">
+        app:layout_constraintTop_toBottomOf="@+id/searchBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -48,9 +49,10 @@
                 android:id="@+id/rvNewArrivals"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_view_and_subview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                tools:listitem="@layout/single_feature_brands"
+                tools:listitem="@layout/single_best_products"
                 tools:itemCount="1"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,10 +74,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopularOnSwagbag"
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/space_between_view_and_subview"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                tools:listitem="@layout/single_kids_wear_picks"
+                tools:listitem="@layout/single_slider_products"
                 tools:itemCount="1"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"

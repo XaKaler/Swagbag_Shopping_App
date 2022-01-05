@@ -70,12 +70,64 @@
         <item name="android:textColor">@color/day_black_night_white</item>
     </style>
 
+    <style name="roboto_medium_12_dark_charcoal">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/txt_12</item>
+        <item name="android:textColor">@color/dark_charcoal</item>
+    </style>
+
+
 
     <style name="elmsri_normal_14_smoke_black">
         <item name="android:fontFamily">@font/elmessirir_regular</item>
         <item name="android:textSize">@dimen/txt_12</item>
         <item name="android:textColor">@color/day_smoky_black_night_Argent</item>
     </style>
+
+
+    <style name="roboto_medium_12_tiffany_blue">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/txt_12</item>
+        <item name="android:textColor">@color/tiffany_blue</item>
+    </style>
+
+
+    <style name="roboto_normal_11_sonic_silver">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/txt_11</item>
+        <item name="android:textColor">@color/sonic_silver</item>
+    </style>
+
+
+
+    <style name="roboto_normal_11_tiffany_blue">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/txt_11</item>
+        <item name="android:textColor">@color/tiffany_blue</item>
+    </style>
+
+    <style name="roboto_medium_10_sonic_silver">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/txt_10</item>
+        <item name="android:textColor">@color/sonic_silver</item>
+    </style>
+
+
+    <style name="roboto_medium_16_white">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/txt_16</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+
+    <style name="roboto_medium_18_dark_charcoal">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/dark_charcoal</item>
+    </style>
+
+
 
 
     <style name="sunflower_normal_14_grey">

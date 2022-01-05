@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".order.cancel_order.CancellationViewCancelledItemDetailsFragment">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_with_no_menu_white_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/screen_padding_10">
+
+            <include
+                android:id="@+id/include16"
+                layout="@layout/lyt_product_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/screen_margin_10"
+                android:layout_marginTop="@dimen/space_between_views"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include16">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/screen_padding_15">
+
+
+                    <ImageView
+                        android:id="@+id/imageView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_cancel_btn_grey_circle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView209"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_between_view_and_subview"
+                        android:text="Cancelled On "
+                        app:layout_constraintStart_toEndOf="@+id/imageView10"
+                        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+
+                    <TextView
+                        android:id="@+id/cancellationDate"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sat, 27 Nov"
+                        app:layout_constraintStart_toEndOf="@+id/textView209"
+                        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+
+                    <TextView
+                        android:id="@+id/textView215"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview_5"
+                        android:text="@string/as_per_your_request"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView209"
+                        app:layout_constraintTop_toBottomOf="@+id/textView209" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_views"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView25"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView25"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView25">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="@dimen/screen_padding_15">
+
+                    <TextView
+                        android:id="@+id/textView219"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin_15"
+                        android:text="Total Order Price"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView218"
+                        style="@style/roboto_normal_11_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview_5"
+                        android:text="You saved "
+                        app:layout_constraintStart_toStartOf="@+id/textView219"
+                        app:layout_constraintTop_toBottomOf="@+id/textView219" />
+
+                    <TextView
+                        android:id="@+id/textView223"
+                        style="@style/roboto_normal_11_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview_5"
+                        android:text=" on this order"
+                        app:layout_constraintStart_toEndOf="@+id/savedMoney"
+                        app:layout_constraintTop_toBottomOf="@+id/textView219" />
+
+                    <TextView
+                        android:id="@+id/textView221"
+                        style="@style/roboto_normal_11_tiffany_blue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview_5"
+                        android:text="@string/Rs"
+                        app:layout_constraintStart_toEndOf="@+id/textView218"
+                        app:layout_constraintTop_toBottomOf="@+id/textView219" />
+
+                    <TextView
+                        android:id="@+id/savedMoney"
+                        style="@style/roboto_normal_11_tiffany_blue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview_5"
+                        android:text="@string/_999_00"
+                        app:layout_constraintStart_toEndOf="@+id/textView221"
+                        app:layout_constraintTop_toBottomOf="@+id/textView219" />
+
+                    <TextView
+                        android:id="@+id/productPrice"
+                        style="@style/roboto_medium_12_tiffany_blue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin_15"
+                        android:text="@string/_999_00"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView219"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView219" />
+
+                    <TextView
+                        android:id="@+id/productPrice2"
+                        style="@style/roboto_medium_12_tiffany_blue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Rs"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView219"
+                        app:layout_constraintEnd_toStartOf="@+id/productPrice"
+                        app:layout_constraintTop_toTopOf="@+id/textView219" />
+
+                    <TextView
+                        android:id="@+id/viewBreakUp"
+                        style="@style/roboto_medium_12_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View Breakup"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView223"
+                        app:layout_constraintEnd_toEndOf="@+id/productPrice"
+                        app:layout_constraintTop_toTopOf="@+id/textView223" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout13"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview_15"
+                        android:background="@drawable/rec_grey_5"
+                        android:paddingHorizontal="@dimen/screen_horizontal_padding"
+                        android:paddingVertical="@dimen/screen_padding_15"
+                        app:layout_constraintEnd_toEndOf="@+id/viewBreakUp"
+                        app:layout_constraintStart_toStartOf="@+id/textView218"
+                        app:layout_constraintTop_toBottomOf="@+id/textView223">
+
+                        <TextView
+                            style="@style/roboto_normal_12_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/cash_on_delivery"
+                            android:drawablePadding="@dimen/drawable_padding_10"
+                            android:gravity="center"
+                            android:text="Pay on delivery."
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/view42"
+                        style="@style/line_horizontal"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout13" />
+
+                    <TextView
+                        android:id="@+id/textView226"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        android:text="Item sold by: "
+                        app:layout_constraintStart_toStartOf="@+id/constraintLayout13"
+                        app:layout_constraintTop_toBottomOf="@+id/view42" />
+
+                    <TextView
+                        android:id="@+id/sellerName"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Abc Company"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView226"
+                        app:layout_constraintStart_toEndOf="@+id/textView226"
+                        app:layout_constraintTop_toTopOf="@+id/textView226" />
+
+                    <TextView
+                        android:id="@+id/getInvoice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:background="@drawable/rec_outline_5"
+                        android:paddingVertical="@dimen/button_vertical_padding"
+                        android:text="GET INVOICE"
+                        style="@style/roboto_medium_12_dark_charcoal"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview_15"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout13"
+                        app:layout_constraintStart_toStartOf="@+id/constraintLayout13"
+                        app:layout_constraintTop_toBottomOf="@+id/sellerName" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,12 +14,12 @@ import com.shopping.swagbag.databinding.SingleBestProductsBinding
 import com.shopping.swagbag.databinding.SingleSliderProductsBinding
 import com.shopping.swagbag.dummy.DummyModel
 
-class AllTimeSliderAdapter(
+class AllTimeSliderAdapterDummy(
     private val context: Context,
     private val data: List<DummyModel>,
     private val itemClick: RecycleItemClickListener
 ) :
-    RecyclerView.Adapter<AllTimeSliderAdapter.BestProductViewHolder>() {
+    RecyclerView.Adapter<AllTimeSliderAdapterDummy.BestProductViewHolder>() {
 
     inner class BestProductViewHolder(private val viewBinding: SingleSliderProductsBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
@@ -34,11 +34,11 @@ class AllTimeSliderAdapter(
                         .into(imgBestProduct)
 
                     // set text
-                    tvBestProductName.text = singleData.name.toString()
+                    tvBestProductName.text = singleData.name
                     tvBestProductDetails.text = singleData.details
 
                     newId.setOnClickListener{
-                       itemClick.onSingleItemClickListener(position)
+                        itemClick.onSingleItemClickListener(position)
                     }
                 }
             }
@@ -50,7 +50,7 @@ class AllTimeSliderAdapter(
     }
 
     override fun onBindViewHolder(holder: BestProductViewHolder, position: Int) {
-        holder.bind(data[position],itemClick = itemClick, position)
+        holder.bind(data[position], itemClick = itemClick, position)
     }
 
     override fun getItemCount()= data.size
