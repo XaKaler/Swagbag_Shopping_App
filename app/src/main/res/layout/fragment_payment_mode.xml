@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_bg_color"
     tools:context=".shipping.payment_mode.PaymentModeFragment">
 
     <include
@@ -17,13 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/card4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:padding="@dimen/screen_horizontal_padding"
+            android:padding="@dimen/screen_padding_15"
             app:layout_constraintTop_toBottomOf="@+id/include5">
 
             <com.google.android.material.card.MaterialCardView
@@ -31,7 +33,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rec_white_5"
+                app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/dimen_5"
+                android:layout_margin="@dimen/screen_margin_5"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -102,11 +107,13 @@
                 android:id="@+id/materialCardView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_margin="@dimen/screen_margin_5"
                 android:background="@drawable/rec_white_5"
-                android:elevation="@dimen/dimen_5"
-                app:layout_constraintTop_toBottomOf="@+id/textView97"
-                tools:layout_editor_absoluteX="20dp">
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView8"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView97">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -161,11 +168,11 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView99" />
 
                         <include
-                            android:visibility="gone"
                             android:id="@+id/viewCOD"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
                             layout="@layout/cash_on_delivery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -223,11 +230,11 @@
 
 
                         <include
-                            android:visibility="gone"
                             android:id="@+id/includeDebeitCreditCard"
                             layout="@layout/credit_debit_card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/view231" />
 
@@ -283,11 +290,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView992" />
 
                         <include
-                            android:visibility="gone"
+                            android:id="@+id/includeUPI"
                             layout="@layout/upi_payment"
-                            app:layout_constraintTop_toBottomOf="@+id/view232"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_width="match_parent"/>
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/view232" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -455,6 +463,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_between_views"
                 app:cardElevation="@dimen/dimen_5"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                android:layout_margin="@dimen/screen_margin_5"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView15"
                 app:layout_constraintStart_toStartOf="@+id/materialCardView15"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView15">
@@ -504,7 +514,8 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_margin="@dimen/screen_margin_5"
+                app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/dimen_5"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView15"
                 app:layout_constraintStart_toStartOf="@+id/materialCardView15"

@@ -23,9 +23,17 @@ class DropDownCategoryAdapter(
     inner class MyViewHolder(private val viewBinding: SingleCategoryDropDownBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
+
+        private val dataSize: Int = data.size
+
         fun bind(singleData: DummyModel, position: Int) {
             setMap()
             with(viewBinding) {
+
+                if(position == dataSize-1){
+                    view.visibility = View.GONE
+                }
+
                 tvCatName.text = singleData.name
 
                 // click listener

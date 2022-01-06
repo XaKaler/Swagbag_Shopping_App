@@ -35,7 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
     }
 
     private fun initViews() {
-        setToolbar()
+        toolbar()
 
         val data: ArrayList<DummyModel>? = DummyData().getDummyData()
 
@@ -73,15 +73,28 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         }
     }
 
-    private fun setToolbar() {
+    private fun toolbar() {
         with(toolbarBinding) {
             // set title
             tvTitle.text = getString(R.string.home)
 
-            // back button click
+            // click listeners
             imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            imgSearch.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+            }
+
+            imgWishlist.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_wishlistWithProductFragment)
+            }
+
+            imgCart.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_shoppingBegWithoutProductFragment)
+            }
+
         }
     }
 

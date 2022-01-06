@@ -72,18 +72,32 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
             setCard4(dataTwo)
 
         }
-        setToolbar()
+        toolbar()
     }
 
-    private fun setToolbar() {
+    private fun toolbar() {
         with(toolbarBinding){
             // set title
             tvTitle.text = getString(R.string.womens)
 
-            // back button click
-            imgBack.setOnClickListener{
+
+            // click listeners
+            imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            imgSearch.setOnClickListener {
+                findNavController().navigate(R.id.action_womenFragment_to_searchFragment)
+            }
+
+            imgWishlist.setOnClickListener {
+                findNavController().navigate(R.id.action_womenFragment_to_wishlistWithProductFragment)
+            }
+
+            imgCart.setOnClickListener {
+                findNavController().navigate(R.id.action_womenFragment_to_shoppingBegWithoutProductFragment)
+            }
+
         }
     }
 

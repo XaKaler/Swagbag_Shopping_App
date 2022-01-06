@@ -11,6 +11,7 @@
     <TextView
         android:id="@+id/tvCatName"
         style="@style/roboto_normal_18_dim_grey"
+        android:textSize="@dimen/txt_14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tops"

@@ -28,6 +28,50 @@ class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
     }
 
     private fun initViews() {
+        var codVisible = false
+        var cardVisible = false
+        var upiVisible = false
+
+        with(viewBinding){
+
+            // click listeners
+            cashOnDelivery.setOnClickListener{
+                if(!codVisible){
+                    codVisible = true
+                    viewCOD.root.visibility = View.VISIBLE
+                }
+                else {
+                    codVisible = false
+                    viewCOD.root.visibility = View.GONE
+                }
+            }
+
+            creditDebitCard.setOnClickListener{
+                if(!codVisible){
+                    cardVisible = true
+                    includeDebeitCreditCard.root.visibility = View.VISIBLE
+                }
+                else {
+                    cardVisible = false
+                    includeDebeitCreditCard.root.visibility = View.GONE
+                }
+            }
+
+            upiOptions.setOnClickListener{
+                if(!codVisible){
+                    upiVisible = true
+                    includeUPI.root.visibility = View.VISIBLE
+                }
+                else {
+                    upiVisible = false
+                    includeUPI.root.visibility = View.GONE
+                }
+            }
+
+            payNow.setOnClickListener{
+
+            }
+        }
         setToolbar()
     }
 

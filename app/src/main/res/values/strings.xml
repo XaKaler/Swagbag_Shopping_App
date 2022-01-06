@@ -57,6 +57,7 @@
     <string name="enter_month">Enter Month*</string>
     <string name="enter_year">Enter Year*</string>
     <string name="add_new_addresses">+ ADD NEW ADDRESS</string>
+    <string name="add_new_card">+ ADD NEW CARD</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="stars">**** **** ****</string>

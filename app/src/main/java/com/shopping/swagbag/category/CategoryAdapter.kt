@@ -38,7 +38,7 @@ class CategoryAdapter(
                 // set text
                 tvCateDetails.text = singleData.details*/
 
-                tvCatName.text = singleData.name
+                tvCatName.text = "Shop ${singleData.name}"
 
                 cateConstLayout.setOnClickListener {
                     val activity = context as AppCompatActivity

@@ -7,7 +7,7 @@
     tools:context=".wishlist.withproduct.WishlistWithProductFragment">
 
     <include
-        android:id="@+id/include6"
+        android:id="@+id/include"
         layout="@layout/toolbar_with_two_menus_delete_and_cart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include6">
+        app:layout_constraintTop_toBottomOf="@+id/include">
 
         <TextView
             android:id="@+id/textView184"
@@ -39,7 +39,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView3"
+            android:id="@+id/rvCategory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -51,13 +51,14 @@
             tools:listitem="@layout/single_category_of_wishlist_with_items" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProducts"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:listitem="@layout/single_wislist_item"
             android:layout_marginTop="@dimen/space_between_views"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView3" />
+            app:layout_constraintTop_toBottomOf="@+id/rvCategory" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

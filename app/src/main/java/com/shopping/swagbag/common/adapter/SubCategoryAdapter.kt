@@ -2,7 +2,9 @@ package com.shopping.swagbag.common.adapter
 
 import com.shopping.swagbag.common.FreeData
 import android.content.Context
+import android.opengl.Visibility
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -22,9 +24,12 @@ class SubCategoryAdapter(
     inner class MyViewHolder(private val viewBinding: SingleCategoryDropDownMenuBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: DummyModel){
+        fun bind(singleData: DummyModel, position: Int){
             with(viewBinding){
-
+                val dataSize: Int = data.size
+                if(position == dataSize-1){
+                    view.visibility = View.GONE
+                }
                 // set text
                 tvCatName.text = singleData.name
             }
@@ -43,7 +48,7 @@ class SubCategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position], position)
     }
 
     override fun getItemCount()= data.size

@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView107" />
 
     <TextView
-        android:id="@+id/textView123"
+        android:id="@+id/viewOrders"
         style="@style/roboto_medium_18_davys_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView123">
+        app:layout_constraintTop_toBottomOf="@+id/viewOrders">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

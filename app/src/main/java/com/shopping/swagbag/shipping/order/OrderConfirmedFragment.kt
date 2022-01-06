@@ -28,6 +28,17 @@ class OrderConfirmedFragment : Fragment(R.layout.fragment_order_confirmed) {
     }
 
     private fun initViews() {
+        with(viewBinding){
+            
+            viewOrders.setOnClickListener{
+                findNavController().navigate(R.id.)
+            }
+
+            continueShopping.setOnClickListener{
+                findNavController().navigate(R.id.)
+            }
+        }
+
         setToolbar()
     }
 

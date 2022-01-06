@@ -60,7 +60,6 @@ class DummyData {
         return data
     }
 
-
     fun getTwoDummyData(): ArrayList<DummyModel>? {
 
        //  var data: ArrayList<DummyModel>? = null
@@ -124,34 +123,34 @@ class DummyData {
 
         //var data: ArrayList<DummyModel>? = null
 
-        data?.add(DummyModel("https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1639941989132rg7xa.png",
             "Men",
             ""))
 
 
-        data?.add(DummyModel("https://images.unsplash.com/photo-1615233500570-c5d7576b4262?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1639940716133rq5w5.png",
             "Women",
             ""))
 
 
         //https://images.unsplash.com/photo-1552873816-636e43209957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80
-        data?.add(DummyModel("https://images.unsplash.com/photo-1607453998774-d533f65dac99?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/16399423877561lqex.png",
             "Kids",
             ""))
 
         //https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80
-        data?.add(DummyModel("https://images.unsplash.com/photo-1504595403659-9088ce801e29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGV0c3xlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1639942660913aapgl.png",
             "Pets",
             ""))
 
 
         //https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80
-        data?.add(DummyModel("https://images.unsplash.com/photo-1593604340846-4fbe9763a8f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG91c2V8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        data?.add(DummyModel("https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGhvbWV8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
             "Home",
             ""))
 
         //https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80
-        data?.add(DummyModel("https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHRyYXZlbHxlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
+        data?.add(DummyModel("https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dHJhdmVsfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60",
             "Travel",
             ""))
 
@@ -159,7 +158,6 @@ class DummyData {
 
         return data
     }
-
 
     fun getCategory(): ArrayList<DummyCategoryModel>?{
 
@@ -204,7 +202,6 @@ class DummyData {
         return categoryData
     }
 
-
     fun getSingleProduct() = SingleProductModel("https://m.media-amazon.com/images/I/81kJzDOwjNL._UL1500_.jpg",
     "https://m.media-amazon.com/images/I/81ZXaqC4f1L._UL1500_.jpg",
     "https://m.media-amazon.com/images/I/81m-3UafI2L._UL1500_.jpg",
@@ -212,7 +209,6 @@ class DummyData {
     "https://m.media-amazon.com/images/I/71h9eVsrr4L._UL1500_.jpg",
     "https://m.media-amazon.com/images/I/61HoSvx1gIL._UL1500_.jpg",
     "Inkast Denim Co. Men's Slim Fit Casual Shirt")
-
 
     fun getSingleProductImage() : ArrayList<SingleProductImageModel>{
        imageData.add(SingleProductImageModel("https://m.media-amazon.com/images/I/81kJzDOwjNL._UL1500_.jpg",))
@@ -224,7 +220,6 @@ class DummyData {
 
         return imageData
     }
-
 
     fun getUser(): User{
         return User("Xa Kaler",
@@ -245,4 +240,31 @@ class DummyData {
 
         return userAddress
     }
+
+    fun getWishListWithItemCategory(): List<UserAddress>{
+        userAddress.add(
+            UserAddress("All")
+        )
+        userAddress.add(
+            UserAddress("Footwear")
+        )
+        userAddress.add(
+            UserAddress("Jeans")
+        )
+        userAddress.add(
+            UserAddress("Shirt")
+        )
+        userAddress.add(
+            UserAddress("Shoes")
+        )
+        userAddress.add(
+            UserAddress("Sunglasses")
+        )
+
+
+
+        return userAddress
+    }
+
+
 }

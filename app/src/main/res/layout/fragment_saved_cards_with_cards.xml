@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_bg_color"
     tools:context=".cards.savedcards.with_cards.SavedCardsWithCards">
 
 
@@ -48,8 +49,8 @@
                     style="@style/roboto_normal_14_outer_space"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_new_addresses"
-                    android:textColor="@color/mid_night_green"
+                    android:text="@string/add_new_card"
+                    android:textColor="@color/day_mid_night_green_night_Pewter_Blue"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

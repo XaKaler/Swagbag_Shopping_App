@@ -130,9 +130,24 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
     private fun toolbarActions() {
         with(toolbarBinding) {
             tvTitle.text = getText(R.string.men)
+
+            // click listeners
             imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            imgSearch.setOnClickListener {
+                findNavController().navigate(R.id.action_menFragment_to_searchFragment)
+            }
+
+            imgWishlist.setOnClickListener {
+                findNavController().navigate(R.id.action_menFragment_to_wishlistWithProductFragment)
+            }
+
+            imgCart.setOnClickListener {
+                findNavController().navigate(R.id.action_menFragment_to_shoppingBegWithoutProductFragment)
+            }
+
         }
     }
 

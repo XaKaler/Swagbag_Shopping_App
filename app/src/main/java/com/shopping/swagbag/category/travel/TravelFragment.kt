@@ -34,7 +34,7 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
 
 
     private fun initViews() {
-        setToolbar()
+        toolbar()
 
         val data: ArrayList<DummyModel>? = DummyData().getDummyData()
 
@@ -66,15 +66,28 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
         }
     }
 
-    private fun setToolbar() {
+    private fun toolbar() {
         with(toolbarBinding) {
             // set title
             tvTitle.text = getString(R.string.travel)
 
-            // back button click
+            // click listeners
             imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            imgSearch.setOnClickListener {
+                findNavController().navigate(R.id.action_travelFragment_to_searchFragment)
+            }
+
+            imgWishlist.setOnClickListener {
+                findNavController().navigate(R.id.action_travelFragment_to_wishlistWithProductFragment)
+            }
+
+            imgCart.setOnClickListener {
+                findNavController().navigate(R.id.action_travelFragment_to_shoppingBegWithoutProductFragment)
+            }
+
         }
     }
 

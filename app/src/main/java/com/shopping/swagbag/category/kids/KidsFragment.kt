@@ -79,18 +79,32 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
 
 
         }
-        setToolbar()
+        toolbar()
     }
 
-    private fun setToolbar() {
+    private fun toolbar() {
         with(toolbarBinding){
             // set title
             tvTitle.text = getString(R.string.kids)
 
-            // back button click
-            imgBack.setOnClickListener{
+
+            // click listeners
+            imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            imgSearch.setOnClickListener {
+                findNavController().navigate(R.id.action_kidsFragment_to_searchFragment)
+            }
+
+            imgWishlist.setOnClickListener {
+                findNavController().navigate(R.id.action_kidsFragment_to_wishlistWithProductFragment)
+            }
+
+            imgCart.setOnClickListener {
+                findNavController().navigate(R.id.action_kidsFragment_to_shoppingBegWithoutProductFragment2)
+            }
+
         }
     }
 

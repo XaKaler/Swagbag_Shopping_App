@@ -39,7 +39,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
     }
 
     private fun initViews() {
-        setToolbar()
+        toolbar()
 
         val data: ArrayList<DummyModel>? = DummyData().getDummyData()
 
@@ -78,15 +78,28 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         }
     }
 
-    private fun setToolbar() {
+    private fun toolbar() {
         with(toolbarBinding) {
             // set title
             tvTitle.text = getString(R.string.pets)
 
-            // back button click
+            // click listeners
             imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            imgSearch.setOnClickListener {
+                findNavController().navigate(R.id.action_petsFragment_to_searchFragment)
+            }
+
+            imgWishlist.setOnClickListener {
+                findNavController().navigate(R.id.action_petsFragment_to_wishlistWithProductFragment)
+            }
+
+            imgCart.setOnClickListener {
+                findNavController().navigate(R.id.action_petsFragment_to_shoppingBegWithoutProductFragment)
+            }
+
         }
     }
 

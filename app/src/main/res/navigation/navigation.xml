@@ -19,6 +19,15 @@
         <action
             android:id="@+id/action_menFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_menFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_menFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
+        <action
+            android:id="@+id/action_menFragment_to_shoppingBegWithoutProductFragment"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -342,6 +351,15 @@
         <action
             android:id="@+id/action_womenFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_womenFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_womenFragment_to_shoppingBegWithoutProductFragment"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
+        <action
+            android:id="@+id/action_womenFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/kidsFragment"
@@ -351,6 +369,15 @@
         <action
             android:id="@+id/action_kidsFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_kidsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_kidsFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
+       <action
+            android:id="@+id/action_kidsFragment_to_shoppingBegWithoutProductFragment2"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/petsFragment"
@@ -360,6 +387,15 @@
         <action
             android:id="@+id/action_petsFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_petsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_petsFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
+        <action
+            android:id="@+id/action_petsFragment_to_shoppingBegWithoutProductFragment"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/travelFragment"
@@ -369,6 +405,15 @@
         <action
             android:id="@+id/action_travelFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_travelFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_travelFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
+        <action
+            android:id="@+id/action_travelFragment_to_shoppingBegWithoutProductFragment"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -378,6 +423,15 @@
         <action
             android:id="@+id/action_homeFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_shoppingBegWithoutProductFragment"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
     </fragment>
     <dialog
         android:id="@+id/dialogSearchCameraPermission"
@@ -393,7 +447,16 @@
         android:id="@+id/paymentModeFragment"
         android:name="com.shopping.swagbag.shipping.payment_mode.PaymentModeFragment"
         android:label="fragment_payment_mode"
-        tools:layout="@layout/fragment_payment_mode" />
+        tools:layout="@layout/fragment_payment_mode" >
+        <action
+            android:id="@+id/action_paymentModeFragment_to_orderConfirmedFragment"
+            app:destination="@id/orderConfirmedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderConfirmedFragment"
+        android:name="com.shopping.swagbag.shipping.order.OrderConfirmedFragment"
+        android:label="fragment_order_confirmed"
+        tools:layout="@layout/fragment_order_confirmed" />
 
 
 </navigation>
