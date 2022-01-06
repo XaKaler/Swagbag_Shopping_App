@@ -68,7 +68,7 @@ class WishlistWithProductFragment : Fragment(R.layout.fragment_wishlist_with_pro
             delete.setOnClickListener{}
 
             imgCart.setOnClickListener{
-                findNavController().navigate(R.id.action_wishlistWithoutProductFragment_to_shoppingBegWithoutProductFragment)
+                findNavController().navigate(R.id.action_wishlistWithProductFragment_to_shoppingBegWithoutProductFragment)
             }
 
         }

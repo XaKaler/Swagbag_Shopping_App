@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,10 +76,13 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="@dimen/dimen_5"
-                android:background="@drawable/rec_white_5"
                 android:layout_margin="@dimen/space_between_views"
                 android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_white_5"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editProfileImage">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -217,29 +220,30 @@
                             android:hint="@string/location" />
 
 
-
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:id="@+id/btnSaveDetails"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/button_width"
-                android:background="@drawable/rec_light_red_background_5"
-                android:gravity="center"
-                android:text="@string/save_details"
-                android:textAllCaps="true"
-                style="@style/roboto_normal_15_white"
-                android:layout_margin="@dimen/space_between_views"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.core.widget.NestedScrollView>
+
+
+    <TextView
+        android:id="@+id/btnSaveDetails"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_width"
+        android:background="@drawable/rec_light_red_background_5"
+        android:gravity="center"
+        android:text="@string/save_details"
+        android:textAllCaps="true"
+        style="@style/roboto_normal_15_white"
+        android:layout_marginTop="@dimen/space_between_views"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

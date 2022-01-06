@@ -29,6 +29,20 @@ class ViewUserDetailsFragment : Fragment(R.layout.fragment_view_user_details) {
     }
 
     private fun initViews() {
+        with(viewBinding){
+            addNewAddress.setOnClickListener{
+                findNavController().navigate(R.id.action_viewUserDetailsFragment_to_addUserDetailsFragment)
+            }
+
+            btnSelect.setOnClickListener{
+                findNavController().navigate(R.id.action_viewUserDetailsFragment_to_categoryFragment)
+            }
+
+            btnCancel.setOnClickListener{
+                findNavController().navigate(R.id.action_viewUserDetailsFragment_to_categoryFragment)
+            }
+
+        }
         setToolbar()
 
         setAddresses()

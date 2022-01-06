@@ -204,7 +204,11 @@
         android:id="@+id/shoppingBegWithoutProductFragment"
         android:name="com.shopping.swagbag.shoppingbeg.withoutproduct.ShoppingBegWithoutProductFragment"
         android:label="fragment_shopping_beg_without_product"
-        tools:layout="@layout/fragment_shopping_beg_without_product" />
+        tools:layout="@layout/fragment_shopping_beg_without_product" >
+        <action
+            android:id="@+id/action_shoppingBegWithoutProductFragment_to_wishlistWithoutProductFragment"
+            app:destination="@id/wishlistWithoutProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/wishlistWithoutProductFragment"
         android:name="com.shopping.swagbag.wishlist.withoutproduct.WishlistWithoutProductFragment"
@@ -263,7 +267,14 @@
         android:id="@+id/wishlistWithProductFragment"
         android:name="com.shopping.swagbag.wishlist.withproduct.WishlistWithProductFragment"
         android:label="fragment_wishlist_with_product"
-        tools:layout="@layout/fragment_wishlist_with_product" />
+        tools:layout="@layout/fragment_wishlist_with_product" >
+        <action
+            android:id="@+id/action_wishlistWithProductFragment_to_shoppingBegWithoutProductFragment"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
+        <action
+            android:id="@+id/action_wishlistWithProductFragment_to_shoppingBegWithProductFragment"
+            app:destination="@id/shoppingBegWithProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productsFragment"
         android:name="com.shopping.swagbag.products.ProductsFragment"
@@ -304,7 +315,14 @@
         android:id="@+id/viewUserDetailsFragment"
         android:name="com.shopping.swagbag.order.user_details.ViewUserDetailsFragment"
         android:label="fragment_view_user_details"
-        tools:layout="@layout/fragment_view_user_details" />
+        tools:layout="@layout/fragment_view_user_details" >
+        <action
+            android:id="@+id/action_viewUserDetailsFragment_to_addUserDetailsFragment"
+            app:destination="@id/addUserDetailsFragment" />
+        <action
+            android:id="@+id/action_viewUserDetailsFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/couponsFragment"
         android:name="com.shopping.swagbag.coupons.CouponsFragment"
@@ -529,6 +547,15 @@
         <action
             android:id="@+id/action_orderWithoutItemsFragment_to_wishlistWithoutProductFragment"
             app:destination="@id/wishlistWithoutProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUserDetailsFragment"
+        android:name="com.shopping.swagbag.order.user_details.AddUserDetailsFragment"
+        android:label="fragment_add_user_details"
+        tools:layout="@layout/fragment_add_user_details" >
+        <action
+            android:id="@+id/action_addUserDetailsFragment_to_viewUserDetailsFragment"
+            app:destination="@id/viewUserDetailsFragment" />
     </fragment>
 
 

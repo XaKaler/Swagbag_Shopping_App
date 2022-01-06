@@ -188,6 +188,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
+            R.id.navMenuLogout->{
+                viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
+            }
+
         }
         return true
     }

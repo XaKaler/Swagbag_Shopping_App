@@ -30,6 +30,11 @@ class ContactUsFragment : Fragment(R.layout.fragment_contact_us) {
     }
 
     private fun initViews() {
+        with(viewBinding){
+            btnSave.setOnClickListener{
+                findNavController().popBackStack()
+            }
+        }
         setToolbar()
     }
 

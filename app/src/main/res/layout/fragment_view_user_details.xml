@@ -77,20 +77,20 @@
                 android:text="Cancel"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnSave"
+                app:layout_constraintEnd_toStartOf="@+id/btnSelect"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/btnSave"
+                android:id="@+id/btnSelect"
                 style="@style/roboto_medium_14_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/rec_red_fill"
                 android:gravity="center"
                 android:paddingVertical="@dimen/space_between_views"
-                android:text="@string/save"
+                android:text="@string/select"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

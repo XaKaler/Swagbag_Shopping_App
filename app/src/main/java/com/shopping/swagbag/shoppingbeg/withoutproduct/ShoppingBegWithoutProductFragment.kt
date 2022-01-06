@@ -54,7 +54,7 @@ class ShoppingBegWithoutProductFragment : Fragment(R.layout.fragment_shopping_be
             }
 
             imgWishlist.setOnClickListener{
-                findNavController().navigate(R.id.action_orderWithoutItemsFragment_to_wishlistWithoutProductFragment)
+                findNavController().navigate(R.id.action_shoppingBegWithoutProductFragment_to_wishlistWithoutProductFragment)
             }
 
         }

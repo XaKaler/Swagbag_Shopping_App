@@ -2,12 +2,13 @@ package com.shopping.swagbag.coupons
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.shopping.swagbag.R
-import com.shopping.swagbag.common.adapter.BestOfferAdapter
+import com.shopping.swagbag.common.adapter.OfferDetailsAdapter
 import com.shopping.swagbag.databinding.SingleCouponBinding
+import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 
 
@@ -22,7 +23,21 @@ class CouponAdapter(
 
         fun bind(singleData: DummyModel){
             with(viewBinding){
+                details.setOnClickListener{
+                    details.visibility = View.GONE
+                    hide.visibility = View.VISIBLE
+                    rvOfferDetails.visibility = View.VISIBLE
+                }
+                hide.setOnClickListener{
+                    hide.visibility = View.GONE
+                    details.visibility = View.VISIBLE
+                    rvOfferDetails.visibility = View.GONE
+                }
 
+                rvOfferDetails.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = OfferDetailsAdapter(context, DummyData().getUserAddress())
+                }
             }
         }
 

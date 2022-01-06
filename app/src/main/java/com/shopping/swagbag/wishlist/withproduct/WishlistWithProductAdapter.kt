@@ -1,8 +1,10 @@
 package com.shopping.swagbag.wishlist.withproduct
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
@@ -25,7 +27,21 @@ class WishlistWithProductAdapter(
 
             fun bind(singleData: DummyModel, position: Int){
                 with(viewBinding){
+                    // set image
+                    Glide.with(context)
+                        .load(singleData.image)
+                        .error(R.drawable.ic_launcher_foreground)
+                        .placeholder(R.drawable.ic_swagbug_logo)
+                        .into(productImg)
 
+                    // set text
+                    tvProductCompnayName.text = singleData.name.toString()
+                    tvProductName.text = singleData.details
+
+                    moveToBag.setOnClickListener{
+                        val activity = context as Activity
+                        activity.findNavController(R.id.moveToBag).navigate(R.id.action_wishlistWithProductFragment_to_shoppingBegWithProductFragment)
+                    }
                 }
             }
 
