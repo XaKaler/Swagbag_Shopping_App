@@ -26,13 +26,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/screen_horizontal_padding">
+            android:padding="@dimen/screen_padding_15">
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/screen_margin_5"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +48,7 @@
 
 
                     <TextView
-                        android:id="@+id/textView145"
+                        android:id="@+id/help"
                         style="@style/roboto_medium_14_nickel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -67,7 +70,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView145"
+                        app:layout_constraintTop_toBottomOf="@+id/help"
                         app:riv_corner_radius="@dimen/image_corner_radius" />
 
                     <TextView
@@ -119,7 +122,10 @@
                 android:id="@+id/materialCardView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginTop="@dimen/space_between_view_and_subview_15"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginHorizontal="@dimen/screen_margin_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -177,7 +183,10 @@
                 android:id="@+id/materialCardView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginTop="@dimen/space_between_view_and_subview_15"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginHorizontal="@dimen/screen_margin_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -205,6 +214,8 @@
                     <View
                         android:id="@+id/view32"
                         style="@style/line_vertical"
+                        android:layout_height="0dp"
+                        android:layout_marginHorizontal="@dimen/dimen_5"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/track"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -231,7 +242,10 @@
                 android:id="@+id/materialCardView19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginTop="@dimen/space_between_view_and_subview_15"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                android:layout_marginHorizontal="@dimen/screen_margin_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -317,7 +331,11 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginBottom="@dimen/screen_margin_10"
+                android:layout_marginHorizontal="@dimen/screen_margin_5"
+                android:layout_marginTop="@dimen/space_between_view_and_subview_15"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -352,9 +370,9 @@
                     <View
                         android:id="@+id/view34"
                         style="@style/line_horizontal"
-                        android:layout_marginTop="@dimen/dimen_15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_15"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -372,10 +390,10 @@
 
                     <TextView
                         android:id="@+id/orderId"
-                        android:layout_marginBottom="@dimen/dimen_15"
-                        android:layout_width="wrap_content"
                         style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dimen_15"
                         android:text="13303866 265499666595652"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView163"

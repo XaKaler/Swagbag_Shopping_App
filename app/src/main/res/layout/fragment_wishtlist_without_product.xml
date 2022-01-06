@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_bg_color_with_day_white"
     tools:context=".wishlist.withoutproduct.WishlistWithoutProductFragment">
 
 
@@ -71,6 +72,7 @@
                 style="@style/roboto_normal_18_white"
                 android:layout_width="wrap_content"
                 android:paddingHorizontal="@dimen/dimen_15"
+                android:textColor="@color/white"
                 android:layout_height="@dimen/button_width"
                 android:layout_marginTop="@dimen/space_between_views"
                 android:background="@drawable/google_button_background"

@@ -37,6 +37,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:id="@+id/addNewCard"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/screen_horizontal_padding"
                 app:layout_constraintBottom_toBottomOf="parent"

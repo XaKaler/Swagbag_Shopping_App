@@ -30,6 +30,12 @@ class AddCardFragment : Fragment(R.layout.fragment_add_card) {
     }
 
     private fun initViews() {
+        with(viewBinding){
+            btnSave.setOnClickListener{
+                findNavController().navigate(R.id.action_addCardFragment_to_savedCardsWithCards)
+            }
+        }
+
         setToolbar()
     }
 

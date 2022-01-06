@@ -31,6 +31,12 @@ class SavedCardsWithCards : Fragment(R.layout.fragment_saved_cards_with_cards) {
     }
 
     private fun initViews() {
+        with(viewBinding){
+            addNewCard.setOnClickListener{
+                findNavController().navigate(R.id.action_savedCardsWithCards_to_addCardFragment)
+            }
+        }
+
         setToolbar()
 
         setCards()

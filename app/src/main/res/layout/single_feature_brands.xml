@@ -11,6 +11,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/day_white_night_Charleston_Green"
             android:layout_height="match_parent"
             android:paddingBottom="10dp">
 
@@ -49,7 +50,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="TextView"
                 android:textAlignment="center"
-                android:textSize="@dimen/txt_16"
+                android:textSize="@dimen/txt_14"
                 app:layout_constraintEnd_toEndOf="@+id/tvProductWork"
                 app:layout_constraintStart_toStartOf="@+id/tvProductWork"
                 app:layout_constraintTop_toBottomOf="@+id/tvProductWork" />

@@ -2,17 +2,12 @@ package com.shopping.swagbag.shoppingbeg.withoutproduct
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.adapter.FeatureProductAdapter
-import com.shopping.swagbag.databinding.FragmentCreatePasswordBinding
 import com.shopping.swagbag.databinding.FragmentShoppingBegWithoutProductBinding
-import com.shopping.swagbag.databinding.ToolbarWithNoMenuBinding
 import com.shopping.swagbag.databinding.ToolbarWithOneMenusBinding
 import com.shopping.swagbag.dummy.DummyData
 
@@ -34,7 +29,7 @@ class ShoppingBegWithoutProductFragment : Fragment(R.layout.fragment_shopping_be
     }
 
     private fun initViews() {
-        setToolbar()
+        toolbar()
 
         setItemThatViewedByUser()
     }
@@ -48,15 +43,20 @@ class ShoppingBegWithoutProductFragment : Fragment(R.layout.fragment_shopping_be
         }
     }
 
-    private fun setToolbar() {
+    private fun toolbar() {
         with(toolbarBinding){
             // set title
             tvTitle.text = getString(R.string.shopping_beg)
 
-            // back button click
+            // click listeners
             imgBack.setOnClickListener{
                 findNavController().popBackStack()
             }
+
+            imgWishlist.setOnClickListener{
+                findNavController().navigate(R.id.action_orderWithoutItemsFragment_to_wishlistWithoutProductFragment)
+            }
+
         }
     }
 

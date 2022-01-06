@@ -47,7 +47,7 @@ class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
             }
 
             creditDebitCard.setOnClickListener{
-                if(!codVisible){
+                if(!cardVisible){
                     cardVisible = true
                     includeDebeitCreditCard.root.visibility = View.VISIBLE
                 }
@@ -58,7 +58,7 @@ class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
             }
 
             upiOptions.setOnClickListener{
-                if(!codVisible){
+                if(!upiVisible){
                     upiVisible = true
                     includeUPI.root.visibility = View.VISIBLE
                 }
@@ -69,8 +69,15 @@ class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
             }
 
             payNow.setOnClickListener{
-
+                findNavController().navigate(R.id.action_paymentModeFragment_to_orderConfirmedFragment
+                )
             }
+
+            viewDetails.setOnClickListener{
+                findNavController().navigate(R.id.action_paymentModeFragment_to_viewOrderDetails
+                )
+            }
+
         }
         setToolbar()
     }

@@ -61,6 +61,7 @@
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="stars">**** **** ****</string>
+    <string name="card_numbers">**** **** **** 1234</string>
     <string name="_1234">1234</string>
     <string name="cardholder_name">Cardholder Name</string>
     <string name="expiry_date">Expiry Date</string>
@@ -171,4 +172,5 @@
     <string name="move_to_bag">Move to bag</string>
     <string name="as_per_your_request">As per your request</string>
     <string name="_999_00"> 999.00</string>
+    <string name="item_details">Item Details</string>
 </resources>

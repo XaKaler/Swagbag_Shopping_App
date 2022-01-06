@@ -196,6 +196,9 @@
         <action
             android:id="@+id/action_categoryFragment_to_privacyPolicyFragment"
             app:destination="@id/privacyPolicyFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_orderWithoutItemsFragment"
+            app:destination="@id/orderWithoutItemsFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoppingBegWithoutProductFragment"
@@ -230,12 +233,20 @@
         android:id="@+id/savedCardsWithCards"
         android:name="com.shopping.swagbag.cards.savedcards.with_cards.SavedCardsWithCards"
         android:label="fragment_saved_cards_with_cards"
-        tools:layout="@layout/fragment_saved_cards_with_cards" />
+        tools:layout="@layout/fragment_saved_cards_with_cards" >
+        <action
+            android:id="@+id/action_savedCardsWithCards_to_addCardFragment"
+            app:destination="@id/addCardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addCardFragment"
         android:name="com.shopping.swagbag.cards.add_cards.AddCardFragment"
         android:label="fragment_add_card"
-        tools:layout="@layout/fragment_add_card" />
+        tools:layout="@layout/fragment_add_card" >
+        <action
+            android:id="@+id/action_addCardFragment_to_savedCardsWithCards"
+            app:destination="@id/savedCardsWithCards" />
+    </fragment>
     <fragment
         android:id="@+id/shoppingBegWithProductFragment"
         android:name="com.shopping.swagbag.shoppingbeg.withproduct.ShoppingBegWithProductFragment"
@@ -451,12 +462,74 @@
         <action
             android:id="@+id/action_paymentModeFragment_to_orderConfirmedFragment"
             app:destination="@id/orderConfirmedFragment" />
+        <action
+            android:id="@+id/action_paymentModeFragment_to_viewOrderDetails"
+            app:destination="@id/viewOrderDetails" />
     </fragment>
     <fragment
         android:id="@+id/orderConfirmedFragment"
         android:name="com.shopping.swagbag.shipping.order.OrderConfirmedFragment"
         android:label="fragment_order_confirmed"
-        tools:layout="@layout/fragment_order_confirmed" />
+        tools:layout="@layout/fragment_order_confirmed" >
+        <action
+            android:id="@+id/action_orderConfirmedFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_orderConfirmedFragment_to_orderWithItemsFragment"
+            app:destination="@id/orderWithItemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderWithItemsFragment"
+        android:name="com.shopping.swagbag.order.with_items.OrderWithItemsFragment"
+        android:label="fragment_order_with_items"
+        tools:layout="@layout/fragment_order_with_items" />
+    <fragment
+        android:id="@+id/viewOrderDetails"
+        android:name="com.shopping.swagbag.shipping.order.ViewOrderDetails"
+        android:label="fragment_view_order_details"
+        tools:layout="@layout/fragment_view_order_details" >
+        <action
+            android:id="@+id/action_viewOrderDetails_to_getInvoiceFragment"
+            app:destination="@id/getInvoiceFragment" />
+        <action
+            android:id="@+id/action_viewOrderDetails_to_viewItemDetailsFragment"
+            app:destination="@id/viewItemDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/getInvoiceFragment"
+        android:name="com.shopping.swagbag.shipping.GetInvoiceFragment"
+        android:label="fragment_get_invoice"
+        tools:layout="@layout/fragment_get_invoice" >
+         <action
+            android:id="@+id/action_getInvoiceFragment_to_helpCenterWithoutOrder"
+            app:destination="@id/helpCenterWithoutOrder" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewItemDetailsFragment"
+        android:name="com.shopping.swagbag.shipping.order.ViewItemDetailsFragment"
+        android:label="fragment_view_item_details"
+        tools:layout="@layout/fragment_view_item_details" >
+        <action
+            android:id="@+id/action_viewItemDetailsFragment_to_helpCenterWithOrderFragment"
+            app:destination="@id/helpCenterWithOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpCenterWithOrderFragment"
+        android:name="com.shopping.swagbag.helpcenter.with_order.HelpCenterWithOrderFragment"
+        android:label="fragment_help_center_with_order"
+        tools:layout="@layout/fragment_help_center_with_order" />
+    <fragment
+        android:id="@+id/orderWithoutItemsFragment"
+        android:name="com.shopping.swagbag.order.without_items.OrderWithoutItemsFragment"
+        android:label="fragment_order_without_items"
+        tools:layout="@layout/fragment_order_without_items" >
+        <action
+            android:id="@+id/action_orderWithoutItemsFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_orderWithoutItemsFragment_to_wishlistWithoutProductFragment"
+            app:destination="@id/wishlistWithoutProductFragment" />
+    </fragment>
 
 
 </navigation>

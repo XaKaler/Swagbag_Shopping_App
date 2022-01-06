@@ -31,11 +31,11 @@ class OrderConfirmedFragment : Fragment(R.layout.fragment_order_confirmed) {
         with(viewBinding){
             
             viewOrders.setOnClickListener{
-                findNavController().navigate(R.id.)
+                findNavController().navigate(R.id.action_orderConfirmedFragment_to_orderWithItemsFragment)
             }
 
             continueShopping.setOnClickListener{
-                findNavController().navigate(R.id.)
+                findNavController().navigate(R.id.action_orderConfirmedFragment_to_categoryFragment)
             }
         }
 

@@ -28,6 +28,10 @@ class OrderWithoutItemsFragment : Fragment(R.layout.fragment_order_without_items
     }
 
     private fun initViews() {
+        viewBinding.startShopping.setOnClickListener{
+            findNavController().navigate(R.id.action_orderWithoutItemsFragment_to_categoryFragment)
+        }
+
         setToolbar()
     }
 

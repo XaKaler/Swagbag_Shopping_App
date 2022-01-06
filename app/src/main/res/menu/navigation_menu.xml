@@ -10,11 +10,11 @@
             android:id="@+id/navMenuHome"
             android:icon="@drawable/ic_hoem_png_to_svg"
             android:title="Home" />
-
+<!--
         <item
             android:id="@+id/navMenuCategory"
             android:icon="@drawable/ic_outline_category_24"
-            android:title="Category" />
+            android:title="Category" />-->
 
         <item
             android:id="@+id/navMenuOrder"

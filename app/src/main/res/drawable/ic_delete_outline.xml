@@ -8,34 +8,34 @@
       android:strokeLineJoin="round"
       android:strokeWidth="1.5"
       android:fillColor="#00000000"
-      android:strokeColor="#777777"
+      android:strokeColor="@color/day_Nickel_night_Dark_white"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M6,18V17.2222V11"
       android:strokeLineJoin="round"
       android:strokeWidth="1.5"
       android:fillColor="#00000000"
-      android:strokeColor="#777777"
+      android:strokeColor="@color/day_Nickel_night_Dark_white"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M9,18V17.2222V11"
       android:strokeLineJoin="round"
       android:strokeWidth="1.5"
       android:fillColor="#00000000"
-      android:strokeColor="#777777"
+      android:strokeColor="@color/day_Nickel_night_Dark_white"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M12,18V17.2222V11"
       android:strokeLineJoin="round"
       android:strokeWidth="1.5"
       android:fillColor="#00000000"
-      android:strokeColor="#777777"
+      android:strokeColor="@color/day_Nickel_night_Dark_white"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M5.5714,5V3C5.5714,2.4696 5.752,1.9609 6.0735,1.5858C6.395,1.2107 6.8311,1 7.2857,1H10.7143C11.1689,1 11.605,1.2107 11.9265,1.5858C12.248,1.9609 12.4286,2.4696 12.4286,3V5M15,5V19C15,19.5304 14.8194,20.0391 14.4979,20.4142C14.1764,20.7893 13.7404,21 13.2857,21H4.7143C4.2596,21 3.8236,20.7893 3.5021,20.4142C3.1806,20.0391 3,19.5304 3,19V5H15Z"
       android:strokeLineJoin="round"
       android:strokeWidth="1.5"
       android:fillColor="#00000000"
-      android:strokeColor="#777777"
+      android:strokeColor="@color/day_Nickel_night_Dark_white"
       android:strokeLineCap="round"/>
 </vector>

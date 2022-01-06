@@ -8,7 +8,7 @@
 
 
     <include
-        android:id="@+id/include4"
+        android:id="@+id/include"
         layout="@layout/toolbar_with_no_menu_white_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include4">
+        app:layout_constraintTop_toBottomOf="@+id/include">
 
         <TextView
             android:id="@+id/textView138"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView140"
+            android:id="@+id/helpCenter"
             style="@style/roboto_normal_14_davys_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,13 +44,15 @@
             app:layout_constraintTop_toBottomOf="@+id/textView138" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvInvoice"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/single_get_invoice"
             android:layout_marginTop="@dimen/dimen_15"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView140" />
+            app:layout_constraintTop_toBottomOf="@+id/helpCenter"
+            tools:listitem="@layout/single_get_invoice" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

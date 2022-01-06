@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             disableNavigationViewScrollbars(navigationView)
 
             // click listener on navigation menus
-            for (i in 0..15) {
+            for (i in 0..14) {
+
                 navigationView.menu.getItem(i)
                     .setActionView(R.layout.navigation_right_side_icon)
                 navigationView.setNavigationItemSelectedListener(this@MainActivity)
@@ -78,13 +79,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.navMenuHome -> viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
 
-            R.id.navMenuCategory -> {
-               /* hideToolbar()
+            R.id.navMenuOrder -> {
+                hideToolbar()
                 supportActionBar?.hide()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_home2_to_categoryFragment)*/
+                navController.navigate(R.id.action_categoryFragment_to_orderWithoutItemsFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 

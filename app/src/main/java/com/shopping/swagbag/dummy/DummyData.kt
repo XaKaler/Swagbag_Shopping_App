@@ -13,12 +13,20 @@ class DummyData {
 
     var categoryData = ArrayList<DummyCategoryModel>()
 
-    fun getDummySlider(): ArrayList<DummySlider>{
+    fun getSingleImage() = "https://swagbag-space.fra1.digitaloceanspaces.com/1640078486875ltnsd.png"
+
+    fun getDummySlider(): ArrayList<DummySlider>{/*
         slider.add(DummySlider("https://m.media-amazon.com/images/I/51b379TtURL._SX3000_.jpg"))
         slider.add(DummySlider("https://m.media-amazon.com/images/I/91t1svzO1HL._SX3000_.jpg"))
         slider.add(DummySlider("https://m.media-amazon.com/images/I/81e4xWrgrAL._SX3000_.jpg"))
         slider.add(DummySlider("https://m.media-amazon.com/images/I/71MwDPWV9XL._SX3000_.jpg"))
-        slider.add(DummySlider("https://m.media-amazon.com/images/I/61ZsnODtl1L._SX3000_.jpg"))
+        slider.add(DummySlider("https://m.media-amazon.com/images/I/61ZsnODtl1L._SX3000_.jpg"))*/
+
+        slider.add(DummySlider("https://swagbag-space.fra1.digitaloceanspaces.com/1639983624004mlj8x.png"))
+        slider.add(DummySlider("https://swagbag-space.fra1.digitaloceanspaces.com/1639984903137b3e4g.png"))
+        slider.add(DummySlider("https://swagbag-space.fra1.digitaloceanspaces.com/1640088785097rpoaa.webp"))
+        slider.add(DummySlider("https://swagbag-space.fra1.digitaloceanspaces.com/1640079281564elvys.webp"))
+        slider.add(DummySlider("https://swagbag-space.fra1.digitaloceanspaces.com/1640110627442mbi30.png"))
 
         return slider
     }
@@ -27,7 +35,31 @@ class DummyData {
 
        //  var data: ArrayList<DummyModel>? = null
 
-        data?.add(DummyModel("https://m.media-amazon.com/images/I/61xeIT6UHrL._SL1500_.jpg",
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640078486875ltnsd.png",
+            "Body Oil",
+            "boAt Bassheads 900 Wired On Ear Headphones with Mic (Carbon Black)"))
+
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/16400808763030826g.png",
+            "Eye Care",
+            "Material: Cotton Slim fit NehruMandarin collarLong sleeveegular machine washCountry of WebStorage.Origin: India"))
+
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640107615560ijcjl.png",
+            "Travel Bags",
+            "SATYAM WEAVES Women Cotton Silk Un-Stitched Dress Material"))
+
+
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640110627442mbi30.png",
+            "Kitchen Accessories",
+            "NEW GEN Boy's Synthetic Kurta Pyjama Set"))
+
+
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/16400871862161n86y.png",
+            "Face Cream",
+            "Desidiya ® 20 Photo Clip LED String Wedge Light (Warm White)"))
+
+
+/*
+  data?.add(DummyModel("https://m.media-amazon.com/images/I/61xeIT6UHrL._SL1500_.jpg",
             "Headphone",
             "boAt Bassheads 900 Wired On Ear Headphones with Mic (Carbon Black)"))
 
@@ -50,6 +82,7 @@ class DummyData {
             "Desidiya ® 20 Photo Clip LED String Wedge Light (Warm White)"))
 
 
+*/
 
 
      /*   data?.add(DummyModel("",
@@ -64,6 +97,15 @@ class DummyData {
 
        //  var data: ArrayList<DummyModel>? = null
 
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640088405627s1yvv.png",
+            "Handbag",
+            "boAt Bassheads 900 Wired On Ear Headphones with Mic (Carbon Black)"))
+
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640087496709oqdod.png",
+            "Yoga Shoes",
+            "Material: Cotton Slim fit NehruMandarin collarLong sleeveegular machine washCountry of WebStorage.Origin: India"))
+/*
+
         data?.add(DummyModel("https://m.media-amazon.com/images/I/61xeIT6UHrL._SL1500_.jpg",
             "Headphone",
             "boAt Bassheads 900 Wired On Ear Headphones with Mic (Carbon Black)"))
@@ -71,6 +113,7 @@ class DummyData {
         data?.add(DummyModel("https://m.media-amazon.com/images/I/51v8UlSQfBL._UL1100_.jpg",
             "Shirt",
             "Material: Cotton Slim fit NehruMandarin collarLong sleeveegular machine washCountry of WebStorage.Origin: India"))
+*/
 
       /*  data?.add(DummyModel("https://m.media-amazon.com/images/I/91wsvvvb1aL._UL1500_.jpg",
             "Stitched Dress",
@@ -100,7 +143,7 @@ class DummyData {
     fun getDummyChild(): ArrayList<DummyChild>{
         child.add(DummyChild(R.drawable.child_cloth1, "Value Packs"))
         child.add(DummyChild(R.drawable.bear_dress, "Cartoon Picks"))
-        child.add(DummyChild(R.drawable.child_suit, "Indian "))
+        child.add(DummyChild(R.drawable.pngwing, "Indian"))
         child.add(DummyChild(R.drawable.boy_cloth, "Cartoon Picks"))
         child.add(DummyChild(R.drawable.girl_boy, "Sports Packs"))
         child.add(DummyChild(R.drawable.pngwing, "Top Wear"))

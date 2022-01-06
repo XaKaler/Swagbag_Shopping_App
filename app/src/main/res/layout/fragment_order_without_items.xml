@@ -58,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView188" />
 
         <TextView
-            android:id="@+id/textView190"
+            android:id="@+id/startShopping"
             style="@style/asap_medium_14_davys_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -2,6 +2,7 @@
 <resources>
 
     <color name="main_bg_color">#121212</color>
+    <color name="main_bg_color_with_day_white">#121212</color>
     <color name="dark_green">#504B00</color>
     <color name="blue_grey">#D9DFE2</color>
     <color name="dark_grey">#7C7C7C</color>
@@ -70,6 +71,7 @@
     <!--navigation drawer-->
     <color name="day_dark_liver_night_white">#ffffff</color>
     <color name="day_white_night_black">#000000</color>
+    <color name="day_white_night_Charleston_Green">#2A2A2A</color>
     <color name="day_black_night_white">#ffffff</color>
     <color name="day_heading_text_night_grey_x11">#B7B8BD</color>
     <color name="day_dark_green_night_white">#ffffff</color>

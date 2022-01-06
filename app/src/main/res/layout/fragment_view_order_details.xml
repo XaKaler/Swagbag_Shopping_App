@@ -23,7 +23,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:padding="@dimen/screen_horizontal_padding"
+            android:padding="@dimen/screen_padding_15"
             android:layout_height="match_parent">
 
 
@@ -31,14 +31,17 @@
                 android:id="@+id/card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/screen_margin_5"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:paddingBottom="@dimen/screen_horizontal_padding"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/screen_horizontal_padding">
 
 
                     <TextView
@@ -66,8 +69,6 @@
                     <View
                         android:id="@+id/view25"
                         style="@style/line_horizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_margin="@dimen/screen_horizontal_padding"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -77,8 +78,6 @@
                     <View
                         android:id="@+id/view28"
                         style="@style/line_horizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_margin="@dimen/dimen_10"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -175,8 +174,7 @@
 
                     <View
                         android:id="@+id/view26"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/line_horizontal"
                         android:layout_marginTop="@dimen/space_between_views"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -206,8 +204,6 @@
                     <View
                         android:id="@+id/view27"
                         style="@style/line_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_between_views"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -262,7 +258,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView139" />
 
                     <TextView
-                        android:id="@+id/changeAddres2"
+                        android:id="@+id/getInvoice"
                         style="@style/roboto_medium_13_red_light"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -270,7 +266,7 @@
                         android:background="@drawable/rec_outline_5_electirc_blue"
                         android:paddingHorizontal="80dp"
                         android:paddingVertical="@dimen/dimen_15"
-                        android:text="Get Invoice236221"
+                        android:text="Get Invoice"
                         android:textColor="@color/medium_electric_blue"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -280,8 +276,6 @@
                     <View
                         android:id="@+id/view29"
                         style="@style/line_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_15"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -316,16 +310,20 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                app:layout_constraintTop_toBottomOf="@+id/card"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/screen_margin_5"
                 android:layout_marginTop="@dimen/dimen_15"
                 app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation">
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/card"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/card">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:padding="@dimen/dimen_15"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
 
 
                     <TextView
@@ -339,13 +337,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvProductOrderDetails"
                         android:layout_width="match_parent"
-                        tools:itemCount="1"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        tools:listitem="@layout/single_shipping_view_order_details"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView143"
-                        app:layout_constraintTop_toBottomOf="@+id/textView143" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView143"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/single_shipping_view_order_details" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>

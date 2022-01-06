@@ -10,6 +10,7 @@
 
 
     <color name="main_bg_color">#F5F5F5</color>
+    <color name="main_bg_color_with_day_white">#ffffff</color>
     <color name="dark_green">#504B00</color>
     <color name="blue_grey">#D9DFE2</color>
     <color name="dark_grey">#7C7C7C</color>
@@ -104,6 +105,7 @@
     <!--navigation drawer-->
     <color name="day_dark_liver_night_white">#4D4D4D</color>
     <color name="day_white_night_black">#ffffff</color>
+    <color name="day_white_night_Charleston_Green">#ffffff</color>
     <color name="day_black_night_white">#000000</color>
     <color name="day_heading_text_night_grey_x11">#515256</color>
     <color name="day_dark_green_night_white">#504B00</color>

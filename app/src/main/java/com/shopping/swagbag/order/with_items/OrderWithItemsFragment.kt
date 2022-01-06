@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.FragmentAddUserDetailsBinding
 import com.shopping.swagbag.databinding.FragmentOrderWithItemsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.dummy.DummyData
 
 class OrderWithItemsFragment : Fragment(R.layout.fragment_order_with_items) {
 
@@ -29,7 +31,18 @@ class OrderWithItemsFragment : Fragment(R.layout.fragment_order_with_items) {
     }
 
     private fun initViews() {
+        setOrderItems()
+
         setToolbar()
+    }
+
+    private fun setOrderItems() {
+        with(viewBinding){
+            rvOrderItems.apply{
+                layoutManager = LinearLayoutManager(context)
+                adapter = DummyData().getDummyData()?.let { OrderItemsAdapter(context, it) }
+            }
+        }
     }
 
     private fun setToolbar() {
