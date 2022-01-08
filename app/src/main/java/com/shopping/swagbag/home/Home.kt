@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentHomeBinding
@@ -23,7 +24,8 @@ import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnima
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 
-class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
+class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
+    HomeCategoryRecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentHomeBinding
     private lateinit var viewBinding2: HomeBinding
@@ -61,7 +63,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
             context?.let {
                 // set on image1
                 Glide.with(it)
-                    .load("https://m.media-amazon.com/images/G/31/AMS/IN/970X250-_desktop_banner.jpg")
+                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640079281564elvys.webp")
 
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.ic_swagbug_logo)
@@ -69,21 +71,21 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
 
                 // set on image2
                 Glide.with(it)
-                    .load("https://m.media-amazon.com/images/I/61Y6exteCHL._SX3000_.jpg")
+                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640080145210noqvi.webp")
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.ic_swagbug_logo)
                     .into(homeImg2)
 
                 // set on image3
                 Glide.with(it)
-                    .load("https://images.unsplash.com/photo-1615233500570-c5d7576b4262?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
+                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.ic_swagbug_logo)
                     .into(homeImg3)
 
                 // set on image4
                 Glide.with(it)
-                    .load("https://images.unsplash.com/photo-1505691723518-36a5ac3be353?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")
+                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1639983624004mlj8x.png")
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.ic_swagbug_logo)
                     .into(homeImg4)
@@ -105,7 +107,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
 
 
 
-            val dataSlider: ArrayList<DummySlider> = DummyData().getDummySlider()
+            val dataSlider: ArrayList<DummySlider> = DummyData().getDummySlider( )
 
             // category slider
             rvCategorySlider.layoutManager =
@@ -164,7 +166,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         with(viewBinding2) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = CollageAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@Home)
             }
         }
     }
@@ -173,7 +175,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         with(viewBinding2) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = KidsWearPicksAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@Home)
             }
         }
     }
@@ -182,7 +184,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         with(viewBinding2) {
             rvPromotedBrands.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = FeatureProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@Home)
             }
         }
     }
@@ -211,7 +213,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         with(viewBinding2) {
             rvFeatureBrands.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = FeatureProductAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@Home)
             }
         }
     }
@@ -220,7 +222,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         with(viewBinding2) {
             rvDealOfDay.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = DealOfTheDayAdapter(context, data)
+                adapter = BestProductAdapter(context, data, this@Home)
             }
         }
     }
@@ -271,6 +273,11 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
     }
 
     override fun onSingleItemClickListener(position: Int) {
+        mainActivity.hideToolbar()
+        findNavController().navigate(R.id.action_home2_to_productDetailsFragment)
+    }
+
+    override fun onHomeCategorySingleItemClickListener(position: Int) {
         when(position){
             0 -> {
                 mainActivity.hideToolbar()

@@ -59,14 +59,14 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imgBackBackground"
                 app:layout_constraintEnd_toEndOf="@+id/imgBackBackground"
                 app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
-                app:layout_constraintTop_toTopOf="@+id/imgBackBackground" />
+                app:layout_constraintTop_toTopOf="@+id/imgBackBackground"
+                />
 
 
             <ImageView
                 android:id="@+id/imgBegBackground"
                 android:layout_width="@dimen/dimen_25"
                 android:layout_height="@dimen/dimen_25"
-                android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/space_between_views"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/circle_white"
@@ -89,13 +89,12 @@
                 android:id="@+id/imgWishlistBackground"
                 android:layout_width="@dimen/dimen_25"
                 android:layout_height="@dimen/dimen_25"
-                android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/dimen_15"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/circle_white"
-                app:layout_constraintBottom_toBottomOf="@+id/imgBackBackground"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBegBackground"
                 app:layout_constraintEnd_toStartOf="@+id/imgBegBackground"
-                app:layout_constraintTop_toTopOf="@+id/imgBackBackground" />
+                app:layout_constraintTop_toTopOf="@+id/imgBegBackground" />
 
             <ImageView
                 android:id="@+id/imgWishlist"
@@ -112,13 +111,12 @@
                 android:id="@+id/imgShareBackground"
                 android:layout_width="@dimen/dimen_25"
                 android:layout_height="@dimen/dimen_25"
-                android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/dimen_15"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/circle_white"
-                app:layout_constraintBottom_toBottomOf="@+id/imgBackBackground"
+                app:layout_constraintBottom_toBottomOf="@+id/imgWishlistBackground"
                 app:layout_constraintEnd_toStartOf="@+id/imgWishlistBackground"
-                app:layout_constraintTop_toTopOf="@+id/imgBackBackground" />
+                app:layout_constraintTop_toTopOf="@+id/imgWishlistBackground" />
 
             <ImageView
                 android:id="@+id/imgShare"
@@ -231,6 +229,7 @@
 
             <TextView
                 android:id="@+id/textView56"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 style="@style/roboto_normal_18_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -316,6 +315,7 @@
                 android:layout_marginTop="@dimen/dimen_10"
                 android:background="@drawable/rec_white_5"
                 app:cardElevation="@dimen/dimen_5"
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView66">
@@ -445,7 +445,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ABC Fashion"
-                        android:textColor="@color/red"
+                        android:textColor="@color/day_red_night_orange"
                         app:layout_constraintBottom_toBottomOf="@+id/textView71"
                         app:layout_constraintStart_toEndOf="@+id/textView71"
                         app:layout_constraintTop_toTopOf="@+id/textView71" />
@@ -463,6 +463,7 @@
                 android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
                 android:layout_marginTop="@dimen/space_between_views"
                 android:background="@drawable/rec_white_5"
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 app:cardElevation="@dimen/dimen_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -683,6 +684,7 @@
 
 
             <com.google.android.material.card.MaterialCardView
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 android:id="@+id/materialCardView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -725,6 +727,7 @@
 
 
             <com.google.android.material.card.MaterialCardView
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 android:id="@+id/materialCardView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -787,6 +790,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 android:id="@+id/productDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -868,6 +872,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 android:id="@+id/verify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -942,6 +947,7 @@
 
 
             <com.google.android.material.card.MaterialCardView
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 android:id="@+id/rating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1260,6 +1266,7 @@
 
 
             <com.google.android.material.card.MaterialCardView
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 android:id="@+id/review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1391,8 +1398,10 @@
                 android:background="@drawable/rec_white_fill_top_round"
                 android:paddingVertical="@dimen/space_between_views"
                 android:text="Wishlist"
+                android:backgroundTint="@color/day_white_Raisin_Black"
                 android:textAlignment="center"
                 android:textAllCaps="true"
+                android:textColor="@color/day_davys_grey_night_Philippine_Gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/addToBeg"
                 app:layout_constraintHorizontal_bias="0.5"

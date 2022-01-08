@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.databinding.SingleCategorySliderBinding
 import com.shopping.swagbag.dummy.DummyData
@@ -18,14 +19,15 @@ import com.shopping.swagbag.dummy.DummyModel
 class CategorySliderAdapter(
     private val context: Context,
     private val data: List<DummyModel>,
-    private val itemClick: RecycleItemClickListener
+    private val itemClick: HomeCategoryRecycleItemClickListener
+
 ) : RecyclerView.Adapter<CategorySliderAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(private  val viewBinding: SingleCategorySliderBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
         // bind data with view
-            fun bind(singleData: DummyModel, itemClick: RecycleItemClickListener, position: Int){
+            fun bind(singleData: DummyModel, itemClick: HomeCategoryRecycleItemClickListener, position: Int){
                 with(viewBinding){
                     rvCategoryName.text = singleData.name
 
@@ -36,14 +38,13 @@ class CategorySliderAdapter(
                     Glide
                         .with(context)
                         .load(imageUrl)
-                       // .load("${singleData.url}.jpg")
-                        .centerCrop()
                         .placeholder(R.drawable.ic_swagbug_logo)
+                        .circleCrop()
                         .into(rvCategorySliderImg)
 
 
                    rvCategorySliderImg.setOnClickListener{
-                       itemClick.onSingleItemClickListener(position)
+                       itemClick.onHomeCategorySingleItemClickListener(position)
                    }
                 }
             }
