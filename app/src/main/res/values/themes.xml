@@ -189,7 +189,7 @@
     <style name="roboto_normal_14_davys_grey">
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/txt_14</item>
-        <item name="android:textColor">@color/davys_grey</item>
+        <item name="android:textColor">@color/day_davys_grey_night_Philippine_Gray</item>
     </style>
 
 
@@ -317,7 +317,7 @@
     <style name="roboto_normal_14_sonic_silver">
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/txt_14</item>
-        <item name="android:textColor">@color/sonic_silver</item>
+        <item name="android:textColor">@color/day_sonic_silver_dark_silver</item>
     </style>
 
 
@@ -647,7 +647,7 @@
     <style name="elmsri_normal_20_black">
         <item name="android:fontFamily">@font/elmessirir_regular</item>
         <item name="android:textSize">@dimen/dimen_20</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/day_black_night_white</item>
     </style>
 
 

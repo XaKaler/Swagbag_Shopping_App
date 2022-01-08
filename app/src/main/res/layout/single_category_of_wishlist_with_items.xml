@@ -10,6 +10,7 @@
         android:id="@+id/categoryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/day_davys_grey_night_outer_space"
         android:text="All"
         android:background="@drawable/rec_outline_15"
         android:paddingHorizontal="@dimen/dimen_15"

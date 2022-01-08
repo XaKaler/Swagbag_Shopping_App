@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_10"
                     android:text="Available Offers"
-                    android:textColor="@color/black"
+                    android:textColor="@color/day_black_night_light_silver"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView46"
                     app:layout_constraintStart_toEndOf="@+id/imageView46"
                     app:layout_constraintTop_toTopOf="@+id/imageView46" />
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10"
                     android:text="15% Instant Discount with Yes Bank Credit and Debit Cards on a min spend of Rs 2,500. TCA"
-                    android:textColor="@color/davys_grey"
+                    android:textColor="@color/day_davys_grey_night_Gray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView68" />
 

@@ -224,6 +224,9 @@
         <action
             android:id="@+id/action_categoryFragment_to_shoppingBegWithoutProductFragment"
             app:destination="@id/shoppingBegWithoutProductFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoppingBegWithoutProductFragment"
@@ -308,6 +311,15 @@
         <action
             android:id="@+id/action_productsFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_productsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_productsFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
+        <action
+            android:id="@+id/action_productsFragment_to_shoppingBegWithoutProductFragment"
+            app:destination="@id/shoppingBegWithoutProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"

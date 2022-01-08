@@ -56,6 +56,19 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
             imgBack.setOnClickListener{
                 findNavController().popBackStack()
             }
+
+            imgSearch.setOnClickListener{
+                findNavController().navigate(R.id.action_productsFragment_to_searchFragment)
+            }
+
+            imgWishlist.setOnClickListener{
+                findNavController().navigate(R.id.action_productsFragment_to_wishlistWithProductFragment)
+            }
+
+            imgCart.setOnClickListener{
+                findNavController().navigate(R.id.action_productsFragment_to_shoppingBegWithoutProductFragment)
+            }
+
         }
     }
 }

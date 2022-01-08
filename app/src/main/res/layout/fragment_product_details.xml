@@ -327,6 +327,7 @@
 
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView67"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -337,6 +338,7 @@
 
                     <TextView
                         android:id="@+id/size"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -476,6 +478,7 @@
 
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView73"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -613,6 +616,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/imageView41" />
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView83"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -650,6 +654,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView84" />
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView831"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -702,6 +707,7 @@
                     android:padding="@dimen/dimen_15">
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView832"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -745,6 +751,7 @@
                     android:padding="@dimen/dimen_15">
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView833"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -808,6 +815,7 @@
                     android:padding="@dimen/dimen_15">
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView834"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -966,6 +974,7 @@
 
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView61"
                         style="@style/roboto_medium_14_sonic_silver"
                         android:layout_width="wrap_content"
@@ -1028,7 +1037,7 @@
                         android:layout_marginVertical="@dimen/dimen_10"
                         android:layout_marginStart="@dimen/space_between_views"
                         android:text="3"
-                        android:textColor="@color/black"
+                        android:textColor="@color/day_black_night_white"
                         app:layout_constraintBottom_toBottomOf="@+id/view20"
                         app:layout_constraintStart_toEndOf="@+id/view20"
                         app:layout_constraintTop_toTopOf="@+id/view20" />
@@ -1077,7 +1086,7 @@
                         android:layout_marginVertical="@dimen/dimen_10"
                         android:layout_marginStart="@dimen/space_between_views"
                         android:text="3"
-                        android:textColor="@color/black"
+                        android:textColor="@color/day_black_night_white"
                         app:layout_constraintBottom_toTopOf="@+id/textView75"
                         app:layout_constraintStart_toEndOf="@+id/view20" />
 
@@ -1125,7 +1134,7 @@
                         android:layout_marginVertical="@dimen/dimen_10"
                         android:layout_marginStart="@dimen/space_between_views"
                         android:text="3"
-                        android:textColor="@color/black"
+                        android:textColor="@color/day_black_night_white"
                         app:layout_constraintBottom_toTopOf="@+id/textView751"
                         app:layout_constraintStart_toEndOf="@+id/view20" />
 
@@ -1173,7 +1182,7 @@
                         android:layout_marginVertical="@dimen/dimen_10"
                         android:layout_marginStart="@dimen/space_between_views"
                         android:text="2"
-                        android:textColor="@color/black"
+                        android:textColor="@color/day_black_night_white"
                         app:layout_constraintStart_toEndOf="@+id/view20"
                         app:layout_constraintTop_toBottomOf="@+id/textView75" />
 
@@ -1221,7 +1230,7 @@
                         android:layout_marginVertical="@dimen/dimen_10"
                         android:layout_marginStart="@dimen/space_between_views"
                         android:text="2"
-                        android:textColor="@color/black"
+                        android:textColor="@color/day_black_night_white"
                         app:layout_constraintStart_toEndOf="@+id/view20"
                         app:layout_constraintTop_toBottomOf="@+id/textView753" />
 
@@ -1296,6 +1305,7 @@
                         tools:listitem="@layout/single_reiview_image" />
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView81"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -1305,6 +1315,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/reviewImageCount"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -1316,6 +1327,7 @@
 
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/textView8"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -1325,6 +1337,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/rvReviewImages" />
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/reviewCount"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"

@@ -41,8 +41,10 @@ class CategoryAdapter(
 
                 cateConstLayout.setOnClickListener {
                     val activity = context as AppCompatActivity
+                    activity.findNavController(R.id.cateConstLayout).navigate(R.id.action_categoryFragment_to_productsFragment)
+
                     //mainActivity.hideToolbar()
-                    when (singleData.name) {
+                    /*when (singleData.name) {
                         "Men" -> activity.findNavController(R.id.cateConstLayout)
                             .navigate(R.id.action_categoryFragment_to_menFragment)
                         "Women" -> activity.findNavController(R.id.cateConstLayout)
@@ -55,7 +57,8 @@ class CategoryAdapter(
                             .navigate(R.id.action_categoryFragment_to_homeFragment)
                         "Travel" -> activity.findNavController(R.id.cateConstLayout)
                             .navigate(R.id.action_categoryFragment_to_travelFragment)
-                    }
+                    }*/
+
                 }
             }
         }

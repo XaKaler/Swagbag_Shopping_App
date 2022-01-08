@@ -70,6 +70,7 @@
     
     <!--navigation drawer-->
     <color name="day_dark_liver_night_white">#ffffff</color>
+    <color name="day_cultured_night_Eerie_Black">#181818</color>
     <color name="day_white_night_black">#000000</color>
     <color name="day_white_night_Charleston_Green">#2A2A2A</color>
     <color name="day_black_night_white">#ffffff</color>
@@ -87,6 +88,8 @@
     <color name="day_state_green_night_Cambridge_Blue">#98BCB5</color>
     <color name="day_dark_liver_night_Spanish_Gray">#989898</color>
     <color name="day_smoky_black_night_Argent">#C3BFBE</color>
+    <color name="day_sonic_silver_dark_silver">#707070</color>
+    <color name="day_davys_grey_night_outer_space">#444444</color>
     <color name="day_dutch_white_night_Zinnwaldite_Brown">#2B230E</color>
     <color name="day_harvest_gold_night_Camel">#C49B6F</color>
     <color name="day_gainsboro_night_Charleston_Green">#25292C</color>
@@ -119,6 +122,12 @@
     <color name="day_tea_green_night_chinese_black">#0B240F</color>
     <color name="day_smokey_black_night_white">#ffffff</color>
     <color name="day_red_night_orange">#C35A43</color>
+    <color name="day_davys_grey_night_Taupe_Gray">#898989</color>
+    <color name="day_sonic_silver_night_midnight_green">#14435D</color>
+    <color name="day_davys_grey_night_Gray">#7D7D7D</color>
+    <color name="day_black_night_light_silver">#D6D6D6</color>
+    <color name="day_state_green_night_morning_Blue">#849F98</color>
+    <color name="day_davys_grey_night_dark_silver">#6F6F6F</color>
 
 
 
