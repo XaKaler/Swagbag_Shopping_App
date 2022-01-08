@@ -668,7 +668,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView831" />
 
                     <TextView
-                        android:id="@+id/textView851"
+                        android:id="@+id/viewEmiPlan"
                         style="@style/roboto_medium_13_red_light"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

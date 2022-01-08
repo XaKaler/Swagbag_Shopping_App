@@ -295,6 +295,18 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_shoppingBegWithoutProductFragment"
             app:destination="@id/shoppingBegWithoutProductFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productDetailsSizeChart"
+            app:destination="@id/productDetailsSizeChart" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productDetailsEMIPlansFragment"
+            app:destination="@id/productDetailsEMIPlansFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_wishlistWithProductFragment"
+            app:destination="@id/wishlistWithProductFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_shoppingBegWithProductFragment"
+            app:destination="@id/shoppingBegWithProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoppingBegSelectAddressFragment"
@@ -547,6 +559,9 @@
         <action
             android:id="@+id/action_orderWithoutItemsFragment_to_wishlistWithoutProductFragment"
             app:destination="@id/wishlistWithoutProductFragment" />
+        <action
+            android:id="@+id/action_orderWithoutItemsFragment_to_cancellationOrderFragment"
+            app:destination="@id/cancellationOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/addUserDetailsFragment"
@@ -557,6 +572,39 @@
             android:id="@+id/action_addUserDetailsFragment_to_viewUserDetailsFragment"
             app:destination="@id/viewUserDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/cancellationOrderFragment"
+        android:name="com.shopping.swagbag.order.cancel_order.CancellationOrderFragment"
+        android:label="fragment_cancellation_order"
+        tools:layout="@layout/fragment_cancellation_order" >
+        <action
+            android:id="@+id/action_cancellationOrderFragment_to_cancellationOrderCancelledFragment"
+            app:destination="@id/cancellationOrderCancelledFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cancellationOrderCancelRequestFragment"
+        android:name="com.shopping.swagbag.order.cancel_order.CancellationOrderCancelRequestFragment"
+        android:label="CancellationOrderCancelRequestFragment"
+        tools:layout="@layout/fragment_cancellation_order_cancel_request"/>
+    <fragment
+        android:id="@+id/cancellationOrderCancelledFragment"
+        android:name="com.shopping.swagbag.order.cancel_order.CancellationOrderCancelledFragment"
+        android:label="fragment_cancellation_order_cancelled"
+        tools:layout="@layout/fragment_cancellation_order_cancelled" >
+        <action
+            android:id="@+id/action_cancellationOrderCancelledFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsSizeChart"
+        android:name="com.shopping.swagbag.products.product_details.ProductDetailsSizeChart"
+        android:label="fragment_product_details_size_chart"
+        tools:layout="@layout/fragment_product_details_size_chart" />
+    <fragment
+        android:id="@+id/productDetailsEMIPlansFragment"
+        android:name="com.shopping.swagbag.products.product_details.emi_plans.ProductDetailsEMIPlansFragment"
+        android:label="fragment_product_details_e_m_i_plans"
+        tools:layout="@layout/fragment_product_details_e_m_i_plans" />
 
 
 </navigation>

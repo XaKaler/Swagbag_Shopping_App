@@ -152,7 +152,7 @@ class DummyData {
 
     fun getDummyTravel(): ArrayList<DummyChild>{
         child.add(DummyChild(R.drawable.hand_bag, "Value Packs"))
-        child.add(DummyChild(R.drawable.headphone, "Cartoon Picks"))
+        child.add(DummyChild(R.drawable.tripod, "Cartoon Picks"))
         child.add(DummyChild(R.drawable.hand_watch, "Indian"))
         child.add(DummyChild(R.drawable.camera, "Cartoon Picks"))
         child.add(DummyChild(R.drawable.alexa, "Sports Packs"))

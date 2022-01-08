@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".helpcenter.with_order.HelpCenterWithOrderFragment">
 
-
     <include
         android:id="@+id/include"
         layout="@layout/toolbar_with_no_menu_white_bg"
@@ -18,6 +17,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +71,7 @@
                     android:id="@+id/materialCardView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/screen_margin_5"
                     android:layout_marginVertical="@dimen/dimen_15"
                     android:background="@drawable/rec_white_5"
                     app:cardCornerRadius="@dimen/dimen_5"
@@ -91,23 +92,12 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvOrderProduct"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/materialCardView3"
-                    tools:itemCount="1"
-                    tools:listitem="@layout/single_help_center_with_order" />
-
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/materialCardView4"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/space_between_views"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_15"
+                    android:layout_marginHorizontal="@dimen/screen_margin_5"
                     android:background="@drawable/rec_white_5"
                     app:cardElevation="@dimen/dimen_5"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -117,14 +107,14 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="@dimen/dimen_15">
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:id="@+id/textView29"
                             style="@style/roboto_normal_15_davys_grey"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="@dimen/screen_margin_15"
                             android:fontFamily="@font/roboto_medium"
                             android:text="@string/need_help_with_recent_purchase"
                             app:layout_constraintStart_toStartOf="parent"
@@ -132,10 +122,8 @@
 
                         <View
                             android:id="@+id/view1"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimen_0.5"
-                            android:layout_marginVertical="@dimen/dimen_15"
-                            android:backgroundTint="@color/davys_grey"
+                            style="@style/line_horizontal"
+                            android:layout_marginTop="@dimen/screen_margin_15"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
@@ -159,10 +147,8 @@
 
                             <View
                                 android:id="@+id/view2"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/dimen_0.5"
-                                android:layout_marginVertical="@dimen/dimen_15"
-                                android:backgroundTint="@color/davys_grey"
+                                style="@style/line_horizontal"
+                                android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -183,6 +169,7 @@
                                 style="@style/roboto_normal_14_sonic_silver"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 android:text="@string/offer_discount_coupons"
                                 app:layout_constraintEnd_toStartOf="@+id/imageView29"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -190,12 +177,9 @@
 
                             <View
                                 android:id="@+id/view3"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/dimen_0.5"
-                                android:layout_marginVertical="@dimen/dimen_15"
-                                android:backgroundTint="@color/davys_grey"
+                                style="@style/line_horizontal"
+                                android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/tvOfferDiscountCoupons" />
 
@@ -214,6 +198,7 @@
                                 style="@style/roboto_normal_14_sonic_silver"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 android:text="@string/manage_your_account"
                                 app:layout_constraintEnd_toStartOf="@+id/imageView29"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -221,12 +206,9 @@
 
                             <View
                                 android:id="@+id/view4"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/dimen_0.5"
-                                android:layout_marginVertical="@dimen/dimen_15"
-                                android:backgroundTint="@color/davys_grey"
+                                style="@style/line_horizontal"
+                                android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/tvManageYourAccount" />
 
@@ -245,21 +227,20 @@
                                 style="@style/roboto_normal_14_sonic_silver"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 android:text="@string/other"
                                 app:layout_constraintEnd_toStartOf="@+id/imageView29"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/view4" />
-
+                            <!--
                             <View
                                 android:id="@+id/view5"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/dimen_0.5"
-                                android:layout_marginVertical="@dimen/dimen_15"
-                                android:backgroundTint="@color/davys_grey"
+                                style="@style/line_horizontal"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/tvOther" />
+                                app:layout_constraintTop_toBottomOf="@+id/tvOther" />-->
 
                             <ImageView
                                 android:id="@+id/imageView3"
@@ -282,9 +263,11 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_15"
+                    android:layout_marginHorizontal="@dimen/screen_margin_5"
+                    android:layout_marginVertical="@dimen/dimen_15"
                     android:background="@drawable/rec_white_5"
                     app:cardElevation="@dimen/dimen_5"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -334,6 +317,17 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </com.google.android.material.card.MaterialCardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvOrderProduct"
+                    android:layout_width="0dp"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/single_help_center_with_order"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

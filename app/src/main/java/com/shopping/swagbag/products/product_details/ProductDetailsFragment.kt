@@ -30,6 +30,26 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
     }
 
     private fun initViews() {
+        with(viewBinding){
+            sizeChart.setOnClickListener{
+                findNavController().navigate(R.id.action_productDetailsFragment_to_productDetailsSizeChart)
+            }
+
+            viewEmiPlan.setOnClickListener{
+                findNavController().navigate(R.id.action_productDetailsFragment_to_productDetailsEMIPlansFragment)
+            }
+
+            wishlist.setOnClickListener{
+                findNavController().navigate(R.id.action_productDetailsFragment_to_wishlistWithProductFragment)
+            }
+
+            addToBeg.setOnClickListener{
+                findNavController().navigate(R.id.action_productDetailsFragment_to_shoppingBegWithProductFragment)
+            }
+
+
+        }
+
         val data = DummyData().getSingleProductImage()
         val singleProduct = DummyData().getSingleProduct()
 

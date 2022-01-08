@@ -28,6 +28,11 @@ class CancellationOrderCancelledFragment : Fragment(R.layout.fragment_cancellati
     }
 
     private fun initViews() {
+        with(viewBinding){
+            done.setOnClickListener{
+                findNavController().navigate(R.id.action_cancellationOrderCancelledFragment_to_categoryFragment)
+            }
+        }
         setToolbar()
     }
 

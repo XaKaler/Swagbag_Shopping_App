@@ -65,30 +65,32 @@
 
             <TextView
                 android:id="@+id/tvBestProductDetails"
-                android:fontFamily="@font/roboto_regular"
                 style="@style/elmsri_normal_13_dark_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimen_10"
+                android:fontFamily="@font/roboto_regular"
                 android:maxLines="1"
                 android:paddingHorizontal="5dp"
                 android:text="TextView"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/textView123"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
             <TextView
+                android:id="@+id/textView123"
                 style="@style/arya_normal_12_black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:padding="5dp"
                 android:text="+Wishlist Now"
+                android:padding="@dimen/dimen_5"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvBestProductDetails" />
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
