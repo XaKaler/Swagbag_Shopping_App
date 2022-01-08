@@ -16,13 +16,13 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
 
     private lateinit var viewBinding: FragmentCategoryBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
-    private lateinit var mainActivity: MainActivity
+   // private lateinit var mainActivity: MainActivity
 
-
+/*
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
-    }
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +31,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
         toolbarBinding = viewBinding.include
 
         initViews()
-        mainActivity.showToolbar()
+        //mainActivity.showToolbar()
 
     }
 
@@ -46,7 +46,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
             rvCategory.apply{
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = DummyData().getDummyCategory()?.let { DummyData().getDummyCategory()
-                    ?.let { it1 -> CategoryAdapter(context, it1, mainActivity) } }
+                    ?.let { it1 -> CategoryAdapter(context, it1) } }
             }
         }
     }

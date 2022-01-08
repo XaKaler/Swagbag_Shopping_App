@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -273,31 +274,31 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         when(position){
             0 -> {
                 mainActivity.hideToolbar()
-               // findNavController().navigate(R.id.action_home2_to_menFragment)
+                findNavController().navigate(R.id.action_home2_to_menFragment)
             }
 
             1->{
                 mainActivity.hideToolbar()
-                //findNavController().navigate(R.id.action_home2_to_womenFragment)
+                findNavController().navigate(R.id.action_home2_to_womenFragment)
             }
 
             2->{
                 mainActivity.hideToolbar()
-               // findNavController().navigate(R.id.action_home2_to_kidsFragment)
+                findNavController().navigate(R.id.action_home2_to_kidsFragment)
             }
 
             3->{
                 mainActivity.hideToolbar()
-               // findNavController().navigate(R.id.action_home2_to_petsFragment)
+                findNavController().navigate(R.id.action_home2_to_petsFragment)
             }
             4->{
                 mainActivity.hideToolbar()
-               // findNavController().navigate(R.id.action_home2_to_homeFragment)
+                findNavController().navigate(R.id.action_home2_to_homeFragment)
             }
 
             5->{
                 mainActivity.hideToolbar()
-               // findNavController().navigate(R.id.action_home2_to_travelFragment)
+                findNavController().navigate(R.id.action_home2_to_travelFragment)
             }
         }
     }

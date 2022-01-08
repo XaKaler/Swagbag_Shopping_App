@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             disableNavigationViewScrollbars(navigationView)
 
             // click listener on navigation menus
-            for (i in 0..14) {
+            for (i in 0..15) {
 
                 navigationView.menu.getItem(i)
                     .setActionView(R.layout.navigation_right_side_icon)
@@ -79,13 +79,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.navMenuHome -> viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
 
+            R.id.navMenuCategory -> {
+                hideToolbar()
+                supportActionBar?.hide()
+                val navHostFragment =
+                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.action_home2_to_categoryFragment)
+                viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
+            }
+
             R.id.navMenuOrder -> {
                 hideToolbar()
                 supportActionBar?.hide()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_orderWithoutItemsFragment)
+                navController.navigate(R.id.action_home2_to_orderWithoutItemsFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -94,7 +104,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_wishlistWithoutProductFragment)
+                navController.navigate(R.id.action_home2_to_wishlistWithoutProductFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -103,7 +113,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_savedCardsWithCards)
+                navController.navigate(R.id.action_home2_to_savedCardsWithCards)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -112,7 +122,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_viewUserDetailsFragment)
+                navController.navigate(R.id.action_home2_to_viewUserDetailsFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -121,7 +131,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_couponsFragment)
+                navController.navigate(R.id.action_home2_to_couponsFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -130,7 +140,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_signInFragment)
+                navController.navigate(R.id.action_home2_to_signInFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -139,7 +149,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_helpCenterWithoutOrder)
+                navController.navigate(R.id.action_home2_to_helpCenterWithoutOrder)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -148,7 +158,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_FAQsFragment)
+                navController.navigate(R.id.action_home2_to_FAQsFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -157,7 +167,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_aboutUs)
+                navController.navigate(R.id.action_home2_to_aboutUs)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -166,7 +176,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_contactUsFragment)
+                navController.navigate(R.id.action_home2_to_contactUsFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -175,7 +185,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_termsOfUsesFragment)
+                navController.navigate(R.id.action_home2_to_termsOfUsesFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -184,7 +194,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_privacyPolicyFragment)
+                navController.navigate(R.id.action_home2_to_privacyPolicyFragment)
                 viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
             }
 
@@ -212,28 +222,28 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_searchFragment)
+                navController.navigate(R.id.action_home2_to_searchFragment)
             }
             R.id.tbNotification -> {
                 hideToolbar()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_notificationFragment)
+                navController.navigate(R.id.action_home2_to_notificationFragment)
             }
             R.id.tbWishlist -> {
                 hideToolbar()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_wishlistWithoutProductFragment)
+                navController.navigate(R.id.action_home2_to_wishlistWithoutProductFragment)
             }
             R.id.tbCart -> {
                 hideToolbar()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_categoryFragment_to_shoppingBegWithProductFragment)
+                navController.navigate(R.id.action_home2_to_shoppingBegWithProductFragment)
             }
         }
         return true

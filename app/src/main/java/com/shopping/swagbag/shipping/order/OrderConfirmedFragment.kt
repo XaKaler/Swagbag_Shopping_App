@@ -35,7 +35,7 @@ class OrderConfirmedFragment : Fragment(R.layout.fragment_order_confirmed) {
             }
 
             continueShopping.setOnClickListener{
-                findNavController().navigate(R.id.action_orderConfirmedFragment_to_categoryFragment)
+                findNavController().navigate(R.id.action_orderConfirmedFragment_to_home2)
             }
         }
 

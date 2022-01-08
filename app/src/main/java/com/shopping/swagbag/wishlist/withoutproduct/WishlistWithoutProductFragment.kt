@@ -30,7 +30,7 @@ class WishlistWithoutProductFragment : Fragment(R.layout.fragment_wishtlist_with
     private fun initViews() {
         with(viewBinding){
             btnShopNow.setOnClickListener{
-                findNavController().navigate(R.id.action_wishlistWithoutProductFragment_to_categoryFragment)
+                findNavController().navigate(R.id.action_wishlistWithoutProductFragment_to_home2)
             }
         }
 

@@ -15,8 +15,7 @@ import com.shopping.swagbag.dummy.DummyModel
 
 class CategoryAdapter(
     private val context: Context,
-    private val data: List<DummyModel>,
-    private val mainActivity: MainActivity
+    private val data: List<DummyModel>
 ) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
@@ -42,7 +41,7 @@ class CategoryAdapter(
 
                 cateConstLayout.setOnClickListener {
                     val activity = context as AppCompatActivity
-                    mainActivity.hideToolbar()
+                    //mainActivity.hideToolbar()
                     when (singleData.name) {
                         "Men" -> activity.findNavController(R.id.cateConstLayout)
                             .navigate(R.id.action_categoryFragment_to_menFragment)

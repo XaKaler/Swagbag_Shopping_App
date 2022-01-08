@@ -35,11 +35,11 @@ class ViewUserDetailsFragment : Fragment(R.layout.fragment_view_user_details) {
             }
 
             btnSelect.setOnClickListener{
-                findNavController().navigate(R.id.action_viewUserDetailsFragment_to_categoryFragment)
+                findNavController().navigate(R.id.action_viewUserDetailsFragment_to_home2)
             }
 
             btnCancel.setOnClickListener{
-                findNavController().navigate(R.id.action_viewUserDetailsFragment_to_categoryFragment)
+                findNavController().navigate(R.id.action_viewUserDetailsFragment_to_home2)
             }
 
         }

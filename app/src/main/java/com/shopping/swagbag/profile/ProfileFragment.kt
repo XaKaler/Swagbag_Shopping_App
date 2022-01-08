@@ -84,7 +84,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.btnSaveDetails -> {
-                findNavController().navigate(R.id.action_profileFragment_to_categoryFragment)
+                findNavController().navigate(R.id.action_profileFragment_to_home2)
             }
         }
     }
