@@ -23,6 +23,7 @@
 
         <TextView
             android:id="@+id/addressType"
+            android:textColor="@color/day_davys_grey_night_Gray"
             style="@style/roboto_normal_10_davys_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -166,18 +166,18 @@ class DummyData {
 
         //var data: ArrayList<DummyModel>? = null
 
-        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1639941989132rg7xa.png",
+        data?.add(DummyModel("https://images.unsplash.com/photo-1584043720379-b56cd9199c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fG1lbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
             "Men",
             ""))
 
 
-        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1639940716133rq5w5.png",
+        data?.add(DummyModel("https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvbWVufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
             "Women",
             ""))
 
 
         //https://images.unsplash.com/photo-1552873816-636e43209957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80
-        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/16399423877561lqex.png",
+        data?.add(DummyModel("https://images.unsplash.com/photo-1612196182754-dae1ec49efc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGtpZHMlMjBmYXNoaW9ufGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60",
             "Kids",
             ""))
 

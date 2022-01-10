@@ -1,5 +1,6 @@
 package com.shopping.swagbag
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun setUpNavigation() {
         with(viewBinding) {
             setSupportActionBar(toolbar)
+
+            // set toolbar icon item color
+            //viewBinding.toolbar.menu?.findItem(R.id.tbSearch)?.icon?.setTint(Color.WHITE)
+
             // hide toolbar title
             supportActionBar?.setDisplayShowTitleEnabled(false)
 
@@ -213,6 +218,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

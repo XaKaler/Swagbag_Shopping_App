@@ -47,7 +47,7 @@
             android:minLines="1"
             android:text="Kenster"
             android:textAllCaps="true"
-            android:textColor="@color/state_green"
+            android:textColor="@color/day_state_green_night_Cambridge_Blue"
             app:layout_constraintStart_toEndOf="@+id/productImg"
             app:layout_constraintTop_toTopOf="@+id/productImg" />
 

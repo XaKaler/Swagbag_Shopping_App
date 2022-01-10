@@ -40,11 +40,11 @@
 
                 <TextView
                     android:id="@+id/textView25"
+                    android:textColor="@color/day_davys_grey_night_dark_silver"
                     style="@style/roboto_normal_20_davys_grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/help_center"
-                    android:textColor="@color/outer_space"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,6 +84,7 @@
 
                     <TextView
                         style="@style/roboto_normal_15_davys_grey"
+                        android:textColor="@color/day_davys_grey_night_dark_silver"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/roboto_medium"
@@ -111,6 +112,7 @@
 
                         <TextView
                             android:id="@+id/textView29"
+                            android:textColor="@color/day_davys_grey_night_dark_silver"
                             style="@style/roboto_normal_15_davys_grey"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -282,6 +284,7 @@
                         <TextView
                             android:id="@+id/textView31"
                             style="@style/roboto_normal_15_davys_grey"
+                            android:textColor="@color/day_davys_grey_night_dark_silver"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -335,6 +338,7 @@
             <TextView
                 android:id="@+id/textView34"
                 style="@style/roboto_normal_11_davys_grey"
+                android:textColor="@color/day_davys_grey_night_dark_silver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/want_to_reach_us_the_old_way"

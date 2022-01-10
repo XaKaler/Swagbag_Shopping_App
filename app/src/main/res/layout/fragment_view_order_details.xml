@@ -332,7 +332,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Items in this order"
-                        android:textColor="@color/davys_grey"
+                        android:textColor="@color/day_davys_grey_night_dark_silver"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 

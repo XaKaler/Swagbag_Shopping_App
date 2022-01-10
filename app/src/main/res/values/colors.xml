@@ -145,6 +145,8 @@
     <color name="day_harvest_gold_night_Peach_Orange">#D28B00</color>
     <color name="day_dutch_white_night_Pullman_Green">#F1E0BF</color>
     <color name="day_davys_grey_night_white">#555555</color>
+    <color name="day_tiffiny_blue_night_Bangladesh_Green">#00B1AB</color>
+    <color name="day_davys_grey_night_Quick_Silver">#555555</color>
     <color name="day_sonic_silver_night_midnight_green">#777777</color>
     <color name="day_sonic_silver_dark_silver">#777777</color>
     <color name="day_davys_grey_night_dark_silver">#555555</color>
@@ -153,6 +155,7 @@
     <color name="day_blue_grey_Dark_Gunmetal">#D9DFE2</color>
     <color name="day_Black_Olive_Silver_Chalice">#3F3F3F</color>
     <color name="day_white_Raisin_Black">#ffffff</color>
+    <color name="day_Raisin_Black_night_white">#262626</color>
     <color name="day_dim_grey_night_Dark_Silver">#6C6C6C</color>
     <color name="day_dim_grey_night_Dark_gray_x11">#6C6C6C</color>
     <color name="day_Nickel_night_Dark_white">#737373</color>

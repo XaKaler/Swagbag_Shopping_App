@@ -53,12 +53,14 @@
                     android:alpha="0.5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/circle_white" />
+                    app:srcCompat="@drawable/circle_white"
+                    app:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/imageView24"
                     android:layout_width="@dimen/dimen_24"
                     android:layout_height="@dimen/dimen_24"
+                    app:tint="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView23"
                     app:layout_constraintEnd_toStartOf="@+id/imageView23"
                     app:layout_constraintStart_toStartOf="@+id/imageView23"
@@ -139,6 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_width"
                 android:layout_marginTop="@dimen/screen_horizontal_padding"
+                android:backgroundTint="@color/day_tiffiny_blue_night_Bangladesh_Green"
                 android:background="@drawable/rec_bottom_round"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

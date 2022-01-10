@@ -33,13 +33,14 @@
                 android:minLines="1"
                 android:text="Kenster"
                 android:textAllCaps="true"
-                android:textColor="@color/state_green"
+                android:textColor="@color/day_state_green_night_Cambridge_Blue"
                 app:layout_constraintStart_toEndOf="@+id/productImg"
                 app:layout_constraintTop_toTopOf="@+id/productImg" />
 
             <TextView
                 android:id="@+id/tvProductName"
                 android:maxLines="1"
+                android:textColor="@color/day_sonic_silver_dark_silver"
                 android:minLines="1"
                 style="@style/snigiet_normal_14_davys_grey"
                 android:layout_width="0dp"
@@ -94,7 +95,7 @@
         android:layout_height="wrap_content"
         android:text="Confrimed"
         style="@style/roboto_medium_13_red_light"
-        android:textColor="@color/black"
+        android:textColor="@color/day_black_night_white"
         app:layout_constraintBottom_toBottomOf="@+id/textView134"
         app:layout_constraintStart_toEndOf="@+id/textView134"
         app:layout_constraintTop_toTopOf="@+id/textView134" />

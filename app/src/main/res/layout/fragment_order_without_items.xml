@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/main_bg_color"
     tools:context=".order.without_items.OrderWithoutItemsFragment">
 
 
@@ -38,6 +39,7 @@
             android:id="@+id/textView188"
             style="@style/roboto_medium_20_davys_grey"
             android:layout_width="wrap_content"
+            android:textColor="@color/day_davys_grey_night_white"
             android:layout_height="wrap_content"
             android:text="You haven’t placed any order yet!"
             app:layout_constraintBottom_toBottomOf="parent"

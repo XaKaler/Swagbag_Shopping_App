@@ -9,6 +9,8 @@
 
     tools:context=".home.Home">
     <!-- tools:openDrawer="start"-->
+
+
     <include
         android:id="@+id/include"
         layout="@layout/home"

@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_10"
                         android:text="Bank Offers"
-                        android:textColor="@color/black"
+                        android:textColor="@color/day_black_night_white"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView46"
                         app:layout_constraintStart_toEndOf="@+id/imageView46"
                         app:layout_constraintTop_toTopOf="@+id/imageView46" />
@@ -738,6 +738,7 @@
         android:id="@+id/card4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/day_white_night_Eerie_Black"
         app:cardElevation="@dimen/dimen_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -751,6 +752,7 @@
             <TextView
                 android:id="@+id/viewDetails"
                 style="@style/roboto_medium_12_davys_grey"
+                android:backgroundTint="@color/day_white_night_Eerie_Black"
                 android:layout_width="0dp"
                 android:textColor="@color/red_light"
                 android:layout_height="0dp"

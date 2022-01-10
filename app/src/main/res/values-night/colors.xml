@@ -80,6 +80,7 @@
 
     <color name="day_dark_green_night_Ecru">#CBC281</color>
     <color name="day_white_night_Eerie_Black">#1B1B1B</color>
+    <color name="day_davys_grey_night_Quick_Silver">#A6A6A6</color>
     <color name="day_dark_blue_night_diamond">#C5E6FA</color>
     <color name="day_blue_grey_night_Gunmetal">#2F3437</color>
     <color name="day_white_night_chinese_black">#161616</color>
@@ -115,6 +116,8 @@
     <color name="day_blue_grey_Dark_Gunmetal">#222629</color>
     <color name="day_Black_Olive_Silver_Chalice">#ADADAD</color>
     <color name="day_white_Raisin_Black">#262626</color>
+    <color name="day_tiffiny_blue_night_Bangladesh_Green">#00694B</color>
+    <color name="day_Raisin_Black_night_white">#ffffff</color>
     <color name="day_dim_grey_night_Dark_Silver">#6D6D6D</color>
     <color name="day_dim_grey_night_Dark_gray_x11">#A9A9A9</color>
     <color name="day_Nickel_night_Dark_white">#ffffff</color>
