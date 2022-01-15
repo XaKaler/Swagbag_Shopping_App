@@ -5,22 +5,22 @@
 
     <item
         android:id="@+id/tbSearch"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/ic_search_white"
         app:showAsAction="always"
         android:title="Search" />
     <item
         android:id="@+id/tbNotification"
         app:showAsAction="always"
-        android:icon="@drawable/ic_notification_bell"
+        android:icon="@drawable/ic_notification_bell_white"
         android:title="Notification" />
     <item
         android:id="@+id/tbWishlist"
-        android:icon="@drawable/ic_heart"
+        android:icon="@drawable/ic_heart_white"
         app:showAsAction="always"
         android:title="Wishlist" />
     <item
         android:id="@+id/tbCart"
         app:showAsAction="always"
-        android:icon="@drawable/ic_shopping_bag"
+        android:icon="@drawable/ic_shopping_bag_white"
         android:title="Cart" />
 </menu>

@@ -26,10 +26,10 @@
             android:icon="@drawable/ic_heart"
             android:title="Wishlist" />
 
-        <item
+      <!--  <item
             android:id="@+id/navMenuSavedCards"
             android:icon="@drawable/ic_atm_card"
-            android:title="Saved Cards" />
+            android:title="Saved Cards" />-->
 
         <item
             android:id="@+id/navMenuAddress"
@@ -57,11 +57,11 @@
             android:id="@+id/navMenuHelpCenter"
             android:icon="@drawable/ic_help_center"
             android:title="Help Center" />
-
+<!--
         <item
             android:id="@+id/navMenuSettings"
             android:icon="@drawable/ic_settings"
-            android:title="Settings" />
+            android:title="Settings" />-->
 
     </group>
 

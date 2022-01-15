@@ -573,7 +573,8 @@
                         android:layout_marginTop="@dimen/space_between_views"
                         android:src="@drawable/ic_rectange_dotted"
                         app:layout_constraintStart_toStartOf="@+id/textView79"
-                        app:layout_constraintTop_toBottomOf="@+id/textView79" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView79"
+                        app:tint="@color/steel_teal" />
 
                     <ImageView
                         android:id="@+id/imageView42"
@@ -583,7 +584,8 @@
                         android:src="@drawable/ic_scissors"
                         app:layout_constraintBottom_toTopOf="@+id/imageView41"
                         app:layout_constraintStart_toStartOf="@+id/imageView41"
-                        app:layout_constraintTop_toTopOf="@+id/imageView41" />
+                        app:layout_constraintTop_toTopOf="@+id/imageView41"
+                        app:tint="@color/steel_teal" />
 
                     <TextView
                         android:id="@+id/couponCode"
@@ -736,6 +738,7 @@
                 android:backgroundTint="@color/day_white_Raisin_Black"
                 android:id="@+id/materialCardView7"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
                 android:layout_marginTop="@dimen/space_between_views"
@@ -1410,7 +1413,7 @@
                 android:layout_height="0dp"
                 android:background="@drawable/rec_white_fill_top_round"
                 android:paddingVertical="@dimen/space_between_views"
-                android:text="Wishlist"
+                android:text="Add to wishlist"
                 android:backgroundTint="@color/day_white_Raisin_Black"
                 android:textAlignment="center"
                 android:textAllCaps="true"
@@ -1426,10 +1429,10 @@
                 style="@style/roboto_medium_14_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/rec_red_fill_top_round"
+                android:background="@drawable/rec_steel_teal_fill_top_round"
                 android:gravity="center"
                 android:paddingVertical="@dimen/space_between_views"
-                android:text="@string/add_to_beg"
+                android:text="@string/add_to_cart"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"

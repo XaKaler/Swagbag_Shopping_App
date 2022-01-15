@@ -150,7 +150,8 @@
     <string name="product_details">Product Details</string>
     <string name="material_care"><![CDATA[Material & Care]]></string>
     <string name="rating_review"><![CDATA[Rating & Review]]></string>
-    <string name="add_to_beg">Add to beg</string>
+    <string name="add_to_beg">Add to bag</string>
+    <string name="add_to_cart">Add to cart</string>
     <string name="show_more">Show More</string>
     <string name="payment">Payment</string>
     <string name="view_all">+ View All</string>
@@ -174,4 +175,7 @@
     <string name="_999_00"> 999.00</string>
     <string name="item_details">Item Details</string>
     <string name="select">Select</string>
+    <string name="Delete">Delete</string>
+    <string name="addresses">Addresses</string>
+    <string name="add_new_address">Add New Address</string>
 </resources>

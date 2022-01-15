@@ -33,7 +33,9 @@
     <color name="viridian_green">#179691</color>
     <color name="ulca_gold">#FDB302</color>
     <color name="pastel_red">#F16564</color>
-    <color name="red_light">#FF0000</color>
+
+    <color name="red_light">#577D8A</color>
+
     <color name="platinum">#E3E3E3</color>
     <color name="outer_space">#444444</color>
     <color name="davys_grey">#555555</color>
@@ -161,7 +163,7 @@
     <color name="day_Nickel_night_Dark_white">#737373</color>
     <color name="day_gainsboro_night_Gunmetal">#D9DFE2</color>
     <color name="day_tea_green_night_chinese_black">#D9DFE2</color>
-    <color name="day_red_night_orange">#FF0000</color>
+    <color name="day_red_night_orange">#577D8A</color>
     <color name="day_davys_grey_night_Taupe_Gray">#555555</color>
     <color name="day_davys_grey_night_Gray">#555555</color>
     <color name="day_black_night_light_silver">#000000</color>

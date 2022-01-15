@@ -60,7 +60,7 @@ class ViewUserDetailsFragment : Fragment(R.layout.fragment_view_user_details) {
     private fun setToolbar() {
         with(toolbarBinding){
             // set title
-            tvTitle.text = getString(R.string.order_details)
+            tvTitle.text = getString(R.string.addresses)
 
             // back button click
             imgBack.setOnClickListener{

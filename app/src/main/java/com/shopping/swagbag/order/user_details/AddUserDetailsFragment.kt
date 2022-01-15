@@ -40,7 +40,7 @@ class AddUserDetailsFragment : Fragment(R.layout.fragment_add_user_details) {
     private fun setToolbar() {
         with(toolbarBinding){
             // set title
-            tvTitle.text = getString(R.string.order_details)
+            tvTitle.text = getString(R.string.add_new_address)
 
             // back button click
             imgBack.setOnClickListener{
