@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Swagbag Shopping App</string>
+    <string name="app_name">Swagbag</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -126,7 +126,9 @@
     <string name="address_house_no_street_area">Address (House No, Street, Area) *</string>
     <string name="landmark">Landmark</string>
     <string name="type_of_address">Type of Address*</string>
+
     <string name="home">Home</string>
+
     <string name="office">Office</string>
     <string name="make_this_as_my_default_address">Make this as my default address</string>
     <string name="order_details">Order Details</string>
@@ -135,6 +137,7 @@
     <string name="details">Details</string>
     <string name="hide">Hide</string>
     <string name="mycoupons">My Coupons</string>
+    <string name="coupons">Coupons</string>
     <string name="clear_all">Clear all</string>
     <string name="close">Close</string>
     <string name="apply">Apply</string>
@@ -178,4 +181,8 @@
     <string name="Delete">Delete</string>
     <string name="addresses">Addresses</string>
     <string name="add_new_address">Add New Address</string>
+    <string name="phone_star">Phone*</string>
+    <string name="city">City</string>
+    <string name="last_name">Last Name*</string>
+    <string name="first_name">First Name*</string>
 </resources>

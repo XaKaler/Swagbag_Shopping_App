@@ -16,5 +16,9 @@ data class User(val name: String, val address: String, val mobile: String, val i
 
 data class UserAddress(val address: String)
 
+data class ProductFilter(val filterName: String)
+
+data class CategorySideNavigationData(val address: String)
+
 data class DummySlider(val image: String)
 

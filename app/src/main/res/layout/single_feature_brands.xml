@@ -47,7 +47,6 @@
                 android:maxLines="2"
                 android:minLines="2"
                 android:paddingHorizontal="5dp"
-                android:fontFamily="@font/roboto_regular"
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textSize="@dimen/txt_14"

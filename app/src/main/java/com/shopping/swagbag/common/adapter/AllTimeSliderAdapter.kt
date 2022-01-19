@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.databinding.SingleBestProductsBinding
 import com.shopping.swagbag.databinding.SingleSliderProductsBinding
 import com.shopping.swagbag.dummy.DummyModel
+import android.R
+
+
+
 
 class AllTimeSliderAdapter(
     private val context: Context,
@@ -29,8 +32,6 @@ class AllTimeSliderAdapter(
                     // set image
                     Glide.with(context)
                         .load(singleData.image)
-                        .error(R.drawable.ic_launcher_foreground)
-                        .placeholder(R.drawable.ic_swagbug_logo)
                         .into(imgBestProduct)
 
                     // set text
@@ -51,6 +52,11 @@ class AllTimeSliderAdapter(
 
     override fun onBindViewHolder(holder: BestProductViewHolder, position: Int) {
         holder.bind(data[position],itemClick = itemClick, position)
+
+        if(position == 0){
+            val padding: Int = context.resources.getDimensionPixelOffset(com.shopping.swagbag.R.dimen.screen_padding_15)
+            holder.itemView.setPadding(padding, 0,0,0)
+        }
     }
 
     override fun getItemCount()= data.size

@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:paddingHorizontal="@dimen/screen_horizontal_padding"
-    android:paddingVertical="@dimen/dimen_15"
     android:layout_height="wrap_content">
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/sizeType"
         android:button="@drawable/checkbox_selector"
         style="@style/roboto_normal_14_sonic_silver"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/space_between_views"
-        android:text="Size"
+        android:text="Different Size"
         app:layout_constraintEnd_toStartOf="@+id/productCount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

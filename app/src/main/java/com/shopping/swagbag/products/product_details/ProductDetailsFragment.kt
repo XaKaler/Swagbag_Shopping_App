@@ -109,8 +109,6 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
                     .with(it)
                     .load(data.image1)
                     .fitCenter()
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(viewBinding.roundedImageView6)
 
 
@@ -118,8 +116,6 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
                     .with(it)
                     .load(data.image2)
                     .fitCenter()
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(viewBinding.roundedImageView5)
 
 
@@ -127,8 +123,6 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
                     .with(it)
                     .load(data.image3)
                     .fitCenter()
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(viewBinding.roundedImageView4)
 
 
@@ -136,8 +130,6 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
                     .with(it)
                     .load(data.image4)
                     .fitCenter()
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(viewBinding.roundedImageView7)
 
 
@@ -145,8 +137,6 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
                     .with(it)
                     .load(data.image5)
                     .fitCenter()
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(viewBinding.roundedImageView)
 
 

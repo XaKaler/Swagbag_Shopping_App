@@ -23,8 +23,6 @@ class AutoImageSliderAdapter(private val context: Context, private val data: Lis
                 .with(context)
                 .load(singleData.image)
                 .centerInside()
-                .error(R.drawable.ic_launcher_foreground)
-                .placeholder(R.drawable.ic_swagbug_logo)
                 .into(viewBinding.imgAutoSlider)
             }
         }

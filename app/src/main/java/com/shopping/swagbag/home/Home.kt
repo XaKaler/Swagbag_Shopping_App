@@ -64,30 +64,21 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
                 // set on image1
                 Glide.with(it)
                     .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640079281564elvys.webp")
-
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(homeImg1)
 
                 // set on image2
                 Glide.with(it)
                     .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640080145210noqvi.webp")
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(homeImg2)
 
                 // set on image3
                 Glide.with(it)
                     .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(homeImg3)
 
                 // set on image4
                 Glide.with(it)
                     .load("https://swagbag-space.fra1.digitaloceanspaces.com/1639983624004mlj8x.png")
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(homeImg4)
 
 

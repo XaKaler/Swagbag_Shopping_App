@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/space_between_views"
-        android:text="Size"
+        android:text="Brand"
         app:layout_constraintEnd_toStartOf="@+id/productCount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

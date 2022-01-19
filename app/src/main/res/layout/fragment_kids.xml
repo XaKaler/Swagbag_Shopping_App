@@ -105,6 +105,7 @@
             android:id="@+id/constraintLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:paddingVertical="@dimen/dimen_10"
             android:layout_marginVertical="@dimen/dimen_24"
             app:layout_constraintEnd_toEndOf="parent"

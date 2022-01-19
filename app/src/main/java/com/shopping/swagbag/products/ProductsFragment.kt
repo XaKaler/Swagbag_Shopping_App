@@ -16,7 +16,7 @@ import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
 import com.shopping.swagbag.dummy.DummyData
 
 
-class ProductsFragment : Fragment(R.layout.fragment_products) {
+class ProductsFragment : Fragment(R.layout.fragment_products), View.OnClickListener {
 
     private lateinit var viewBinding: FragmentProductsBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
@@ -36,6 +36,11 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
         setToolbar()
 
         setProducts()
+
+        // click listeners
+        with(viewBinding){
+            tvSortBy.setOnClickListener(this@ProductsFragment)
+        }
     }
 
     private fun setProducts() {
@@ -69,6 +74,14 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
                 findNavController().navigate(R.id.action_productsFragment_to_shoppingBegWithoutProductFragment)
             }
 
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.tvSortBy->{
+                findNavController().navigate(R.id.action_productsFragment_to_filterFragment)
+            }
         }
     }
 }

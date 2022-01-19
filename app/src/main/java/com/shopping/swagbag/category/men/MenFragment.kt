@@ -2,13 +2,16 @@ package com.shopping.swagbag.category.men
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.shopping.swagbag.NavigationMenuAdapter
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentMenBinding
+import com.shopping.swagbag.databinding.NavigationDrawerBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
@@ -33,6 +36,8 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
     }
 
     private fun initViews() {
+
+       // setUpNavigation()
 
         val data: ArrayList<DummyModel>? = DummyData().getDummyData()
 
@@ -71,6 +76,28 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
 
         }
     }
+/*
+    private fun setUpNavigation() {
+        with(navigationBinding){
+            imgHome.setOnClickListener{}
+            imgCancel.setOnClickListener{
+              //  viewBinding.drawerLayout.closeDrawer(GravityCompat.END)
+            }
+
+            // set master category
+            rvCategory.apply{
+                layoutManager = LinearLayoutManager(context)
+                adapter = DummyData().getDummyCategory()?.let { NavigationMenuAdapter(context, it) }
+            }
+
+            // set category item
+            rvCategoryItems.apply{
+                layoutManager = LinearLayoutManager(context)
+                adapter = DummyData().getDummyData()?.let { NavigationMenuAdapter(context, it) }
+            }
+
+        }
+    }*/
 
     private fun setSecondLastCard(data: ArrayList<DummyModel>) {
         with(viewBinding) {
@@ -133,7 +160,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
 
             // click listeners
             imgBack.setOnClickListener {
-                findNavController().popBackStack()
+               findNavController().popBackStack()
             }
 
             imgSearch.setOnClickListener {
@@ -141,7 +168,11 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
             }
 
             imgWishlist.setOnClickListener {
-                findNavController().navigate(R.id.action_menFragment_to_wishlistWithProductFragment)
+               findNavController().navigate(R.id.action_menFragment_to_wishlistWithProductFragment)
+               /* if (!viewBinding.drawerLayout.isDrawerOpen(GravityCompat.END))
+                    viewBinding.drawerLayout.openDrawer(GravityCompat.END)
+                else
+                    viewBinding.drawerLayout.closeDrawer(GravityCompat.START)*/
             }
 
             imgCart.setOnClickListener {

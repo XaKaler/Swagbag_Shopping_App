@@ -31,7 +31,7 @@ class DropDownCategoryAdapter(
             with(viewBinding) {
 
                 if(position == dataSize-1){
-                    view.visibility = View.GONE
+                    //view.visibility = View.GONE
                 }
 
                 tvCatName.text = singleData.name
@@ -54,15 +54,15 @@ class DropDownCategoryAdapter(
             for (i in 0..data.size) {
                 if (position == i && map[position] == false) {
                     map[position] = true
-                    view.visibility = View.GONE
+                   // view.visibility = View.GONE
                     imgCatArrow.rotation = max(180f, 180f)
-                    subCatCard.visibility = View.VISIBLE
+                    rvCatSubMenu.visibility = View.VISIBLE
                 }
                 else if(position == i && map[position]  == true){
                     map[position] = false
-                    view.visibility = View.VISIBLE
+                   // view.visibility = View.VISIBLE
                     imgCatArrow.rotation = max(0f, 0f)
-                    subCatCard.visibility = View.GONE
+                    rvCatSubMenu.visibility = View.GONE
                 }
             }
         }

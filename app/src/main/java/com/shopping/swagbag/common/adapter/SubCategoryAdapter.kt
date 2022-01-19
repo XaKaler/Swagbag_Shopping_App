@@ -28,7 +28,7 @@ class SubCategoryAdapter(
             with(viewBinding){
                 val dataSize: Int = data.size
                 if(position == dataSize-1){
-                    view.visibility = View.GONE
+                    //view.visibility = View.GONE
                 }
                 // set text
                 tvCatName.text = singleData.name

@@ -25,8 +25,6 @@ class ProductImageSliderAdapter(private val context: Context, private val data: 
                 .with(context)
                 .load(singleData.mainImage)
                 .centerCrop()
-                .error(R.drawable.ic_launcher_foreground)
-                .placeholder(R.drawable.ic_swagbug_logo)
                 .into(viewBinding.imgSlider)
             }
         }

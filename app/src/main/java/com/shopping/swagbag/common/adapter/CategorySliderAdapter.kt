@@ -38,7 +38,6 @@ class CategorySliderAdapter(
                     Glide
                         .with(context)
                         .load(imageUrl)
-                        .placeholder(R.drawable.ic_swagbug_logo)
                         .circleCrop()
                         .into(rvCategorySliderImg)
 

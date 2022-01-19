@@ -1,5 +1,5 @@
 package com.shopping.swagbag.service
-
+/*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -15,4 +15,4 @@ class RetrofitSingleton {
 
         fun getRetroApi(): ApiService = getBaseUrl().create(ApiService::class.java)
     }
-}
+}*/

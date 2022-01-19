@@ -8,6 +8,8 @@ class DummyData {
     var data = ArrayList<DummyModel>()
     private val imageData = ArrayList<SingleProductImageModel>()
     private val userAddress = ArrayList<UserAddress>()
+    private val productFilter = ArrayList<ProductFilter>()
+    private val categorySideNavigationDataData = ArrayList<CategorySideNavigationData>()
     private val slider = ArrayList<DummySlider>()
     private val child = ArrayList<DummyChild>()
 
@@ -282,6 +284,26 @@ class DummyData {
         )
 
         return userAddress
+    }
+
+    fun getCategorySideNavigationData(): List<CategorySideNavigationData>{
+        categorySideNavigationDataData.add(CategorySideNavigationData("Clothing"))
+        categorySideNavigationDataData.add(CategorySideNavigationData("Shoes"))
+        categorySideNavigationDataData.add(CategorySideNavigationData("Beg"))
+        categorySideNavigationDataData.add(CategorySideNavigationData("Accessories"))
+        categorySideNavigationDataData.add(CategorySideNavigationData("Jewellery"))
+
+        return categorySideNavigationDataData
+    }
+
+    fun getProductFilter(): List<ProductFilter>{
+        productFilter.add(ProductFilter("Size"))
+        productFilter.add(ProductFilter("Color"))
+        productFilter.add(ProductFilter("Brand"))
+        productFilter.add(ProductFilter("Category"))
+        productFilter.add(ProductFilter("Price Range"))
+
+        return productFilter
     }
 
     fun getWishListWithItemCategory(): List<UserAddress>{

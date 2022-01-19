@@ -25,6 +25,7 @@ class WishlistWithoutProductFragment : Fragment(R.layout.fragment_wishtlist_with
         initViews()
 
 
+
     }
 
     private fun initViews() {

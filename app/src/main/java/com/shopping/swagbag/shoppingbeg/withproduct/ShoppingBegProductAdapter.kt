@@ -24,8 +24,6 @@ class ShoppingBegProductAdapter(
                 // set imgae
                 Glide.with(context)
                     .load(singleData.image)
-                    .error(R.drawable.ic_launcher_foreground)
-                    .placeholder(R.drawable.ic_swagbug_logo)
                     .into(productImage)
 
                 // set text

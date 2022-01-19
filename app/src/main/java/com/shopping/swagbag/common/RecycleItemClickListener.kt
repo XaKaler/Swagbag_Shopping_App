@@ -8,5 +8,9 @@ interface HomeCategoryRecycleItemClickListener {
     fun onHomeCategorySingleItemClickListener(position: Int)
 }
 
+interface RecycleItemClick{
+    fun onItemClick(name: String, position: Int)
+}
+
 
 
