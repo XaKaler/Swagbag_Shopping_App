@@ -1,11 +1,14 @@
 package com.shopping.swagbag.category.home
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
@@ -24,6 +27,22 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
 
     private lateinit var viewBinding: FragmentHomeCategoryBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
+    private lateinit var mainActivity: MainActivity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        mainActivity = context as MainActivity
+
+        if(mainActivity !is MainActivity) {
+            Log.e("TAG", "onAttach: is instance of main actvity", )
+        }
+        else{
+            Log.e("TAG", "onAttach:not is instance of main actvity", )
+        }
+
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,6 +51,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         toolbarBinding = viewBinding.include
 
         initViews()
+        mainActivity.showToolbar()
     }
 
     private fun initViews() {

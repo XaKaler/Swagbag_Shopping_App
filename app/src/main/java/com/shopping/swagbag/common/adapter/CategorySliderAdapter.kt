@@ -61,6 +61,11 @@ class CategorySliderAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(data[position], itemClick = itemClick, position)
+
+        if(position == 0){
+            val padding: Int = context.resources.getDimensionPixelOffset(R.dimen.screen_padding_15)
+            holder.itemView.setPadding(padding, 0,0,0)
+        }
     }
 
     override fun getItemCount() = data.size

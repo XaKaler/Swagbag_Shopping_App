@@ -367,8 +367,11 @@ class MainActivity : AppCompatActivity(){
             isToolbarVisible = true
             toolbarBinding.mainToolbar.visibility = View.VISIBLE
         }*/
+        if (this::viewBinding.isInitialized) {
+            viewBinding.toolbar.root.visibility = View.VISIBLE
+        } else {
 
-        toolbarBinding.mainToolbar.visibility = View.VISIBLE
+        }
     }
 
     fun hideToolbar() {

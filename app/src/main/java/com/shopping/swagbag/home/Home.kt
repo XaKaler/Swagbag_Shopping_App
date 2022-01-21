@@ -56,7 +56,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
 
         initViews()
 
-        //mainActivity.showToolbar()
+        mainActivity.showToolbar()
 
     }
 

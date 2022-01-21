@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:text="XL"
         android:textAllCaps="true"
-        style="@style/roboto_medium_14_davys_grey"
+
+        style="@style/roboto_normal_14_davys_grey"
         app:layout_constraintBottom_toBottomOf="@+id/sizeOutline"
         app:layout_constraintEnd_toEndOf="@+id/sizeOutline"
         app:layout_constraintStart_toStartOf="@+id/sizeOutline"

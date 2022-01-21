@@ -3,13 +3,10 @@ package com.shopping.swagbag.wishlist.withproduct
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
-import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.databinding.SingleCategoryOfWishlistWithItemsBinding
-import com.shopping.swagbag.databinding.SingleSliderProductsBinding
-import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.dummy.UserAddress
 
 class WishlistWithProductSliderAdapter(
@@ -18,31 +15,34 @@ class WishlistWithProductSliderAdapter(
 ) :
     RecyclerView.Adapter<WishlistWithProductSliderAdapter.MyViewHolder>() {
 
+    var selectedPosition = -1
+
     inner class MyViewHolder(private val viewBinding: SingleCategoryOfWishlistWithItemsBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: UserAddress, position: Int){
-                with(viewBinding){
-                    if(singleData.address == "All"){
-                        categoryName.setTextColor(context.resources.getColor(R.color.red_light))
-                        categoryName.setBackgroundResource(R.drawable.red_rec_outline_15)
-                    }
+        fun bind(singleData: UserAddress, position: Int) {
+            with(viewBinding) {
+                categoryName.text = singleData.address
 
-                    categoryName.text = singleData.address
-
-                    categoryName.setOnClickListener{
-                        for(i in 0..data.size){
-                            if(i!=position){
-                                categoryName.setTextColor(context.resources.getColor(R.color.sonic_silver))
-                                categoryName.setBackgroundResource(R.drawable.rec_outline_15)
-                            }
-                            else{
-                                categoryName.setTextColor(context.resources.getColor(R.color.red_light))
-                                categoryName.setBackgroundResource(R.drawable.red_rec_outline_15)
-                            }
-                        }
-                    }
+                if (selectedPosition == position) {
+                    categoryName.setBackgroundResource(R.drawable.rec_outline_15_black)
+                    categoryName.setTextColor(ContextCompat.getColor(context, R.color.black))
+                } else {
+                    categoryName.setBackgroundResource(R.drawable.rec_outline_15)
+                    categoryName.setTextColor(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.davys_grey
+                        )
+                    )
                 }
+
+                itemView.setOnClickListener {
+                    selectedPosition = position
+                    notifyDataSetChanged()
+                }
+
+            }
             }
 
     }

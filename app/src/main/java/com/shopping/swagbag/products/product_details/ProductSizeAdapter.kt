@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,17 +32,24 @@ class ProductSizeAdapter(
         @SuppressLint("NotifyDataSetChanged")
         fun bind(singleData: ProductFilter, position: Int){
             with(viewBinding){
+                // set size
+                sizeType.text = singleData.filterName
+
                 if(position == 0){
                     sizeOutline.setImageResource(R.drawable.circle_outline_black)
                     sizeType.setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
+
+                // select when user click
                 if(selectedPosition == position){
                    sizeOutline.setImageResource(R.drawable.circle_outline_black)
                     sizeType.setTextColor(ContextCompat.getColor(context, R.color.black))
+                    sizeType.setTypeface(null, Typeface.BOLD)
                 }
                 else{
                     sizeOutline.setImageResource(R.drawable.circle_outline)
                     sizeType.setTextColor(ContextCompat.getColor(context, R.color.davys_grey))
+                    sizeType.setTypeface(null, Typeface.NORMAL)
                 }
 
                 singleSize.setOnClickListener{
