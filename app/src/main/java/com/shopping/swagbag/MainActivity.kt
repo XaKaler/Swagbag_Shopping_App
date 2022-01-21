@@ -25,6 +25,7 @@ import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.common.RecycleItemClick
+import com.shopping.swagbag.common.adapter.DropDownCategoryAdapter
 import com.shopping.swagbag.databinding.MainToolbarBinding
 import com.shopping.swagbag.databinding.NavigationDrawerBinding
 
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity(){
     private lateinit var viewBinding: ActivityMainBinding
     private lateinit var toolbarBinding: MainToolbarBinding
     private lateinit var navigationBinding: NavigationDrawerBinding
+    private var isToolbarVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,11 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun initViews() {
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+        val navController = navHostFragment.navController
+        navController.navigate(R.id.action_global_home2)
 
         with(viewBinding){
             // initialize variable
@@ -68,6 +75,7 @@ class MainActivity : AppCompatActivity(){
             }
 
             fragmentSearch.setOnClickListener{
+                hideToolbar()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
@@ -75,18 +83,28 @@ class MainActivity : AppCompatActivity(){
             }
 
             fragmentNotificaiton.setOnClickListener{
+                hideToolbar()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_global_notificationFragment)
             }
 
-
-            fragmentNotificaiton.setOnClickListener{
+            fragmentWishtlistWithoutProduct.setOnClickListener{
+                hideToolbar()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_notificationFragment)
+                navController.navigate(R.id.action_global_wishlistWithoutProductFragment)
+            }
+
+
+            fragmentShoppingBegWithProduct.setOnClickListener{
+                hideToolbar()
+                val navHostFragment =
+                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.action_global_shoppingBegWithProductFragment)
             }
 
 
@@ -96,9 +114,29 @@ class MainActivity : AppCompatActivity(){
     private fun setUpNavigation() {
         with(navigationBinding){
             // add navigation menu
+
+            val navigationMenu: List<NavigationMenu> = OnNavigationMenu().getNavigationMenu()
+             var isCategoryShow = false
+
             rvnavMenu.apply{
                 layoutManager = LinearLayoutManager(context)
-                adapter = NavigationMenuAdapter(context, OnNavigationMenu().getNavigationMenu())
+                adapter = NavigationMenuAdapter(context, navigationMenu, object:
+                    RecycleItemClick{
+                    override fun onItemClick(name: String, position: Int) {}
+
+                    override fun onItemClickWithView(position: Int, view: View) {
+
+                        val navHostFragment =
+                            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                        val navController = navHostFragment.navController
+
+                        when(navigationMenu[position].menu){
+                            "Home" -> {
+                                navController.navigate(R.id.action_global_home2)
+                            }
+                        }
+                    }
+                })
 
             }
         }
@@ -320,15 +358,26 @@ class MainActivity : AppCompatActivity(){
     }*/
 
     fun showToolbar() {
-        Log.e("TAG", "showToolbar: ")
-       // setSupportActionBar(viewBinding.toolbar)
-        supportActionBar?.show()
-        //viewBinding.toolbar.isVisible = true
+        /*var toolbarView = viewBinding.toolbar.root
+        if(toolbarView) {
+            isToolbarVisible = false
+            toolbarBinding.mainToolbar.visibility = View.GONE
+        }
+        else {
+            isToolbarVisible = true
+            toolbarBinding.mainToolbar.visibility = View.VISIBLE
+        }*/
+
+        toolbarBinding.mainToolbar.visibility = View.VISIBLE
     }
 
-
     fun hideToolbar() {
-        supportActionBar?.hide()
+        //supportActionBar?.hide()
+        viewBinding.toolbar.root.visibility = View.GONE
+    }
+
+    fun closeDrawer(){
+        viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
     }
 
 

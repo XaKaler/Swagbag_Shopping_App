@@ -6,29 +6,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.databinding.SingleFilterSizeBinding
 import com.shopping.swagbag.dummy.DummyModel
+import com.shopping.swagbag.dummy.ProductFilter
 
 
 class FilterSizeAdapter(
     private val context: Context,
-    private val data: List<DummyModel>
+    private val data: List<ProductFilter>
 ) :
     RecyclerView.Adapter<FilterSizeAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(private val viewBinding: SingleFilterSizeBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: DummyModel){
+            fun bind(singleData: ProductFilter){
                 with(viewBinding){
-                    //sizeType.text = singleData.filterName
+                    sizeType.text = singleData.filterName
                 }
             }
 
-    }
-
-    private fun setButtonBackground(position: Int) {
-        for(i in data.indices){
-
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

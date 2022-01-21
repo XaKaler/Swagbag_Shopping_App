@@ -24,7 +24,8 @@ import com.shopping.swagbag.home.HomeDirections
 
 class NavigationMenuAdapter(
     private val context: Context,
-    private val data: List<NavigationMenu>
+    private val data: List<NavigationMenu>,
+    private val itemClick: RecycleItemClick
 ) :
     RecyclerView.Adapter<NavigationMenuAdapter.MyViewHolder>() {
 
@@ -33,12 +34,13 @@ class NavigationMenuAdapter(
 
         private var isCategoryShow = false
 
-        fun bind(singleData: NavigationMenu) {
+        fun bind(singleData: NavigationMenu, position: Int) {
             with(viewBinding) {
                 navIcon.setImageResource(singleData.icon)
                 tvNameMenu.text = singleData.menu
 
                 itemView.setOnClickListener {
+                   // itemClick.onItemClickWithView(position, viewBinding.masterCategory)
                     handleNavigationMenuClick(singleData.menu)
                 }
             }
@@ -48,16 +50,14 @@ class NavigationMenuAdapter(
 
             val activity = context as MainActivity
 
-            when(menu){
-                "Category" -> {
-                    val navHostFragment =
-                        activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                    val navController = navHostFragment.navController
-                    navController.navigate(R.id.action_home2_to_categoryFragment)
-/*
-                    val action = HomeDirections.actionHome2ToCategoryFragment()
-                    activity.findNavController(R.id.singleNavMenu).navigate(action)*/
+            val navHostFragment =
+                activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+            val navController = navHostFragment.navController
 
+            when(menu){
+                "Home" -> {
+                    activity.closeDrawer()
+                    navController.navigate(R.id.action_global_home2)
                 }
                 "Master Categories" -> {
                     if(isCategoryShow){
@@ -76,7 +76,73 @@ class NavigationMenuAdapter(
                         viewBinding.masterCategory.visibility = View.VISIBLE
                     }
                 }
+                "Category" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_categoryFragment)
+                }
+                "Orders" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_orderWithoutItemsFragment)
+                }
+                "Wishlist" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_wishlistWithoutProductFragment)
+                }
+                "Address" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_viewUserDetailsFragment)
+                }
+                "Coupons" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_couponsFragment)
+                }
+                "Profile" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_signInFragment)
+                }
+                "Help Center" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_helpCenterWithoutOrder)
+                }
+                "FAQs" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_FAQsFragment)
+                }
+                "About Us" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_aboutUs)
+                }
+                "Contact Us" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_contactUsFragment)
+                }
+                "Terms Of Use" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_termsOfUsesFragment)
+                }
+                "Privacy Policy" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_privacyPolicyFragment)
+                }
+                "Log Out" -> {
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    navController.navigate(R.id.action_global_home2)
+                }
             }
+
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -90,8 +156,7 @@ class NavigationMenuAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(data[position])
-
+        holder.bind(data[position], position)
     }
 
     override fun getItemCount() = data.size

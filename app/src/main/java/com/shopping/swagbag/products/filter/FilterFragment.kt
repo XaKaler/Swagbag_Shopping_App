@@ -7,10 +7,16 @@ import android.view.View
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClick
 import com.shopping.swagbag.databinding.FragmentFilterBinding
 import com.shopping.swagbag.dummy.DummyData
+import com.shopping.swagbag.products.filter.filter_brand.FilterBrandAdapter
+import com.shopping.swagbag.products.filter.filter_brand.FilterBrandFragment
+import com.shopping.swagbag.products.filter.filter_category.FilterCategoryFragment
+import com.shopping.swagbag.products.filter.filter_color.FilterColorFragment
+import com.shopping.swagbag.products.filter.filter_price.FilterPriceFragment
 import com.shopping.swagbag.products.filter.filter_size.FilterSizeFragment
 
 
@@ -41,7 +47,6 @@ class FilterFragment : Fragment(R.layout.fragment_filter), RecycleItemClick {
     }
 
     private fun setFirstFilter() {
-        val activity: Activity = context as Activity
 
         val transaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         transaction?.add(R.id.filterFrameLayout, FilterSizeFragment())
@@ -61,12 +66,30 @@ class FilterFragment : Fragment(R.layout.fragment_filter), RecycleItemClick {
 
     override fun onItemClick(name: String, position: Int) {
         when(name){
-            "Size" -> {}
-            "Color" -> {}
-            "Brand" -> {}
-            "Category" -> {}
-            "Price Range" -> {}
+            "Size" -> {
+                val transaction: FragmentTransaction? = fragmentManager?.beginTransaction()
+                transaction?.replace(R.id.filterFrameLayout, FilterSizeFragment())
+                transaction?.commit()}
+            "Color" -> {
+                val transaction: FragmentTransaction? = fragmentManager?.beginTransaction()
+                transaction?.replace(R.id.filterFrameLayout, FilterColorFragment())
+                transaction?.commit()}
+            "Brand" -> {
+                val transaction: FragmentTransaction? = fragmentManager?.beginTransaction()
+                transaction?.replace(R.id.filterFrameLayout, FilterBrandFragment())
+                transaction?.commit()}
+            "Category" -> {
+                val transaction: FragmentTransaction? = fragmentManager?.beginTransaction()
+                transaction?.replace(R.id.filterFrameLayout, FilterCategoryFragment())
+                transaction?.commit()}
+            "Price Range" -> {
+                val transaction: FragmentTransaction? = fragmentManager?.beginTransaction()
+                transaction?.replace(R.id.filterFrameLayout, FilterPriceFragment())
+                transaction?.commit()}
         }
+    }
+
+    override fun onItemClickWithView(position: Int, view: View) {
     }
 
 }

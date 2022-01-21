@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.SingleCategoryDropDownBinding
 import com.shopping.swagbag.dummy.DummyCategoryModel
 import com.shopping.swagbag.dummy.DummyData
@@ -23,7 +25,6 @@ class DropDownCategoryAdapter(
     inner class MyViewHolder(private val viewBinding: SingleCategoryDropDownBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-
         private val dataSize: Int = data.size
 
         fun bind(singleData: DummyModel, position: Int) {
@@ -35,6 +36,12 @@ class DropDownCategoryAdapter(
                 }
 
                 tvCatName.text = singleData.name
+                Glide
+                    .with(context)
+                    .load(singleData.image)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .placeholder(R.drawable.logo)
+                    .into(catIcon)
 
                 // click listener
                 singleCategory.setOnClickListener {
@@ -85,4 +92,5 @@ class DropDownCategoryAdapter(
     }
 
     override fun getItemCount() = data.size
+
 }

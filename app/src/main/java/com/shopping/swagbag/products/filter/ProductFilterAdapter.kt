@@ -1,10 +1,13 @@
 package com.shopping.swagbag.products.filter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClick
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.databinding.SingleFilterBinding
@@ -19,6 +22,8 @@ class ProductFilterAdapter(
 ) :
     RecyclerView.Adapter<ProductFilterAdapter.MyViewHolder>() {
 
+    var selectedPosition =-1
+
     inner class MyViewHolder(private val viewBinding: SingleFilterBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
@@ -26,19 +31,28 @@ class ProductFilterAdapter(
                 with(viewBinding){
                     filterName.text = singleData.filterName
 
-                    filterName.setOnClickListener{
-                        setButtonBackground(position)
-                        itemClick.onItemClick(singleData.filterName, position)
+                    // set first filter background
+                    if(singleData.filterName == "Size")
+                        singleFilter.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+
+                    // set backgrond color when user click
+                    if(selectedPosition == position){
+                        singleFilter.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
                     }
+                    else{
+                        singleFilter.setBackgroundColor(ContextCompat.getColor(context, R.color.cultured))
+                    }
+
+                    singleFilter.setOnClickListener{
+                        itemClick.onItemClick(singleData.filterName, position)
+                        selectedPosition = position
+                        notifyDataSetChanged()
+                    }
+                    Log.e("TAG", "bind: ${singleData.filterName}", )
+
                 }
             }
 
-    }
-
-    private fun setButtonBackground(position: Int) {
-        for(i in data.indices){
-
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

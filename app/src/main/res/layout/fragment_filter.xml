@@ -37,6 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView53" />
 
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat2"
         android:layout_width="match_parent"
@@ -45,25 +46,26 @@
         android:weightSum="4"
         app:layout_constraintBottom_toTopOf="@+id/card"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view16">
+        app:layout_constraintTop_toBottomOf="@+id/view16"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFilterList"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:background="@color/cultured"
             tools:listitem="@layout/single_filter" />
 
         <FrameLayout
             android:id="@+id/filterFrameLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="3" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"

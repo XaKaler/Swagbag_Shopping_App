@@ -31,7 +31,7 @@ class FilterCategoryFragment : Fragment(R.layout.fragment_filter_category) {
         with(viewBinding){
             rvFilterCategory.apply{
                 layoutManager = LinearLayoutManager(context)
-                adapter = DummyData().getDummyData()?.let { FilterSizeAdapter(context, it) }
+                adapter = DummyData().getDummyData()?.let { FilterCategoryAdapter(context, it) }
             }
         }
     }

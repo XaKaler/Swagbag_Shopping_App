@@ -1,5 +1,6 @@
 package com.shopping.swagbag.home
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -34,7 +35,16 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
         mainActivity = context as MainActivity
+
+        if(mainActivity !is MainActivity) {
+            Log.e("TAG", "onAttach: is instance of main actvity", )
+        }
+        else{
+            Log.e("TAG", "onAttach:not is instance of main actvity", )
+        }
+
 
     }
 
@@ -46,7 +56,8 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
 
         initViews()
 
-        mainActivity.showToolbar()
+        //mainActivity.showToolbar()
+
     }
 
     private fun initViews() {
@@ -95,8 +106,6 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
             val categoryData: ArrayList<DummyModel>? = DummyData().getDummyCategory()
 
             val dataTwo: ArrayList<DummyModel>? = DummyData().getTwoDummyData()
-
-
 
             val dataSlider: ArrayList<DummySlider> = DummyData().getDummySlider( )
 
@@ -271,31 +280,25 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
     override fun onHomeCategorySingleItemClickListener(position: Int) {
         when(position){
             0 -> {
-                mainActivity.hideToolbar()
                 findNavController().navigate(R.id.action_home2_to_menFragment)
             }
 
             1->{
-                mainActivity.hideToolbar()
                 findNavController().navigate(R.id.action_home2_to_womenFragment)
             }
 
             2->{
-                mainActivity.hideToolbar()
                 findNavController().navigate(R.id.action_home2_to_kidsFragment)
             }
 
             3->{
-                mainActivity.hideToolbar()
                 findNavController().navigate(R.id.action_home2_to_petsFragment)
             }
             4->{
-                mainActivity.hideToolbar()
                 findNavController().navigate(R.id.action_home2_to_homeFragment)
             }
 
             5->{
-                mainActivity.hideToolbar()
                 findNavController().navigate(R.id.action_home2_to_travelFragment)
             }
         }

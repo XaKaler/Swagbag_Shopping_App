@@ -3,26 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/singleFilter"
     android:layout_height="wrap_content">
 
 
     <TextView
         android:id="@+id/filterName"
         style="@style/roboto_normal_18_dim_grey"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/txt_14"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:paddingHorizontal="@dimen/screen_horizontal_padding"
         android:paddingVertical="@dimen/dimen_15"
         android:text="Tops"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view"
         style="@style/line_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCatName" />
+        android:layout_height="@dimen/vertical_line_width"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

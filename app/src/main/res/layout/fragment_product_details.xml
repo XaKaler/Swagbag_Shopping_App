@@ -367,7 +367,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView67" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView2"
+                        android:id="@+id/rvSize"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_15"
@@ -387,7 +387,7 @@
                         android:text="@string/Rs"
                         android:textColor="@color/spanish_grey"
                         app:layout_constraintStart_toEndOf="@+id/newRate1"
-                        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+                        app:layout_constraintTop_toBottomOf="@+id/rvSize" />
 
                     <TextView
                         android:id="@+id/oldRate1"
@@ -407,7 +407,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/Rs"
                         app:layout_constraintBottom_toBottomOf="@+id/oldRate1"
-                        app:layout_constraintStart_toStartOf="@+id/recyclerView2"
+                        app:layout_constraintStart_toStartOf="@+id/rvSize"
                         app:layout_constraintTop_toTopOf="@+id/oldRate1" />
 
                     <TextView
@@ -462,6 +462,7 @@
                 android:id="@+id/materialCardView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
                 android:layout_marginTop="@dimen/space_between_views"
                 android:background="@drawable/rec_white_5"
@@ -1381,7 +1382,7 @@
                 android:layout_marginTop="@dimen/dimen_10"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView89"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView89"
                 tools:itemCount="1"
                 tools:listitem="@layout/single_card_10" />

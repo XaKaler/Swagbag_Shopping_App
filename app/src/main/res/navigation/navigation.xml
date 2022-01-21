@@ -15,47 +15,8 @@
             android:id="@+id/action_home2_to_searchFragment"
             app:destination="@id/searchFragment" />-->
         <action
-            android:id="@+id/action_home2_to_wishlistWithoutProductFragment"
-            app:destination="@id/wishlistWithoutProductFragment" />
-        <action
-            android:id="@+id/action_home2_to_shoppingBegWithProductFragment"
-            app:destination="@id/shoppingBegWithProductFragment" />
-        <action
-            android:id="@+id/action_home2_to_categoryFragment"
-            app:destination="@id/categoryFragment" />
-        <action
-            android:id="@+id/action_home2_to_orderWithoutItemsFragment"
-            app:destination="@id/orderWithoutItemsFragment" />
-        <action
             android:id="@+id/action_home2_to_savedCardsWithCards"
             app:destination="@id/savedCardsWithCards" />
-        <action
-            android:id="@+id/action_home2_to_viewUserDetailsFragment"
-            app:destination="@id/viewUserDetailsFragment" />
-        <action
-            android:id="@+id/action_home2_to_couponsFragment"
-            app:destination="@id/couponsFragment" />
-        <action
-            android:id="@+id/action_home2_to_signInFragment"
-            app:destination="@id/signInFragment" />
-        <action
-            android:id="@+id/action_home2_to_helpCenterWithoutOrder"
-            app:destination="@id/helpCenterWithoutOrder" />
-        <action
-            android:id="@+id/action_home2_to_FAQsFragment"
-            app:destination="@id/FAQsFragment" />
-        <action
-            android:id="@+id/action_home2_to_aboutUs"
-            app:destination="@id/aboutUs" />
-        <action
-            android:id="@+id/action_home2_to_contactUsFragment"
-            app:destination="@id/contactUsFragment" />
-        <action
-            android:id="@+id/action_home2_to_termsOfUsesFragment"
-            app:destination="@id/termsOfUsesFragment" />
-        <action
-            android:id="@+id/action_home2_to_privacyPolicyFragment"
-            app:destination="@id/privacyPolicyFragment" />
         <action
             android:id="@+id/action_home2_to_menFragment"
             app:destination="@id/menFragment" />
@@ -276,6 +237,7 @@
             android:id="@+id/action_addCardFragment_to_savedCardsWithCards"
             app:destination="@id/savedCardsWithCards" />
     </fragment>
+
     <fragment
         android:id="@+id/shoppingBegWithProductFragment"
         android:name="com.shopping.swagbag.shoppingbeg.withproduct.ShoppingBegWithProductFragment"
@@ -659,6 +621,36 @@
     <action android:id="@+id/action_global_notificationFragment"
         app:destination="@id/notificationFragment"/>
 
+    <action android:id="@+id/action_global_home2"
+        app:destination="@id/home2" />
+
+    <action android:id="@+id/action_global_orderWithoutItemsFragment"
+        app:destination="@id/orderWithoutItemsFragment" />
+
+    <action android:id="@+id/action_global_categoryFragment"
+        app:destination="@id/categoryFragment"/>
+
+    <action android:id="@+id/action_global_wishlistWithoutProductFragment" app:destination="@id/wishlistWithoutProductFragment" />
+
+    <action android:id="@+id/action_global_viewUserDetailsFragment" app:destination="@id/viewUserDetailsFragment" />
+
+    <action android:id="@+id/action_global_couponsFragment" app:destination="@id/couponsFragment" />
+
+    <action android:id="@+id/action_global_signInFragment" app:destination="@id/signInFragment" />
+
+    <action android:id="@+id/action_global_helpCenterWithoutOrder" app:destination="@id/helpCenterWithoutOrder" />
+
+    <action android:id="@+id/action_global_FAQsFragment" app:destination="@id/FAQsFragment" />
+
+    <action android:id="@+id/action_global_aboutUs" app:destination="@id/aboutUs" />
+
+    <action android:id="@+id/action_global_contactUsFragment" app:destination="@id/contactUsFragment" />
+
+    <action android:id="@+id/action_global_termsOfUsesFragment" app:destination="@id/termsOfUsesFragment" />
+
+    <action android:id="@+id/action_global_privacyPolicyFragment" app:destination="@id/privacyPolicyFragment" />
+
+    <action android:id="@+id/action_global_shoppingBegWithProductFragment" app:destination="@id/shoppingBegWithProductFragment"/>
 
 
 </navigation>

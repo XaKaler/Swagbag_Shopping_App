@@ -22,6 +22,8 @@ class FeatureProductAdapter(private val context: Context, private val data: List
                 .with(context)
                 //.load(singleData.thumbnailUrl)
                 .load(singleData.image)
+                .error(R.drawable.ic_launcher_foreground)
+                .placeholder(R.drawable.logo)
                 .into(viewBinding.imgFeatureBrand)
 
             viewBinding.tvFeatureProductOfferName.text = singleData.details.toString()

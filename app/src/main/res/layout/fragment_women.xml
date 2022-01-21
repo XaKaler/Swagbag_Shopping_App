@@ -13,6 +13,7 @@
 
         <include
             android:id="@+id/include"
+            android:visibility="gone"
             layout="@layout/toolbar_with_three_menus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -148,7 +149,6 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimen_15"
             android:layout_marginTop="@dimen/dimen_10"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"

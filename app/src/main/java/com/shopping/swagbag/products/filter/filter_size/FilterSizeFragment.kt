@@ -31,7 +31,7 @@ class FilterSizeFragment : Fragment(R.layout.fragment_filter_size) {
         with(viewBinding){
             rvSize.apply{
                 layoutManager = LinearLayoutManager(context)
-                adapter = DummyData().getDummyData()?.let { FilterSizeAdapter(context, it) }
+                adapter = DummyData().getProductSize().let { FilterSizeAdapter(context, it) }
             }
         }
     }

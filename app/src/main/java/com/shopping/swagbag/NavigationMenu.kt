@@ -15,7 +15,7 @@ class OnNavigationMenu{
         navigationMenu.add(NavigationMenu(R.drawable.ic_heart, "Wishlist"))
         navigationMenu.add(NavigationMenu(R.drawable.ic_location, "Address"))
         navigationMenu.add(NavigationMenu(R.drawable.ic_coupons, "Coupons"))
-        navigationMenu.add(NavigationMenu(R.drawable.ic_person, "Profile "))
+        navigationMenu.add(NavigationMenu(R.drawable.ic_person, "Profile"))
         navigationMenu.add(NavigationMenu(R.drawable.ic_help_center, "Help Center"))
         navigationMenu.add(NavigationMenu(R.drawable.ic_question_answer, "FAQs"))
         navigationMenu.add(NavigationMenu(R.drawable.ic_info, "About Us"))

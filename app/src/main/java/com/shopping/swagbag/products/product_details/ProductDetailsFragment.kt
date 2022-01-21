@@ -1,5 +1,6 @@
 package com.shopping.swagbag.products.product_details
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -31,8 +32,12 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
 
     private fun initViews() {
         with(viewBinding){
+            oldRate.paintFlags = oldRate.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            oldRate1.paintFlags = oldRate1.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            //oldRate.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG || oldRate.paintFlags)
+
             sizeChart.setOnClickListener{
-                findNavController().navigate(R.id.action_productDetailsFragment_to_productDetailsSizeChart)
+               // findNavController().navigate(R.id.action_productDetailsFragment_to_productDetailsSizeChart)
             }
 
             viewEmiPlan.setOnClickListener{
@@ -64,6 +69,17 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
         setUserReview()
 
         setViewSimilar()
+
+        setProductSize()
+    }
+
+    private fun setProductSize() {
+        with(viewBinding){
+            rvSize.apply{
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = ProductSizeAdapter(context, DummyData().getProductSize())
+            }
+        }
     }
 
     private  fun handleClickListeners(){

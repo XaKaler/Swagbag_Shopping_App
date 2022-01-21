@@ -99,11 +99,11 @@ class DummyData {
 
        //  var data: ArrayList<DummyModel>? = null
 
-        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640088405627s1yvv.png",
+        data.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640088405627s1yvv.png",
             "Handbag",
             "boAt Bassheads 900 Wired On Ear Headphones with Mic (Carbon Black)"))
 
-        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640087496709oqdod.png",
+        data.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640087496709oqdod.png",
             "Yoga Shoes",
             "Material: Cotton Slim fit NehruMandarin collarLong sleeveegular machine washCountry of WebStorage.Origin: India"))
 /*
@@ -305,6 +305,18 @@ class DummyData {
 
         return productFilter
     }
+
+
+    fun getProductSize(): List<ProductFilter>{
+        productFilter.add(ProductFilter("S"))
+        productFilter.add(ProductFilter("M"))
+        productFilter.add(ProductFilter("L"))
+        productFilter.add(ProductFilter("XL"))
+        productFilter.add(ProductFilter("XXL"))
+
+        return productFilter
+    }
+
 
     fun getWishListWithItemCategory(): List<UserAddress>{
         userAddress.add(

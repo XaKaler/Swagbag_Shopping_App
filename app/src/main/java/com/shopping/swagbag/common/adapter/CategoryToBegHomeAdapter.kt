@@ -28,6 +28,8 @@ class CategoryToBegHomeAdapter(
                 // set image
                 Glide.with(context)
                     .load(singleData.image)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .placeholder(R.drawable.logo)
                     .into(productImage)
 
                 productName.text = singleData.name

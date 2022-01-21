@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/mainToolbar"
     android:background="@color/steel_teal"
     android:layout_height="wrap_content">
 
@@ -35,24 +36,24 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/screen_horizontal_padding"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgWishlist"
+            app:layout_constraintEnd_toStartOf="@+id/fragment_wishtlist_without_product"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_notification_bell"
             app:tint="@color/white" />
 
     <ImageView
-        android:id="@+id/imgWishlist"
+        android:id="@+id/fragment_wishtlist_without_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:tint="@color/white"
         android:padding="@dimen/screen_horizontal_padding"
-        app:layout_constraintEnd_toStartOf="@+id/imgCart"
-        app:layout_constraintTop_toTopOf="@+id/imgCart"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_shopping_beg_with_product"
+        app:layout_constraintTop_toTopOf="@+id/fragment_shopping_beg_with_product"
         app:srcCompat="@drawable/ic_heart" />
 
 
     <ImageView
-        android:id="@+id/imgCart"
+        android:id="@+id/fragment_shopping_beg_with_product"
         android:layout_width="wrap_content"
         app:tint="@color/white"
         android:layout_height="0dp"

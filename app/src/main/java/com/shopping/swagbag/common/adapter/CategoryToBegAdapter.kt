@@ -28,9 +28,11 @@ class CategoryToBegAdapter(
                 // set image
                 Glide.with(context)
                     .load(singleData.image)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .placeholder(R.drawable.logo)
                     .into(imgCategoryToBeg)
 
-                tvCategoryToBeg.text = singleData.name.toString()
+                tvCategoryToBeg.text = singleData.name
             }
         }
     }

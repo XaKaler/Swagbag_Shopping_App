@@ -16,19 +16,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/catIcon"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/screen_horizontal_padding"
-            android:paddingVertical="@dimen/screen_padding_15"
+            android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+            android:layout_marginVertical="@dimen/screen_padding_15"
+            android:layout_width="@dimen/dimen_24"
+            android:layout_height="@dimen/dimen_24"
+            android:src="@mipmap/ic_logo_main"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_outline_home_24" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:id="@+id/tvCatName"
+            android:layout_marginStart="@dimen/screen_horizontal_padding"
             style="@style/roboto_medium_14_davys_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,6 +65,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCatSubMenu"
+        android:visibility="gone"
         android:paddingHorizontal="@dimen/screen_horizontal_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

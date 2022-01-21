@@ -27,6 +27,7 @@ class ProductAdapter(
                 // set imgae
                 Glide.with(context)
                     .load(singleData.image)
+                    .fitCenter()
                     .into(imgProduct)
 
                 // set text
