@@ -4,31 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/mainToolbar"
-    android:background="@color/steel_teal"
     android:layout_height="wrap_content">
 
 
     <ImageView
-        android:padding="@dimen/screen_horizontal_padding"
         android:id="@+id/imgToggle"
+        android:layout_width="24dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:padding="@dimen/screen_padding_15"
+        android:layout_marginStart="@dimen/screen_horizontal_padding"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragment_search"
+        app:srcCompat="@mipmap/home_nav_icon_foreground" />
+
+
+    <ImageView
+        android:id="@+id/fragment_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/screen_horizontal_padding"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_notificaiton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_hameburger_big_small_big" />
-
-
-        <ImageView
-            android:id="@+id/fragment_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/screen_horizontal_padding"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fragment_notificaiton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_search"
-            app:tint="@color/white" />
+        app:srcCompat="@drawable/ic_search"
+         />
 
         <ImageView
             android:id="@+id/fragment_notificaiton"
@@ -39,7 +40,7 @@
             app:layout_constraintEnd_toStartOf="@+id/fragment_wishtlist_without_product"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_notification_bell"
-            app:tint="@color/white" />
+             />
 
     <ImageView
         android:id="@+id/fragment_wishtlist_without_product"
@@ -47,12 +48,14 @@
         android:layout_height="wrap_content"
         app:tint="@color/white"
         android:padding="@dimen/screen_horizontal_padding"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/fragment_shopping_beg_with_product"
         app:layout_constraintTop_toTopOf="@+id/fragment_shopping_beg_with_product"
         app:srcCompat="@drawable/ic_heart" />
 
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/fragment_shopping_beg_with_product"
         android:layout_width="wrap_content"
         app:tint="@color/white"
@@ -62,5 +65,18 @@
         app:layout_constraintTop_toTopOf="parent"
         android:padding="@dimen/screen_horizontal_padding"
         app:srcCompat="@drawable/ic_shopping_bag" />
+
+    <TextView
+        android:id="@+id/textView182"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        style="@style/roboto_medium_24_black"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_search"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_search"
+        app:layout_constraintStart_toEndOf="@+id/imgToggle"
+        app:layout_constraintTop_toTopOf="@+id/fragment_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

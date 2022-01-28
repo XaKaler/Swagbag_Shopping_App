@@ -22,6 +22,7 @@
             android:id="@+id/imageView65"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:visibility="gone"
             android:src="@drawable/half_circle_steel_teal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,9 +61,9 @@
 
         <ImageView
             android:id="@+id/homeImg1"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_marginTop="@dimen/space_between_views"
+            android:layout_marginTop="@dimen/space_between_view_and_subview_15"
             android:scaleType="centerCrop"
             android:src="@mipmap/navigation_header_background_foreground"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,10 +72,11 @@
 
         <ImageView
             android:id="@+id/homeImg2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:scaleType="centerCrop"
             android:layout_height="270dp"
             android:layout_marginTop="@dimen/space_between_views"
-            android:scaleType="centerCrop"
             android:src="@mipmap/navigation_header_background_foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -230,16 +232,50 @@
             app:layout_constraintTop_toBottomOf="@id/rvCategoryToBag" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBestOffer"
-            android:layout_width="match_parent"
+        <androidx.core.widget.NestedScrollView
+            android:orientation="horizontal"
+            android:id="@+id/bestOfferScrollView"
+            android:layout_width="0dp"
+            android:scrollbars="none"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/single_slider_products"
-            android:orientation="horizontal"
-            tools:itemCount="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading6" />
+            app:layout_constraintTop_toBottomOf="@id/heading6">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBestOffer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/single_slider_products" />
+
+                <TextView
+                    android:id="@+id/viewAll"
+                    style="@style/sunflower_normal_14_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/screen_horizontal_padding"
+                    android:gravity="center"
+                    android:text="+View All"
+                    android:textAlignment="center"
+                    android:textColor="@color/steel_teal"
+                    app:layout_constraintBottom_toBottomOf="@+id/rvBestOffer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/rvBestOffer"
+                    app:layout_constraintTop_toTopOf="@+id/rvBestOffer" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
         <TextView
@@ -252,7 +288,7 @@
             android:text="Promoted Brands"
             android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvBestOffer" />
+            app:layout_constraintTop_toBottomOf="@id/bestOfferScrollView" />
 
 
         <androidx.recyclerview.widget.RecyclerView

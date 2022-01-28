@@ -1,20 +1,36 @@
 package com.shopping.swagbag.profile
 
-import android.os.Build
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.FragmentProfileBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListener {
 
     private lateinit var viewBinding: FragmentProfileBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private var maleSelected: Boolean = false
+
+    private val myCalendar: Calendar = Calendar.getInstance()
+
+    private val date =
+        OnDateSetListener { _, year, month, day ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, month)
+            myCalendar.set(Calendar.DAY_OF_MONTH, day)
+
+            val myFormat = "dd/MM/yyyy"
+            val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+            viewBinding.birthday.setText(dateFormat.format(myCalendar.time))
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,6 +56,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             txtFemale.setOnClickListener {
                 maleSelected = false
                 setGender()
+            }
+
+            birthday.setOnClickListener{
+                context?.let { it1 ->
+                    DatePickerDialog(
+                        it1,
+                        date,
+                        myCalendar[Calendar.YEAR],
+                        myCalendar[Calendar.MONTH],
+                        myCalendar[Calendar.DAY_OF_MONTH]
+                    ).show()
+                }
             }
 
             btnSaveDetails.setOnClickListener(this@ProfileFragment)

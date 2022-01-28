@@ -122,7 +122,7 @@
                 android:id="@+id/imgShare"
                 android:layout_width="@dimen/dimen_12"
                 android:layout_height="@dimen/dimen_12"
-                android:src="@drawable/ic_share"
+                android:src="@drawable/ic_round_share"
                 app:layout_constraintBottom_toBottomOf="@+id/imgShareBackground"
                 app:layout_constraintEnd_toEndOf="@+id/imgShareBackground"
                 app:layout_constraintStart_toStartOf="@+id/imgShareBackground"
@@ -229,7 +229,7 @@
 
             <TextView
                 android:id="@+id/textView56"
-                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                android:textColor="@color/day_dark_liver_night_white"
                 style="@style/roboto_normal_18_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -289,6 +289,7 @@
                 style="@style/roboto_normal_14_red_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/day_red_night_orange"
                 android:layout_marginStart="@dimen/dimen_7"
                 android:text="(55% OFF)"
                 android:textAllCaps="true"
@@ -327,7 +328,7 @@
 
 
                     <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:id="@+id/textView67"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -351,6 +352,7 @@
                         android:id="@+id/sizeChart"
                         style="@style/roboto_medium_13_red_light"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_red_night_orange"
                         android:layout_height="wrap_content"
                         android:text="@string/size_chart"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -358,6 +360,7 @@
 
                     <TextView
                         android:id="@+id/textView70"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         style="@style/roboto_normal_14_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -402,7 +405,7 @@
 
                     <TextView
                         android:id="@+id/textView631"
-                        style="@style/roboto_normal_18_davys_grey"
+                         style="@style/roboto_normal_18_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/Rs"
@@ -424,6 +427,7 @@
                         android:id="@+id/textView651"
                         style="@style/roboto_normal_14_red_light"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_red_night_orange"
                         android:layout_height="wrap_content"
                         android:text="(55% OFF)"
                         android:textAllCaps="true"
@@ -433,6 +437,7 @@
 
                     <TextView
                         android:id="@+id/textView71"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         style="@style/roboto_normal_12_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -710,7 +715,7 @@
                     android:padding="@dimen/dimen_15">
 
                     <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:id="@+id/textView832"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -721,6 +726,7 @@
 
                     <TextView
                         android:id="@+id/textView842"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         style="@style/roboto_normal_12_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -819,7 +825,7 @@
                     android:padding="@dimen/dimen_15">
 
                     <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:id="@+id/textView834"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -829,6 +835,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/productInDetail"
                         style="@style/roboto_normal_12_davys_grey"
                         android:layout_width="wrap_content"
@@ -840,6 +847,7 @@
 
                     <TextView
                         android:id="@+id/material_care"
+                        android:textColor="@color/day_dark_liver_night_white"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -850,6 +858,7 @@
 
                     <TextView
                         android:id="@+id/textView844"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         style="@style/roboto_normal_12_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -864,12 +873,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_15"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:text="@string/material_care"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView844" />
 
                     <TextView
                         android:id="@+id/textView845"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         style="@style/roboto_normal_12_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -937,8 +948,9 @@
                         style="@style/roboto_medium_10_red_light"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/day_steel_teal_night_orange"
                         android:layout_marginTop="@dimen/dimen_7"
-                        android:text="Genine Product"
+                        android:text="Genuine Product"
                         app:layout_constraintEnd_toEndOf="@+id/imageView43"
                         app:layout_constraintStart_toStartOf="@+id/imageView43"
                         app:layout_constraintTop_toBottomOf="@+id/imageView43" />
@@ -948,6 +960,7 @@
                         style="@style/roboto_medium_10_red_light"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/day_steel_teal_night_orange"
                         android:layout_marginTop="@dimen/dimen_7"
                         android:text="Quality Checked"
                         app:layout_constraintEnd_toEndOf="@+id/imageView44"
@@ -978,7 +991,7 @@
 
 
                     <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:id="@+id/textView61"
                         style="@style/roboto_medium_14_sonic_silver"
                         android:layout_width="wrap_content"
@@ -991,6 +1004,7 @@
                         android:id="@+id/textView64"
                         style="@style/roboto_normal_48_davys_grey"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:text="4.1"
                         app:layout_constraintStart_toStartOf="@+id/textView61"
@@ -1007,6 +1021,7 @@
                     <TextView
                         android:id="@+id/verifiedBuyersCount"
                         style="@style/roboto_normal_12_sonic_silver"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -1017,9 +1032,10 @@
                     <TextView
                         android:id="@+id/textView69"
                         style="@style/roboto_normal_12_sonic_silver"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Verified Buyers"
+                        android:text=" Verified Buyers"
                         app:layout_constraintBottom_toBottomOf="@+id/verifiedBuyersCount"
                         app:layout_constraintStart_toEndOf="@+id/verifiedBuyersCount"
                         app:layout_constraintTop_toTopOf="@+id/verifiedBuyersCount" />
@@ -1309,7 +1325,7 @@
                         tools:listitem="@layout/single_reiview_image" />
 
                     <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:id="@+id/textView81"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -1331,7 +1347,7 @@
 
 
                     <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:id="@+id/textView8"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
@@ -1418,7 +1434,7 @@
                 android:backgroundTint="@color/day_white_Raisin_Black"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="@color/day_davys_grey_night_Philippine_Gray"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/addToBeg"
                 app:layout_constraintHorizontal_bias="0.5"

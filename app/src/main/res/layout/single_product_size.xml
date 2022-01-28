@@ -21,6 +21,7 @@
         android:id="@+id/sizeType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/day_dark_liver_night_white"
         android:text="XL"
         android:textAllCaps="true"
 

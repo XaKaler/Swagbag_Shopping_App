@@ -3,15 +3,12 @@ package com.shopping.swagbag.order.with_items
 import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
-import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.databinding.SingleOrderItemBinding
-import com.shopping.swagbag.databinding.SingleSliderProductsBinding
 import com.shopping.swagbag.dummy.DummyModel
 
 class OrderItemsAdapter(
@@ -34,10 +31,16 @@ class OrderItemsAdapter(
                     // set text
                     tvProductCompnayName.text = singleData.name.toString()
                     tvProductName.text = singleData.details
+                    val activity = context as Activity
 
-                    cancel.setOnClickListener{
-                        val activity = context as Activity
-                        activity.findNavController(R.id.cancel).navigate(R.id.action_orderWithoutItemsFragment_to_cancellationOrderFragment)
+                    cancel.setOnClickListener {
+                        activity.findNavController(R.id.cancel)
+                            .navigate(R.id.action_orderWithItemsFragment_to_cancellationOrderFragment)
+                    }
+
+                    itemView.setOnClickListener {
+                        activity.findNavController(R.id.cancel)
+                            .navigate(R.id.action_orderWithItemsFragment_to_viewItemDetailsFragment)
                     }
                 }
             }

@@ -30,7 +30,7 @@ class CategorySliderAdapter(
             fun bind(singleData: DummyModel, itemClick: HomeCategoryRecycleItemClickListener, position: Int){
                 with(viewBinding){
                     rvCategoryName.text = singleData.name
-
+/*
                     val imageUrl = singleData.image
 
                     Log.e("TAG", "bind: $imageUrl", )
@@ -39,10 +39,10 @@ class CategorySliderAdapter(
                         .with(context)
                         .load(imageUrl)
                         .circleCrop()
-                        .into(rvCategorySliderImg)
+                        .into(rvCategorySliderImg)*/
 
 
-                   rvCategorySliderImg.setOnClickListener{
+                   itemView.setOnClickListener{
                        itemClick.onHomeCategorySingleItemClickListener(position)
                    }
                 }

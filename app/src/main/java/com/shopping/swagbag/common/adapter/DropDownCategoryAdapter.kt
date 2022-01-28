@@ -9,10 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.SingleCategoryDropDownBinding
-import com.shopping.swagbag.dummy.DummyCategoryModel
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
-import java.util.ArrayList
+import java.util.*
 import kotlin.math.max
 
 class DropDownCategoryAdapter(
@@ -20,7 +19,9 @@ class DropDownCategoryAdapter(
     private val data: ArrayList<DummyModel>
 ) : RecyclerView.Adapter<DropDownCategoryAdapter.MyViewHolder>() {
 
+    var selectedPosition = -1
     val map = mutableMapOf<Int, Boolean>()
+    var subCategoryVisible = false
 
     inner class MyViewHolder(private val viewBinding: SingleCategoryDropDownBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
@@ -43,9 +44,32 @@ class DropDownCategoryAdapter(
                     .placeholder(R.drawable.logo)
                     .into(catIcon)
 
+                if (selectedPosition == position) {
+                    with(viewBinding) {
+                        rvCatSubMenu.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                DummyData().getDummyData()?.let { SubCategoryAdapter(context, it) }
+                        }
+                    }
+                    if (subCategoryVisible) {
+                        subCategoryVisible = false
+                        imgCatArrow.rotation = max(0f, 0f)
+                        rvCatSubMenu.visibility = View.GONE
+                    } else {
+                        subCategoryVisible = true
+                        imgCatArrow.rotation = max(180f, 180f)
+                        rvCatSubMenu.visibility = View.VISIBLE
+                    }
+                } else {
+                    imgCatArrow.rotation = max(0f, 0f)
+                    rvCatSubMenu.visibility = View.GONE
+                }
                 // click listener
                 singleCategory.setOnClickListener {
-                    setSubCategory(position, viewBinding)
+                    selectedPosition = position
+                    // setSubCategory(position, viewBinding)
+                    notifyDataSetChanged()
                 }
             }
         }

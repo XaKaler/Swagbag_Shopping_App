@@ -512,7 +512,14 @@
         android:id="@+id/orderWithItemsFragment"
         android:name="com.shopping.swagbag.order.with_items.OrderWithItemsFragment"
         android:label="fragment_order_with_items"
-        tools:layout="@layout/fragment_order_with_items" />
+        tools:layout="@layout/fragment_order_with_items" >
+        <action
+            android:id="@+id/action_orderWithItemsFragment_to_viewItemDetailsFragment"
+            app:destination="@id/viewItemDetailsFragment" />
+        <action
+            android:id="@+id/action_orderWithItemsFragment_to_cancellationOrderFragment"
+            app:destination="@id/cancellationOrderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/viewOrderDetails"
         android:name="com.shopping.swagbag.shipping.order.ViewOrderDetails"

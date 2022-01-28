@@ -202,6 +202,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
     private fun setBestOffer(data: ArrayList<DummyModel>) {
         with(viewBinding2) {
             rvBestOffer.apply {
+                isNestedScrollingEnabled = false
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = AllTimeSliderAdapter(context, data, this@Home)
             }

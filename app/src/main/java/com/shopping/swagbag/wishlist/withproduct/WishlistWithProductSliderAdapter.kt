@@ -1,6 +1,7 @@
 package com.shopping.swagbag.wishlist.withproduct
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -23,6 +24,8 @@ class WishlistWithProductSliderAdapter(
         fun bind(singleData: UserAddress, position: Int) {
             with(viewBinding) {
                 categoryName.text = singleData.address
+
+                Log.e("TAG", "bind: ${singleData.address}")
 
                 if (selectedPosition == position) {
                     categoryName.setBackgroundResource(R.drawable.rec_outline_15_black)

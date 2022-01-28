@@ -44,7 +44,6 @@
             android:layout_width="0dp"
             android:layout_marginEnd="@dimen/space_between_view_and_subview"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/textView184"
             app:layout_constraintEnd_toStartOf="@+id/textView184"
             app:layout_constraintStart_toStartOf="parent"

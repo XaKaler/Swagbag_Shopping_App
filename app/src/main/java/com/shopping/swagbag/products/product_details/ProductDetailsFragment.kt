@@ -84,10 +84,10 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
 
     private  fun handleClickListeners(){
         with(viewBinding){
-            imgBack.setOnClickListener(this@ProductDetailsFragment)
+            imgBackBackground.setOnClickListener(this@ProductDetailsFragment)
             wishlist.setOnClickListener(this@ProductDetailsFragment)
             addToBeg.setOnClickListener(this@ProductDetailsFragment)
-            imgBeg.setOnClickListener(this@ProductDetailsFragment)
+            imgBegBackground.setOnClickListener(this@ProductDetailsFragment)
         }
     }
 

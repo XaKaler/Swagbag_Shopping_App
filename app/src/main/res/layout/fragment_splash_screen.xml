@@ -12,7 +12,7 @@
         android:id="@+id/imageView5"
         android:layout_width="@dimen/splash_app_logo_width"
         android:layout_height="@dimen/splash_app_logo_height"
-        android:src="@drawable/logo"
+        android:src="@mipmap/ic_logo_main_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

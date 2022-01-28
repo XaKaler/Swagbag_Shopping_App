@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SHEFALI"
+        android:textColor="@color/day_dark_liver_night_white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="01 Dec, 2021"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         style="@style/roboto_normal_10_sonic_silver"
         app:layout_constraintBottom_toBottomOf="@+id/view21"
         app:layout_constraintStart_toEndOf="@+id/view21"
@@ -42,6 +44,7 @@
         android:id="@+id/customerReview"
         style="@style/roboto_normal_10_sonic_silver"
         android:layout_width="0dp"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_5"
         android:text="@string/empty_wishlist_lines"
@@ -103,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dimen_10"
         android:text="155"
+        style="@style/roboto_normal_10_sonic_silver"
         app:layout_constraintBottom_toBottomOf="@+id/dislike"
         app:layout_constraintEnd_toStartOf="@+id/dislike"
         app:layout_constraintTop_toTopOf="@+id/dislike" />

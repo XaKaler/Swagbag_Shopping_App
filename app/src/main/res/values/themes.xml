@@ -35,8 +35,7 @@
         ...
     </style>
 
-    <!-- &lt;!&ndash;Splash screen style&ndash;&gt;
-     <style name="splash_screen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+     <!--<style name="splash_screen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
          <item name="android:windowBackground">@drawable/splash_screen</item>
          <item name="android:statusBarColor">@color/white</item>
      </style>-->

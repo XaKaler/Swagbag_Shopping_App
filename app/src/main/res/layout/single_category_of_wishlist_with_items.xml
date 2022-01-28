@@ -8,14 +8,17 @@
 
     <TextView
         android:id="@+id/categoryName"
-        android:layout_width="wrap_content"
+        style="@style/roboto_normal_12_sonic_silver"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/day_davys_grey_night_outer_space"
-        android:text="All"
         android:background="@drawable/rec_outline_15"
         android:paddingHorizontal="@dimen/dimen_15"
         android:paddingVertical="@dimen/dimen_5"
-        style="@style/roboto_normal_12_sonic_silver"
+        android:text="All"
+        android:textColor="@color/day_davys_grey_night_outer_space"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
