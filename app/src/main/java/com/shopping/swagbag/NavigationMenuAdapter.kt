@@ -24,8 +24,7 @@ import com.shopping.swagbag.home.HomeDirections
 
 class NavigationMenuAdapter(
     private val context: Context,
-    private val data: List<NavigationMenu>,
-    private val itemClick: RecycleItemClick
+    private val data: List<NavigationMenu>
 ) :
     RecyclerView.Adapter<NavigationMenuAdapter.MyViewHolder>() {
 
@@ -76,11 +75,11 @@ class NavigationMenuAdapter(
                         viewBinding.masterCategory.visibility = View.VISIBLE
                     }
                 }
-                "Category" -> {
+              /*  "Category" -> {
                     activity.closeDrawer()
                     activity.hideToolbar()
                     navController.navigate(R.id.action_global_categoryFragment)
-                }
+                }*/
                 "Orders" -> {
                     activity.closeDrawer()
                     activity.hideToolbar()
@@ -101,11 +100,11 @@ class NavigationMenuAdapter(
                     activity.hideToolbar()
                     navController.navigate(R.id.action_global_couponsFragment)
                 }
-                "Profile" -> {
+               /* "Profile" -> {
                     activity.closeDrawer()
                     activity.hideToolbar()
                     navController.navigate(R.id.action_global_signInFragment)
-                }
+                }*/
                 "Help Center" -> {
                     activity.closeDrawer()
                     activity.hideToolbar()

@@ -7,10 +7,10 @@ class OnNavigationMenu{
     private val navigationMenu = ArrayList<NavigationMenu>()
 
     fun getNavigationMenu(): List<NavigationMenu>{
-
+/*
         navigationMenu.add(NavigationMenu(R.drawable.ic_person, "Profile"))
+        navigationMenu.add(NavigationMenu(R.drawable.ic_outline_category_24, "Category"))*/
         navigationMenu.add(NavigationMenu(R.drawable.ic_hoem_png_to_svg, "Home"))
-        navigationMenu.add(NavigationMenu(R.drawable.ic_outline_category_24, "Category"))
         navigationMenu.add(NavigationMenu(R.drawable.ic_outline_category_24, "Master Categories"))
         navigationMenu.add(NavigationMenu(R.drawable.ic_shopping_bag, "Orders"))
         navigationMenu.add(NavigationMenu(R.drawable.ic_heart, "Wishlist"))

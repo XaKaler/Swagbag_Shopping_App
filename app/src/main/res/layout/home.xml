@@ -22,8 +22,8 @@
             android:id="@+id/imageView65"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:visibility="gone"
             android:src="@drawable/half_circle_steel_teal"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +32,7 @@
             android:id="@+id/rvCategorySlider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/steel_teal"
             android:clipToPadding="true"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,8 +46,7 @@
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/sliderView"
             android:layout_width="match_parent"
-            android:layout_height="235dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="@dimen/auto_image_slider_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvCategorySlider"
@@ -57,7 +57,7 @@
             app:sliderIndicatorPadding="3dp"
             app:sliderIndicatorRadius="2dp"
             app:sliderIndicatorSelectedColor="#577D8A"
-            app:sliderIndicatorUnselectedColor="#DFDFDF"/>
+            app:sliderIndicatorUnselectedColor="#DFDFDF" />
 
         <ImageView
             android:id="@+id/homeImg1"
@@ -68,16 +68,16 @@
             android:src="@mipmap/navigation_header_background_foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sliderView" />
+            app:layout_constraintTop_toBottomOf="@+id/rvTopTrending" />
 
         <ImageView
             android:id="@+id/homeImg2"
             android:layout_width="0dp"
-            android:visibility="gone"
-            android:scaleType="centerCrop"
             android:layout_height="270dp"
             android:layout_marginTop="@dimen/space_between_views"
+            android:scaleType="centerCrop"
             android:src="@mipmap/navigation_header_background_foreground"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/homeImg1" />
@@ -123,8 +123,8 @@
             android:id="@+id/rvBest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginHorizontal="@dimen/dimen_15"
+            android:orientation="horizontal"
             android:paddingVertical="@dimen/dimen_10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -159,13 +159,13 @@
             android:id="@+id/rvDealOfDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="@dimen/dimen_15"
-            tools:listitem="@layout/single_best_products"
             android:orientation="horizontal"
-            tools:itemCount="1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading3" />
+            app:layout_constraintTop_toBottomOf="@id/heading3"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_best_products" />
 
 
         <TextView
@@ -185,13 +185,13 @@
             android:id="@+id/rvFeatureBrands"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/single_best_products"
-            android:orientation="horizontal"
             android:layout_marginHorizontal="@dimen/dimen_15"
-            tools:itemCount="1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading4" />
+            app:layout_constraintTop_toBottomOf="@id/heading4"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_best_products" />
 
         <TextView
             android:id="@+id/heading5"
@@ -209,14 +209,14 @@
             android:id="@+id/rvCategoryToBag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/single_category_to_beg"
-            android:orientation="horizontal"
-            tools:itemCount="1"
-            android:layout_marginStart="@dimen/recycle_view_horizontal_space"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="@dimen/recycle_view_horizontal_space"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading5" />
+            app:layout_constraintTop_toBottomOf="@id/heading5"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_category_to_beg" />
 
 
         <TextView
@@ -233,11 +233,11 @@
 
 
         <androidx.core.widget.NestedScrollView
-            android:orientation="horizontal"
             android:id="@+id/bestOfferScrollView"
             android:layout_width="0dp"
-            android:scrollbars="none"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/heading6">
@@ -267,6 +267,7 @@
                     android:text="+View All"
                     android:textAlignment="center"
                     android:textColor="@color/steel_teal"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/rvBestOffer"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/rvBestOffer"
@@ -295,13 +296,13 @@
             android:id="@+id/rvPromotedBrands"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/single_best_products"
-            android:orientation="horizontal"
             android:layout_marginHorizontal="@dimen/dimen_15"
-            tools:itemCount="1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading7" />
+            app:layout_constraintTop_toBottomOf="@id/heading7"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_best_products" />
 
 
         <TextView
@@ -321,13 +322,13 @@
             android:id="@+id/rvKidsPicks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/single_best_products"
-            android:orientation="horizontal"
-            tools:itemCount="1"
             android:layout_marginHorizontal="@dimen/dimen_15"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading8" />
+            app:layout_constraintTop_toBottomOf="@id/heading8"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_best_products" />
 
         <TextView
             android:id="@+id/heading9"
@@ -346,25 +347,47 @@
             android:id="@+id/rvCollage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/single_best_products"
-            android:orientation="horizontal"
-            tools:itemCount="1"
             android:layout_marginHorizontal="@dimen/dimen_15"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading9" />
-
-
-        <ImageView
-            android:id="@+id/homeImg4"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="@dimen/dimen_15"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/navigation_header_background_foreground"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvCollage" />
+            app:layout_constraintTop_toBottomOf="@id/heading9"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_best_products" />
+
+        <TextView
+            android:id="@+id/textView232"
+            style="@style/sunflower_normal_14_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:text="Top Trending"
+            app:layout_constraintStart_toStartOf="@+id/heading1"
+            app:layout_constraintTop_toBottomOf="@+id/sliderView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTopTrending"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_between_view_and_subview"
+            app:layout_constraintEnd_toEndOf="@+id/rvBest"
+            app:layout_constraintStart_toStartOf="@+id/textView232"
+            app:layout_constraintTop_toBottomOf="@+id/textView232"
+            tools:itemCount="1"
+            tools:listitem="@layout/single_top_trending" />
+
+        <include
+            android:layout_marginTop="@dimen/space_between_views"
+            android:id="@+id/includeBtmSheet"
+            layout="@layout/lyt_bottom_sheet"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@+id/rvCollage"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

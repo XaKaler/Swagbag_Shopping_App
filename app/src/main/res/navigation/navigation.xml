@@ -659,5 +659,4 @@
 
     <action android:id="@+id/action_global_shoppingBegWithProductFragment" app:destination="@id/shoppingBegWithProductFragment"/>
 
-
 </navigation>

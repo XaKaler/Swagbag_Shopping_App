@@ -57,6 +57,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
         initViews()
 
         mainActivity.showToolbar()
+        mainActivity.changeToolbarTitle("Swagbag", true)
 
     }
 
@@ -87,10 +88,10 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
                     .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
                     .into(homeImg3)
 
-                // set on image4
+             /*   // set on image4
                 Glide.with(it)
                     .load("https://swagbag-space.fra1.digitaloceanspaces.com/1639983624004mlj8x.png")
-                    .into(homeImg4)
+                    .into(homeImg4)*/
 
 
             }
@@ -126,6 +127,11 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
 
                 // set deals data
                 setSpecialDeal(data)
+
+                // set top treding
+                setTopTrending(data)
+
+
 
                 // set category to beg
                 if (categoryData != null) {
@@ -167,6 +173,15 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = BestProductAdapter(context, data, this@Home)
+            }
+        }
+    }
+
+    private fun setTopTrending(data: ArrayList<DummyModel>) {
+        with(viewBinding2) {
+            rvTopTrending.apply {
+                layoutManager = GridLayoutManager(context, 2)
+                adapter = TopTrendingAdapter(context, DummyData().getTopTrending())
             }
         }
     }
@@ -281,25 +296,31 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
     override fun onHomeCategorySingleItemClickListener(position: Int) {
         when(position){
             0 -> {
+                mainActivity.changeToolbarTitle("Men", false)
                 findNavController().navigate(R.id.action_home2_to_menFragment)
             }
 
             1->{
+                mainActivity.changeToolbarTitle("Women", false)
                 findNavController().navigate(R.id.action_home2_to_womenFragment)
             }
 
             2->{
+                mainActivity.changeToolbarTitle("Kids", false)
                 findNavController().navigate(R.id.action_home2_to_kidsFragment)
             }
 
             3->{
+                mainActivity.changeToolbarTitle("Pets", false)
                 findNavController().navigate(R.id.action_home2_to_petsFragment)
             }
             4->{
+                mainActivity.changeToolbarTitle("Home", false)
                 findNavController().navigate(R.id.action_home2_to_homeFragment)
             }
 
             5->{
+                mainActivity.changeToolbarTitle("Travel", false)
                 findNavController().navigate(R.id.action_home2_to_travelFragment)
             }
         }

@@ -33,8 +33,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.makeramen.roundedimageview.RoundedImageView
+                <androidx.viewpager.widget.ViewPager
                     android:id="@+id/imgBestProduct"
+                    android:background="@drawable/rec_white_5"
                     android:layout_width="match_parent"
                     android:layout_height="157dp"
                     android:scaleType="centerCrop"

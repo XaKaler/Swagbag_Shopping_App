@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.databinding.SingleBestProductsBinding
+import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.search.SearchFragment
 
@@ -24,11 +25,15 @@ class BestProductAdapter(
             fun bind(singleData: DummyModel, itemClick: RecycleItemClickListener, position: Int){
                 with(viewBinding){
                     // set imgae
-                    Glide.with(context)
+                  /*  Glide.with(context)
                         .load(singleData.image)
                         .error(R.drawable.ic_launcher_foreground)
                         .placeholder(R.drawable.logo)
-                        .into(imgBestProduct)
+                        .into(imgBestProduct)*/
+
+
+                    val productAdapter = ProductImageAdapter(context, DummyData().getImageResource())
+                    imgBestProduct.adapter = productAdapter
 
                     // set text
                     tvBestProductName.text = singleData.name

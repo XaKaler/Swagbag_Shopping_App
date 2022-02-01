@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:padding="5dp"
-    android:background="@color/grey_x11"
+    android:padding="@dimen/screen_padding_10"
+    android:layout_marginHorizontal="@dimen/screen_margin_10"
+    android:background="@color/steel_teal"
     android:layout_height="wrap_content">
 <!--
     <de.hdodenhof.circleimageview.CircleImageView
@@ -18,6 +19,7 @@
     <TextView
         android:id="@+id/rvCategoryName"
         style="@style/elmsri_normal_12_black"
+        android:textSize="@dimen/txt_14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"

@@ -22,3 +22,5 @@ data class CategorySideNavigationData(val address: String)
 
 data class DummySlider(val image: String)
 
+data class TopTrending(val image: Int)
+

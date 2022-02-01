@@ -53,6 +53,11 @@
     <dimen name="grid_circle_image">111dp</dimen>
     <dimen name="collage_spacing">2dp</dimen>
 
+    <dimen name="home_page_logo_size">35dp</dimen>
+
+    <dimen name="home_page_social_media_icon">50dp</dimen>
+    <dimen name="home_page_social_media_background">72dp</dimen>
+
     <dimen name="help_center_with_order_image_width">60dp</dimen>
     <dimen name="help_center_with_order_image_height">80dp</dimen>
 
@@ -165,6 +170,8 @@
     <dimen name="product_sale_rating_size">24dp</dimen>
 
     <dimen name="product_category_image_height">300dp</dimen>
+    <dimen name="image_size_150">150dp</dimen>
+    <dimen name="image_size_250">250dp</dimen>
 
 
     <dimen name="dimen_2">2dp</dimen>
@@ -196,6 +203,8 @@
     
     <dimen name="product_details_size_chart_height">82dp</dimen>
     <dimen name="product_details_size_chart_width">100dp</dimen>
+
+    <dimen name="auto_image_slider_height">235dp</dimen>
 
     
     

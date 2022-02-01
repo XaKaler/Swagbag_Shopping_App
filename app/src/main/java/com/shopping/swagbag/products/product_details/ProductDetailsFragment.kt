@@ -52,7 +52,9 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details), View
                 findNavController().navigate(R.id.action_productDetailsFragment_to_shoppingBegWithProductFragment)
             }
 
-
+            /*floatingActionButton.setOnClickListener{
+                nestedScrollView.smoothScrollTo(0,0)
+            }*/
         }
 
         val data = DummyData().getSingleProductImage()

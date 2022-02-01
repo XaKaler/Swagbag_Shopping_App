@@ -185,4 +185,7 @@
     <string name="city">City</string>
     <string name="last_name">Last Name*</string>
     <string name="first_name">First Name*</string>
+    <string name="follow_us">Follow Us</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="send">Send</string>
 </resources>

@@ -12,6 +12,8 @@ class DummyData {
     private val categorySideNavigationDataData = ArrayList<CategorySideNavigationData>()
     private val slider = ArrayList<DummySlider>()
     private val child = ArrayList<DummyChild>()
+    private val imageResource = ArrayList<Int>()
+    private val topTrending = ArrayList<TopTrending>()
 
     var categoryData = ArrayList<DummyCategoryModel>()
 
@@ -32,6 +34,28 @@ class DummyData {
 
         return slider
     }
+
+    fun getTopTrending(): ArrayList<TopTrending>{
+        topTrending.add(TopTrending(R.drawable.baby))
+        topTrending.add(TopTrending(R.drawable.carpet))
+        topTrending.add(TopTrending(R.drawable.dogi))
+        topTrending.add(TopTrending(R.drawable.glass))
+        topTrending.add(TopTrending(R.drawable.hair))
+        topTrending.add(TopTrending(R.drawable.nightsuit))
+        return topTrending
+    }
+
+    fun getImageResource(): ArrayList<Int>{
+        imageResource.add(R.drawable.baby)
+        imageResource.add(R.drawable.carpet)
+        imageResource.add(R.drawable.dogi)
+        imageResource.add(R.drawable.glass)
+        imageResource.add(R.drawable.hair)
+        imageResource.add(R.drawable.nightsuit)
+        return imageResource
+    }
+
+
 
     fun getDummyData(): ArrayList<DummyModel>? {
 
@@ -58,6 +82,10 @@ class DummyData {
         data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/16400871862161n86y.png",
             "Face Cream",
             "Desidiya ® 20 Photo Clip LED String Wedge Light (Warm White)"))
+
+        data?.add(DummyModel("https://swagbag-space.fra1.digitaloceanspaces.com/1640078486875ltnsd.png",
+            "Body Oil",
+            "boAt Bassheads 900 Wired On Ear Headphones with Mic (Carbon Black)"))
 
 
 /*

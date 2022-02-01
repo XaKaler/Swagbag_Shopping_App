@@ -53,11 +53,9 @@ class DropDownCategoryAdapter(
                         }
                     }
                     if (subCategoryVisible) {
-                        subCategoryVisible = false
                         imgCatArrow.rotation = max(0f, 0f)
                         rvCatSubMenu.visibility = View.GONE
                     } else {
-                        subCategoryVisible = true
                         imgCatArrow.rotation = max(180f, 180f)
                         rvCatSubMenu.visibility = View.VISIBLE
                     }
