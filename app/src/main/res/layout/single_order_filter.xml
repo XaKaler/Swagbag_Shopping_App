@@ -9,6 +9,7 @@
 
 
     <TextView
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:id="@+id/tvFilterName"
         style="@style/roboto_normal_12_sonic_silver"
         android:layout_width="0dp"

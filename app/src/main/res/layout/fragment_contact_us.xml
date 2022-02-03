@@ -30,12 +30,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/contact_us"
-            android:textColor="@color/day_davys_grey_night_dark_silver"
+            android:textColor="@color/day_dark_liver_night_white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView27"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             style="@style/roboto_normal_12_sonic_silver"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -134,6 +135,8 @@
         android:text="@string/save"
         android:textAllCaps="true"
         android:gravity="center"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/steel_teal"
         android:background="@drawable/rec_up_round"
         style="@style/roboto_normal_18_white"
         android:textAlignment="center"

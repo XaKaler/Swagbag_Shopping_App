@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/textView147"
+        android:textColor="@color/day_dark_liver_night_white"
         style="@style/roboto_normal_16_davys_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:id="@+id/textView150"
         style="@style/roboto_medium_18_davys_grey"
         android:layout_width="wrap_content"
@@ -29,6 +31,7 @@
 
     <TextView
         android:id="@+id/textView154"
+        android:textColor="@color/day_dark_liver_night_white"
         style="@style/roboto_medium_14_davys_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

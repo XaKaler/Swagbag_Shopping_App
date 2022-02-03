@@ -4,20 +4,25 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
+import com.shopping.swagbag.common.adapter.CategorySliderAdapter
 import com.shopping.swagbag.databinding.ActivityMainBinding
 import com.shopping.swagbag.databinding.MainToolbarBinding
 import com.shopping.swagbag.databinding.NavigationDrawerBinding
+import com.shopping.swagbag.dummy.DummyData
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+    HomeCategoryRecycleItemClickListener {
 
     private lateinit var viewBinding: ActivityMainBinding
     private lateinit var toolbarBinding: MainToolbarBinding
     private lateinit var navigationBinding: NavigationDrawerBinding
-    private var isToolbarVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,16 +33,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-
-     /*   val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-        val navController = navHostFragment.navController
-        navController.navigate(R.id.action_global_home2)*/
-
         with(viewBinding) {
             // initialize variable
             toolbarBinding = viewBinding.toolbar
             navigationBinding = viewBinding.includeNavigation
+
+            setCategorySlider()
 
             // click listeners
             btmNavigation.setOnItemSelectedListener { item ->
@@ -95,6 +96,18 @@ class MainActivity : AppCompatActivity() {
         setUPToolbar()
     }
 
+
+
+      fun setCategorySlider(){
+          if (this::viewBinding.isInitialized) {
+              viewBinding.rvCategorySlider.apply {
+                  layoutManager =
+                      LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                  adapter = DummyData().getDummyCategory()
+                      ?.let { CategorySliderAdapter(this@MainActivity, it, this@MainActivity) }
+              }
+          }
+    }
     private fun setUPToolbar() {
         with(toolbarBinding) {
             imgToggle.setOnClickListener {
@@ -161,32 +174,63 @@ class MainActivity : AppCompatActivity() {
         if (this::viewBinding.isInitialized) {
             viewBinding.toolbar.root.visibility = View.VISIBLE
             viewBinding.btmNavigation.visibility = View.VISIBLE
-        } else {
-
+            viewBinding.rvCategorySlider.visibility = View.VISIBLE
         }
     }
 
     fun hideToolbar() {
-        //supportActionBar?.hide()
         viewBinding.toolbar.root.visibility = View.GONE
         viewBinding.btmNavigation.visibility = View.GONE
+        viewBinding.rvCategorySlider.visibility = View.GONE
     }
 
     fun closeDrawer() {
         viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
     }
 
-    fun changeToolbarTitle(title: String, iconVisible: Boolean) {
 
-        if (this::viewBinding.isInitialized) {
-            toolbarBinding.toolbarTitle.text = title
+    override fun onHomeCategorySingleItemClickListener(position: Int) {
+        when(position){
+            0 -> {
+                val navHostFragment =
+                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.action_global_menFragment)
+            }
 
-            if (iconVisible) {
-                toolbarBinding.toobarIcon.visibility = View.VISIBLE
-            } else {
-                toolbarBinding.toobarIcon.visibility = View.GONE
+            1->{
+                val navHostFragment =
+                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.action_global_womenFragment)
+            }
+
+            2->{
+                val navHostFragment =
+                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.action_global_kidsFragment)
+            }
+
+            3->{
+                val navHostFragment =
+                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.action_global_petsFragment)
+            }
+            4->{
+                val navHostFragment =
+                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.action_global_homeFragment)
+            }
+
+            5->{
+                val navHostFragment =
+                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.action_global_travelFragment)
             }
         }
     }
-
 }

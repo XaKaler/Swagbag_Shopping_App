@@ -67,10 +67,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
 
         val dataChild: ArrayList<DummyChild> = DummyData().getDummyTravel()
 
-        setAutoImageSlider(dataSlider)
-
         if (categoryData != null) {
-            setCategoryDropDown(categoryData)
             setCategoryToBeg(categoryData)
         }
 
@@ -118,34 +115,6 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         }
     }
 
-    private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
-        with(viewBinding) {
-
-            homeSliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR;
-
-            // below method is used to
-            // setadapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { homeSliderView.setSliderAdapter(it) }
-
-
-            // below method is use to set
-            // scroll time in seconds.
-            homeSliderView.scrollTimeInSec = 5
-
-            // to set it scrollable automatically
-            // we use below method.
-            homeSliderView.isAutoCycle = true
-
-            homeSliderView.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM)
-            homeSliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
-            homeSliderView.autoCycleDirection = SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
-
-            // to start auto cycle below method is used.
-            homeSliderView.startAutoCycle()
-        }
-    }
-
     /*private fun setMostWanted(data: ArrayList<DummyModel>) {
         with(viewBinding) {
             rvMostWanted.apply {
@@ -154,15 +123,6 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
             }
         }
     }*/
-
-    private fun setCategoryDropDown(data: ArrayList<DummyModel>?) {
-        with(viewBinding) {
-            rvCateDropDown.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = data?.let { DropDownCategoryAdapter(context, it) }
-            }
-        }
-    }
 
     private fun setNewArrival(data: ArrayList<DummyModel>) {
         with(viewBinding) {

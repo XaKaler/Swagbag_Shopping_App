@@ -25,6 +25,7 @@
 
 
             <TextView
+                android:textColor="@color/day_dark_liver_night_white"
                 android:id="@+id/textView156"
                 style="@style/roboto_medium_16_davys_grey"
                 android:layout_width="wrap_content"
@@ -35,6 +36,7 @@
 
             <TextView
                 android:id="@+id/userName"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 style="@style/roboto_medium_13_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,6 +59,7 @@
 
             <TextView
                 android:id="@+id/userMobile"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 style="@style/roboto_medium_13_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,6 +72,7 @@
             <TextView
                 android:id="@+id/textView159"
                 style="@style/roboto_normal_12_davys_grey"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_10"

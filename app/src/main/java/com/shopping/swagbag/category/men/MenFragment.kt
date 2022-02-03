@@ -27,7 +27,6 @@ import java.util.*
 class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentMenBinding
-    private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
     private lateinit var mainActivity: MainActivity
 
     override fun onAttach(context: Context) {
@@ -49,7 +48,6 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         super.onViewCreated(view, savedInstanceState)
 
         viewBinding = FragmentMenBinding.bind(view)
-        toolbarBinding = viewBinding.include
 
         initViews()
         mainActivity.showToolbar()
@@ -66,13 +64,6 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         val dataTwo: ArrayList<DummyModel>? = DummyData().getTwoDummyData()
 
         val dataSlider: ArrayList<DummySlider> = DummyData().getDummySlider()
-
-        // handle toolbar actions
-        toolbarActions()
-
-
-        setAutoImageSlider(dataSlider)
-
 
         if (categoryData != null) {
             setCategoryDropDown(categoryData)
@@ -96,28 +87,6 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
 
         }
     }
-/*
-    private fun setUpNavigation() {
-        with(navigationBinding){
-            imgHome.setOnClickListener{}
-            imgCancel.setOnClickListener{
-              //  viewBinding.drawerLayout.closeDrawer(GravityCompat.END)
-            }
-
-            // set master category
-            rvCategory.apply{
-                layoutManager = LinearLayoutManager(context)
-                adapter = DummyData().getDummyCategory()?.let { NavigationMenuAdapter(context, it) }
-            }
-
-            // set category item
-            rvCategoryItems.apply{
-                layoutManager = LinearLayoutManager(context)
-                adapter = DummyData().getDummyData()?.let { NavigationMenuAdapter(context, it) }
-            }
-
-        }
-    }*/
 
     private fun setSecondLastCard(data: ArrayList<DummyModel>) {
         with(viewBinding) {
@@ -174,33 +143,6 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         }
     }
 
-    private fun toolbarActions() {
-        with(toolbarBinding) {
-            tvTitle.text = getText(R.string.men)
-
-            // click listeners
-            imgBack.setOnClickListener {
-               findNavController().popBackStack()
-            }
-
-            imgSearch.setOnClickListener {
-                findNavController().navigate(R.id.action_menFragment_to_searchFragment)
-            }
-
-            imgWishlist.setOnClickListener {
-               findNavController().navigate(R.id.action_menFragment_to_wishlistWithProductFragment)
-               /* if (!viewBinding.drawerLayout.isDrawerOpen(GravityCompat.END))
-                    viewBinding.drawerLayout.openDrawer(GravityCompat.END)
-                else
-                    viewBinding.drawerLayout.closeDrawer(GravityCompat.START)*/
-            }
-
-            imgCart.setOnClickListener {
-                findNavController().navigate(R.id.action_menFragment_to_shoppingBegWithoutProductFragment)
-            }
-
-        }
-    }
 
     private fun setCategoryDropDown(data: ArrayList<DummyModel>?) {
         with(viewBinding) {
@@ -217,35 +159,6 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = BestProductAdapter(context, data, this@MenFragment)
             }
-        }
-    }
-
-    private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
-        with(viewBinding) {
-
-
-            menSliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR;
-
-            // below method is used to
-            // setadapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { menSliderView.setSliderAdapter(it) }
-
-
-            // below method is use to set
-            // scroll time in seconds.
-            menSliderView.scrollTimeInSec = 5
-
-            // to set it scrollable automatically
-            // we use below method.
-            menSliderView.isAutoCycle = true
-
-            menSliderView.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM)
-            menSliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
-            menSliderView.autoCycleDirection = SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
-
-            // to start auto cycle below method is used.
-            menSliderView.startAutoCycle()
         }
     }
 

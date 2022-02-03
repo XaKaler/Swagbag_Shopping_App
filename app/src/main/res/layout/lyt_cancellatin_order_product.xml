@@ -42,6 +42,7 @@
                 style="@style/autowide_normal_12_state_green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/day_state_green_night_Cambridge_Blue"
                 android:layout_marginStart="@dimen/space_between_views"
                 android:text="KENSTAR"
                 app:layout_constraintStart_toEndOf="@+id/roundedImageView9"
@@ -49,6 +50,7 @@
 
             <TextView
                 android:id="@+id/textView194"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 style="@style/snigiet_normal_14_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,6 +101,7 @@
             <TextView
                 android:id="@+id/textView197"
                 style="@style/roboto_normal_12_sonic_silver"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_between_view_and_subview"

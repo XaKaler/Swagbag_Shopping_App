@@ -44,7 +44,7 @@
                     android:maxLines="2"
                     android:minLines="2"
                     android:text="@string/about_us"
-                    android:textColor="@color/davys_grey"
+                    android:textColor="@color/day_dark_liver_night_white"
                     app:layout_constraintEnd_toStartOf="@+id/imageView26"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

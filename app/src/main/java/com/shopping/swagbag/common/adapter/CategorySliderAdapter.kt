@@ -2,10 +2,12 @@ package com.shopping.swagbag.common.adapter
 
 import com.shopping.swagbag.common.FreeData
 import android.content.Context
+import android.graphics.Typeface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -22,6 +24,8 @@ class CategorySliderAdapter(
     private val itemClick: HomeCategoryRecycleItemClickListener
 
 ) : RecyclerView.Adapter<CategorySliderAdapter.MyViewHolder>() {
+
+    var selectedPosition =-1
 
     inner class MyViewHolder(private  val viewBinding: SingleCategorySliderBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
@@ -41,8 +45,19 @@ class CategorySliderAdapter(
                         .circleCrop()
                         .into(rvCategorySliderImg)*/
 
+                    // select when user click
+                    if(selectedPosition == position){
+                        itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+                        rvCategoryName.setTextColor(ContextCompat.getColor(context, R.color.black))
+                    }
+                    else{
+                        itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.steel_teal))
+                        rvCategoryName.setTextColor(ContextCompat.getColor(context, R.color.white))
+                    }
 
                    itemView.setOnClickListener{
+                       selectedPosition = position
+                       notifyDataSetChanged()
                        itemClick.onHomeCategorySingleItemClickListener(position)
                    }
                 }

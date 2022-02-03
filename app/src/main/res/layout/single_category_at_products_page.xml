@@ -10,6 +10,7 @@
 
     <TextView
         android:id="@+id/tvCatName"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         style="@style/roboto_normal_18_dim_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

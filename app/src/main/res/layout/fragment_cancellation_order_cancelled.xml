@@ -61,6 +61,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:id="@+id/textView207"
                         style="@style/roboto_medium_18_dark_charcoal"
                         android:layout_width="wrap_content"
@@ -107,7 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_between_view_and_subview"
-                        android:background="@color/cultured"
+                        android:background="@color/day_cultured_night_Eerie_Black"
                         android:padding="@dimen/screen_padding_10"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView208">
@@ -125,6 +126,7 @@
                         <TextView
                             android:id="@+id/productName"
                             style="@style/roboto_medium_12_davys_grey"
+                            android:textColor="@color/day_dark_liver_night_white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/space_between_view_and_subview"
@@ -135,6 +137,7 @@
                         <TextView
                             android:id="@+id/textView210"
                             style="@style/roboto_normal_10_sonic_silver"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/space_between_view_and_subview_5"
@@ -154,6 +157,7 @@
 
                     <TextView
                         android:id="@+id/textView211"
+                        android:textColor="@color/day_dark_liver_night_white"
                         style="@style/roboto_medium_10_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -165,6 +169,7 @@
 
                     <TextView
                         android:id="@+id/textView212"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_between_view_and_subview_5"
@@ -188,6 +193,7 @@
                         android:id="@+id/textView213"
                         style="@style/roboto_medium_10_sonic_silver"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:layout_height="wrap_content"
                         android:text="PLEASE NOTE"
                         app:layout_constraintStart_toStartOf="@+id/textView212"
@@ -196,6 +202,7 @@
                     <TextView
                         android:id="@+id/textView214"
                         android:layout_width="0dp"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus mi in orci maecenas. Platea urna nibh."

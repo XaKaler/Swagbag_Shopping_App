@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/google"
-        android:textColor="@color/outer_space"
+        android:textColor="@color/day_dark_liver_night_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
         android:layout_marginTop="@dimen/space_between_views"
         android:text="@string/english_united_states"
         style="@style/roboto_normal_18_dim_grey"
-        android:textColor="@color/davys_grey"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         app:layout_constraintEnd_toEndOf="@+id/imageView14"
         app:layout_constraintStart_toStartOf="@+id/imageView14"
         app:layout_constraintTop_toBottomOf="@+id/imageView14" />

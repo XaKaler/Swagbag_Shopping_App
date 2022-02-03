@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".products.filter.FilterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/textView53"
+        android:textColor="@color/day_dark_liver_night_white"
         style="@style/roboto_normal_18_davys_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/cultured"
+            android:background="@color/day_cultured_night_Eerie_Black"
             tools:listitem="@layout/single_filter" />
 
         <FrameLayout
@@ -79,7 +79,7 @@
             android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/day_cultured_night_Eerie_Black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -102,6 +102,7 @@
                 android:layout_height="0dp"
                 android:gravity="center"
                 android:text="@string/close"
+                android:backgroundTint="@color/day_white_night_chinese_black"
                 android:textAllCaps="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/view2"

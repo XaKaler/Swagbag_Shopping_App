@@ -55,6 +55,7 @@
                 <TextView
                     android:id="@+id/textView196"
                     style="@style/roboto_medium_14_davys_grey"
+                    android:textColor="@color/day_dark_liver_night_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Reason for cancellation"
@@ -63,6 +64,7 @@
 
                 <TextView
                     android:id="@+id/textView198"
+                    android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_between_view_and_subview"
@@ -80,6 +82,7 @@
 
                 <TextView
                     android:id="@+id/textView199"
+                    android:textColor="@color/day_dark_liver_night_white"
                     style="@style/roboto_medium_14_davys_grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

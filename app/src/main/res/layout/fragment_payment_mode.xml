@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rec_white_5"
                 app:cardCornerRadius="@dimen/card_corner_radius"
+                android:visibility="gone"
                 app:cardElevation="@dimen/dimen_5"
                 android:layout_margin="@dimen/screen_margin_5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_10"
                         android:text="10% Instant Savings on Citi Credit and Debit Cards on a min spend of Rs 3,000. TCA"
-                        android:textColor="@color/davys_grey"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView68" />
 
@@ -98,9 +99,9 @@
                 style="@style/roboto_medium_12_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_between_views"
                 android:text="PAYMENT OPTIONS"
-                app:layout_constraintStart_toStartOf="@+id/materialCardView8"
+                android:textColor="@color/day_dark_liver_night_white"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView15"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView8" />
 
             <com.google.android.material.card.MaterialCardView
@@ -140,6 +141,7 @@
                         <TextView
                             android:id="@+id/textView99"
                             style="@style/roboto_normal_12_sonic_silver"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen_15"
@@ -201,6 +203,7 @@
                         <TextView
                             android:id="@+id/textView991"
                             style="@style/roboto_normal_12_sonic_silver"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen_15"
@@ -263,6 +266,7 @@
                             android:id="@+id/textView992"
                             style="@style/roboto_normal_12_sonic_silver"
                             android:layout_width="wrap_content"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen_15"
                             android:text="PhonePe/Google Pay/BHIM UPI"
@@ -302,6 +306,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/wallets"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_15"
@@ -353,6 +358,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/netBanking"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_15"
@@ -404,6 +410,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/emiOrPayLate5"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_15"
@@ -492,7 +499,7 @@
                         android:layout_marginStart="@dimen/dimen_15"
                         android:text="Have a Gift Card?"
 
-                        android:textColor="@color/Granite_Gray"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView51"
                         app:layout_constraintStart_toEndOf="@+id/imageView51"
                         app:layout_constraintTop_toTopOf="@+id/imageView51" />
@@ -534,7 +541,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/price_details"
-                        android:textColor="@color/Granite_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -544,7 +551,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
-                        android:textColor="@color/Granite_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         app:layout_constraintBottom_toBottomOf="@+id/textView1041"
                         app:layout_constraintStart_toEndOf="@+id/textView1041"
                         app:layout_constraintTop_toTopOf="@+id/textView1041" />
@@ -555,7 +562,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" item)"
-                        android:textColor="@color/Granite_Gray"
+                        android:textColor="@color/day_dark_liver_night_white"
                         app:layout_constraintBottom_toBottomOf="@+id/textView1041"
                         app:layout_constraintStart_toEndOf="@+id/itemCount"
                         app:layout_constraintTop_toTopOf="@+id/textView1041" />
@@ -567,7 +574,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_10"
                         android:text="Total MRP"
-                        android:textColor="@color/Granite_Gray"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         app:layout_constraintStart_toStartOf="@+id/textView1041"
                         app:layout_constraintTop_toBottomOf="@+id/textView1041" />
 
@@ -575,6 +582,7 @@
                         android:id="@+id/productPrice"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:text="3999"
                         app:layout_constraintBottom_toBottomOf="@+id/textView106"
@@ -585,6 +593,7 @@
                         android:id="@+id/textView108"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:text="@string/Rs"
                         app:layout_constraintBottom_toBottomOf="@+id/productPrice"
@@ -595,6 +604,7 @@
                         android:id="@+id/textView109"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_10"
                         android:text="Discount on  MRP"
@@ -605,6 +615,7 @@
                         android:id="@+id/textView110"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_10"
                         android:text="Delivery Charges "
@@ -671,6 +682,7 @@
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:text="49"
                         app:layout_constraintBottom_toBottomOf="@+id/free"
                         app:layout_constraintEnd_toStartOf="@+id/free"
@@ -680,6 +692,7 @@
                         android:id="@+id/textView117"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:text="@string/Rs"
                         app:layout_constraintBottom_toBottomOf="@+id/deliveryCharges"

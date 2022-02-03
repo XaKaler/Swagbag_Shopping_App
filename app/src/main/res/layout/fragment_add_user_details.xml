@@ -29,6 +29,7 @@
 
             <TextView
                 android:id="@+id/textView42"
+                android:textColor="@color/day_dark_liver_night_white"
                 style="@style/roboto_medium_14_outer_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -232,6 +233,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView45">
 
                         <RadioButton
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                             android:id="@+id/rbHome"
                             style="@style/roboto_normal_10_davys_grey"
                             android:layout_width="wrap_content"
@@ -240,6 +242,7 @@
                             android:text="@string/home" />
 
                         <RadioButton
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                             android:id="@+id/rbOffice"
                             style="@style/roboto_normal_10_davys_grey"
                             android:layout_width="wrap_content"
@@ -261,6 +264,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
                     <CheckBox
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/checkBox"
                         style="@style/roboto_normal_10_davys_grey"
                         android:layout_width="wrap_content"

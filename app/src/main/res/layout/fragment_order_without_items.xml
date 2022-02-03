@@ -51,6 +51,7 @@
         <TextView
             android:id="@+id/textView189"
             android:layout_width="wrap_content"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_between_view_and_subview"
             android:text="Order section is empty. After placing order, You can track them from here!"

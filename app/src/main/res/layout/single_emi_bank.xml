@@ -7,6 +7,7 @@
 
     <TextView
         android:id="@+id/tvCatName"
+        android:textColor="@color/day_dark_liver_night_white"
         style="@style/roboto_medium_15_davys_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,13 +18,14 @@
 
     <ImageView
         android:id="@+id/imgCatArrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="7dp"
+        android:layout_height="3dp"
         android:backgroundTint="@color/day_dim_grey_night_Dark_gray_x11"
         android:src="@drawable/ic_bottom_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/tvCatName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/day_dark_liver_night_white" />
 
     <View
         android:id="@+id/view"

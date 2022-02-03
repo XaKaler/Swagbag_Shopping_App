@@ -10,6 +10,7 @@
 
     <TextView
         android:id="@+id/tvCatName"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         style="@style/roboto_medium_18_dim_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +28,8 @@
         android:src="@drawable/ic_bottom_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/tvCatName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvCatName" />
+        app:layout_constraintTop_toTopOf="@+id/tvCatName"
+        app:tint="@color/day_dark_liver_night_Spanish_Gray" />
 
     <View
         android:id="@+id/view"

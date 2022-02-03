@@ -37,6 +37,7 @@
         <TextView
             android:id="@+id/tvOrderDate"
             style="@style/roboto_normal_12_sonic_silver"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="On Sat, 27 Nov as per your request."
@@ -86,6 +87,7 @@
                 android:id="@+id/tvProductName"
                 style="@style/snigiet_normal_14_davys_grey"
                 android:layout_width="0dp"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimen_10"
                 android:text="Washing machine white color"

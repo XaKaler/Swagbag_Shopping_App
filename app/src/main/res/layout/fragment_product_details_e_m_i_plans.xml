@@ -29,6 +29,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:textColor="@color/day_dark_liver_night_white"
                     android:id="@+id/textView178"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
                 <TextView
                     android:id="@+id/textView179"
                     android:layout_width="0dp"
+                    android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                     style="@style/roboto_normal_12_nickel"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/space_between_view_and_subview"
@@ -83,6 +85,7 @@
 
                 <TextView
                     android:id="@+id/textView181"
+                    android:textColor="@color/day_dark_liver_night_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Terms &amp; Conditions"
@@ -104,6 +107,7 @@
 
                 <TextView
                     android:id="@+id/textView183"
+                    android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/long_paragraph"

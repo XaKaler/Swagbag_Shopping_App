@@ -11,6 +11,7 @@
 
     <TextView
         android:id="@+id/textView51"
+        android:textColor="@color/day_dark_liver_night_white"
         style="@style/roboto_normal_14_davys_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,6 +103,7 @@
     <TextView
         android:id="@+id/tvProductCount"
         android:layout_width="wrap_content"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:layout_height="wrap_content"
         android:text="8000"
         android:layout_marginTop="@dimen/space_between_views"

@@ -12,7 +12,7 @@
         android:padding="@dimen/screen_horizontal_padding"
         android:text="@string/categories"
         style="@style/roboto_normal_14_davys_grey"
-        android:textColor="@color/dark_charcoal"
+        android:textColor="@color/day_dark_liver_night_white"
         android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

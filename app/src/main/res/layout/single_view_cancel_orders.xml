@@ -17,6 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_15"
             android:background="@drawable/rec_cultured_white_5"
@@ -47,7 +48,7 @@
                 android:minLines="1"
                 android:text="Kenster"
                 android:textAllCaps="true"
-                android:textColor="@color/state_green"
+                android:textColor="@color/day_state_green_night_Cambridge_Blue"
                 app:layout_constraintStart_toEndOf="@+id/productImg"
                 app:layout_constraintTop_toTopOf="@+id/productImg" />
 
@@ -107,6 +108,7 @@
         <TextView
             android:id="@+id/textView186"
             style="@style/roboto_medium_14_davys_grey"
+            android:textColor="@color/day_dark_liver_night_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_between_view_and_subview"
@@ -117,6 +119,7 @@
         <TextView
             android:id="@+id/textView187"
             style="@style/roboto_normal_12_sonic_silver"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="On "
@@ -128,6 +131,7 @@
             style="@style/roboto_normal_12_sonic_silver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             android:text="Sat, 27 Nov"
             app:layout_constraintStart_toEndOf="@+id/textView187"
             app:layout_constraintTop_toBottomOf="@+id/textView186" />

@@ -26,7 +26,6 @@ import java.util.ArrayList
 class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentKidsBinding
-    private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
     private lateinit var mainActivity: MainActivity
 
     override fun onAttach(context: Context) {
@@ -48,10 +47,8 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         super.onViewCreated(view, savedInstanceState)
 
         viewBinding = FragmentKidsBinding.bind(view)
-        toolbarBinding = viewBinding.include
 
         initViews()
-
 
         mainActivity.showToolbar()
     }
@@ -72,7 +69,6 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
 
         val dataChild: ArrayList<DummyChild> = DummyData().getDummyChild()
 
-        setAutoImageSlider(dataSlider)
 
         if (categoryData != null) {
             setCategoryDropDown(categoryData)
@@ -99,34 +95,8 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
 
 
         }
-        toolbar()
-    }
+}
 
-    private fun toolbar() {
-        with(toolbarBinding){
-            // set title
-            tvTitle.text = getString(R.string.kids)
-
-
-            // click listeners
-            imgBack.setOnClickListener {
-                findNavController().popBackStack()
-            }
-
-            imgSearch.setOnClickListener {
-                findNavController().navigate(R.id.action_kidsFragment_to_searchFragment)
-            }
-
-            imgWishlist.setOnClickListener {
-                findNavController().navigate(R.id.action_kidsFragment_to_wishlistWithProductFragment)
-            }
-
-            imgCart.setOnClickListener {
-                findNavController().navigate(R.id.action_kidsFragment_to_shoppingBegWithoutProductFragment2)
-            }
-
-        }
-    }
 
     private fun setCollageData(data: ArrayList<DummyModel>) {
         with(viewBinding) {
@@ -201,31 +171,5 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         }
     }
 
-    private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
-        with(viewBinding) {
-            kidsSliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR;
-
-            // below method is used to
-            // setadapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { kidsSliderView.setSliderAdapter(it) }
-
-
-            // below method is use to set
-            // scroll time in seconds.
-            kidsSliderView.scrollTimeInSec = 5
-
-            // to set it scrollable automatically
-            // we use below method.
-            kidsSliderView.isAutoCycle = true
-
-            kidsSliderView.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM)
-            kidsSliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
-            kidsSliderView.autoCycleDirection = SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
-
-            // to start auto cycle below method is used.
-            kidsSliderView.startAutoCycle()
-        }
-    }
 
 }

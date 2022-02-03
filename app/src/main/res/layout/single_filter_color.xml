@@ -19,6 +19,7 @@
     <TextView
         android:id="@+id/productCount"
         android:layout_width="wrap_content"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:layout_height="wrap_content"
         android:text="45"
         style="@style/roboto_normal_14_sonic_silver"
@@ -37,6 +38,7 @@
         android:id="@+id/colorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:text="Grey"
         style="@style/roboto_normal_14_sonic_silver"
         android:layout_marginStart="@dimen/dimen_10"

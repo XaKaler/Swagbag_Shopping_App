@@ -39,6 +39,7 @@
                 <TextView
                     android:id="@+id/textView30"
                     style="@style/roboto_medium_14_davys_grey"
+                    android:textColor="@color/day_dark_liver_night_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/dimen_15"
@@ -57,6 +58,7 @@
                 <TextView
                     android:id="@+id/textView"
                     style="@style/roboto_medium_14_davys_grey"
+                    android:textColor="@color/day_dark_liver_night_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/dimen_15"
@@ -68,6 +70,7 @@
                 <TextView
                     android:id="@+id/tvReturnProcessingFacilityAddress"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/dimen_15"
                     android:layout_marginTop="@dimen/dimen_5"
@@ -81,6 +84,7 @@
                     android:id="@+id/textView1"
                     style="@style/roboto_medium_14_davys_grey"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/day_dark_liver_night_white"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/dimen_15"
                     android:layout_marginTop="@dimen/space_between_views"
@@ -92,6 +96,7 @@
                     android:id="@+id/corporateOffice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                     android:layout_marginTop="@dimen/dimen_5"
                     android:paddingHorizontal="@dimen/dimen_15"
                     style="@style/roboto_normal_14_sonic_silver"

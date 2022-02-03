@@ -46,6 +46,7 @@
 
                     <TextView
                         android:id="@+id/textView30"
+                        android:textColor="@color/day_dark_liver_night_white"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -67,6 +68,7 @@
                         android:id="@+id/tvQueryDetails"
                         style="@style/roboto_normal_14_sonic_silver"
                         android:layout_width="match_parent"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_15"
                         android:padding="@dimen/dimen_15"
@@ -87,6 +89,7 @@
                     <TextView
                         style="@style/roboto_normal_14_dark_charcoal"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:layout_height="wrap_content"
                         android:text="@string/was_this_helpful"
                         android:layout_marginVertical="@dimen/dimen_24"
@@ -148,6 +151,7 @@
                     <TextView
                         android:id="@+id/textView37"
                         style="@style/roboto_normal_14_davys_grey"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"

@@ -9,6 +9,7 @@
     <CheckBox
         android:id="@+id/sizeType"
         style="@style/roboto_normal_14_sonic_silver"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/space_between_views"
@@ -22,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="45"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         style="@style/roboto_normal_14_sonic_silver"
         app:layout_constraintBottom_toBottomOf="@+id/sizeType"
         app:layout_constraintEnd_toEndOf="parent"

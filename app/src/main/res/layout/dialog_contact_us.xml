@@ -7,6 +7,7 @@
 
     <TextView
         android:id="@+id/textView38"
+        android:textColor="@color/day_dark_liver_night_white"
         style="@style/roboto_medium_14_davys_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,10 +41,12 @@
         android:layout_margin="@dimen/screen_horizontal_padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view9"
-        app:srcCompat="@drawable/ic_red_phone" />
+        app:srcCompat="@drawable/ic_red_phone"
+        app:tint="@color/steel_teal" />
 
     <TextView
         android:id="@+id/textView39"
+        android:textColor="@color/day_dark_liver_night_white"
         style="@style/roboto_medium_12_davys_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,6 +56,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView33" />
 
     <TextView
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:id="@+id/textView40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

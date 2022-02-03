@@ -24,7 +24,6 @@ import java.util.ArrayList
 class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentTravelBinding
-    private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
     private lateinit var mainActivity: MainActivity
 
     override fun onAttach(context: Context) {
@@ -46,7 +45,6 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
         super.onViewCreated(view, savedInstanceState)
 
         viewBinding = FragmentTravelBinding.bind(view)
-        toolbarBinding = viewBinding.include
 
         initViews()
         mainActivity.showToolbar()
@@ -54,7 +52,6 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
 
 
     private fun initViews() {
-        toolbar()
 
         val data: ArrayList<DummyModel>? = DummyData().getDummyData()
 
@@ -66,10 +63,8 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
 
         val dataChild: ArrayList<DummyChild> = DummyData().getDummyChild()
 
-        setAutoImageSlider(dataSlider)
 
         if (categoryData != null) {
-            setCategoryDropDown(categoryData)
            setCategoryToBeg(DummyData().getDummyTravel())
             
         }
@@ -83,68 +78,6 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
             setLast(dataTwo)
 
             setSecondLast(dataTwo)
-        }
-    }
-
-    private fun toolbar() {
-        with(toolbarBinding) {
-            // set title
-            tvTitle.text = getString(R.string.travel)
-
-            // click listeners
-            imgBack.setOnClickListener {
-                findNavController().popBackStack()
-            }
-
-            imgSearch.setOnClickListener {
-                findNavController().navigate(R.id.action_travelFragment_to_searchFragment)
-            }
-
-            imgWishlist.setOnClickListener {
-                findNavController().navigate(R.id.action_travelFragment_to_wishlistWithProductFragment)
-            }
-
-            imgCart.setOnClickListener {
-                findNavController().navigate(R.id.action_travelFragment_to_shoppingBegWithoutProductFragment)
-            }
-
-        }
-    }
-
-    private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
-        with(viewBinding) {
-
-            travelSliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR;
-
-            // below method is used to
-            // setadapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { travelSliderView.setSliderAdapter(it) }
-
-
-            // below method is use to set
-            // scroll time in seconds.
-            travelSliderView.scrollTimeInSec = 5
-
-            // to set it scrollable automatically
-            // we use below method.
-            travelSliderView.isAutoCycle = true
-
-            travelSliderView.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM)
-            travelSliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
-            travelSliderView.autoCycleDirection = SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
-
-            // to start auto cycle below method is used.
-            travelSliderView.startAutoCycle()
-        }
-    }
-
-    private fun setCategoryDropDown(data: ArrayList<DummyModel>?) {
-        with(viewBinding) {
-            rvCateDropDown.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = data?.let { DropDownCategoryAdapter(context, it) }
-            }
         }
     }
 

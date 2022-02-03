@@ -11,44 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:visibility="gone"
-            android:id="@+id/include"
-            layout="@layout/toolbar_with_three_menus"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <com.smarteist.autoimageslider.SliderView
-            android:id="@+id/kidsSliderView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/auto_image_slider_height"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include"
-            app:sliderIndicatorEnabled="true"
-            app:sliderIndicatorGravity="center_horizontal|bottom"
-            app:sliderIndicatorMargin="15dp"
-            app:sliderIndicatorOrientation="horizontal"
-            app:sliderIndicatorPadding="3dp"
-            app:sliderIndicatorRadius="2dp"
-            app:sliderIndicatorSelectedColor="#577D8A"
-            app:sliderIndicatorUnselectedColor="#DFDFDF" />
-
-
         <TextView
             android:id="@+id/heading1"
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/screen_horizontal_padding"
             android:layout_marginTop="@dimen/space_between_view_and_subview"
+            android:layout_marginStart="@dimen/all_time_margin_start"
             android:text="@string/most_wanted"
             android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/kidsSliderView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -69,7 +42,7 @@
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginStart="@dimen/all_time_margin_start"
             android:layout_marginTop="@dimen/space_between_views"
             android:text="@string/most_popular"
             android:textAllCaps="true"
@@ -81,7 +54,7 @@
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginStart="@dimen/all_time_margin_start"
             android:layout_marginTop="@dimen/space_between_views"
             android:text="@string/recommended_for_you"
             android:textAllCaps="true"
@@ -92,8 +65,6 @@
             android:id="@+id/rvBest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimen_15"
-            android:layout_marginTop="@dimen/dimen_10"
             android:foregroundGravity="center"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +123,6 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_10"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -182,20 +152,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <!--<androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent">
-
-
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
@@ -213,8 +169,6 @@
             android:id="@+id/rvRecommendForYou"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimen_15"
-            android:layout_marginTop="@dimen/dimen_10"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -227,7 +181,7 @@
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginStart="@dimen/all_time_margin_start"
             android:layout_marginTop="@dimen/space_between_views"
             android:text="Category to bag"
             android:textAllCaps="true"
@@ -239,7 +193,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginHorizontal="@dimen/dimen_15"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/wave_rectangle"
             android:backgroundTint="@color/day_bubble_gum_night_Puce_Red"
@@ -254,7 +207,7 @@
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginStart="@dimen/all_time_margin_start"
             android:layout_marginTop="@dimen/space_between_views"
             android:text="kidswear picks"
             android:textAllCaps="true"
@@ -266,8 +219,6 @@
             android:id="@+id/rvKidsPicks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimen_15"
-            android:layout_marginTop="@dimen/dimen_10"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -281,7 +232,7 @@
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:layout_marginStart="@dimen/all_time_margin_start"
             android:layout_marginTop="@dimen/space_between_views"
             android:text="perfect picks for home"
             android:textAllCaps="true"
@@ -293,8 +244,6 @@
             android:id="@+id/rvCollage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimen_15"
-            android:layout_marginTop="@dimen/dimen_10"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -302,16 +251,15 @@
             tools:itemCount="1"
             tools:listitem="@layout/single_best_products" />
 
-        <ImageView
-            android:id="@+id/homeImg4"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
+        <include
             android:layout_marginTop="@dimen/space_between_views"
-            android:scaleType="centerCrop"
-            android:src="@drawable/poster_bottom"
+            android:id="@+id/includeBtmSheet"
+            layout="@layout/lyt_bottom_sheet"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvCollage" />
-
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@+id/rvCollage"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

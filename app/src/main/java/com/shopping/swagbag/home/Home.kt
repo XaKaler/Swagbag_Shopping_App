@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
@@ -25,8 +26,7 @@ import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnima
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 
-class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
-    HomeCategoryRecycleItemClickListener {
+class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
 
     private lateinit var viewBinding: FragmentHomeBinding
     private lateinit var viewBinding2: HomeBinding
@@ -57,7 +57,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
         initViews()
 
         mainActivity.showToolbar()
-        mainActivity.changeToolbarTitle("Swagbag", true)
+        mainActivity.setCategorySlider()
 
     }
 
@@ -109,14 +109,14 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
             val dataTwo: ArrayList<DummyModel>? = DummyData().getTwoDummyData()
 
             val dataSlider: ArrayList<DummySlider> = DummyData().getDummySlider( )
-
+/*
             // category slider
             rvCategorySlider.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
             rvCategorySlider.adapter =
                 context?.let { DummyData().getDummyCategory()
-                    ?.let { it1 -> CategorySliderAdapter(context = it, it1, this@Home) } }
+                    ?.let { it1 -> CategorySliderAdapter(context = it, it1, this@Home) } }*/
 
             Log.e("TAG", "setCategorySlider: ${DummyData().getDummyCategory()}", )
 
@@ -180,6 +180,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
     private fun setTopTrending(data: ArrayList<DummyModel>) {
         with(viewBinding2) {
             rvTopTrending.apply {
+                addItemDecoration(GridSpaceItemDecoration(4))
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = TopTrendingAdapter(context, DummyData().getTopTrending())
             }
@@ -293,36 +294,4 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener,
         findNavController().navigate(R.id.action_home2_to_productDetailsFragment)
     }
 
-    override fun onHomeCategorySingleItemClickListener(position: Int) {
-        when(position){
-            0 -> {
-                mainActivity.changeToolbarTitle("Men", false)
-                findNavController().navigate(R.id.action_home2_to_menFragment)
-            }
-
-            1->{
-                mainActivity.changeToolbarTitle("Women", false)
-                findNavController().navigate(R.id.action_home2_to_womenFragment)
-            }
-
-            2->{
-                mainActivity.changeToolbarTitle("Kids", false)
-                findNavController().navigate(R.id.action_home2_to_kidsFragment)
-            }
-
-            3->{
-                mainActivity.changeToolbarTitle("Pets", false)
-                findNavController().navigate(R.id.action_home2_to_petsFragment)
-            }
-            4->{
-                mainActivity.changeToolbarTitle("Home", false)
-                findNavController().navigate(R.id.action_home2_to_homeFragment)
-            }
-
-            5->{
-                mainActivity.changeToolbarTitle("Travel", false)
-                findNavController().navigate(R.id.action_home2_to_travelFragment)
-            }
-        }
-    }
 }

@@ -25,6 +25,7 @@
 
 
             <TextView
+                android:textColor="@color/day_dark_liver_night_white"
                 android:id="@+id/textView145"
                 style="@style/roboto_medium_14_nickel"
                 android:layout_width="wrap_content"
@@ -55,6 +56,7 @@
                 style="@style/autowide_normal_12_state_green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/day_state_green_night_Cambridge_Blue"
                 android:layout_marginTop="@dimen/dimen_5"
                 android:text="KENSTAR"
                 android:textAllCaps="true"
@@ -64,6 +66,7 @@
 
             <TextView
                 android:id="@+id/productDetails"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 style="@style/snigiet_normal_14_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

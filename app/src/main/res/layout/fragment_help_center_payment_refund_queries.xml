@@ -38,9 +38,10 @@
 
                 <TextView
                     android:id="@+id/textView30"
+                    android:textColor="@color/day_dark_liver_night_white"
+                    style="@style/roboto_medium_14_davys_grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/roboto_medium_14_davys_grey"
                     android:padding="@dimen/dimen_15"
                     android:text="@string/payment_refund"
                     app:layout_constraintStart_toStartOf="parent"

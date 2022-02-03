@@ -40,7 +40,7 @@
 
                 <TextView
                     android:id="@+id/textView25"
-                    android:textColor="@color/day_davys_grey_night_dark_silver"
+                    android:textColor="@color/day_dark_liver_night_white"
                     style="@style/roboto_normal_20_davys_grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,6 +52,7 @@
                     android:id="@+id/textView27"
                     style="@style/roboto_normal_14_sonic_silver"
                     android:layout_width="0dp"
+                    android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                     android:layout_height="wrap_content"
                     android:text="@string/any_queries_or_suggestions_would_be_appreciated"
                     app:layout_constraintEnd_toStartOf="@+id/imageView27"
@@ -84,7 +85,7 @@
 
                     <TextView
                         style="@style/roboto_normal_15_davys_grey"
-                        android:textColor="@color/day_davys_grey_night_dark_silver"
+                        android:textColor="@color/day_dark_liver_night_white"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/roboto_medium"
@@ -112,7 +113,7 @@
 
                         <TextView
                             android:id="@+id/textView29"
-                            android:textColor="@color/day_davys_grey_night_dark_silver"
+                            android:textColor="@color/day_dark_liver_night_white"
                             style="@style/roboto_normal_15_davys_grey"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -140,6 +141,7 @@
                             <TextView
                                 android:id="@+id/tvPaymentRefund"
                                 style="@style/roboto_normal_14_sonic_silver"
+                                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/payment_refund"
@@ -170,6 +172,7 @@
                                 android:id="@+id/tvOfferDiscountCoupons"
                                 style="@style/roboto_normal_14_sonic_silver"
                                 android:layout_width="0dp"
+                                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 android:text="@string/offer_discount_coupons"
@@ -199,6 +202,7 @@
                                 android:id="@+id/tvManageYourAccount"
                                 style="@style/roboto_normal_14_sonic_silver"
                                 android:layout_width="0dp"
+                                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 android:text="@string/manage_your_account"
@@ -229,6 +233,7 @@
                                 style="@style/roboto_normal_14_sonic_silver"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                                 android:layout_marginTop="@dimen/space_between_view_and_subview"
                                 android:text="@string/other"
                                 app:layout_constraintEnd_toStartOf="@+id/imageView29"
@@ -284,7 +289,7 @@
                         <TextView
                             android:id="@+id/textView31"
                             style="@style/roboto_normal_15_davys_grey"
-                            android:textColor="@color/day_davys_grey_night_dark_silver"
+                            android:textColor="@color/day_dark_liver_night_white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -296,6 +301,7 @@
                             android:id="@+id/textView32"
                             style="@style/roboto_normal_14_sonic_silver"
                             android:layout_width="wrap_content"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_10"
                             android:text="There are no recent queries raised in Last 30 Days."
@@ -308,7 +314,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/space_between_views"
                             android:background="@drawable/rec_outline_5"
-
+                            android:textColor="@color/day_dark_liver_night_white"
                             android:gravity="center"
                             android:padding="@dimen/dimen_10"
                             android:text="@string/show_older_queries"
@@ -338,7 +344,7 @@
             <TextView
                 android:id="@+id/textView34"
                 style="@style/roboto_normal_11_davys_grey"
-                android:textColor="@color/day_davys_grey_night_dark_silver"
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/want_to_reach_us_the_old_way"

@@ -26,6 +26,7 @@
 
             <TextView
                 android:id="@+id/textView161"
+                android:textColor="@color/day_dark_liver_night_white"
                 style="@style/roboto_medium_12_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,6 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 android:id="@+id/textView162"
                 style="@style/roboto_normal_12_sonic_silver"
                 android:layout_width="wrap_content"
@@ -55,6 +57,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView162" />
 
             <TextView
+                android:textColor="@color/day_dark_liver_night_white"
                 android:id="@+id/textView163"
                 style="@style/roboto_medium_12_davys_grey"
                 android:layout_width="wrap_content"
@@ -65,6 +68,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view34" />
 
             <TextView
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 android:id="@+id/orderId"
                 style="@style/roboto_normal_12_sonic_silver"
                 android:layout_width="wrap_content"

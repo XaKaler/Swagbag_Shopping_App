@@ -8,6 +8,7 @@
     <RadioButton
         android:id="@+id/reason"
         style="@style/roboto_normal_13_sonic_silver"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/space_between_view_and_subview"

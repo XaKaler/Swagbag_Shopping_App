@@ -43,7 +43,7 @@
                     android:maxLines="2"
                     android:minLines="2"
                     android:text="@string/frequently_asked_questions"
-                    android:textColor="@color/day_davys_grey_night_dark_silver"
+                    android:textColor="@color/day_dark_liver_night_white"
                     app:layout_constraintEnd_toStartOf="@+id/imageView26"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

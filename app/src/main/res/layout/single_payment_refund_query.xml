@@ -11,6 +11,7 @@
     <TextView
         android:id="@+id/tvCatName"
         style="@style/roboto_normal_14_sonic_silver"
+        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/space_between_views"
@@ -21,8 +22,8 @@
 
     <ImageView
         android:id="@+id/imgCatArrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="1dp"
+        android:layout_height="9dp"
         android:src="@drawable/ic_right_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/tvCatName"
         app:layout_constraintEnd_toEndOf="parent"

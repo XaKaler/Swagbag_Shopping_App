@@ -8,6 +8,7 @@
     android:background="@drawable/rec_white_5">
 
     <TextView
+        android:textColor="@color/day_dark_liver_night_white"
         android:id="@+id/textView158"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,11 +19,12 @@
 
     <ImageView
         android:id="@+id/imageView57"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="13dp"
+        android:layout_height="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cross_sign_without_outline" />
+        app:srcCompat="@drawable/ic_cross_sign_without_outline"
+        app:tint="@color/day_dark_liver_night_white" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -36,6 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView158">
 
         <TextView
+            android:textColor="@color/day_dark_liver_night_white"
             android:id="@+id/textView164"
             style="@style/roboto_medium_14_davys_grey"
             android:layout_width="wrap_content"
@@ -46,6 +49,7 @@
 
         <TextView
             android:id="@+id/textView165"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="“Delivery Charges” is a service charge levied by Swagbag Designs Pvt. Ltd. on low value orders on the Swagbag Platform."
@@ -56,6 +60,7 @@
 
         <TextView
             android:id="@+id/textView166"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             style="@style/roboto_normal_12_davys_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,6 +89,7 @@
 
         <TextView
             android:id="@+id/textView168"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             style="@style/roboto_normal_12_davys_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

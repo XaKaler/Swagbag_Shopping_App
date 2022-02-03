@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/swagbag_privacy_policy"
                     android:textAllCaps="true"
-                    android:textColor="@color/day_davys_grey_night_dark_silver"
+                    android:textColor="@color/day_dark_liver_night_white"
                     app:layout_constraintEnd_toStartOf="@+id/imageView26"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
