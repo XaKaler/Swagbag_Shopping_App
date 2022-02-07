@@ -180,7 +180,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
     private fun setTopTrending(data: ArrayList<DummyModel>) {
         with(viewBinding2) {
             rvTopTrending.apply {
-                addItemDecoration(GridSpaceItemDecoration(4))
+                addItemDecoration(GridSpaceItemDecoration(20))
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = TopTrendingAdapter(context, DummyData().getTopTrending())
             }

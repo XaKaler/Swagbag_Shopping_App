@@ -20,6 +20,7 @@
     <dimen name="recycle_view_horizontal_space">12dp</dimen>
     <dimen name="screen_padding_10">10dp</dimen>
     <dimen name="screen_padding_15">15dp</dimen>
+    <dimen name="screen_padding_20">20dp</dimen>
     <dimen name="drawable_padding_10">10dp</dimen>
     <dimen name="screen_margin_10">10dp</dimen>
     <dimen name="screen_margin_5">5dp</dimen>
@@ -68,6 +69,7 @@
     <dimen name="dimen_15">15dp</dimen>
 
     <dimen name="dimen_6">6dp</dimen>
+    <dimen name="progress_bar_size">32dp</dimen>
 
 
     <!--text view-->

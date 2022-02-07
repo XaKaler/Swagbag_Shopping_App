@@ -66,7 +66,6 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         val dataSlider: ArrayList<DummySlider> = DummyData().getDummySlider()
 
         if (categoryData != null) {
-            setCategoryDropDown(categoryData)
             setCategoryToBeg(categoryData)
         }
 
@@ -74,6 +73,8 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
             setMostPopular(data)
 
             setRecommended(data)
+
+            setAutoImageSlider(dataSlider)
         }
 
         if (dataTwo != null) {
@@ -94,6 +95,33 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = BestProductAdapter(context, data, this@MenFragment)
             }
+        }
+    }
+
+
+    private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
+        with(viewBinding) {
+            sliderView.autoCycleDirection = com.smarteist.autoimageslider.SliderView.LAYOUT_DIRECTION_LTR;
+
+            // below method is used to
+            // set adapter to sliderview.
+            context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }
+
+            // below method is use to set
+            // scroll time in seconds.
+            sliderView.scrollTimeInSec = 5
+
+            // to set it scrollable automatically
+            // we use below method.
+            sliderView.isAutoCycle = true
+
+            sliderView.setIndicatorAnimation(com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType.THIN_WORM)
+            sliderView.setSliderTransformAnimation(com.smarteist.autoimageslider.SliderAnimations.SIMPLETRANSFORMATION)
+            sliderView.autoCycleDirection = com.smarteist.autoimageslider.SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
+
+            // to start auto cycle below method is used.
+            sliderView.startAutoCycle()
         }
     }
 
@@ -143,15 +171,6 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         }
     }
 
-
-    private fun setCategoryDropDown(data: ArrayList<DummyModel>?) {
-        with(viewBinding) {
-            rvCateDropDown.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = data?.let { DropDownCategoryAdapter(context, it) }
-            }
-        }
-    }
 
     private fun setMostWanted(data: ArrayList<DummyModel>) {
         with(viewBinding) {

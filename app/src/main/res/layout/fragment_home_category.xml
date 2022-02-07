@@ -20,8 +20,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-       <!-- <com.smarteist.autoimageslider.SliderView
-            android:id="@+id/homeSliderView"
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/sliderView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/auto_image_slider_height"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
             app:sliderIndicatorPadding="3dp"
             app:sliderIndicatorRadius="2dp"
             app:sliderIndicatorSelectedColor="#577D8A"
-            app:sliderIndicatorUnselectedColor="#DFDFDF" />-->
+            app:sliderIndicatorUnselectedColor="#DFDFDF" />
 
 
         <TextView
@@ -47,7 +47,7 @@
             android:text="@string/new_arrivals"
             android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="@+id/rvNewArrivals"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/sliderView" />
 
         <TextView
             android:id="@+id/heading10"

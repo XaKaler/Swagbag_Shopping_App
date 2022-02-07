@@ -15,21 +15,21 @@ import com.shopping.swagbag.dummy.DummyModel
 
 class CategoryAdapter(
     private val context: Context,
-    private val data: List<DummyModel>
+    private val data: List<CategoryModel.Result>
 ) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(private val viewBinding: SingleCategoryBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: DummyModel) {
+        fun bind(singleData: CategoryModel.Result) {
             with(viewBinding) {
                 // set imgae
-                Glide.with(context)
+                /*Glide.with(context)
                     .load(singleData.image)
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.ic_swagbug_logo)
-                    .into(imgCat)
+                    .into(imgCat)*/
 
                 /*constraintLayout2.setBackgroundResource(singleData.background)
 
@@ -37,27 +37,11 @@ class CategoryAdapter(
                 // set text
                 tvCateDetails.text = singleData.details*/
 
-                tvCatName.text = "Shop ${singleData.name}"
+                tvCatName.text = "Shop ${singleData.master.name}"
 
                 cateConstLayout.setOnClickListener {
                     val activity = context as AppCompatActivity
                     activity.findNavController(R.id.cateConstLayout).navigate(R.id.action_categoryFragment_to_productsFragment)
-
-                    //mainActivity.hideToolbar()
-                    /*when (singleData.name) {
-                        "Men" -> activity.findNavController(R.id.cateConstLayout)
-                            .navigate(R.id.action_categoryFragment_to_menFragment)
-                        "Women" -> activity.findNavController(R.id.cateConstLayout)
-                            .navigate(R.id.action_categoryFragment_to_womenFragment)
-                        "Kids" -> activity.findNavController(R.id.cateConstLayout)
-                            .navigate(R.id.action_categoryFragment_to_kidsFragment)
-                        "Pets" -> activity.findNavController(R.id.cateConstLayout)
-                            .navigate(R.id.action_categoryFragment_to_petsFragment)
-                        "Home" -> activity.findNavController(R.id.cateConstLayout)
-                            .navigate(R.id.action_categoryFragment_to_homeFragment)
-                        "Travel" -> activity.findNavController(R.id.cateConstLayout)
-                            .navigate(R.id.action_categoryFragment_to_travelFragment)
-                    }*/
 
                 }
             }

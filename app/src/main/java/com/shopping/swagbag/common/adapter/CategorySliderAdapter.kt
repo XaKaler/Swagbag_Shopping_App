@@ -34,20 +34,10 @@ class CategorySliderAdapter(
             fun bind(singleData: DummyModel, itemClick: HomeCategoryRecycleItemClickListener, position: Int){
                 with(viewBinding){
                     rvCategoryName.text = singleData.name
-/*
-                    val imageUrl = singleData.image
-
-                    Log.e("TAG", "bind: $imageUrl", )
-
-                    Glide
-                        .with(context)
-                        .load(imageUrl)
-                        .circleCrop()
-                        .into(rvCategorySliderImg)*/
 
                     // select when user click
                     if(selectedPosition == position){
-                        itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+                        itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.grey_x11))
                         rvCategoryName.setTextColor(ContextCompat.getColor(context, R.color.black))
                     }
                     else{

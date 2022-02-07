@@ -4,32 +4,27 @@
 
     <item
         android:id="@+id/btmWishlist"
-        android:icon="@drawable/ic_heart"
+        android:icon="@drawable/btm_wishlist"
         android:title="Wishlist"
-        android:iconTint="@color/white"
-        app:showAsAction="never"/>
+        android:iconTint="@color/white"/>
     <item
         android:id="@+id/btmCart"
-        android:icon="@drawable/ic_shopping_bag"
+        android:icon="@drawable/btm_cart"
         android:title="Cart"
-        android:iconTint="@color/white"
-        app:showAsAction="never" />
+        android:iconTint="@color/white" />
     <item
         android:id="@+id/btmCategory"
-        android:icon="@drawable/ic_outline_category_24"
+        android:icon="@drawable/btm_category"
         android:title="Category"
-        android:iconTint="@color/white"
-        app:showAsAction="never" />
+        android:iconTint="@color/white" />
     <item
         android:id="@+id/btmOffers"
-        android:icon="@drawable/ic_coupons"
-        android:title="Offers"
-        android:iconTint="@color/white"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_price_tag"
+        android:title="Brands"
+        android:iconTint="@color/white" />
     <item
         android:id="@+id/btmProfile"
-        android:icon="@drawable/ic_round_person_outline"
+        android:icon="@drawable/btm_user"
         android:title="Profile"
-        android:iconTint="@color/white"
-        app:showAsAction="never" />
+        android:iconTint="@color/white" />
 </menu>

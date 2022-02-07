@@ -24,7 +24,7 @@
         app:riv_tile_mode="repeat" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/closeDrawer"
         android:layout_width="wrap_content"
         android:layout_marginBottom="@dimen/nav_padding"
         android:layout_height="wrap_content"

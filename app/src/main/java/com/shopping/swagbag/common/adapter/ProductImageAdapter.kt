@@ -25,7 +25,7 @@ class ProductImageAdapter(
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
          val mLayoutInflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         // inflating the item.xml
-        val itemView: View = mLayoutInflater.inflate(R.layout.single_auto_image_slider, container, false)
+        val itemView: View = mLayoutInflater.inflate(R.layout.single_image_slider, container, false)
 
         // referencing the image view from the item.xml file
         val imageView: ImageView = itemView.findViewById<View>(R.id.imgAutoSlider) as ImageView

@@ -69,10 +69,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
 
         val dataChild: ArrayList<DummyChild> = DummyData().getDummyChild()
 
-
-        if (categoryData != null) {
-            setCategoryDropDown(categoryData)
-        }
+        setAutoImageSlider(dataSlider)
 
         if(dataChild != null){
             setCard8(dataChild)
@@ -106,6 +103,34 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
             }
         }
     }
+
+
+    private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
+        with(viewBinding) {
+            sliderView.autoCycleDirection = com.smarteist.autoimageslider.SliderView.LAYOUT_DIRECTION_LTR;
+
+            // below method is used to
+            // set adapter to sliderview.
+            context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }
+
+            // below method is use to set
+            // scroll time in seconds.
+            sliderView.scrollTimeInSec = 5
+
+            // to set it scrollable automatically
+            // we use below method.
+            sliderView.isAutoCycle = true
+
+            sliderView.setIndicatorAnimation(com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType.THIN_WORM)
+            sliderView.setSliderTransformAnimation(com.smarteist.autoimageslider.SliderAnimations.SIMPLETRANSFORMATION)
+            sliderView.autoCycleDirection = com.smarteist.autoimageslider.SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
+
+            // to start auto cycle below method is used.
+            sliderView.startAutoCycle()
+        }
+    }
+
 
     private fun setCard9(data: ArrayList<DummyModel>) {
         with(viewBinding) {
@@ -149,15 +174,6 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
             rvMenNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = BestProductAdapter(context, data, this@KidsFragment)
-            }
-        }
-    }
-
-    private fun setCategoryDropDown(data: ArrayList<DummyModel>?) {
-        with(viewBinding) {
-            rvCateDropDown.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = data?.let { DropDownCategoryAdapter(context, it) }
             }
         }
     }

@@ -71,7 +71,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
             setCategoryToBeg(categoryData)
         }
 
-
+        setAutoImageSlider(dataSlider)
 
         if (data != null) {
             setMostPopular(data)
@@ -178,6 +178,34 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
             }
         }
     }
+
+
+    private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
+        with(viewBinding) {
+            sliderView.autoCycleDirection = com.smarteist.autoimageslider.SliderView.LAYOUT_DIRECTION_LTR;
+
+            // below method is used to
+            // set adapter to sliderview.
+            context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }
+
+            // below method is use to set
+            // scroll time in seconds.
+            sliderView.scrollTimeInSec = 5
+
+            // to set it scrollable automatically
+            // we use below method.
+            sliderView.isAutoCycle = true
+
+            sliderView.setIndicatorAnimation(com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType.THIN_WORM)
+            sliderView.setSliderTransformAnimation(com.smarteist.autoimageslider.SliderAnimations.SIMPLETRANSFORMATION)
+            sliderView.autoCycleDirection = com.smarteist.autoimageslider.SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
+
+            // to start auto cycle below method is used.
+            sliderView.startAutoCycle()
+        }
+    }
+
 
     override fun onSingleItemClickListener(position: Int) {
         findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment)

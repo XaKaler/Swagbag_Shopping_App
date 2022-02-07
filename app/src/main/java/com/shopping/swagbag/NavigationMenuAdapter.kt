@@ -6,12 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.shopping.swagbag.category.CategoryFragment
-import com.shopping.swagbag.category.CategoryFragmentDirections
+import com.shopping.swagbag.category.*
 import com.shopping.swagbag.category.home.HomeFragmentDirections
 import com.shopping.swagbag.common.RecycleItemClick
 import com.shopping.swagbag.common.RecycleItemClickListener
@@ -20,11 +20,13 @@ import com.shopping.swagbag.databinding.SingleNavigationMenuBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.home.HomeDirections
+import com.shopping.swagbag.service.RetrofitSingleton
 
 
 class NavigationMenuAdapter(
     private val context: Context,
-    private val data: List<NavigationMenu>
+    private val data: List<NavigationMenu>,
+    private val category: List<CategoryModel.Result>
 ) :
     RecyclerView.Adapter<NavigationMenuAdapter.MyViewHolder>() {
 
@@ -67,7 +69,7 @@ class NavigationMenuAdapter(
                         viewBinding.masterCategory.apply {
                             layoutManager = LinearLayoutManager(context)
                             adapter = DummyData().getDummyCategory()
-                                ?.let { DropDownCategoryAdapter(context, it) }
+                                ?.let { DropDownCategoryAdapter(context, category) }
                         }
                     }
                     else{

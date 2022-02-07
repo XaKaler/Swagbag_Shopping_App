@@ -1,38 +1,40 @@
 package com.shopping.swagbag.category
 
-import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.FragmentCategoryBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
 import com.shopping.swagbag.dummy.DummyData
+import com.shopping.swagbag.service.RetrofitSingleton
 
 class CategoryFragment : Fragment(R.layout.fragment_category) {
 
     private lateinit var viewBinding: FragmentCategoryBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
-   // private lateinit var mainActivity: MainActivity
-
-/*
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity = context as MainActivity
-    }*/
+    private lateinit var categoryViewModel: CategoryViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val repository = CategoryRepository(RetrofitSingleton.getRetroApi())
+
         viewBinding = FragmentCategoryBinding.bind(view)
         toolbarBinding = viewBinding.include
 
-        initViews()
-        //mainActivity.showToolbar()
+        categoryViewModel =
+            ViewModelProvider(
+                this,
+                CategoryViewModelFactory(repository)
+            )[CategoryViewModel::class.java]
 
+        initViews()
     }
 
     private fun initViews() {
@@ -45,8 +47,9 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
         with(viewBinding) {
             rvCategory.apply{
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = DummyData().getDummyCategory()?.let { DummyData().getDummyCategory()
-                    ?.let { it1 -> CategoryAdapter(context, it1) } }
+                categoryViewModel.category.observe(viewLifecycleOwner, Observer {
+                    adapter = CategoryAdapter(context, it.result)
+                })
             }
         }
     }

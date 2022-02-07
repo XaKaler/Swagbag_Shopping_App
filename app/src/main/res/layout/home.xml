@@ -28,7 +28,7 @@
         <ImageView
             android:id="@+id/homeImg1"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="@dimen/banner_135"
             android:layout_marginTop="@dimen/space_between_view_and_subview_15"
             android:scaleType="centerCrop"
             android:src="@mipmap/navigation_header_background_foreground"
@@ -317,9 +317,10 @@
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:layout_marginTop="@dimen/space_between_views"
+            android:paddingVertical="@dimen/dimen_10"
             android:text="Top Trending"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/heading1"
             app:layout_constraintTop_toBottomOf="@+id/sliderView" />
 

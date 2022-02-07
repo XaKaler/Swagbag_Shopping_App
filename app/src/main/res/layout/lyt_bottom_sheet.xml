@@ -49,7 +49,7 @@
         android:padding="@dimen/screen_margin_15"
         app:layout_constraintEnd_toStartOf="@+id/instagram"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView233"
         app:layout_constraintTop_toBottomOf="@+id/textView233">
 
         <ImageView
@@ -178,21 +178,45 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/email"
+        android:layout_width="@dimen/home_page_social_media_icon"
+        android:layout_height="@dimen/home_page_social_media_icon"
+        android:background="@drawable/circle_white"
+        android:padding="@dimen/screen_margin_15"
+        app:layout_constraintBottom_toBottomOf="@+id/message"
+        app:layout_constraintEnd_toEndOf="@+id/twitter"
+        app:layout_constraintStart_toStartOf="@+id/twitter"
+        app:layout_constraintTop_toTopOf="@+id/message">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/email"
+            app:layout_constraintEnd_toEndOf="@+id/email"
+            app:layout_constraintStart_toStartOf="@+id/email"
+            app:layout_constraintTop_toTopOf="@+id/email"
+            app:srcCompat="@drawable/ic_round_mail_outline_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_between_view_and_subview"
         android:background="@drawable/rec_white_5"
         android:ems="10"
+        android:padding="@dimen/dimen_5"
+        android:hint="swagbag@gmail.com"
         android:layout_marginEnd="@dimen/space_between_view_and_subview"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/send"
+        app:layout_constraintEnd_toStartOf="@+id/submit"
         app:layout_constraintStart_toStartOf="@+id/textView235"
         app:layout_constraintTop_toBottomOf="@+id/textView235" />
 
     <TextView
-        android:id="@+id/send"
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:paddingHorizontal="@dimen/screen_padding_15"
         style="@style/roboto_medium_14_black"
@@ -201,10 +225,22 @@
         android:textColor="@color/white"
         android:background="@drawable/rec_red_fill"
         android:layout_height="0dp"
-        android:text="@string/send"
+        android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2" />
+
+    <TextView
+        android:id="@+id/textView182"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/roboto_medium_14_davys_grey"
+        android:textColor="@color/white"
+        android:text="Subscribe to our newsletter for more updates"
+        android:layout_marginTop="@dimen/space_between_view_and_subview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

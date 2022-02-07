@@ -24,7 +24,8 @@
         android:id="@+id/fragment_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/screen_horizontal_padding"
+        android:paddingHorizontal="@dimen/screen_padding_15"
+        android:paddingVertical="@dimen/screen_horizontal_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fragment_notificaiton"
         app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +36,8 @@
             android:id="@+id/fragment_notificaiton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/screen_horizontal_padding"
+            android:paddingHorizontal="@dimen/screen_padding_15"
+            android:paddingVertical="@dimen/screen_horizontal_padding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fragment_wishtlist_without_product"
             app:layout_constraintTop_toTopOf="parent"
@@ -66,28 +68,36 @@
         android:padding="@dimen/screen_horizontal_padding"
         app:srcCompat="@drawable/ic_shopping_bag" />
 
-    <TextView
-        android:id="@+id/toolbarTitle"
-        style="@style/roboto_medium_24_black"
-        android:fontFamily="@font/rasa_bold"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAllCaps="true"
-        android:layout_marginStart="@dimen/dimen_30"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_search"
-        app:layout_constraintEnd_toStartOf="@+id/fragment_search"
-        app:layout_constraintStart_toEndOf="@+id/imgToggle"
-        app:layout_constraintTop_toTopOf="@+id/fragment_search" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_wishtlist_without_product"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/toobarIcon"
-        android:layout_width="@dimen/home_page_logo_size"
-        android:layout_height="@dimen/home_page_logo_size"
-        android:layout_marginEnd="@dimen/space_between_view_and_subview"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarTitle"
-        app:layout_constraintEnd_toStartOf="@+id/toolbarTitle"
-        app:layout_constraintTop_toTopOf="@+id/toolbarTitle"
-        app:srcCompat="@mipmap/home_nav_icon_foreground" />
+        <TextView
+            android:id="@+id/toolbarTitle"
+            style="@style/roboto_medium_24_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_between_view_and_subview"
+            android:fontFamily="@font/rasa_bold"
+            android:text="@string/app_name"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/toobarIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/toobarIcon"
+            android:layout_width="@dimen/home_page_logo_size"
+            android:layout_height="@dimen/home_page_logo_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/home_nav_icon_foreground" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
