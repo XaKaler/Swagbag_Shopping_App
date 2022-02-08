@@ -19,7 +19,7 @@ import com.shopping.swagbag.databinding.MainToolbarBinding
 import com.shopping.swagbag.databinding.NavigationDrawerBinding
 import com.shopping.swagbag.databinding.NavigationHeaderBinding
 import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.service.RetrofitSingleton
+import com.shopping.swagbag.service.RemoteDataSource
 
 
 class MainActivity : AppCompatActivity(),
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(),
 
 
             // initialize view model
-            val repository = CategoryRepository(RetrofitSingleton.getRetroApi())
+            val repository = CategoryRepository(RemoteDataSource().getRetroApi())
 
             categoryViewModel = ViewModelProvider(
                 this@MainActivity,

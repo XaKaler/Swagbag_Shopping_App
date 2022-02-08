@@ -1,26 +1,16 @@
 package com.shopping.swagbag
 
-import android.app.Activity
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.category.*
-import com.shopping.swagbag.category.home.HomeFragmentDirections
-import com.shopping.swagbag.common.RecycleItemClick
-import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.DropDownCategoryAdapter
 import com.shopping.swagbag.databinding.SingleNavigationMenuBinding
 import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.dummy.DummyModel
-import com.shopping.swagbag.home.HomeDirections
-import com.shopping.swagbag.service.RetrofitSingleton
 
 
 class NavigationMenuAdapter(

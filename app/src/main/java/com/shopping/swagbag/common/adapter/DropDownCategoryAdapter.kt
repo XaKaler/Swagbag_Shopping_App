@@ -11,7 +11,6 @@ import com.shopping.swagbag.R
 import com.shopping.swagbag.category.CategoryModel
 import com.shopping.swagbag.databinding.SingleCategoryDropDownBinding
 import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.dummy.DummyModel
 import java.util.*
 import kotlin.math.max
 
@@ -40,12 +39,12 @@ class DropDownCategoryAdapter(
 
                 tvCatName.text = singleData.master.name
 
-                /*Glide
+                Glide
                     .with(context)
-                    .load(singleData.image)
+                    .load(singleData.master.file)
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.logo)
-                    .into(catIcon)*/
+                    .into(catIcon)
 
                 if (selectedPosition == position) {
                     with(viewBinding) {

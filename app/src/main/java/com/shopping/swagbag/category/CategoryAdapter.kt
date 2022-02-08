@@ -25,17 +25,11 @@ class CategoryAdapter(
         fun bind(singleData: CategoryModel.Result) {
             with(viewBinding) {
                 // set imgae
-                /*Glide.with(context)
-                    .load(singleData.image)
+                Glide.with(context)
+                    .load(singleData.master.file)
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.ic_swagbug_logo)
-                    .into(imgCat)*/
-
-                /*constraintLayout2.setBackgroundResource(singleData.background)
-
-                imgCat.setImageResource(singleData.image)
-                // set text
-                tvCateDetails.text = singleData.details*/
+                    .into(imgCat)
 
                 tvCatName.text = "Shop ${singleData.master.name}"
 

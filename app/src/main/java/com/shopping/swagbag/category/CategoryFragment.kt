@@ -1,31 +1,34 @@
 package com.shopping.swagbag.category
 
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentCategoryBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.service.RetrofitSingleton
 
-class CategoryFragment : Fragment(R.layout.fragment_category) {
+class CategoryFragment :
+    BaseFragment<FragmentCategoryBinding,
+            CategoryViewModel,
+            CategoryRepository>(FragmentCategoryBinding::inflate) {
 
-    private lateinit var viewBinding: FragmentCategoryBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private lateinit var categoryViewModel: CategoryViewModel
+    private val repository = CategoryRepository(remoteDataSource.getRetroApi())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val repository = CategoryRepository(RetrofitSingleton.getRetroApi())
+        initViews()
+    }
 
-        viewBinding = FragmentCategoryBinding.bind(view)
+    private fun initViews() {
         toolbarBinding = viewBinding.include
 
         categoryViewModel =
@@ -34,10 +37,6 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
                 CategoryViewModelFactory(repository)
             )[CategoryViewModel::class.java]
 
-        initViews()
-    }
-
-    private fun initViews() {
         setToolbar()
 
         setCategoryData()
@@ -66,4 +65,14 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
         }
     }
 
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentCategoryBinding {
+        return FragmentCategoryBinding.inflate(layoutInflater, container, false)
+    }
+
+    override fun getViewModel() = CategoryViewModel::class.java
+
+    override fun getFragmentRepository() = repository
 }

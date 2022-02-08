@@ -2,7 +2,7 @@ package com.shopping.swagbag.service
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitSingleton {
+class RemoteDataSource {
     companion object{
         private const val baseUrl = "https://api.swagbag.com/api/"
 
@@ -12,6 +12,6 @@ class RetrofitSingleton {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        fun getRetroApi(): ApiService = getBaseUrl().create(ApiService::class.java)
     }
+        fun getRetroApi(): ApiService = getBaseUrl().create(ApiService::class.java)
 }
