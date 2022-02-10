@@ -19,7 +19,9 @@ import com.shopping.swagbag.databinding.MainToolbarBinding
 import com.shopping.swagbag.databinding.NavigationDrawerBinding
 import com.shopping.swagbag.databinding.NavigationHeaderBinding
 import com.shopping.swagbag.dummy.DummyData
+import com.shopping.swagbag.service.ApiService
 import com.shopping.swagbag.service.RemoteDataSource
+import com.shopping.swagbag.service.Resource
 
 
 class MainActivity : AppCompatActivity(),
@@ -46,9 +48,7 @@ class MainActivity : AppCompatActivity(),
             navigationBinding = viewBinding.includeNavigation
             navigationHeaderBinding = navigationBinding.includeHeader
 
-
-            // initialize view model
-            val repository = CategoryRepository(RemoteDataSource().getRetroApi())
+            val repository = CategoryRepository(RemoteDataSource().getBaseUrl().create(ApiService::class.java))
 
             categoryViewModel = ViewModelProvider(
                 this@MainActivity,
@@ -190,8 +190,12 @@ class MainActivity : AppCompatActivity(),
 
             rvnavMenu.apply {
                 layoutManager = LinearLayoutManager(context)
-                categoryViewModel.category.observe(this@MainActivity, Observer{
-                    adapter = NavigationMenuAdapter(this@MainActivity, navigationMenu, it.result)
+                categoryViewModel.category.observe(this@MainActivity, Observer {
+                    when (it) {
+                        is Resource.Success -> {
+                            adapter = NavigationMenuAdapter(this@MainActivity, navigationMenu, it.value.result)
+                        }
+                    }
                 })
             }
         }

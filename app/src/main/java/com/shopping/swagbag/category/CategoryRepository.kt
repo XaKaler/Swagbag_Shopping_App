@@ -4,18 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.shopping.swagbag.common.base.BaseRepository
 import com.shopping.swagbag.service.ApiService
+import com.shopping.swagbag.service.Resource
 
 class CategoryRepository(private val apiService: ApiService): BaseRepository() {
+/*
+    private val categoryLiveData = MutableLiveData<Resource<CategoryModel>>()
 
-    private val categoryLiveData = MutableLiveData<CategoryModel>()
+    val category: LiveData<Resource<CategoryModel>>
+    get() = categoryLiveData*/
 
-    val category: LiveData<CategoryModel>
-    get() = categoryLiveData
-
-    suspend fun getAllCategories(){
-        val result = apiService.getAllCategories()
-        if(result.body() != null){
-            categoryLiveData.postValue(result.body())
-        }
-    }
+    suspend fun getAllCategories() = safeApiCall { apiService.getAllCategories() }
 }

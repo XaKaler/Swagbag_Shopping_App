@@ -188,4 +188,6 @@
     <string name="follow_us">Follow Us</string>
     <string name="subscribe">Subscribe</string>
     <string name="send">Send</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="loading">Loading</string>
 </resources>
