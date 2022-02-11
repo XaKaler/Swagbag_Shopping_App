@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_home2"
+            app:destination="@id/home2" />
     </fragment>
     <fragment
         android:id="@+id/resetPassword"

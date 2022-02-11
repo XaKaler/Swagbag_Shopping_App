@@ -1,57 +1,87 @@
 package com.shopping.swagbag.auth.resetpassword
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.shopping.swagbag.R
+import com.shopping.swagbag.auth.UserApi
+import com.shopping.swagbag.auth.UserRepository
+import com.shopping.swagbag.auth.UserViewModel
+import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentResetPasswordBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuBinding
+import com.shopping.swagbag.service.Resource
 
-class ResetPassword : Fragment(R.layout.fragment_reset_password), View.OnClickListener {
+class ResetPassword : BaseFragment<
+        FragmentResetPasswordBinding,
+        UserViewModel,
+        UserRepository
+        >(FragmentResetPasswordBinding::inflate) {
 
-    private lateinit var viewBinding: FragmentResetPasswordBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding = FragmentResetPasswordBinding.bind(view)
         toolbarBinding = viewBinding.include
 
         initViews()
-
-
     }
 
     private fun initViews() {
         setToolbar()
 
         //clickListeners
-        with(viewBinding){
-        btnSendOtp.setOnClickListener(this@ResetPassword)
+        with(viewBinding) {
+            btnSendOtp.setOnClickListener { sendVerificationCode() }
         }
     }
 
+    private fun sendVerificationCode() {
+        val email = viewBinding.email.text.toString()
+
+        viewModel
+            .passwordResetEmailSend(email)
+            .observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Loading -> showLoading()
+
+                is Resource.Success -> {
+                    stopShowingLoading()
+
+                    val result = it.value
+
+                    if (result.status == "success")
+                        findNavController().navigate(R.id.action_resetPassword_to_verificationCodeFragment)
+                    toast(result.message)
+                }
+                else -> {}
+            }
+        })
+    }
+
     private fun setToolbar() {
-        with(toolbarBinding){
+        with(toolbarBinding) {
             // set title
             tvTitle.text = getString(R.string.reset_password)
 
             // back button click
-            imgBack.setOnClickListener{
+            imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
         }
     }
 
-    override fun onClick(v: View?) {
-        when(v?.id){
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    )= FragmentResetPasswordBinding.inflate(inflater, container, false)
 
-            R.id.btnSendOtp -> findNavController().navigate(R.id.action_resetPassword_to_verificationCodeFragment)
-        }
-    }
+    override fun getViewModel()= UserViewModel::class.java
+
+    override fun getFragmentRepository()= UserRepository(remoteDataSource.getBaseUrl().create(UserApi::class.java))
 
 }

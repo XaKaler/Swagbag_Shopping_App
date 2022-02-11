@@ -2,8 +2,8 @@ package com.shopping.swagbag.common.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.shopping.swagbag.auth.signin.UserRepository
-import com.shopping.swagbag.auth.signin.UserViewModel
+import com.shopping.swagbag.auth.UserRepository
+import com.shopping.swagbag.auth.UserViewModel
 import com.shopping.swagbag.category.CategoryRepository
 import com.shopping.swagbag.category.CategoryViewModel
 

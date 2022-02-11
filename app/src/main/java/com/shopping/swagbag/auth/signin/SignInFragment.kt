@@ -1,6 +1,7 @@
 package com.shopping.swagbag.auth.signin
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.shopping.swagbag.R
 import com.shopping.swagbag.auth.UserApi
+import com.shopping.swagbag.auth.UserRepository
+import com.shopping.swagbag.auth.UserViewModel
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentSignInBinding
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.utils.AppUtils
 
 class SignInFragment :
     BaseFragment<
@@ -25,7 +29,10 @@ class SignInFragment :
         initViews()
     }
 
-    private fun moveToHome(user: SignInModel) {
+    private fun moveToHome() {
+
+        Log.e("check user", "moveToHome: ${context?.let { AppUtils(it).getUser() }}", )
+
         findNavController().navigate(R.id.action_global_home2)
     }
 
@@ -55,7 +62,8 @@ class SignInFragment :
                             toast(loginResponse.message)
                         else {
                             toast(loginResponse.message)
-                            moveToHome(it.value)
+                            context?.let { it1 -> AppUtils(it1).saveUser(loginResponse) }
+                            moveToHome()
                         }
 
                     }
