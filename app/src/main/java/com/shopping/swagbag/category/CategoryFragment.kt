@@ -13,7 +13,6 @@ import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentCategoryBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.service.ApiService
 import com.shopping.swagbag.service.Resource
 
 class CategoryFragment :
@@ -22,7 +21,7 @@ class CategoryFragment :
             CategoryRepository>(FragmentCategoryBinding::inflate) {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
-    private val repository = CategoryRepository(remoteDataSource.getBaseUrl().create(ApiService::class.java))
+    private val repository = CategoryRepository(remoteDataSource.getBaseUrl().create(CategoryApi::class.java))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,7 +51,7 @@ class CategoryFragment :
     }
 
     private fun setCategoryData() {
-        viewModel.category.observe(viewLifecycleOwner, Observer {
+        viewModel.masterCategory().observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Loading -> showLoading()
 

@@ -122,7 +122,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Mobile*" />
+                            android:hint="Mobile*"
+                            android:id="@+id/mobileNo"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -139,7 +140,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/email" />
+                            android:hint="@string/email"
+                            android:id="@+id/emailAddress"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -219,7 +221,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/location" />
+                            android:hint="@string/location"
+                            android:id="@+id/location"/>
 
 
                     </com.google.android.material.textfield.TextInputLayout>

@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shopping.swagbag.auth.resetpassword.ResetPasswordModel
+import com.shopping.swagbag.auth.resetpassword.PasswordResetEmailSendModel
+import com.shopping.swagbag.auth.resetpassword.PasswordResetModel
 import com.shopping.swagbag.auth.signin.SignInModel
 import com.shopping.swagbag.auth.signup.SignUpModel
 import com.shopping.swagbag.service.Resource
@@ -39,16 +40,31 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         return signUpResponse
     }
 
-    fun passwordResetEmailSend(email: String
-    ):LiveData<Resource<ResetPasswordModel>>{
+    fun passwordResetEmailSend(
+        email: String
+    ): LiveData<Resource<PasswordResetEmailSendModel>> {
 
-        val resetPasswordResponse = MutableLiveData<Resource<ResetPasswordModel>>()
+        val resetPasswordResponse = MutableLiveData<Resource<PasswordResetEmailSendModel>>()
 
         viewModelScope.launch {
-            resetPasswordResponse.value  = Resource.Loading
+            resetPasswordResponse.value = Resource.Loading
             resetPasswordResponse.value = repository.passwordResetEmailSend(email)
         }
 
         return resetPasswordResponse
+    }
+
+    fun passwordReset(
+        email: String,
+        otp: String
+    ): LiveData<Resource<PasswordResetModel>> {
+
+        val result = MutableLiveData<Resource<PasswordResetModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.passwordReset(email, otp)
+        }
+        return result
     }
 }

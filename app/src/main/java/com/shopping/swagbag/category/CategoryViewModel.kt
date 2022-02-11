@@ -19,6 +19,16 @@ class CategoryViewModel(private val categoryRepository: CategoryRepository) : Vi
             categoryLiveData.value = Resource.Loading
             categoryLiveData.value = categoryRepository.getAllCategories()
         }
+    }
 
+    fun masterCategory(): LiveData<Resource<MasterCategoryModel>>{
+        val result = MutableLiveData<Resource<MasterCategoryModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = categoryRepository.masterCategory()
+        }
+
+        return result
     }
 }

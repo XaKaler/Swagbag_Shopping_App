@@ -15,23 +15,24 @@ import com.shopping.swagbag.dummy.DummyModel
 
 class CategoryAdapter(
     private val context: Context,
-    private val data: List<CategoryModel.Result>
+    private val data: List<MasterCategoryModel.Result>
 ) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(private val viewBinding: SingleCategoryBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: CategoryModel.Result) {
+        fun bind(singleData: MasterCategoryModel.Result) {
             with(viewBinding) {
-                // set imgae
+
+                // set image
                 Glide.with(context)
-                    .load(singleData.master.file)
+                    .load(singleData.file)
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.ic_swagbug_logo)
                     .into(imgCat)
 
-                tvCatName.text = "Shop ${singleData.master.name}"
+                tvCatName.text = "Shop ${singleData.name}"
 
                 cateConstLayout.setOnClickListener {
                     val activity = context as AppCompatActivity

@@ -20,5 +20,5 @@ class RemoteDataSource {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     /*
-        fun getRetroApi(): ApiService = getBaseUrl().create(ApiService::class.java)*/
+        fun getRetroApi(): CategoryApi = getBaseUrl().create(CategoryApi::class.java)*/
 }

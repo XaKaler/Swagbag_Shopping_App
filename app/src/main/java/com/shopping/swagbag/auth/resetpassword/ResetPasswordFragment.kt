@@ -43,24 +43,34 @@ class ResetPassword : BaseFragment<
     private fun sendVerificationCode() {
         val email = viewBinding.email.text.toString()
 
-        viewModel
-            .passwordResetEmailSend(email)
-            .observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is Resource.Loading -> showLoading()
+        if(email.isNotEmpty()) {
+            viewModel
+                .passwordResetEmailSend(email)
+                .observe(viewLifecycleOwner, Observer {
+                    when (it) {
+                        is Resource.Loading -> showLoading()
 
-                is Resource.Success -> {
-                    stopShowingLoading()
+                        is Resource.Success -> {
+                            stopShowingLoading()
 
-                    val result = it.value
+                            val result = it.value
 
-                    if (result.status == "success")
-                        findNavController().navigate(R.id.action_resetPassword_to_verificationCodeFragment)
-                    toast(result.message)
-                }
-                else -> {}
-            }
-        })
+                            if (result.status == "success") {
+                                val action =
+                                    ResetPasswordDirections.actionResetPasswordToVerificationCodeFragment(
+                                        email
+                                    )
+                                findNavController().navigate(action)
+                                toast(result.message)
+                            }
+                        }
+                        else -> {}
+                    }
+                })
+        }
+        else{
+            toast("Enter email")
+        }
     }
 
     private fun setToolbar() {

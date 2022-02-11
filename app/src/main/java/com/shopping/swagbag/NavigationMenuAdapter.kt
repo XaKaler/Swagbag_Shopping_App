@@ -11,6 +11,7 @@ import com.shopping.swagbag.category.*
 import com.shopping.swagbag.common.adapter.DropDownCategoryAdapter
 import com.shopping.swagbag.databinding.SingleNavigationMenuBinding
 import com.shopping.swagbag.dummy.DummyData
+import com.shopping.swagbag.utils.AppUtils
 
 
 class NavigationMenuAdapter(
@@ -130,6 +131,7 @@ class NavigationMenuAdapter(
                 "Log Out" -> {
                     activity.closeDrawer()
                     activity.hideToolbar()
+                    AppUtils(context).logOut()
                     navController.navigate(R.id.action_global_home2)
                 }
             }

@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
+import com.shopping.swagbag.category.MasterCategoryModel
 import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.databinding.SingleCategorySliderBinding
@@ -20,7 +21,7 @@ import com.shopping.swagbag.dummy.DummyModel
 
 class CategorySliderAdapter(
     private val context: Context,
-    private val data: List<DummyModel>,
+    private val data: List<MasterCategoryModel.Result>,
     private val itemClick: HomeCategoryRecycleItemClickListener
 
 ) : RecyclerView.Adapter<CategorySliderAdapter.MyViewHolder>() {
@@ -31,7 +32,7 @@ class CategorySliderAdapter(
         RecyclerView.ViewHolder(viewBinding.root) {
 
         // bind data with view
-            fun bind(singleData: DummyModel, itemClick: HomeCategoryRecycleItemClickListener, position: Int){
+            fun bind(singleData: MasterCategoryModel.Result, itemClick: HomeCategoryRecycleItemClickListener, position: Int){
                 with(viewBinding){
                     rvCategoryName.text = singleData.name
 

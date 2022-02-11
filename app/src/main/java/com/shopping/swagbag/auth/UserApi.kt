@@ -1,12 +1,11 @@
 package com.shopping.swagbag.auth
 
-import com.shopping.swagbag.auth.resetpassword.ResetPasswordModel
+import com.shopping.swagbag.auth.resetpassword.PasswordResetEmailSendModel
+import com.shopping.swagbag.auth.resetpassword.PasswordResetModel
 import com.shopping.swagbag.auth.signin.SignInModel
 import com.shopping.swagbag.auth.signup.SignUpModel
-import com.shopping.swagbag.category.CategoryModel
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface UserApi {
@@ -33,6 +32,14 @@ interface UserApi {
     @POST("passwrodresetemailsend")
     suspend fun passwordResetEmailSend(
         @Field("email") email: String
-    ): ResetPasswordModel
+    ): PasswordResetEmailSendModel
+
+
+    @FormUrlEncoded
+    @POST("passwordreset")
+    suspend fun passwordReset(
+        @Field("email") email: String,
+        @Field("otp") otp: String
+    ): PasswordResetModel
 
 }

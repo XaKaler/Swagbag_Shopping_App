@@ -1,27 +1,26 @@
 package com.shopping.swagbag
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.shopping.swagbag.category.CategoryRepository
-import com.shopping.swagbag.category.CategoryViewModel
-import com.shopping.swagbag.category.CategoryViewModelFactory
+import com.shopping.swagbag.category.*
 import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
 import com.shopping.swagbag.common.adapter.CategorySliderAdapter
 import com.shopping.swagbag.databinding.ActivityMainBinding
 import com.shopping.swagbag.databinding.MainToolbarBinding
 import com.shopping.swagbag.databinding.NavigationDrawerBinding
 import com.shopping.swagbag.databinding.NavigationHeaderBinding
-import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.service.ApiService
 import com.shopping.swagbag.service.RemoteDataSource
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.utils.AppUtils
 
 
 class MainActivity : AppCompatActivity(),
@@ -32,6 +31,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var navigationBinding: NavigationDrawerBinding
     private lateinit var navigationHeaderBinding: NavigationHeaderBinding
     private lateinit var categoryViewModel: CategoryViewModel
+    private lateinit var masterCategories: List<MasterCategoryModel.Result>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,8 @@ class MainActivity : AppCompatActivity(),
             navigationBinding = viewBinding.includeNavigation
             navigationHeaderBinding = navigationBinding.includeHeader
 
-            val repository = CategoryRepository(RemoteDataSource().getBaseUrl().create(ApiService::class.java))
+            val repository =
+                CategoryRepository(RemoteDataSource().getBaseUrl().create(CategoryApi::class.java))
 
             categoryViewModel = ViewModelProvider(
                 this@MainActivity,
@@ -93,12 +94,21 @@ class MainActivity : AppCompatActivity(),
                         navController.navigate(R.id.action_global_couponsFragment)*/
                     }
 
-                    R.id.btmProfile->{
+                    R.id.btmProfile -> {
                         hideToolbar()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-                        navController.navigate(R.id.action_global_signInFragment)
+
+                        // check whether user is already login or not
+                        val isUserLogIn = AppUtils(this@MainActivity).isUserLoggedIn()
+
+                        Log.e("TAG", "initViews: $isUserLogIn")
+
+                        if (AppUtils(this@MainActivity).isUserLoggedIn())
+                            navController.navigate(R.id.action_global_profileFragment)
+                        else
+                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
 
@@ -125,12 +135,31 @@ class MainActivity : AppCompatActivity(),
 
     fun setCategorySlider() {
         if (this::viewBinding.isInitialized) {
-            viewBinding.rvCategorySlider.apply {
-                layoutManager =
-                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = DummyData().getDummyCategory()
-                    ?.let { CategorySliderAdapter(this@MainActivity, it, this@MainActivity) }
-            }
+            categoryViewModel.masterCategory().observe(this, Observer {
+                when (it) {
+                    is Resource.Success -> {
+                        masterCategories = it.value.result
+
+                        viewBinding.rvCategorySlider.apply {
+                            layoutManager =
+                                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                            adapter = CategorySliderAdapter(
+                                this@MainActivity,
+                                it.value.result,
+                                this@MainActivity
+                            )
+                        }
+                    }
+
+                    is Resource.Failure -> Toast.makeText(
+                        this,
+                        it.errorCode.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    else -> {}
+                }
+            })
         }
     }
 
@@ -176,15 +205,13 @@ class MainActivity : AppCompatActivity(),
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_global_shoppingBegWithProductFragment)
             }
-
-
         }
     }
 
     private fun setUpNavigation() {
         with(navigationBinding) {
-            // add navigation menu
 
+            // add navigation menu
             val navigationMenu: List<NavigationMenu> = OnNavigationMenu().getNavigationMenu()
             var isCategoryShow = false
 
@@ -195,6 +222,7 @@ class MainActivity : AppCompatActivity(),
                         is Resource.Success -> {
                             adapter = NavigationMenuAdapter(this@MainActivity, navigationMenu, it.value.result)
                         }
+                        else -> {}
                     }
                 })
             }
@@ -222,42 +250,42 @@ class MainActivity : AppCompatActivity(),
 
 
     override fun onHomeCategorySingleItemClickListener(position: Int) {
-        when(position){
-            0 -> {
+        when(masterCategories[position].name){
+            "Men" -> {
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_global_menFragment)
             }
 
-            1->{
+            "Women"->{
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_global_womenFragment)
             }
 
-            2->{
+            "Kids"->{
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_global_kidsFragment)
             }
 
-            3->{
+            "Pets"->{
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_global_petsFragment)
             }
-            4->{
+            "Home"->{
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_global_homeFragment)
             }
 
-            5->{
+            "Travel accessories"->{
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController

@@ -10,10 +10,12 @@ class AppUtils(private val context: Context) {
 
     private val _myPrefName = "sharePrefName"
     private val _userData = "user_data"
+    private val _isUserLogIn = "user_login"
 
     fun saveUser(user: SignInModel){
        val editor: SharedPreferences.Editor = context.getSharedPreferences(_myPrefName, Context.MODE_PRIVATE).edit()
         editor.putString("user_data", Gson().toJson(user, SignInModel::class.java))
+        editor.putBoolean(_isUserLogIn, true)
         editor.apply()
     }
 
@@ -28,7 +30,15 @@ class AppUtils(private val context: Context) {
 
     fun isUserLoggedIn(): Boolean{
         val sharedPreferences = context.getSharedPreferences(_myPrefName, Context.MODE_PRIVATE)
-        val user =sharedPreferences.getString(_userData, "")
-        return user != null
+        //val user =sharedPreferences.getString(_userData, "")
+
+        return sharedPreferences.getBoolean(_isUserLogIn, false)
+    }
+
+    fun logOut(){
+        val editor: SharedPreferences.Editor = context.getSharedPreferences(_myPrefName, Context.MODE_PRIVATE).edit()
+        editor.putBoolean(_isUserLogIn, false)
+        editor.clear()
+        editor.apply()
     }
 }

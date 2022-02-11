@@ -3,19 +3,31 @@ package com.shopping.swagbag.profile
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.shopping.swagbag.R
+import com.shopping.swagbag.auth.UserApi
+import com.shopping.swagbag.auth.UserRepository
+import com.shopping.swagbag.auth.UserViewModel
+import com.shopping.swagbag.auth.signin.SignInModel
+import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProfileBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.utils.AppUtils
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListener {
+class ProfileFragment : BaseFragment<
+        FragmentProfileBinding,
+        UserViewModel,
+        UserRepository>(
+    FragmentProfileBinding::inflate
+), View.OnClickListener {
 
-    private lateinit var viewBinding: FragmentProfileBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private var maleSelected: Boolean = false
 
@@ -35,7 +47,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding = FragmentProfileBinding.bind(view)
         toolbarBinding = viewBinding.include
 
         initViews()
@@ -45,6 +56,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
 
     private fun initViews() {
         setToolbar()
+
+        setUserData()
 
         // click listeners
         with(viewBinding) {
@@ -71,6 +84,46 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             }
 
             btnSaveDetails.setOnClickListener(this@ProfileFragment)
+        }
+    }
+
+    private fun setUserData() {
+        // get user from app utils
+        val user: SignInModel? = context?.let { AppUtils(it).getUser() }
+
+        with(viewBinding) {
+            val userName = user?.result?.fname
+            val mobile = user?.result?.mobile
+            val email = user?.result?.email
+            val birthDate = ""
+            val address = user?.result?.address
+            val gender = "Male"
+
+            Log.e(
+                "user data",
+                "username: $userName\n" +
+                        "mobile: $mobile\n" +
+                        "email: $email\n" +
+                        "birthday: $birthDate\n" +
+                        "address: $address\n" +
+                        "gender: $gender\n",
+            )
+
+            //set user data
+            edtUserName.setText(userName)
+            mobileNo.setText(mobile)
+            emailAddress.setText(email)
+            location.setText(address)
+            birthday.setText(birthDate)
+
+            //set gender
+            if (gender == "Male") {
+                maleSelected = true
+                setGender()
+            } else {
+                maleSelected = false
+                setGender()
+            }
         }
     }
 
@@ -110,10 +163,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     }
 
     override fun onClick(v: View?) {
-        when(v?.id){
+        when (v?.id) {
             R.id.btnSaveDetails -> {
                 findNavController().navigate(R.id.action_profileFragment_to_home2)
             }
         }
     }
+
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentProfileBinding.inflate(inflater, container, false)
+
+    override fun getViewModel() = UserViewModel::class.java
+
+    override fun getFragmentRepository() =
+        UserRepository(remoteDataSource.getBaseUrl().create(UserApi::class.java))
 }

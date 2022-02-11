@@ -50,7 +50,7 @@ class CreatePasswordFragment : Fragment(R.layout.fragment_create_password), View
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.save->{
-                findNavController().navigate(R.id.action_createPasswordFragment_to_profileFragment)
+                findNavController().navigate(R.id.action_createPasswordFragment_to_home2)
             }
         }
     }

@@ -3,12 +3,15 @@ package com.shopping.swagbag.auth.resetpassword
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.shopping.swagbag.R
 import com.shopping.swagbag.auth.UserApi
 import com.shopping.swagbag.auth.UserRepository
@@ -16,6 +19,7 @@ import com.shopping.swagbag.auth.UserViewModel
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentVerificationCodeBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuBinding
+import com.shopping.swagbag.service.Resource
 
 class VerificationCodeFragment : BaseFragment<
         FragmentVerificationCodeBinding,
@@ -91,9 +95,12 @@ class VerificationCodeFragment : BaseFragment<
     }
 
     private fun verifyOtp() {
-        showLoading()
 
         with(viewBinding) {
+
+            // get arugument that send from reset password fragment with safe args
+            val args: VerificationCodeFragmentArgs by navArgs()
+            var email = args.email
 
             // get otp that user enter
             val code1 = verificationCode1.text.toString()
@@ -108,8 +115,26 @@ class VerificationCodeFragment : BaseFragment<
                 code3.isNotEmpty() &&
                 code4.isNotEmpty()
             ) {
-                stopShowingLoading()
-                findNavController().navigate(R.id.action_verificationCodeFragment_to_createPasswordFragment)
+                val otp = code1 + code2 + code3 + code4
+
+                Log.e("check otp and email", "verifyOtp: $otp\nemail: $email", )
+
+                viewModel.passwordReset(email, otp).observe(viewLifecycleOwner, Observer {
+                    when (it) {
+                        is Resource.Loading -> showLoading()
+
+                        is Resource.Success -> {
+                            stopShowingLoading()
+                            //@todo match email otp and otp that user enter
+                            toast(it.value.message)
+                            findNavController().navigate(R.id.action_verificationCodeFragment_to_createPasswordFragment)
+                        }
+
+                        is Resource.Failure -> {
+                            toast(it.errorBody.toString())
+                        }
+                    }
+                })
             }
 
             else{

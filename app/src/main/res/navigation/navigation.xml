@@ -79,16 +79,22 @@
         tools:layout="@layout/fragment_reset_password" >
         <action
             android:id="@+id/action_resetPassword_to_verificationCodeFragment"
-            app:destination="@id/verificationCodeFragment" />
+            app:destination="@id/verificationCodeFragment">
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/verificationCodeFragment"
         android:name="com.shopping.swagbag.auth.resetpassword.VerificationCodeFragment"
         android:label="fragment_verification_code"
-        tools:layout="@layout/fragment_verification_code" >
+        tools:layout="@layout/fragment_verification_code">
         <action
             android:id="@+id/action_verificationCodeFragment_to_createPasswordFragment"
             app:destination="@id/createPasswordFragment" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+
     </fragment>
     <fragment
         android:id="@+id/createPasswordFragment"
@@ -96,8 +102,8 @@
         android:label="fragment_create_password"
         tools:layout="@layout/fragment_create_password" >
         <action
-            android:id="@+id/action_createPasswordFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_createPasswordFragment_to_home2"
+            app:destination="@id/home2" />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
@@ -644,15 +650,30 @@
 
     <action android:id="@+id/action_global_shoppingBegWithProductFragment" app:destination="@id/shoppingBegWithProductFragment"/>
 
-    <action android:id="@+id/action_global_menFragment" app:destination="@id/menFragment" />
+    <action
+        android:id="@+id/action_global_menFragment"
+        app:destination="@id/menFragment" />
 
-    <action android:id="@+id/action_global_womenFragment" app:destination="@id/womenFragment" />
+    <action
+        android:id="@+id/action_global_womenFragment"
+        app:destination="@id/womenFragment" />
 
-    <action android:id="@+id/action_global_kidsFragment" app:destination="@id/kidsFragment" />
-    <action android:id="@+id/action_global_petsFragment" app:destination="@id/petsFragment" />
+    <action
+        android:id="@+id/action_global_kidsFragment"
+        app:destination="@id/kidsFragment" />
+    <action
+        android:id="@+id/action_global_petsFragment"
+        app:destination="@id/petsFragment" />
 
-    <action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment" />
 
-    <action android:id="@+id/action_global_travelFragment" app:destination="@id/travelFragment" />
+    <action
+        android:id="@+id/action_global_travelFragment"
+        app:destination="@id/travelFragment" />
+    <action
+        android:id="@+id/action_global_profileFragment"
+        app:destination="@id/profileFragment" />
 
 </navigation>
