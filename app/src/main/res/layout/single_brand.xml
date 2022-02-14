@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/screen_margin_5"
+    android:background="@drawable/rec_outline_15"
+    android:layout_height="wrap_content">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgBrand"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:riv_corner_radius_top_left="@dimen/dimen_15"
+        app:riv_corner_radius_top_right="@dimen/dimen_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/category_background" />
+
+    <View
+        android:id="@+id/view46"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:alpha="0.15"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBrand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgBrand" />
+
+    <TextView
+        android:id="@+id/brandName"
+        style="@style/roboto_medium_18_davys_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screen_margin_5"
+        android:padding="@dimen/space_between_view_and_subview"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/imgBrand"
+        app:layout_constraintTop_toBottomOf="@+id/imgBrand" />
+
+    <TextView
+        android:id="@+id/aboutBrand"
+        style="@style/roboto_normal_16_davys_grey"
+        android:maxLines="2"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/sonic_silver"
+        app:layout_constraintStart_toStartOf="@+id/brandName"
+        app:layout_constraintTop_toBottomOf="@+id/brandName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

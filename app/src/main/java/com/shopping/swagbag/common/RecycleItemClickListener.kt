@@ -15,7 +15,6 @@ interface RecycleItemClick{
 
     fun onItemClickWithView( position: Int, view: View)
 
-
 }
 
 

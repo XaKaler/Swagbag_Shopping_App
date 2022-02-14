@@ -273,6 +273,9 @@
         <action
             android:id="@+id/action_productsFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
+        <argument
+            android:name="product_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
@@ -680,5 +683,10 @@
     <action
         android:id="@+id/action_global_profileFragment"
         app:destination="@id/profileFragment" />
+    <fragment
+        android:id="@+id/brandFragment"
+        android:name="com.shopping.swagbag.brand.BrandFragment"
+        android:label="fragment_brand"
+        tools:layout="@layout/fragment_brand" /><action android:id="@+id/action_global_brandFragment" app:destination="@id/brandFragment"/>
 
 </navigation>

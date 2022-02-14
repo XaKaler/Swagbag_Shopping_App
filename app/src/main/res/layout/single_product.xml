@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:id="@+id/singlePrdouct"
-    android:layout_margin="@dimen/dimen_1"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -77,7 +76,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_10"
-        app:layout_constraintEnd_toEndOf="@+id/imgProduct"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgProduct">
 
@@ -86,6 +85,7 @@
             style="@style/autowide_normal_10_state_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:text="@string/verganan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -96,6 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10"
+            android:fontFamily="@font/roboto_medium"
             android:text="@string/Rs"
             android:textColor="@color/davys_grey"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +107,7 @@
             style="@style/roboto_normal_12_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
             android:text="5,999"
             android:textColor="@color/davys_grey"
             app:layout_constraintBottom_toBottomOf="@+id/textView21"
@@ -143,7 +145,7 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:text="(55% Off)"
             android:textAllCaps="true"
-            android:textColor="@color/red_light"
+            android:textColor="@color/sonic_silver"
             app:layout_constraintBottom_toBottomOf="@+id/textView22"
             app:layout_constraintStart_toEndOf="@+id/tvProductPriceBeforeDiscount"
             app:layout_constraintTop_toTopOf="@+id/textView22" />

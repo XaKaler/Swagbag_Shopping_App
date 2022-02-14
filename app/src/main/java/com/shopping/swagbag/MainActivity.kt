@@ -86,12 +86,12 @@ class MainActivity : AppCompatActivity(),
                         navController.navigate(R.id.action_global_categoryFragment)
                     }
 
-                    R.id.btmOffers -> {/*
+                    R.id.btmOffers -> {
                         hideToolbar()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-                        navController.navigate(R.id.action_global_couponsFragment)*/
+                        navController.navigate(R.id.action_global_brandFragment)
                     }
 
                     R.id.btmProfile -> {

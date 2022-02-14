@@ -2,6 +2,7 @@ package com.shopping.swagbag.products
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -15,24 +16,29 @@ import com.shopping.swagbag.dummy.DummyModel
 
 class ProductAdapter(
     private val context: Context,
-    private val data: List<DummyModel>
+    private val data: List<ProductSearchModel.Result>
 ) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(private val viewBinding: SingleProductBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: DummyModel){
+        fun bind(singleData: ProductSearchModel.Result, position: Int){
             with(viewBinding){
                 // set imgae
                 Glide.with(context)
-                    .load(singleData.image)
+                    .load(singleData.file[0].location)
                     .fitCenter()
                     .into(imgProduct)
 
                 // set text
-                tvProductName.text = singleData.name.toString()
-                tvProductDetails.text = singleData.details
+                tvProductName.text = singleData.name
+                tvProductDetails.text = singleData.shortDesc
+                tvProductPrice.text = singleData.sellingPrice.toString()
+                tvProductPriceBeforeDiscount.text = singleData.price.toString()
+
+                tvProductPriceBeforeDiscount.paintFlags = tvProductPriceBeforeDiscount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                textView22.paintFlags = textView22.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 
                 singlePrdouct.setOnClickListener{
                     val activity = context as Activity
@@ -54,7 +60,7 @@ class ProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position], position)
     }
 
     override fun getItemCount()= data.size

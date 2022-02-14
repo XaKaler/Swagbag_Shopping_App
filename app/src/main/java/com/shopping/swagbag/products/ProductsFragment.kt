@@ -1,35 +1,38 @@
 package com.shopping.swagbag.products
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.R
-import com.shopping.swagbag.databinding.FragmentCreatePasswordBinding
-import com.shopping.swagbag.databinding.FragmentProductsBinding
-import com.shopping.swagbag.databinding.ToolbarWithNoMenuBinding
-import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
+import com.shopping.swagbag.common.GridSpaceItemDecoration
+import com.shopping.swagbag.common.base.BaseFragment
+import com.shopping.swagbag.databinding.*
 import com.shopping.swagbag.dummy.DummyData
+import com.shopping.swagbag.service.Resource
 
 
-class ProductsFragment : Fragment(R.layout.fragment_products), View.OnClickListener {
+class ProductsFragment : BaseFragment<
+        FragmentProductsBinding,
+        ProductViewModel,
+        ProductRepository
+        >(FragmentProductsBinding::inflate), View.OnClickListener {
 
-    private lateinit var viewBinding: FragmentProductsBinding
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding = FragmentProductsBinding.bind(view)
         toolbarBinding = viewBinding.include
 
         initViews()
-
-
     }
 
     private fun initViews() {
@@ -44,12 +47,29 @@ class ProductsFragment : Fragment(R.layout.fragment_products), View.OnClickListe
     }
 
     private fun setProducts() {
-        with(viewBinding){
-            rvProducts.apply{
-                layoutManager = GridLayoutManager(context, 2)
-                adapter = DummyData().getDummyData()?.let { ProductAdapter(context, it) }
-            }
-        }
+        val args: ProductsFragmentArgs by navArgs()
+        val productId = args.productId
+
+        viewModel.productSearch("", "", "", "", "", "", productId)
+            .observe(viewLifecycleOwner, Observer {
+                when(it){
+                    is Resource.Loading -> showLoading()
+
+                    is Resource.Success -> {
+                        stopShowingLoading()
+
+                        val products = it.value.result
+
+                        viewBinding.rvProducts.apply{
+                            layoutManager = GridLayoutManager(context, 2)
+                            addItemDecoration(GridSpaceItemDecoration(5))
+                            adapter = DummyData().getDummyData()?.let { ProductAdapter(context, products) }
+                        }
+                    }
+
+                    is Resource.Failure -> Log.e("TAG", "setProducts: $it", )
+                }
+            })
     }
 
     private fun setToolbar() {
@@ -84,4 +104,13 @@ class ProductsFragment : Fragment(R.layout.fragment_products), View.OnClickListe
             }
         }
     }
+
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    )= FragmentProductsBinding.inflate(inflater, container, false)
+
+    override fun getViewModel() = ProductViewModel::class.java
+
+    override fun getFragmentRepository() = ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 }
