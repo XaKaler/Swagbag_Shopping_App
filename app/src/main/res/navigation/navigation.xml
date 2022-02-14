@@ -279,6 +279,11 @@
         android:name="com.shopping.swagbag.products.product_details.ProductDetailsFragment"
         android:label="fragment_product_details"
         tools:layout="@layout/fragment_product_details" >
+<!--
+        <argument
+            android:name="product"
+            app:argType="com.shopping.swagbag.products.product_details.ProductDetailModel" />-->
+
         <action
             android:id="@+id/action_productDetailsFragment_to_wishlistWithoutProductFragment"
             app:destination="@id/wishlistWithoutProductFragment" />

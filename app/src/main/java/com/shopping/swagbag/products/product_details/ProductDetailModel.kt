@@ -2,6 +2,8 @@ package com.shopping.swagbag.products.product_details
 
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
 
 data class ProductDetailModel(
     val menu: Menu,
