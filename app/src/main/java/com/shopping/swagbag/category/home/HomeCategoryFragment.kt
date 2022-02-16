@@ -211,4 +211,8 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment)
     }
 
+    override fun itemClickWithName(name: String) {
+        TODO("Not yet implemented")
+    }
+
 }

@@ -42,7 +42,8 @@ class ProductAdapter(
 
                 singlePrdouct.setOnClickListener{
                     val activity = context as Activity
-                    activity.findNavController(R.id.singlePrdouct).navigate(R.id.action_productsFragment_to_productDetailsFragment)
+                    val action = ProductsFragmentDirections.actionProductsFragmentToProductDetailsFragment(singleData.name)
+                    activity.findNavController(R.id.singlePrdouct).navigate(action)
                 }
             }
         }

@@ -104,5 +104,9 @@ class SearchFragment : Fragment(R.layout.fragment_search), View.OnClickListener,
         findNavController().navigate(R.id.action_searchFragment_to_productDetailsFragment)
     }
 
+    override fun itemClickWithName(name: String) {
+        TODO("Not yet implemented")
+    }
+
 
 }

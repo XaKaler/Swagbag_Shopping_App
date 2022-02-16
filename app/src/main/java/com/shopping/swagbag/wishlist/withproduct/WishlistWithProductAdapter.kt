@@ -1,48 +1,54 @@
 package com.shopping.swagbag.wishlist.withproduct
 
-import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
-import com.shopping.swagbag.databinding.SingleCategoryOfWishlistWithItemsBinding
-import com.shopping.swagbag.databinding.SingleSliderProductsBinding
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleWislistItemBinding
-import com.shopping.swagbag.dummy.DummyModel
-import com.shopping.swagbag.dummy.SingleProductModel
-import com.shopping.swagbag.dummy.UserAddress
 
 class WishlistWithProductAdapter(
     private val context: Context,
-    private val data: List<DummyModel>
+    private var data: List<GetWishlistModel.Result>,
+    private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<WishlistWithProductAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(private val viewBinding: SingleWislistItemBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: DummyModel, position: Int){
-                with(viewBinding){
-                    // set image
-                    Glide.with(context)
-                        .load(singleData.image)
-                        .into(productImg)
+        fun bind(
+            singleData: GetWishlistModel.Result,
+            position: Int,
+            itemClick: RecycleViewItemClick
+        ) {
+            with(viewBinding) {
+                // set image
+                Glide.with(context)
+                    .load(singleData.product.file[0].location)
+                    .into(productImg)
 
-                    // set text
-                    tvProductCompnayName.text = singleData.name.toString()
-                    tvProductName.text = singleData.details
+                // set text
+                productName.text = singleData.product.name
+                productDetails.text = singleData.product.shortDesc
 
-                    moveToBag.setOnClickListener{
-                        val activity = context as Activity
-                        activity.findNavController(R.id.moveToBag).navigate(R.id.action_wishlistWithProductFragment_to_shoppingBegWithProductFragment)
-                    }
+                moveToBag.setOnClickListener {
+                    itemClick.onItemClickWithName("moveToBeg", position)
+                }
+
+                cancel.setOnClickListener{
+                    itemClick.onItemClickWithName("remove", position)
+                }
                 }
             }
 
+    }
+
+    fun updateData(updatedWishlist: List<GetWishlistModel.Result>){
+        data = updatedWishlist
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -50,7 +56,7 @@ class WishlistWithProductAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(data[position], position)
+        holder.bind(data[position], position, itemClick)
     }
 
     override fun getItemCount()= data.size

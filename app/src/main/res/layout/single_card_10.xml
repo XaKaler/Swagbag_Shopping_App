@@ -33,82 +33,95 @@
             <TextView
                 android:id="@+id/productName"
                 style="@style/autowide_normal_10_state_green"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:maxLines="1"
                 android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imgFeatureBrand"
                 app:layout_constraintTop_toBottomOf="@+id/imgFeatureBrand" />
 
-            <TextView
-                android:id="@+id/textView59"
-                style="@style/roboto_normal_12_davys_grey"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout14"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/Rs"
-                android:textColor="@color/spanish_grey"
-                app:layout_constraintStart_toStartOf="@id/productName"
-                app:layout_constraintTop_toBottomOf="@+id/productName" />
+                app:layout_constraintEnd_toEndOf="@+id/productName"
+                app:layout_constraintStart_toStartOf="@+id/productName"
+                app:layout_constraintTop_toBottomOf="@+id/productName">
+
+                <TextView
+                    android:id="@+id/textView59"
+                    style="@style/roboto_normal_12_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Rs"
+                    android:textColor="@color/spanish_grey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/oldRate"
+                    style="@style/roboto_normal_12_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9999"
+                    android:textColor="@color/spanish_grey"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView59"
+                    app:layout_constraintStart_toEndOf="@+id/textView59"
+                    app:layout_constraintTop_toTopOf="@+id/textView59" />
+
+                <TextView
+                    android:id="@+id/textView63"
+                    style="@style/roboto_normal_12_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_7"
+                    android:text="@string/Rs"
+                    android:textColor="@color/day_dark_liver_night_white"
+                    app:layout_constraintBottom_toBottomOf="@+id/oldRate"
+                    app:layout_constraintStart_toEndOf="@+id/oldRate"
+                    app:layout_constraintTop_toTopOf="@+id/oldRate" />
+
+                <TextView
+                    android:id="@+id/newRate"
+                    style="@style/roboto_normal_12_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9999"
+                    android:textColor="@color/day_dark_liver_night_white"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView63"
+                    app:layout_constraintStart_toEndOf="@+id/textView63"
+                    app:layout_constraintTop_toTopOf="@+id/textView63" />
+
+                <TextView
+                    android:id="@+id/off"
+                    style="@style/roboto_normal_12_red_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_7"
+                    android:text="(55% OFF)"
+                    android:textAllCaps="true"
+                    android:textColor="@color/day_steel_teal_night_orange"
+                    app:layout_constraintBottom_toBottomOf="@+id/newRate"
+                    app:layout_constraintStart_toEndOf="@+id/newRate"
+                    app:layout_constraintTop_toTopOf="@+id/newRate" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/oldRate"
-                style="@style/roboto_normal_12_davys_grey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="9999"
-                android:textColor="@color/spanish_grey"
-                app:layout_constraintBottom_toBottomOf="@+id/textView59"
-                app:layout_constraintStart_toEndOf="@+id/textView59"
-                app:layout_constraintTop_toTopOf="@+id/textView59" />
-
-            <TextView
-                android:textColor="@color/day_dark_liver_night_white"
-                android:id="@+id/textView63"
-                style="@style/roboto_normal_12_davys_grey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_7"
-                android:text="@string/Rs"
-                app:layout_constraintBottom_toBottomOf="@+id/oldRate"
-                app:layout_constraintStart_toEndOf="@+id/oldRate"
-                app:layout_constraintTop_toTopOf="@+id/oldRate" />
-
-            <TextView
-                android:id="@+id/newRate"
-                android:textColor="@color/day_dark_liver_night_white"
-                style="@style/roboto_normal_12_davys_grey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="9999"
-                app:layout_constraintBottom_toBottomOf="@+id/textView63"
-                app:layout_constraintStart_toEndOf="@+id/textView63"
-                app:layout_constraintTop_toTopOf="@+id/textView63" />
-
-            <TextView
-                android:id="@+id/textView65"
-                style="@style/roboto_normal_12_red_light"
-                android:textColor="@color/day_steel_teal_night_orange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_7"
-                android:text="(55% OFF)"
-                android:textAllCaps="true"
-                app:layout_constraintBottom_toBottomOf="@+id/newRate"
-                app:layout_constraintStart_toEndOf="@+id/newRate"
-                app:layout_constraintTop_toTopOf="@+id/newRate" />
-
-            <TextView
-                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                 android:id="@+id/productDetails"
                 style="@style/roboto_normal_10_sonic_silver"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_7"
                 android:maxLines="1"
                 android:text="Women Embroidered Kurthas....."
-                app:layout_constraintStart_toStartOf="@+id/textView59"
-                app:layout_constraintTop_toBottomOf="@+id/oldRate" />
+                android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout14"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayout14"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout14" />
 
             <TextView
                 android:id="@+id/ratingCount"

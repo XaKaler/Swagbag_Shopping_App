@@ -114,9 +114,9 @@
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_payment_mode.xml" value="0.22" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_pets.xml" value="0.2372041827187672" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_privacy_policy.xml" value="0.18" />
-        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_product_details.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_product_details.xml" value="0.2" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_product_details_e_m_i_plans.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_product_details_size_chart.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_product_details_size_chart.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_products.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_profile.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_reset_password.xml" value="0.22447916666666667" />
@@ -138,6 +138,7 @@
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_wishtlist_without_product.xml" value="0.22" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_women.xml" value="0.2397107897664071" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/home.xml" value="0.18593615185504744" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/how_to_measure.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/loading_view.xml" value="0.33" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/lyt_address.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/lyt_bottom_sheet.xml" value="0.25" />
@@ -145,10 +146,12 @@
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/lyt_cancellatin_order_product.xml" value="0.22" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/lyt_order_filter.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/lyt_product_details.xml" value="0.21" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/lyt_product_details_color.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/lyt_sold_by.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/main_toolbar.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/navigation_drawer.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/navigation_header.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/product_details_button.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/search_bar.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_about_us_drop_down.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_atm_card.xml" value="0.2" />
@@ -156,7 +159,7 @@
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_best_products.xml" value="0.2" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_brand.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_cancel_order_reason.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_card_10.xml" value="0.2" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_card_10.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_card_17.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_category.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_category_at_products_page.xml" value="0.22447916666666667" />
@@ -182,9 +185,12 @@
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_order_item.xml" value="0.33" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_payment_refund_query.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_product.xml" value="0.25" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_product_color.xml" value="0.18426678067550234" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_product_image.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_product_image_slider.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_product_of_shopping_beg.xml" value="0.22" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_product_size.xml" value="0.33" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_reiview_image.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_review.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_shipping_view_order_details.xml" value="0.2" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_slider_products.xml" value="0.18" />
@@ -193,7 +199,10 @@
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_user_detail.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_view_cancel_orders.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/single_wislist_item.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/size_chart.xml" value="0.18426678067550234" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/size_chart_buttons.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/toolbar_with_no_menu.xml" value="0.18426678067550234" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/toolbar_with_no_menu_white_bg.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/toolbar_with_one_menus.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/toolbar_with_three_menus.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/toolbar_with_two_menus.xml" value="0.22447916666666667" />

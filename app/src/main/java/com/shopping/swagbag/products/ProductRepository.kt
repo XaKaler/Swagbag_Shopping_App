@@ -17,4 +17,14 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
         sortby: String,
         master: String,
     ) = safeApiCall { api.productSearch(deal, brand, sub_category, category, price, sortby, master) }
+
+    suspend fun addToWishlist(
+        productId: String,
+        userId: String
+    ) = safeApiCall { api.addToWishlist(productId, userId) }
+
+    suspend fun getWish(userId: String) = safeApiCall { api.getWish(userId) }
+
+
+    suspend fun deleteSingleWish(productId: String, userId: String) = safeApiCall { api.deleteSingleWish(productId, userId) }
 }

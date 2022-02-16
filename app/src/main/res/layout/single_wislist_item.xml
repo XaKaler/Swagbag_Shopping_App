@@ -21,7 +21,7 @@
         app:riv_corner_radius="5dp" />
 
             <TextView
-                android:id="@+id/tvProductCompnayName"
+                android:id="@+id/productName"
                 style="@style/snigiet_normal_14_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="@+id/productImg" />
 
             <TextView
-                android:id="@+id/tvProductName"
+                android:id="@+id/productDetails"
                 style="@style/snigiet_normal_14_davys_grey"
                 android:layout_width="0dp"
                 android:maxLines="1"
@@ -47,14 +47,14 @@
                 android:text="Washing machine white color"
                 app:layout_constraintEnd_toStartOf="@+id/imageView31"
                 app:layout_constraintStart_toEndOf="@+id/productImg"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductCompnayName" />
+                app:layout_constraintTop_toBottomOf="@+id/productName" />
 
     <ImageView
         android:id="@+id/imageView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/productImg"
-        app:layout_constraintEnd_toStartOf="@+id/imageView59"
+        app:layout_constraintEnd_toStartOf="@+id/cancel"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_right_arrow" />
 
@@ -65,8 +65,8 @@
         android:layout_marginTop="@dimen/space_between_view_and_subview"
         android:layout_height="wrap_content"
         android:text="@string/Rs"
-        app:layout_constraintStart_toStartOf="@+id/tvProductName"
-        app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+        app:layout_constraintStart_toStartOf="@+id/productDetails"
+        app:layout_constraintTop_toBottomOf="@+id/productDetails" />
 
     <TextView
         android:id="@+id/productPrice"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView127" />
 
     <ImageView
-        android:id="@+id/imageView59"
+        android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

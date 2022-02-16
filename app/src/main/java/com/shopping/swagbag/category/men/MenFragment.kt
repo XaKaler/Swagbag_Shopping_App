@@ -185,4 +185,8 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         findNavController().navigate(R.id.action_menFragment_to_productDetailsFragment)
     }
 
+    override fun itemClickWithName(name: String) {
+        TODO("Not yet implemented")
+    }
+
 }

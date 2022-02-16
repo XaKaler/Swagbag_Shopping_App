@@ -28,6 +28,14 @@ class AppUtils(private val context: Context) {
         return Gson().fromJson(user, SignInModel::class.java)
     }
 
+    fun getUserId(): String{
+        val sharedPreferences = context.getSharedPreferences(_myPrefName, Context.MODE_PRIVATE)
+        val user =sharedPreferences.getString(_userData, "")
+
+        val singInUser: SignInModel =  Gson().fromJson(user, SignInModel::class.java)
+        return singInUser.result.id
+    }
+
     fun isUserLoggedIn(): Boolean{
         val sharedPreferences = context.getSharedPreferences(_myPrefName, Context.MODE_PRIVATE)
         //val user =sharedPreferences.getString(_userData, "")

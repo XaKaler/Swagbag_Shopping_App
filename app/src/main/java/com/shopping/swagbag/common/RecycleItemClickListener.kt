@@ -4,6 +4,8 @@ import android.view.View
 
 interface RecycleItemClickListener {
     fun onSingleItemClickListener(position: Int)
+
+    fun itemClickWithName(name: String)
 }
 
 interface HomeCategoryRecycleItemClickListener {
@@ -15,6 +17,10 @@ interface RecycleItemClick{
 
     fun onItemClickWithView( position: Int, view: View)
 
+}
+
+interface RecycleViewItemClick{
+    fun onItemClickWithName(tag: String, position: Int)
 }
 
 

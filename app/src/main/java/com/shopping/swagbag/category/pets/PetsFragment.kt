@@ -56,6 +56,10 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         findNavController().navigate(R.id.action_petsFragment_to_productDetailsFragment)
     }
 
+    override fun itemClickWithName(name: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun initViews() {
 
         val data: ArrayList<DummyModel>? = DummyData().getDummyData()

@@ -12,18 +12,21 @@ import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.dummy.SingleProductImageModel
 import com.shopping.swagbag.dummy.SingleProductModel
+import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.smarteist.autoimageslider.SliderViewAdapter
 
-class ProductImageSliderAdapter(private val context: Context, private val data: List<SingleProductImageModel>)
-    : SliderViewAdapter<ProductImageSliderAdapter.MyViewHolder>() {
+class ProductImageSliderAdapter(
+    private val context: Context,
+    private val data: List<ProductDetailModel.Result.File>
+    ) : SliderViewAdapter<ProductImageSliderAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(private val viewBinding: SingleProductImageSliderBinding)
         : SliderViewAdapter.ViewHolder(viewBinding.root){
 
-        fun bind(singleData: SingleProductImageModel){
+        fun bind(singleData: ProductDetailModel.Result.File){
             Glide
                 .with(context)
-                .load(singleData.mainImage)
+                .load(singleData.location)
                 .centerCrop()
                 .into(viewBinding.imgSlider)
             }

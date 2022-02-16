@@ -151,4 +151,8 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
     override fun onSingleItemClickListener(position: Int) {
         findNavController().navigate(R.id.action_travelFragment_to_productDetailsFragment)
     }
+
+    override fun itemClickWithName(name: String) {
+        TODO("Not yet implemented")
+    }
 }

@@ -58,6 +58,10 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         findNavController().navigate(R.id.action_kidsFragment_to_productDetailsFragment)
     }
 
+    override fun itemClickWithName(name: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun initViews() {
         val data: ArrayList<DummyModel>? = DummyData().getDummyData()
 

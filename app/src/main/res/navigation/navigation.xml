@@ -293,9 +293,7 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_shoppingBegWithoutProductFragment"
             app:destination="@id/shoppingBegWithoutProductFragment" />
-        <action
-            android:id="@+id/action_productDetailsFragment_to_productDetailsSizeChart"
-            app:destination="@id/productDetailsSizeChart" />
+
         <action
             android:id="@+id/action_productDetailsFragment_to_productDetailsEMIPlansFragment"
             app:destination="@id/productDetailsEMIPlansFragment" />
@@ -305,6 +303,16 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_shoppingBegWithProductFragment"
             app:destination="@id/shoppingBegWithProductFragment" />
+        <argument
+            android:name="product_name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productDetailsSizeChart"
+            app:destination="@id/productDetailsSizeChart" />
+        <action
+            android:id="@+id/action_open_productDetails"
+            app:destination="@id/productDetailsFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/shoppingBegSelectAddressFragment"

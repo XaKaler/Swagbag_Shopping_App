@@ -15,49 +15,40 @@ import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClick
 import com.shopping.swagbag.databinding.SingleProductBinding
+import com.shopping.swagbag.databinding.SingleProductColorBinding
 import com.shopping.swagbag.databinding.SingleProductSizeBinding
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.dummy.ProductFilter
 
-class ProductSizeAdapter(
+class ProductColorAdapter(
     private val context: Context,
     private val data: List<ProductFilter>,
     private val itemClick: RecycleItemClick
 ) :
-    RecyclerView.Adapter<ProductSizeAdapter.ProductViewHolder>() {
+    RecyclerView.Adapter<ProductColorAdapter.ProductViewHolder>() {
 
     var selectedPosition =-1
 
-    inner class ProductViewHolder(private val viewBinding: SingleProductSizeBinding) :
+    inner class ProductViewHolder(private val viewBinding: SingleProductColorBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
         @SuppressLint("NotifyDataSetChanged")
         fun bind(singleData: ProductFilter, position: Int, itemClick: RecycleItemClick){
             with(viewBinding){
-                // set size
-                sizeType.text = singleData.filterName
-
-                if(position == 0){
-                    sizeOutline.setImageResource(R.drawable.circle_outline_black)
-                    sizeType.setTextColor(ContextCompat.getColor(context, R.color.black))
-                }
+                // set color
+                //color.setBackgroundColor(singleData.)
 
                 // select when user click
                 if(selectedPosition == position){
-                   sizeOutline.setImageResource(R.drawable.circle_outline_black)
-                    sizeType.setTextColor(ContextCompat.getColor(context, R.color.black))
-                    sizeType.setTypeface(null, Typeface.BOLD)
+                    singleColor.setBackgroundResource(R.drawable.circle_outline_black)
                 }
                 else{
-                    sizeOutline.setImageResource(R.drawable.circle_outline)
-                    sizeType.setTextColor(ContextCompat.getColor(context, R.color.davys_grey))
-                    sizeType.setTypeface(null, Typeface.NORMAL)
+                    singleColor.setBackgroundResource(0)
                 }
 
-                singleSize.setOnClickListener{
+                itemView.setOnClickListener{
                     selectedPosition = position
                     notifyDataSetChanged()
-                    itemClick.onItemClick(singleData.filterName, position)
                 }
             }
         }
@@ -66,7 +57,7 @@ class ProductSizeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(
-            SingleProductSizeBinding.inflate(
+            SingleProductColorBinding.inflate(
                 LayoutInflater.from(context),
                 parent,
                 false

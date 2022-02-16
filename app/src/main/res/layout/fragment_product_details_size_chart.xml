@@ -23,7 +23,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include">
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,7 +32,7 @@
             android:padding="@dimen/screen_horizontal_padding">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/product"
+                android:id="@+id/productInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,15 +151,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_between_views"
-                app:layout_constraintTop_toBottomOf="@+id/product" />
+                app:layout_constraintTop_toBottomOf="@+id/productInfo" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/sizeChart"
+                android:id="@+id/sizeChartList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="@dimen/space_between_views"
-                app:layout_constraintTop_toBottomOf="@+id/sizeChartButtons"
-                tools:layout_editor_absoluteX="20dp">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sizeChartButtons">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/sizeType"
@@ -262,12 +263,12 @@
 
 
             <include
-                android:id="@+id/include10"
-                android:visibility="gone"
-                android:layout_marginTop="@dimen/space_between_views"
+                android:id="@+id/howToMeasureLayout"
                 layout="@layout/how_to_measure"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sizeChartButtons" />

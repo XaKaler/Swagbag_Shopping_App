@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/sliderView"
                 android:layout_width="match_parent"
@@ -129,35 +128,32 @@
                 app:layout_constraintTop_toTopOf="@+id/imgShareBackground" />
 
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/roundedImageView4"
-                android:layout_width="@dimen/small_image_width"
-                android:layout_height="@dimen/small_image_height"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProductImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/dimen_15"
                 android:scaleType="center"
-                android:src="@mipmap/navigation_header_user_img_foreground"
+                tools:itemCount="5"
+                tools:listitem="@layout/single_product_image"
                 app:layout_constraintBottom_toBottomOf="@+id/sliderView"
                 app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
-                app:layout_constraintTop_toTopOf="@+id/sliderView"
-                app:riv_border_color="@color/white"
-                app:riv_border_width="@dimen/dimen_0.5"
-                app:riv_corner_radius="@dimen/dimen_5" />
+                app:layout_constraintTop_toTopOf="@+id/sliderView"/>
 
 
-            <com.makeramen.roundedimageview.RoundedImageView
+           <!-- <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/roundedImageView5"
                 android:layout_width="@dimen/small_image_width"
                 android:layout_height="@dimen/small_image_height"
                 android:layout_marginVertical="@dimen/dimen_15"
                 android:scaleType="center"
                 android:src="@mipmap/navigation_header_user_img_foreground"
-                app:layout_constraintBottom_toTopOf="@+id/roundedImageView4"
+                app:layout_constraintBottom_toTopOf="@+id/rvProductImage"
                 app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
                 app:riv_border_color="@color/white"
                 app:riv_border_width="@dimen/dimen_0.5"
                 app:riv_corner_radius="@dimen/dimen_5" />
-
-
+            
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/roundedImageView6"
                 android:layout_width="@dimen/small_image_width"
@@ -179,7 +175,7 @@
                 android:scaleType="center"
                 android:src="@mipmap/navigation_header_user_img_foreground"
                 app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
-                app:layout_constraintTop_toBottomOf="@+id/roundedImageView4"
+                app:layout_constraintTop_toBottomOf="@+id/rvProductImage"
                 app:riv_border_color="@color/white"
                 app:riv_border_width="@dimen/dimen_0.5"
                 app:riv_corner_radius="@dimen/dimen_5" />
@@ -196,7 +192,7 @@
                 app:riv_border_color="@color/white"
                 app:riv_border_width="@dimen/dimen_0.5"
                 app:riv_corner_radius="@dimen/dimen_5" />
-
+-->
 
             <ImageView
                 android:id="@+id/imgCrusialBackground"
@@ -228,7 +224,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/imgBegBackground" />
 
             <TextView
-                android:id="@+id/textView56"
+                android:id="@+id/productName"
                 android:textColor="@color/day_dark_liver_night_white"
                 style="@style/roboto_normal_18_davys_grey"
                 android:layout_width="0dp"
@@ -249,8 +245,8 @@
                 android:layout_marginTop="@dimen/dimen_10"
                 android:text="@string/Rs"
                 android:textColor="@color/spanish_grey"
-                app:layout_constraintStart_toStartOf="@+id/textView56"
-                app:layout_constraintTop_toBottomOf="@+id/textView56" />
+                app:layout_constraintStart_toStartOf="@+id/productName"
+                app:layout_constraintTop_toBottomOf="@+id/productName" />
 
             <TextView
                 android:id="@+id/oldRate"
@@ -285,7 +281,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView63" />
 
             <TextView
-                android:id="@+id/textView65"
+                android:id="@+id/off"
                 style="@style/roboto_normal_14_red_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -328,14 +324,15 @@
 
 
                     <TextView
-                        android:textColor="@color/day_dark_liver_night_white"
-                        android:id="@+id/textView67"
+                        android:id="@+id/txtSize"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/size"
+                        android:visibility="gone"
+                        android:textColor="@color/day_dark_liver_night_white"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/sizeChart" />
 
                     <TextView
                         android:id="@+id/size"
@@ -343,10 +340,9 @@
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XL"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView67"
-                        app:layout_constraintStart_toEndOf="@+id/textView67"
-                        app:layout_constraintTop_toTopOf="@+id/textView67" />
+                        app:layout_constraintBottom_toBottomOf="@+id/txtSize"
+                        app:layout_constraintStart_toEndOf="@+id/txtSize"
+                        app:layout_constraintTop_toTopOf="@+id/txtSize" />
 
                     <TextView
                         android:id="@+id/sizeChart"
@@ -363,23 +359,35 @@
                         android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         style="@style/roboto_normal_14_sonic_silver"
                         android:layout_width="wrap_content"
+                        android:visibility="gone"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_5"
                         android:text="Garment Measurement: Bust 45.0in"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView67" />
+                        app:layout_constraintTop_toBottomOf="@+id/txtSize" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvSize"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
+                        android:visibility="gone"
                         android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/dimen_7"
                         app:layout_constraintStart_toStartOf="@+id/textView70"
-                        app:layout_constraintTop_toBottomOf="@+id/textView70"
+                        app:layout_constraintTop_toBottomOf="@+id/txtSize"
                         tools:itemCount="1"
                         tools:listitem="@layout/single_product_size" />
 
+                    <include
+                        android:id="@+id/colors"
+                        layout="@layout/lyt_product_details_color"
+                        android:layout_width="0dp"
+                        android:visibility="gone"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/rvSize"
+                        app:layout_constraintTop_toBottomOf="@id/rvSize" />
 
                     <TextView
                         android:id="@+id/textView590"
@@ -388,9 +396,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_7"
                         android:text="@string/Rs"
+                        android:visibility="gone"
                         android:textColor="@color/spanish_grey"
                         app:layout_constraintStart_toEndOf="@+id/newRate1"
-                        app:layout_constraintTop_toBottomOf="@+id/rvSize" />
+                        app:layout_constraintTop_toBottomOf="@+id/colors" />
 
                     <TextView
                         android:id="@+id/oldRate1"
@@ -398,6 +407,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9999"
+                        android:visibility="gone"
                         android:textColor="@color/spanish_grey"
                         app:layout_constraintBottom_toBottomOf="@+id/textView590"
                         app:layout_constraintStart_toEndOf="@+id/textView590"
@@ -424,12 +434,13 @@
                         app:layout_constraintTop_toTopOf="@+id/textView631" />
 
                     <TextView
-                        android:id="@+id/textView651"
+                        android:id="@+id/off1"
                         style="@style/roboto_normal_14_red_light"
                         android:layout_width="wrap_content"
                         android:textColor="@color/day_red_night_orange"
                         android:layout_height="wrap_content"
                         android:text="(55% OFF)"
+                        android:visibility="gone"
                         android:textAllCaps="true"
                         app:layout_constraintBottom_toBottomOf="@+id/newRate1"
                         app:layout_constraintStart_toEndOf="@+id/oldRate1"
@@ -441,6 +452,7 @@
                         style="@style/roboto_normal_12_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_marginTop="@dimen/dimen_10"
                         android:text="Seller: "
                         app:layout_constraintStart_toStartOf="@+id/textView631"
@@ -452,6 +464,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ABC Fashion"
+                        android:visibility="gone"
                         android:textColor="@color/day_red_night_orange"
                         app:layout_constraintBottom_toBottomOf="@+id/textView71"
                         app:layout_constraintStart_toEndOf="@+id/textView71"
@@ -703,6 +716,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
                 android:layout_marginTop="@dimen/space_between_views"
+                android:visibility="gone"
                 android:background="@drawable/rec_white_5"
                 app:cardElevation="@dimen/dimen_5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -845,50 +859,6 @@
                         app:layout_constraintStart_toStartOf="@+id/textView834"
                         app:layout_constraintTop_toBottomOf="@+id/textView834" />
 
-                    <TextView
-                        android:id="@+id/material_care"
-                        android:textColor="@color/day_dark_liver_night_white"
-                        style="@style/roboto_medium_14_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        android:text="@string/material_care"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/productInDetail" />
-
-                    <TextView
-                        android:id="@+id/textView844"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        style="@style/roboto_normal_12_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_5"
-                        android:text="@string/product_paragrah"
-                        app:layout_constraintStart_toStartOf="@+id/material_care"
-                        app:layout_constraintTop_toBottomOf="@+id/material_care" />
-
-                    <TextView
-                        android:id="@+id/size_fit"
-                        style="@style/roboto_medium_14_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        android:textColor="@color/day_dark_liver_night_white"
-                        android:text="@string/material_care"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView844" />
-
-                    <TextView
-                        android:id="@+id/textView845"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        style="@style/roboto_normal_12_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_5"
-                        android:text="@string/product_paragrah"
-                        app:layout_constraintStart_toStartOf="@+id/size_fit"
-                        app:layout_constraintTop_toBottomOf="@+id/size_fit" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -903,6 +873,7 @@
                 android:layout_marginTop="@dimen/space_between_views"
                 android:background="@drawable/rec_white_5"
                 app:cardElevation="@dimen/dimen_5"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/productDetails">
@@ -1105,7 +1076,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/dimen_10"
                         android:layout_marginStart="@dimen/space_between_views"
-                        android:text="3"
+                        android:text="4"
                         android:textColor="@color/day_black_night_white"
                         app:layout_constraintBottom_toTopOf="@+id/textView75"
                         app:layout_constraintStart_toEndOf="@+id/view20" />
@@ -1149,11 +1120,11 @@
                     <TextView
                         android:id="@+id/textView752"
                         style="@style/roboto_medium_12_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="6dp"
+                        android:layout_height="9dp"
                         android:layout_marginVertical="@dimen/dimen_10"
                         android:layout_marginStart="@dimen/space_between_views"
-                        android:text="3"
+                        android:text="5"
                         android:textColor="@color/day_black_night_white"
                         app:layout_constraintBottom_toTopOf="@+id/textView751"
                         app:layout_constraintStart_toEndOf="@+id/view20" />
@@ -1249,7 +1220,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/dimen_10"
                         android:layout_marginStart="@dimen/space_between_views"
-                        android:text="2"
+                        android:text="1"
                         android:textColor="@color/day_black_night_white"
                         app:layout_constraintStart_toEndOf="@+id/view20"
                         app:layout_constraintTop_toBottomOf="@+id/textView753" />
@@ -1316,6 +1287,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvReviewImages"
                         android:layout_width="0dp"
+                        android:visibility="gone"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -1327,6 +1299,7 @@
                     <TextView
                         android:textColor="@color/day_dark_liver_night_white"
                         android:id="@+id/textView81"
+                        android:visibility="gone"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1337,6 +1310,7 @@
                     <TextView
                         android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/reviewImageCount"
+                        android:visibility="gone"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

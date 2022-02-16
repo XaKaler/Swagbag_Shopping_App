@@ -294,4 +294,8 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
         findNavController().navigate(R.id.action_home2_to_productDetailsFragment)
     }
 
+    override fun itemClickWithName(name: String) {
+        TODO("Not yet implemented")
+    }
+
 }

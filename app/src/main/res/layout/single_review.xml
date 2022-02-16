@@ -72,6 +72,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvReviewImages"
         android:layout_width="0dp"
+        android:visibility="gone"
         android:layout_marginEnd="@dimen/dimen_10"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -87,7 +88,7 @@
         android:layout_height="wrap_content"
         android:text="5"
         style="@style/roboto_normal_10_sonic_silver"
-        app:layout_constraintBottom_toBottomOf="@+id/rvReviewImages"
+        app:layout_constraintTop_toBottomOf="@+id/rvReviewImages"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView

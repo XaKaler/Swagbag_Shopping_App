@@ -75,4 +75,8 @@ class ViewOrderDetails : Fragment(R.layout.fragment_view_order_details), Recycle
         findNavController().navigate(R.id.action_viewOrderDetails_to_viewItemDetailsFragment)
     }
 
+    override fun itemClickWithName(name: String) {
+        TODO("Not yet implemented")
+    }
+
 }
