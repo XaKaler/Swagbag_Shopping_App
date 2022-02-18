@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".order.cancel_order.CancellationOrderCancelRequestFragment">
+    tools:context=".user.order.cancel_order.CancellationOrderCancelRequestFragment">
 
 
     <include

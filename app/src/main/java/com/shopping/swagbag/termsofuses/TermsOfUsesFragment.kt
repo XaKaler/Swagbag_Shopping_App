@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.shopping.swagbag.R
+import com.shopping.swagbag.databinding.FragmentAddUserDetailsBinding
 import com.shopping.swagbag.databinding.FragmentContactUsBinding
 import com.shopping.swagbag.databinding.FragmentTermsOfUsesBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding

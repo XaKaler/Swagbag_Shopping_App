@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/main_bg_color"
-    tools:context=".order.without_items.OrderWithoutItemsFragment">
+    tools:context=".user.order.without_items.OrderWithoutItemsFragment">
 
 
     <include

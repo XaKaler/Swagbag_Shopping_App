@@ -8,9 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.service.Resource
-import com.shopping.swagbag.wishlist.withproduct.AddToWishlistModel
-import com.shopping.swagbag.wishlist.withproduct.DeleteSingleWishModel
-import com.shopping.swagbag.wishlist.withproduct.GetWishlistModel
+import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
+import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
+import com.shopping.swagbag.user.wishlist.withproduct.AddToWishlistModel
+import com.shopping.swagbag.user.wishlist.withproduct.DeleteSingleWishModel
+import com.shopping.swagbag.user.wishlist.withproduct.GetWishlistModel
 import kotlinx.coroutines.launch
 
 class ProductViewModel(
@@ -97,12 +99,39 @@ class ProductViewModel(
         return result
     }
 
-    fun deleteSingleWish(productId: String, userId: String): LiveData<Resource<DeleteSingleWishModel>>{
+    fun deleteSingleWish(
+        productId: String,
+        userId: String
+    ): LiveData<Resource<DeleteSingleWishModel>> {
         val result = MutableLiveData<Resource<DeleteSingleWishModel>>()
 
         viewModelScope.launch {
             result.value = Resource.Loading
             result.value = repository.deleteSingleWish(productId, userId)
+        }
+
+        return result
+    }
+
+    fun getCart(userId: String): LiveData<Resource<GetCartModel>> {
+        val result = MutableLiveData<Resource<GetCartModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.getCart(userId)
+        }
+        return result
+    }
+
+    fun deleteSingleCart(
+        productId: String,
+        userId: String
+    ): LiveData<Resource<DeleteSingleCartModel>> {
+        val result = MutableLiveData<Resource<DeleteSingleCartModel>>()
+
+        viewModelScope.launch{
+            result.value = Resource.Loading
+            result.value = repository.deleteSingleCart(productId, userId)
         }
 
         return result

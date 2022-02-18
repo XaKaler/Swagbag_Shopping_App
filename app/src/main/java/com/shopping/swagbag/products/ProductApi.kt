@@ -2,9 +2,11 @@ package com.shopping.swagbag.products
 
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
-import com.shopping.swagbag.wishlist.withproduct.AddToWishlistModel
-import com.shopping.swagbag.wishlist.withproduct.DeleteSingleWishModel
-import com.shopping.swagbag.wishlist.withproduct.GetWishlistModel
+import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
+import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
+import com.shopping.swagbag.user.wishlist.withproduct.AddToWishlistModel
+import com.shopping.swagbag.user.wishlist.withproduct.DeleteSingleWishModel
+import com.shopping.swagbag.user.wishlist.withproduct.GetWishlistModel
 import retrofit2.http.*
 
 interface ProductApi {
@@ -46,4 +48,17 @@ interface ProductApi {
         @Field("product") productId: String,
         @Field("userid") userId: String,
     ): DeleteSingleWishModel
+
+    @FormUrlEncoded
+    @POST("get-cart")
+    suspend fun getCart(
+        @Field("id")userId: String
+    ): GetCartModel
+
+    @FormUrlEncoded
+    @POST("delete-cart")
+    suspend fun deleteSingleCart(
+        @Field("id")productId: String,
+        @Field("userid")userId : String
+    ): DeleteSingleCartModel
 }

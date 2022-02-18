@@ -20,41 +20,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius="5dp" />
 
-            <TextView
-                android:id="@+id/productName"
-                style="@style/snigiet_normal_14_davys_grey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_10"
-                android:maxLines="1"
-                android:minLines="1"
-                android:text="Kenster"
-                android:textAllCaps="true"
-                android:textColor="@color/day_state_green_night_Cambridge_Blue"
-                app:layout_constraintStart_toEndOf="@+id/productImg"
-                app:layout_constraintTop_toTopOf="@+id/productImg" />
+    <TextView
+        android:id="@+id/productName"
+        style="@style/snigiet_normal_14_davys_grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_10"
+        android:maxLines="1"
+        android:minLines="1"
+        android:text="Kenster"
+        android:textAllCaps="true"
+        android:textColor="@color/day_state_green_night_Cambridge_Blue"
+        app:layout_constraintEnd_toStartOf="@+id/cancel"
+        app:layout_constraintStart_toEndOf="@+id/productImg"
+        app:layout_constraintTop_toTopOf="@+id/productImg" />
 
-            <TextView
-                android:id="@+id/productDetails"
-                style="@style/snigiet_normal_14_davys_grey"
-                android:layout_width="0dp"
-                android:maxLines="1"
-                android:minLines="1"
-                android:textColor="@color/day_davys_grey_night_Gray"
-                android:layout_marginTop="@dimen/dimen_5"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dimen_10"
-                android:text="Washing machine white color"
-                app:layout_constraintEnd_toStartOf="@+id/imageView31"
-                app:layout_constraintStart_toEndOf="@+id/productImg"
-                app:layout_constraintTop_toBottomOf="@+id/productName" />
+    <TextView
+        android:id="@+id/productDetails"
+        style="@style/snigiet_normal_14_davys_grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_marginEnd="17dp"
+        android:maxLines="1"
+        android:minLines="1"
+        android:text="Washing machine white color"
+        android:textColor="@color/day_davys_grey_night_Gray"
+        app:layout_constraintEnd_toEndOf="@+id/productName"
+        app:layout_constraintEnd_toStartOf="@+id/imageView31"
+        app:layout_constraintStart_toEndOf="@+id/productImg"
+        app:layout_constraintStart_toStartOf="@+id/productName"
+        app:layout_constraintTop_toBottomOf="@+id/productName" />
 
     <ImageView
         android:id="@+id/imageView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/productImg"
-        app:layout_constraintEnd_toStartOf="@+id/cancel"
+        app:layout_constraintBottom_toTopOf="@+id/moveToBag"
+        app:layout_constraintEnd_toEndOf="@+id/cancel"
+        app:layout_constraintStart_toStartOf="@+id/cancel"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_right_arrow" />
 
@@ -92,10 +96,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_between_views"
+        android:background="@drawable/rec_white_5"
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardElevation="@dimen/card_elevation"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/rec_white_5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productImg">
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".shoppingbeg.withproduct.select_address.ShoppingBegSelectAddressFragment">
+    tools:context=".user.shoppingbeg.withproduct.select_address.ShoppingBegSelectAddressFragment">
 
     <include
         android:id="@+id/include"

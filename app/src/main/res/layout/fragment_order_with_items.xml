@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_bg_color_with_day_white"
-    tools:context=".order.with_items.OrderWithItemsFragment">
+    tools:context=".user.order.with_items.OrderWithItemsFragment">
 
     <include
         android:id="@+id/include"

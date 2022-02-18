@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.text.TextUtils
 import com.google.gson.Gson
-import com.shopping.swagbag.auth.signin.SignInModel
+import com.shopping.swagbag.user.auth.signin.SignInModel
 
 class AppUtils(private val context: Context) {
 
@@ -38,14 +38,12 @@ class AppUtils(private val context: Context) {
 
     fun isUserLoggedIn(): Boolean{
         val sharedPreferences = context.getSharedPreferences(_myPrefName, Context.MODE_PRIVATE)
-        //val user =sharedPreferences.getString(_userData, "")
-
         return sharedPreferences.getBoolean(_isUserLogIn, false)
     }
 
     fun logOut(){
         val editor: SharedPreferences.Editor = context.getSharedPreferences(_myPrefName, Context.MODE_PRIVATE).edit()
-        editor.putBoolean(_isUserLogIn, false)
+       // editor.putBoolean(_isUserLogIn, false)
         editor.clear()
         editor.apply()
     }

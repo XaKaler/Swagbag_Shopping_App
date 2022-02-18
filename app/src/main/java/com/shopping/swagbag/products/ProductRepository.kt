@@ -27,4 +27,11 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
 
 
     suspend fun deleteSingleWish(productId: String, userId: String) = safeApiCall { api.deleteSingleWish(productId, userId) }
+
+    suspend fun getCart(userId: String) = safeApiCall { api.getCart(userId) }
+
+    suspend fun deleteSingleCart(
+        productId: String,
+        userId: String
+    ) = safeApiCall { api.deleteSingleCart(productId, userId) }
 }
