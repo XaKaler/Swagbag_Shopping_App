@@ -3,9 +3,13 @@ package com.shopping.swagbag.user.shipping
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.adapter.InvoiceAdapter
 import com.shopping.swagbag.databinding.FragmentGetInvoiceBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.dummy.DummyData
 
 class GetInvoiceFragment : Fragment(R.layout.fragment_get_invoice) {
 

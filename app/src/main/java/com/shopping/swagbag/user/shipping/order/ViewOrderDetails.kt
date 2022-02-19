@@ -4,10 +4,13 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
+import com.shopping.swagbag.common.adapter.OrderItemDetailAdapter
 import com.shopping.swagbag.databinding.FragmentViewOrderDetailsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.dummy.DummyData
 
 
 class ViewOrderDetails : Fragment(R.layout.fragment_view_order_details), RecycleItemClickListener {

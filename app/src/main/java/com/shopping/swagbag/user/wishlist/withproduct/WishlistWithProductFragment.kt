@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentWishlistWithProductBinding
 import com.shopping.swagbag.databinding.ToolbarWithTwoMenusDeleteAndCartBinding
+import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel

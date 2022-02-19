@@ -12,7 +12,7 @@ import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentShoppingBegWithProductBinding
-import com.shopping.swagbag.databinding.ToolbarWithOneMenusBinding
+import com.shopping.swagbag.databinding.ToolbarWithTwoMenusDeleteAndWishlistBinding
 import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
@@ -26,7 +26,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
     View.OnClickListener,
     RecycleViewItemClick {
 
-    private lateinit var toolbarBinding: ToolbarWithOneMenusBinding
+    private lateinit var toolbarBinding: ToolbarWithTwoMenusDeleteAndWishlistBinding
     private lateinit var product: GetCartModel
     private lateinit var appUtils: AppUtils
     private lateinit var shoppingBegProductAdapter: ShoppingBegProductAdapter
@@ -48,12 +48,10 @@ class ShoppingBegWithProductFragment : BaseFragment<
     }
 
     private fun getCart() {
-
         appUtils = context?.let { AppUtils(it) }!!
-
         val userId = appUtils.getUserId()
 
-        viewModel.getCart(userId).observe(viewLifecycleOwner, Observer {
+        viewModel.getCart(userId).observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> showLoading()
 
@@ -61,10 +59,11 @@ class ShoppingBegWithProductFragment : BaseFragment<
                     stopShowingLoading()
 
                     val productCount = it.value.result.size
+                    Log.e("TAG", "getCart: $productCount", )
 
-                    if(productCount == 0){
+                    if (productCount == 0) {
                         findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_shoppingBegWithoutProductFragment)
-                    }else{
+                    } else {
                         product = it.value
                         setItems(it.value.result)
                     }
@@ -72,7 +71,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
 
                 is Resource.Failure -> Log.e("TAG", "getCart: $it")
             }
-        })
+        }
 
         //viewModel.getCart()
     }
@@ -107,7 +106,31 @@ class ShoppingBegWithProductFragment : BaseFragment<
             imgWishlist.setOnClickListener {
                 findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_wishlistWithProductFragment)
             }
+
+            delete.setOnClickListener {
+                clearCart()
+            }
         }
+    }
+
+    private fun clearCart() {
+        val userId = appUtils.getUserId()
+        viewModel.clearCart(userId).observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Loading -> showLoading()
+
+                is Resource.Success -> {
+                    stopShowingLoading()
+
+                    toast(it.value.message)
+
+                    //send user to empty cart
+                    findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_shoppingBegWithoutProductFragment)
+                }
+
+                is Resource.Failure -> Log.e("cart", "clearCart: $it")
+            }
+        })
     }
 
     override fun onClick(v: View?) {
@@ -130,8 +153,8 @@ class ShoppingBegWithProductFragment : BaseFragment<
         val productId = product.result[position].product.id
         val userId = appUtils.getUserId()
 
-        viewModel.deleteSingleWish(productId, userId).observe(viewLifecycleOwner, Observer {
-            when(it){
+        viewModel.deleteSingleWish(productId, userId).observe(viewLifecycleOwner) {
+            when (it) {
                 is Resource.Loading -> showLoading()
 
                 is Resource.Success -> {
@@ -140,13 +163,21 @@ class ShoppingBegWithProductFragment : BaseFragment<
                     toast(it.value.message)
 
                     //update list
-                    val productList: MutableList<GetCartModel.Result> = product.result as MutableList
-                    productList.removeAt(position)
-                    shoppingBegProductAdapter.updateList(productList)
+                    val productList: MutableList<GetCartModel.Result> =
+                        product.result as MutableList
+
+                    //if size is 0 then show user to empty cart
+                    if (productList.size == 0)
+                        findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_shoppingBegWithoutProductFragment)
+                    else {
+                        productList.removeAt(position)
+                        shoppingBegProductAdapter.updateList(productList)
+                    }
+
                 }
 
-                is Resource.Failure -> Log.e("TAG", "onItemClickWithName: $it", )
+                is Resource.Failure -> Log.e("TAG", "onItemClickWithName: $it",)
             }
-        })
+        }
     }
 }

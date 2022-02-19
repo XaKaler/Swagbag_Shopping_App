@@ -1,21 +1,36 @@
 package com.shopping.swagbag.user.order.user_details
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleViewItemClick
+import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentViewUserDetailsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.user.auth.UserApi
+import com.shopping.swagbag.user.auth.UserRepository
+import com.shopping.swagbag.user.auth.UserViewModel
+import com.shopping.swagbag.utils.AppUtils
 
-class ViewUserDetailsFragment : Fragment(R.layout.fragment_view_user_details) {
+class ViewUserDetailsFragment : BaseFragment<
+        FragmentViewUserDetailsBinding,
+        UserViewModel,
+        UserRepository>(FragmentViewUserDetailsBinding::inflate), RecycleViewItemClick {
 
-    private lateinit var viewBinding: FragmentViewUserDetailsBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+    private lateinit var addresses: AllAddressModel
+    private lateinit var addressAdapter: AddressAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding = FragmentViewUserDetailsBinding.bind(view)
         toolbarBinding = viewBinding.include
 
         initViews()
@@ -40,27 +55,95 @@ class ViewUserDetailsFragment : Fragment(R.layout.fragment_view_user_details) {
         }
         setToolbar()
 
-        setAddresses()
+        getAllAddresses()
     }
 
-    private fun setAddresses() {
+    private fun getAllAddresses() {
+        val userId = context?.let { AppUtils(it).getUserId() }
+
+        if (userId != null) {
+            viewModel.allAddress(userId).observe(viewLifecycleOwner, Observer {
+                when(it){
+                    is Resource.Loading -> showLoading()
+
+                    is Resource.Success -> {
+                        stopShowingLoading()
+
+                        addresses = it.value
+                        setAddresses(addresses.result)
+                    }
+
+                    is Resource.Failure -> Log.e("TAG", "getAllAddresses: $it", )
+                }
+            })
+        }
+    }
+
+    private fun setAddresses(addresses: List<AllAddressModel.Result>) {
         with(viewBinding){
             rvUserDetails.apply{
                 layoutManager = LinearLayoutManager(context)
-                adapter = DummyData().getDummyData()?.let { AddressAdapter(context, it) }
+                addressAdapter = AddressAdapter(context, addresses, this@ViewUserDetailsFragment)
+                adapter = addressAdapter
             }
         }
     }
 
     private fun setToolbar() {
-        with(toolbarBinding){
+        with(toolbarBinding) {
             // set title
             tvTitle.text = getString(R.string.addresses)
 
             // back button click
-            imgBack.setOnClickListener{
+            imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
         }
+    }
+
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentViewUserDetailsBinding.inflate(inflater, container, false)
+
+    override fun getViewModel() = UserViewModel::class.java
+
+    override fun getFragmentRepository() =
+        UserRepository(remoteDataSource.getBaseUrl().create(UserApi::class.java))
+
+    override fun onItemClickWithName(tag: String, position: Int) {
+        when(tag){
+            //@todo edit address
+            "edit" -> {
+                val action = ViewUserDetailsFragmentDirections.actionViewUserDetailsFragmentToAddUserDetailsFragment()
+                findNavController().navigate(action)
+            }
+            "delete" -> deleteAddress(position)
+        }
+    }
+
+    private fun deleteAddress(position: Int) {
+        val addressId = addresses.result[position].id
+
+        Log.e("addressId", "deleteAddress: $addressId", )
+
+        viewModel.deleteAddress(addressId).observe(viewLifecycleOwner, Observer {
+            when(it){
+                is Resource.Loading -> showLoading()
+
+                is Resource.Success -> {
+                    stopShowingLoading()
+
+                    val addressList: MutableList<AllAddressModel.Result> = addresses.result as MutableList
+                    addressList.removeAt(position)
+
+                    // update address list
+                    addressAdapter.updateAddress(addressList)
+                }
+
+                is Resource.Failure -> Log.e("address", "deleteAddress: $it", )
+            }
+        })
+
     }
 }

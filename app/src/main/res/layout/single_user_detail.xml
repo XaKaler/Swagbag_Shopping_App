@@ -16,7 +16,7 @@
         <RadioButton
             android:id="@+id/userAddress"
             android:layout_width="wrap_content"
-            android:layout_marginStart="@dimen/screen_horizontal_padding"
+            android:buttonTint="@android:color/transparent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,22 +39,23 @@
             app:layout_constraintTop_toTopOf="@+id/userAddress" />
 
         <TextView
-            android:id="@+id/textView48"
+            android:id="@+id/name"
             style="@style/roboto_medium_14_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Xa Kaler"
-            app:layout_constraintBottom_toBottomOf="@+id/userAddress"
+            app:layout_constraintBottom_toBottomOf="@+id/addressType"
             app:layout_constraintStart_toEndOf="@+id/userAddress"
-            app:layout_constraintTop_toTopOf="@+id/userAddress" />
+            app:layout_constraintTop_toTopOf="@+id/addressType" />
 
         <TextView
-            android:id="@+id/textView49"
-            android:layout_width="wrap_content"
+            android:id="@+id/address"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="House.No: 123,\nVillage, Mandal, District,\nState - 12345\n\nMobile: 9876543210"
+            app:layout_constraintEnd_toStartOf="@+id/addressType"
             app:layout_constraintStart_toEndOf="@+id/userAddress"
-            app:layout_constraintTop_toBottomOf="@+id/userAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/addressType" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lytconst"
@@ -66,7 +67,7 @@
 
 
             <TextView
-                android:id="@+id/btnCancel"
+                android:id="@+id/edit"
                 style="@style/roboto_medium_12_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -87,12 +88,12 @@
                 android:layout_marginVertical="@dimen/dimen_5"
                 android:paddingHorizontal="@dimen/dimen_10"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnSave"
-                app:layout_constraintStart_toEndOf="@+id/btnCancel"
+                app:layout_constraintEnd_toStartOf="@+id/delete"
+                app:layout_constraintStart_toEndOf="@+id/edit"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/btnSave"
+                android:id="@+id/delete"
                 style="@style/roboto_medium_14_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -112,7 +113,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/dimen_15"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView49" />
+            app:layout_constraintTop_toBottomOf="@+id/address" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,9 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bumptech.glide.load.engine.cache.MemoryCache
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 import com.shopping.swagbag.user.wishlist.withproduct.AddToWishlistModel
@@ -132,6 +134,17 @@ class ProductViewModel(
         viewModelScope.launch{
             result.value = Resource.Loading
             result.value = repository.deleteSingleCart(productId, userId)
+        }
+
+        return result
+    }
+
+    fun clearCart(userId: String): LiveData<Resource<ClearCartModel>>{
+        val result = MutableLiveData<Resource<ClearCartModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value  = repository.clearCart(userId)
         }
 
         return result

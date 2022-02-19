@@ -1,9 +1,11 @@
 package com.shopping.swagbag.user.shoppingbeg.withproduct
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleProductOfShoppingBegBinding
 

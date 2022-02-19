@@ -4,9 +4,10 @@ import com.shopping.swagbag.user.auth.resetpassword.PasswordResetEmailSendModel
 import com.shopping.swagbag.user.auth.resetpassword.PasswordResetModel
 import com.shopping.swagbag.user.auth.signin.SignInModel
 import com.shopping.swagbag.user.auth.signup.SignUpModel
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import com.shopping.swagbag.user.order.user_details.AddAddressModel
+import com.shopping.swagbag.user.order.user_details.AllAddressModel
+import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
+import retrofit2.http.*
 
 interface UserApi {
 
@@ -42,4 +43,30 @@ interface UserApi {
         @Field("otp") otp: String
     ): PasswordResetModel
 
+    @FormUrlEncoded
+    @POST("add-address")
+    suspend fun addAddress(
+        @Field("userid")userid: String,
+        @Field("title")title: String,
+        @Field("address")address: String,
+        @Field("address2")address2: String,
+        @Field("city")city: String,
+        @Field("state")state: String,
+        @Field("post_office")post_office: String,
+        @Field("pincode")pincode: String,
+        @Field("contact_name")contact_name: String,
+        @Field("contact_mobile")contact_mobile: String,
+        @Field("lat")lat: String,
+        @Field("lng")lng: String,
+    ): AddAddressModel
+
+    @GET("all-address")
+    suspend fun allAddress(
+        @Query("id")userId: String
+    ): AllAddressModel
+
+    @GET("delete-address")
+    suspend fun deleteAddress(
+        @Query("id")addressId: String
+    ): DeleteAddressModel
 }

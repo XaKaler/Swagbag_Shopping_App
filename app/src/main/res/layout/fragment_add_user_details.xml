@@ -67,6 +67,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtName"
+                            android:imeOptions="flagNavigateNext"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/name_star" />
@@ -84,6 +85,8 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtPhone"
+                            android:inputType="phone"
+                            android:imeOptions="actionDone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/phone_star" />
@@ -128,6 +131,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtPinCode"
+                            android:imeOptions="actionDone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/pincode"
@@ -148,6 +152,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtState"
+                            android:imeOptions="actionDone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/state" />
@@ -181,7 +186,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtLandmark"
+                            android:id="@+id/edtCity"
+                            android:imeOptions="actionDone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/city" />
@@ -255,6 +261,7 @@
 
                     <View
                         android:id="@+id/view10"
+                        android:visibility="gone"
                         style="@style/line_horizontal"
                         android:layout_marginTop="@dimen/dimen_15"
                         android:paddingHorizontal="@dimen/dimen_15"
@@ -270,6 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_15"
+                        android:visibility="gone"
                         android:paddingStart="@dimen/dimen_10"
                         android:text="@string/make_this_as_my_default_address"
                         app:layout_constraintStart_toStartOf="@+id/view10"

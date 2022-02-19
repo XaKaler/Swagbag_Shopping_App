@@ -3,9 +3,12 @@ package com.shopping.swagbag.user.shipping.order
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.FragmentViewItemDetailsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.dummy.DummyData
 
 class ViewItemDetailsFragment : Fragment(R.layout.fragment_view_item_details) {
 

@@ -1,9 +1,12 @@
 package com.shopping.swagbag.user.wishlist.withproduct
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.SingleCategoryOfWishlistWithItemsBinding
 import com.shopping.swagbag.dummy.UserAddress
 

@@ -346,6 +346,7 @@
         <action
             android:id="@+id/action_viewUserDetailsFragment_to_home2"
             app:destination="@id/home2" />
+
     </fragment>
     <fragment
         android:id="@+id/couponsFragment"
@@ -590,7 +591,10 @@
         tools:layout="@layout/fragment_add_user_details" >
         <action
             android:id="@+id/action_addUserDetailsFragment_to_viewUserDetailsFragment"
-            app:destination="@id/viewUserDetailsFragment" />
+            app:destination="@id/viewUserDetailsFragment" /><!--
+        <argument
+            android:name="address"
+            app:argType="com.shopping.swagbag.user.order.user_details.AllAddressModel.Result" />-->
     </fragment>
     <fragment
         android:id="@+id/cancellationOrderFragment"

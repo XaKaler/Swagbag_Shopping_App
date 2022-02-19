@@ -3,8 +3,12 @@ package com.shopping.swagbag.user.wishlist.withoutproduct
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.adapter.FeatureProductAdapter
 import com.shopping.swagbag.databinding.*
+import com.shopping.swagbag.dummy.DummyData
 
 
 class WishlistWithoutProductFragment : Fragment(R.layout.fragment_wishtlist_without_product) {
