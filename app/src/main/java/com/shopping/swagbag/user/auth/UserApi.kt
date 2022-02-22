@@ -7,6 +7,7 @@ import com.shopping.swagbag.user.auth.signup.SignUpModel
 import com.shopping.swagbag.user.order.user_details.AddAddressModel
 import com.shopping.swagbag.user.order.user_details.AllAddressModel
 import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
+import com.shopping.swagbag.user.order.user_details.EditAddressModel
 import retrofit2.http.*
 
 interface UserApi {
@@ -59,6 +60,25 @@ interface UserApi {
         @Field("lat")lat: String,
         @Field("lng")lng: String,
     ): AddAddressModel
+
+    @FormUrlEncoded
+    @POST("edit-address")
+    suspend fun editAddress(
+        @Field("userid")userid: String,
+        @Field("title")title: String,
+        @Field("address")address: String,
+        @Field("address2")address2: String,
+        @Field("city")city: String,
+        @Field("state")state: String,
+        @Field("post_office")post_office: String,
+        @Field("pincode")pincode: String,
+        @Field("contact_name")contact_name: String,
+        @Field("contact_mobile")contact_mobile: String,
+        @Field("id")addressId: String,
+        @Field("lat")lat: String,
+        @Field("lng")lng: String
+    ): EditAddressModel
+
 
     @GET("all-address")
     suspend fun allAddress(

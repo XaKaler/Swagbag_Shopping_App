@@ -13,6 +13,7 @@ import com.shopping.swagbag.user.auth.signup.SignUpModel
 import com.shopping.swagbag.user.order.user_details.AddAddressModel
 import com.shopping.swagbag.user.order.user_details.AllAddressModel
 import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
+import com.shopping.swagbag.user.order.user_details.EditAddressModel
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val repository: UserRepository) : ViewModel() {
@@ -72,6 +73,13 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         return result
     }
 
+    /*fun userUpdate(
+        userId: String,
+        fName: String,
+        lName: String,
+        email: String
+    ): LiveData<Resource<>>*/
+
     fun addAddress(
         userid: String,
         title: String,
@@ -126,6 +134,45 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         viewModelScope.launch {
             result.value = Resource.Loading
             result.value = repository.deleteAddress(addressId)
+        }
+
+        return result
+    }
+
+    fun editAddress(
+        userid: String,
+        title: String,
+        address: String,
+        address2: String,
+        city: String,
+        state: String,
+        post_office: String,
+        pincode: String,
+        contact_name: String,
+        contact_mobile: String,
+        addressId: String,
+        lat: String,
+        lng: String,
+    ): LiveData<Resource<EditAddressModel>> {
+        val result = MutableLiveData<Resource<EditAddressModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.editAddress(
+                userid,
+                title,
+                address,
+                address2,
+                city,
+                state,
+                post_office,
+                pincode,
+                contact_name,
+                contact_mobile,
+                addressId,
+                lat,
+                lng
+            )
         }
 
         return result

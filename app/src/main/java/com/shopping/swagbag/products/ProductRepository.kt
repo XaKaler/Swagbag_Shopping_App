@@ -26,9 +26,17 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
     suspend fun getWish(userId: String) = safeApiCall { api.getWish(userId) }
 
 
-    suspend fun deleteSingleWish(productId: String, userId: String) = safeApiCall { api.deleteSingleWish(productId, userId) }
+    suspend fun deleteSingleWish(productId: String, userId: String) =
+        safeApiCall { api.deleteSingleWish(productId, userId) }
 
     suspend fun getCart(userId: String) = safeApiCall { api.getCart(userId) }
+
+    suspend fun addToCart(
+        quantity: String,
+        productId: String,
+        userId: String,
+        option: String
+    ) = safeApiCall { api.addToCart(quantity, productId, userId, option) }
 
     suspend fun deleteSingleCart(
         productId: String,
@@ -36,4 +44,6 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
     ) = safeApiCall { api.deleteSingleCart(productId, userId) }
 
     suspend fun clearCart(userId: String) = safeApiCall { api.clearCart(userId) }
+
+    suspend fun getHome() = safeApiCall { api.getHome() }
 }

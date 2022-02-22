@@ -220,8 +220,11 @@ class MainActivity : AppCompatActivity(),
                 categoryViewModel.category.observe(this@MainActivity, Observer {
                     when (it) {
                         is Resource.Success -> {
+                            Log.e("TAG", "setUpNavigation: $it", )
                             adapter = NavigationMenuAdapter(this@MainActivity, navigationMenu, it.value.result)
                         }
+
+                        is Resource.Failure -> Log.e("TAG", "setUpNavigation: $it", )
                         else -> {}
                     }
                 })

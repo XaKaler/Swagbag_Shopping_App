@@ -5,8 +5,9 @@ import android.content.SharedPreferences
 import android.text.TextUtils
 import com.google.gson.Gson
 import com.shopping.swagbag.user.auth.signin.SignInModel
+import javax.inject.Inject
 
-class AppUtils(private val context: Context) {
+class AppUtils @Inject constructor(private val context: Context) {
 
     private val _myPrefName = "sharePrefName"
     private val _userData = "user_data"

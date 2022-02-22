@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.user.auth.UserApi
 import com.shopping.swagbag.user.auth.UserRepository
@@ -17,6 +18,7 @@ import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProfileBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
 import com.shopping.swagbag.utils.AppUtils
+import kotlinx.android.synthetic.main.fragment_contact_us.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -26,7 +28,7 @@ class ProfileFragment : BaseFragment<
         UserViewModel,
         UserRepository>(
     FragmentProfileBinding::inflate
-), View.OnClickListener {
+) {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private var maleSelected: Boolean = false
@@ -63,12 +65,12 @@ class ProfileFragment : BaseFragment<
         with(viewBinding) {
             txtMale.setOnClickListener {
                 maleSelected = true
-                setGender()
+                //setGender()
             }
 
             txtFemale.setOnClickListener {
                 maleSelected = false
-                setGender()
+                //setGender()
             }
 
             birthday.setOnClickListener{
@@ -83,7 +85,21 @@ class ProfileFragment : BaseFragment<
                 }
             }
 
-            btnSaveDetails.setOnClickListener(this@ProfileFragment)
+            btnSaveDetails.setOnClickListener {
+                getUserDetails()
+            }
+        }
+    }
+
+    private fun getUserDetails() {
+        with(viewBinding){
+            val fName = edtFirstName.text.toString()
+            val lName = edtLastName.text.toString()
+            val email = edtEmail.text.toString()
+            val userId = context?.let { AppUtils(it).getUserId() }
+
+            //update user
+            //viewModel.editAddress()
         }
     }
 
@@ -92,7 +108,8 @@ class ProfileFragment : BaseFragment<
         val user: SignInModel? = context?.let { AppUtils(it).getUser() }
 
         with(viewBinding) {
-            val userName = user?.result?.fname
+            val fName = user?.result?.fname
+            val lName = user?.result?.lname
             val mobile = user?.result?.mobile
             val email = user?.result?.email
             val birthDate = ""
@@ -101,7 +118,7 @@ class ProfileFragment : BaseFragment<
 
             Log.e(
                 "user data",
-                "username: $userName\n" +
+                "username: $fName\n" +
                         "mobile: $mobile\n" +
                         "email: $email\n" +
                         "birthday: $birthDate\n" +
@@ -110,19 +127,29 @@ class ProfileFragment : BaseFragment<
             )
 
             //set user data
-            edtUserName.setText(userName)
+            edtFirstName.setText(fName)
+            edtLastName.setText(lName)
             mobileNo.setText(mobile)
             emailAddress.setText(email)
             location.setText(address)
             birthday.setText(birthDate)
 
+            Log.e("TAG", "setUserData: ${user?.result?.file}", )
+
+            context?.let {
+                Glide.with(it)
+                    .load(user?.result?.file)
+                    .placeholder(R.mipmap.navigation_header_user_img_foreground)
+                    .into(imgUser)
+            }
+
             //set gender
             if (gender == "Male") {
                 maleSelected = true
-                setGender()
+               // setGender()
             } else {
                 maleSelected = false
-                setGender()
+               // setGender()
             }
         }
     }
@@ -158,14 +185,6 @@ class ProfileFragment : BaseFragment<
             // back button click
             imgBack.setOnClickListener {
                 findNavController().popBackStack()
-            }
-        }
-    }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.btnSaveDetails -> {
-                findNavController().navigate(R.id.action_profileFragment_to_home2)
             }
         }
     }

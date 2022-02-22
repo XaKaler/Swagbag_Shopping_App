@@ -4,8 +4,15 @@ plugins {
     id 'kotlin-kapt'
     id "androidx.navigation.safeargs"
     id "org.jetbrains.kotlin.android.extensions"
+    id("dagger.hilt.android.plugin")
 }
+
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
+
+kapt {
+    correctErrorTypes = true
+}
 
 android {
     compileSdk 31
@@ -82,6 +89,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //dagger hilt
+    implementation("com.google.dagger:hilt-android:2.40")
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 }
 /*
 repositories {

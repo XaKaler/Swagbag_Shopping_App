@@ -1,12 +1,12 @@
 package com.shopping.swagbag.home
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,21 +14,29 @@ import com.bumptech.glide.Glide
 import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
-import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
 import com.shopping.swagbag.common.RecycleItemClickListener
-import com.shopping.swagbag.common.adapter.*
+import com.shopping.swagbag.common.adapter.AllTimeSliderAdapter
+import com.shopping.swagbag.common.adapter.AutoImageSliderAdapter
+import com.shopping.swagbag.common.adapter.BestProductAdapter
+import com.shopping.swagbag.common.adapter.CategoryToBegAdapter
+import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentHomeBinding
 import com.shopping.swagbag.databinding.HomeBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.dummy.DummySlider
+import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.products.ProductRepository
+import com.shopping.swagbag.products.ProductViewModel
+import com.shopping.swagbag.service.Resource
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 
-class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
+class Home :
+    BaseFragment<FragmentHomeBinding, ProductViewModel, ProductRepository>(FragmentHomeBinding::inflate),
+    RecycleItemClickListener {
 
-    private lateinit var viewBinding: FragmentHomeBinding
     private lateinit var viewBinding2: HomeBinding
     private lateinit var activity: AppCompatActivity
     private lateinit var mainActivity: MainActivity
@@ -51,7 +59,7 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding = FragmentHomeBinding.bind(view)
+
         viewBinding2 = viewBinding.include
 
         initViews()
@@ -63,11 +71,30 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
 
     private fun initViews() {
         activity = context as AppCompatActivity
+
+        getHomeData()
+
         setCategorySlider()
 
         showOfferImages()
 
 
+    }
+
+    private fun getHomeData() {
+        viewModel.getHome().observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading ->  showLoading()
+
+                is Resource.Success -> {
+                    stopShowingLoading()
+
+                    Log.e("TAG", "getHomeData: $it", )
+                }
+
+                is Resource.Failure -> Log.e("TAG", "getHomeData: $it", )
+            }
+        }
     }
 
     private fun showOfferImages() {
@@ -297,5 +324,15 @@ class Home : Fragment(R.layout.fragment_home),RecycleItemClickListener {
     override fun itemClickWithName(name: String) {
         TODO("Not yet implemented")
     }
+
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentHomeBinding.inflate(inflater, container, false)
+
+    override fun getViewModel() = ProductViewModel::class.java
+
+    override fun getFragmentRepository() =
+        ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
 }

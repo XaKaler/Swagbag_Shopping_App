@@ -5,8 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.load.engine.cache.MemoryCache
 import com.shopping.swagbag.brand.BrandModel
+import com.shopping.swagbag.home.HomeModel
+import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
@@ -125,13 +126,29 @@ class ProductViewModel(
         return result
     }
 
+    fun addToCart(
+        quantity: String,
+        productId: String,
+        userId: String,
+        option: String
+    ): LiveData<Resource<AddToCartModel>> {
+        val result = MutableLiveData<Resource<AddToCartModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.addToCart(quantity, productId, userId, option)
+        }
+
+        return result
+    }
+
     fun deleteSingleCart(
         productId: String,
         userId: String
     ): LiveData<Resource<DeleteSingleCartModel>> {
         val result = MutableLiveData<Resource<DeleteSingleCartModel>>()
 
-        viewModelScope.launch{
+        viewModelScope.launch {
             result.value = Resource.Loading
             result.value = repository.deleteSingleCart(productId, userId)
         }
@@ -145,6 +162,17 @@ class ProductViewModel(
         viewModelScope.launch {
             result.value = Resource.Loading
             result.value  = repository.clearCart(userId)
+        }
+
+        return result
+    }
+
+    fun getHome(): LiveData<Resource<HomeModel>>{
+        val result = MutableLiveData<Resource<HomeModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.getHome()
         }
 
         return result

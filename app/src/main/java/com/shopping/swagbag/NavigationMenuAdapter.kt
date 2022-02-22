@@ -68,7 +68,7 @@ class NavigationMenuAdapter(
                         viewBinding.masterCategory.visibility = View.VISIBLE
                     }
                 }
-              /*  "Category" -> {
+               /* "Category" -> {
                     activity.closeDrawer()
                     activity.hideToolbar()
                     navController.navigate(R.id.action_global_categoryFragment)

@@ -56,6 +56,40 @@ class UserRepository(private val api: UserApi) : BaseRepository() {
         )
     }
 
+    suspend fun editAddress(
+        userid: String,
+        title: String,
+        address: String,
+        address2: String,
+        city: String,
+        state: String,
+        post_office: String,
+        pincode: String,
+        contact_name: String,
+        contact_mobile: String,
+        addressId: String,
+        lat: String,
+        lng: String,
+    ) = safeApiCall {
+        api.editAddress(
+            userid,
+            title,
+            address,
+            address2,
+            city,
+            state,
+            post_office,
+            pincode,
+            contact_name,
+            contact_mobile,
+            addressId,
+            lat,
+            lng
+        )
+    }
+
+
+
     suspend fun allAddress(userId: String)= safeApiCall { api.allAddress(userId) }
 
     suspend fun deleteAddress(addressId: String) = safeApiCall { api.deleteAddress(addressId) }

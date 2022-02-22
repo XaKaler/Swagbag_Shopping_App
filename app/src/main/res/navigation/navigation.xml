@@ -346,6 +346,9 @@
         <action
             android:id="@+id/action_viewUserDetailsFragment_to_home2"
             app:destination="@id/home2" />
+        <action
+            android:id="@+id/action_viewUserDetailsFragment_to_editUserDetailFragment"
+            app:destination="@id/editUserDetailFragment" />
 
     </fragment>
     <fragment
@@ -706,5 +709,15 @@
         android:name="com.shopping.swagbag.brand.BrandFragment"
         android:label="fragment_brand"
         tools:layout="@layout/fragment_brand" /><action android:id="@+id/action_global_brandFragment" app:destination="@id/brandFragment"/>
+    <fragment
+        android:id="@+id/editUserDetailFragment"
+        android:name="com.shopping.swagbag.user.order.user_details.EditUserDetailFragment"
+        android:label="fragment_edit_user_detail"
+        tools:layout="@layout/fragment_edit_user_detail" >
+
+        <argument
+            android:name="address"
+            app:argType="com.shopping.swagbag.user.order.user_details.AllAddressModel$Result" />
+    </fragment>
 
 </navigation>

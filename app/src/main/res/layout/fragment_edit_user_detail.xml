@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.order.user_details.AddUserDetailsFragment">
+    tools:context=".user.order.user_details.EditUserDetailFragment">
 
 
     <include
@@ -29,12 +29,12 @@
 
             <TextView
                 android:id="@+id/textView42"
+                android:visibility="gone"
                 android:textColor="@color/day_dark_liver_night_white"
                 style="@style/roboto_medium_14_outer_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/edit_address"
-                android:visibility="gone"
                 android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="@+id/card"
                 app:layout_constraintTop_toTopOf="parent" />

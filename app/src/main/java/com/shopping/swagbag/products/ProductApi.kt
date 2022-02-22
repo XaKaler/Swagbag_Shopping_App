@@ -1,6 +1,8 @@
 package com.shopping.swagbag.products
 
 import com.shopping.swagbag.brand.BrandModel
+import com.shopping.swagbag.home.HomeModel
+import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
@@ -68,4 +70,16 @@ interface ProductApi {
     suspend fun clearCart(
         @Field("userid") userId: String
     ): ClearCartModel
+
+    @FormUrlEncoded
+    @POST("add-to-cart")
+    suspend fun addToCart(
+        @Field("quantity")quantity: String,
+        @Field("productid")productId: String,
+        @Field("id")userId: String,
+        @Field("option")option: String,
+    ): AddToCartModel
+
+    @GET("mobile-home")
+    suspend fun getHome(): HomeModel
 }

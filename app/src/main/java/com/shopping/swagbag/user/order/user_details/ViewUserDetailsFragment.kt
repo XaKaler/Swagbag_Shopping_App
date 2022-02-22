@@ -67,6 +67,7 @@ class ViewUserDetailsFragment : BaseFragment<
                     is Resource.Loading -> showLoading()
 
                     is Resource.Success -> {
+
                         stopShowingLoading()
 
                         addresses = it.value
@@ -115,7 +116,10 @@ class ViewUserDetailsFragment : BaseFragment<
         when(tag){
             //@todo edit address
             "edit" -> {
-                val action = ViewUserDetailsFragmentDirections.actionViewUserDetailsFragmentToAddUserDetailsFragment()
+                val action =
+                    ViewUserDetailsFragmentDirections.actionViewUserDetailsFragmentToEditUserDetailFragment(
+                        addresses.result[position]
+                    )
                 findNavController().navigate(action)
             }
             "delete" -> deleteAddress(position)

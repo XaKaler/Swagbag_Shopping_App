@@ -22,6 +22,8 @@ import com.shopping.swagbag.products.*
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
 import com.smarteist.autoimageslider.SliderView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlin.math.log
 
 class ProductDetailsFragment : BaseFragment<
@@ -43,7 +45,6 @@ class ProductDetailsFragment : BaseFragment<
 
     private fun initViews() {
         with(viewBinding) {
-
             // make text strike threw
             oldRate.paintFlags = oldRate.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             oldRate1.paintFlags = oldRate1.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -63,7 +64,7 @@ class ProductDetailsFragment : BaseFragment<
             }
 
             addToBeg.setOnClickListener {
-                findNavController().navigate(R.id.action_productDetailsFragment_to_shoppingBegWithProductFragment)
+                addToCart()
             }
 
             /*floatingActionButton.setOnClickListener{
@@ -271,7 +272,7 @@ class ProductDetailsFragment : BaseFragment<
             sliderView.setIndicatorAnimation(com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType.THIN_WORM)
             sliderView.setSliderTransformAnimation(com.smarteist.autoimageslider.SliderAnimations.SIMPLETRANSFORMATION)
             sliderView.autoCycleDirection =
-                com.smarteist.autoimageslider.SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
+                SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH
 
             // to start auto cycle below method is used.
             //sliderView.startAutoCycle()
@@ -293,7 +294,7 @@ class ProductDetailsFragment : BaseFragment<
     }
 
     private fun addToCart() {
-
+       // viewModel.addToCart("1", product.result.id, userId, "")
     }
 
     private fun addToWishlist() {
