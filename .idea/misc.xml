@@ -103,7 +103,7 @@
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_help_center_with_order.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_help_center_without_order.xml" value="0.2" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_help_center_without_queries.xml" value="0.22" />
-        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_home.xml" value="0.15" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_home_category.xml" value="0.22" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_kids.xml" value="0.22" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_men.xml" value="0.18426678067550234" />
@@ -112,6 +112,7 @@
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_order_with_items.xml" value="0.25" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_order_without_filter_item.xml" value="0.18426678067550234" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_order_without_items.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_particular_category.xml" value="0.14" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_payment_mode.xml" value="0.22" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_pets.xml" value="0.2372041827187672" />
         <entry key="..\:/Users/Xa Kaler/Desktop/Swagbag desktop/app/src/main/res/layout/fragment_privacy_policy.xml" value="0.18" />

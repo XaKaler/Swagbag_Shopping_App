@@ -102,8 +102,8 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
 
             // below method is used to
             // set adapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { sliderView.setSliderAdapter(it) }
+           /* context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }*/
 
             // below method is use to set
             // scroll time in seconds.
@@ -127,7 +127,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         with(viewBinding) {
             rvMostWanted.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter =  BestProductAdapter(context, data, this@PetsFragment)
+                //adapter =  BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -136,7 +136,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         with(viewBinding) {
             rvNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@PetsFragment)
+                //adapter = BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -145,7 +145,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         with(viewBinding) {
             rvMostPopular.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = AllTimeSliderAdapter(context, data, this@PetsFragment)
+                //adapter = AllTimeSliderAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -154,7 +154,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@PetsFragment)
+                //adapter = BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -173,7 +173,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@PetsFragment)
+                //adapter = BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }
@@ -182,7 +182,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@PetsFragment)
+                //adapter = BestProductAdapter(context, data, this@PetsFragment)
             }
         }
     }

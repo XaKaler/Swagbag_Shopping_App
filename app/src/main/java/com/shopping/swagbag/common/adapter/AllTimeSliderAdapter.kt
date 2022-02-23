@@ -13,13 +13,12 @@ import com.shopping.swagbag.databinding.SingleBestProductsBinding
 import com.shopping.swagbag.databinding.SingleSliderProductsBinding
 import com.shopping.swagbag.dummy.DummyModel
 import android.R
-
-
+import com.shopping.swagbag.home.HomeModel
 
 
 class AllTimeSliderAdapter(
     private val context: Context,
-    private val data: List<DummyModel>,
+    private val data: List<HomeModel.Result.RandomCategory>,
     private val itemClick: RecycleItemClickListener
 ) :
     RecyclerView.Adapter<AllTimeSliderAdapter.BestProductViewHolder>() {
@@ -27,16 +26,16 @@ class AllTimeSliderAdapter(
     inner class BestProductViewHolder(private val viewBinding: SingleSliderProductsBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: DummyModel, itemClick: RecycleItemClickListener, position: Int){
+            fun bind(singleData: HomeModel.Result.RandomCategory, itemClick: RecycleItemClickListener, position: Int){
                 with(viewBinding){
                     // set image
                     Glide.with(context)
-                        .load(singleData.image)
+                        .load(singleData.file)
                         .into(imgBestProduct)
 
                     // set text
-                    tvBestProductName.text = singleData.name.toString()
-                    tvBestProductDetails.text = singleData.details
+                    tvBestProductName.text = singleData.name
+                    tvBestProductDetails.text = singleData.description
 
                     newId.setOnClickListener{
                        itemClick.onSingleItemClickListener(position)

@@ -13,14 +13,10 @@ import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentKidsBinding
-import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
 import com.shopping.swagbag.dummy.DummyChild
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.dummy.DummySlider
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
-import com.smarteist.autoimageslider.SliderAnimations
-import com.smarteist.autoimageslider.SliderView
 import java.util.ArrayList
 
 class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener {
@@ -76,7 +72,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         setAutoImageSlider(dataSlider)
 
         if(dataChild != null){
-            setCard8(dataChild)
+            setCategoryToBeg(dataChild)
         }
 
         if (data != null) {
@@ -103,7 +99,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@KidsFragment)
+                //adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -115,8 +111,8 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
 
             // below method is used to
             // set adapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { sliderView.setSliderAdapter(it) }
+            /*context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }*/
 
             // below method is use to set
             // scroll time in seconds.
@@ -140,12 +136,12 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context,2)
-                adapter = BestProductAdapter(context, data, this@KidsFragment)
+                //adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
 
-    private fun setCard8(data: ArrayList<DummyChild>) {
+    private fun setCategoryToBeg(data: ArrayList<DummyChild>) {
         with(viewBinding) {
             rvCategoryToBag.apply {
                 layoutManager = GridLayoutManager(context, 2)
@@ -159,7 +155,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@KidsFragment)
+                //adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -168,7 +164,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         with(viewBinding) {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter =  AllTimeSliderAdapter(context, data, this@KidsFragment)
+                //adapter =  AllTimeSliderAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -177,7 +173,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         with(viewBinding) {
             rvMenNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@KidsFragment)
+                //adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }
@@ -186,7 +182,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
         with(viewBinding) {
             rvBest.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@KidsFragment)
+                //adapter = BestProductAdapter(context, data, this@KidsFragment)
             }
         }
     }

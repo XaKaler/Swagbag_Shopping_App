@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
+import com.shopping.swagbag.category.CategoryToBegModel
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.adapter.AllTimeSliderAdapter
@@ -28,6 +29,7 @@ import com.shopping.swagbag.dummy.DummySlider
 import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
+import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.service.Resource
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
@@ -37,7 +39,6 @@ class Home :
     BaseFragment<FragmentHomeBinding, ProductViewModel, ProductRepository>(FragmentHomeBinding::inflate),
     RecycleItemClickListener {
 
-    private lateinit var viewBinding2: HomeBinding
     private lateinit var activity: AppCompatActivity
     private lateinit var mainActivity: MainActivity
 
@@ -47,7 +48,7 @@ class Home :
         mainActivity = context as MainActivity
 
         if(mainActivity !is MainActivity) {
-            Log.e("TAG", "onAttach: is instance of main actvity", )
+            Log.e("TAG", "onAttach: is instance of main activity", )
         }
         else{
             Log.e("TAG", "onAttach:not is instance of main actvity", )
@@ -60,8 +61,6 @@ class Home :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding2 = viewBinding.include
-
         initViews()
 
         mainActivity.showToolbar()
@@ -73,8 +72,6 @@ class Home :
         activity = context as AppCompatActivity
 
         getHomeData()
-
-        setCategorySlider()
 
         showOfferImages()
 
@@ -89,7 +86,14 @@ class Home :
                 is Resource.Success -> {
                     stopShowingLoading()
 
-                    Log.e("TAG", "getHomeData: $it", )
+                    Log.e("TAG", "getHomeData: $it")
+                    val result = it.value.result
+                    setAutoImageSlider(result.slider)
+                    DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
+                    setCategoryToBeg(result.masterCategory)
+                    setDealOfTheDay(result.deals)
+                    setBestOffer(result.randomCategory)
+                    //setFeatureBrands(result.featured)
                 }
 
                 is Resource.Failure -> Log.e("TAG", "getHomeData: $it", )
@@ -98,114 +102,23 @@ class Home :
     }
 
     private fun showOfferImages() {
-        with(viewBinding2) {
+        with(viewBinding) {
             context?.let {
-                // set on image1
-                Glide.with(it)
-                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640079281564elvys.webp")
-                    .into(homeImg1)
-
-                // set on image2
-                Glide.with(it)
-                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640080145210noqvi.webp")
-                    .into(homeImg2)
-
-                // set on image3
                 Glide.with(it)
                     .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
                     .into(homeImg3)
 
-             /*   // set on image4
                 Glide.with(it)
-                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1639983624004mlj8x.png")
-                    .into(homeImg4)*/
+                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
+                    .into(homeImg5)
 
 
-            }
-        }
-    }
-
-    private fun setCategorySlider() {
-
-        with(viewBinding2) {
-            Log.e("TAG", "setCategorySlider: inside with")
-            val data: ArrayList<DummyModel>? = DummyData().getDummyData()
-
-            val categoryData: ArrayList<DummyModel>? = DummyData().getDummyCategory()
-
-            val dataTwo: ArrayList<DummyModel>? = DummyData().getTwoDummyData()
-
-            val dataSlider: ArrayList<DummySlider> = DummyData().getDummySlider( )
-/*
-            // category slider
-            rvCategorySlider.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
-            rvCategorySlider.adapter =
-                context?.let { DummyData().getDummyCategory()
-                    ?.let { it1 -> CategorySliderAdapter(context = it, it1, this@Home) } }*/
-
-            Log.e("TAG", "setCategorySlider: ${DummyData().getDummyCategory()}", )
-
-            //set auto image slider
-            if (data != null) {
-                setAutoImageSlider(dataSlider)
-
-
-                // set deals data
-                setSpecialDeal(data)
-
-                // set top treding
-                setTopTrending(data)
-
-
-
-                // set category to beg
-                if (categoryData != null) {
-                    setCategoryToBeg(categoryData)
-                }
-
-                // best offer
-                setBestOffer(data)
-            }
-
-
-            // set best products
-            if (dataTwo != null) {
-                setBestProducts(dataTwo)
-
-
-                // set deal of the day
-                setDealOfTheDay(dataTwo)
-
-
-                // set fearue product
-                setFeatureProduct(dataTwo)
-
-
-                // set feature brands
-                setFeatureBrands(dataTwo)
-
-                // set kids picks
-                setKidsPicks(dataTwo)
-
-                // set collage data
-                setCollageData(dataTwo)
-            }
-        }
-    }
-
-    private fun setCollageData(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
-            rvCollage.apply {
-                layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@Home)
             }
         }
     }
 
     private fun setTopTrending(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
+        with(viewBinding) {
             rvTopTrending.apply {
                 addItemDecoration(GridSpaceItemDecoration(20))
                 layoutManager = GridLayoutManager(context, 2)
@@ -214,26 +127,32 @@ class Home :
         }
     }
 
-    private fun setKidsPicks(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
-            rvKidsPicks.apply {
-                layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@Home)
-            }
-        }
-    }
-
     private fun setFeatureBrands(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
+        with(viewBinding) {
             rvPromotedBrands.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@Home)
+                //adapter = BestProductAdapter(context, data, this@Home)
             }
         }
     }
 
-    private fun setCategoryToBeg(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
+    // transforming lists
+ /*   private fun List<HomeModel.Result.MasterCategory>.transform(): List<CategoryToBegModel> {
+        return this.map {
+            it.transform()
+        }
+    }
+
+    // Example use
+    private fun listTransform(squares: List<HomeModel.Result.MasterCategory>): List<CategoryToBegModel> {
+        return squares.transform()
+    }*/
+
+    private fun setCategoryToBeg(data: List<HomeModel.Result.MasterCategory>) {
+        val master = ArrayList<CategoryToBegModel>()
+      //  master.addAll(data as CategoryToBegModel)
+
+        with(viewBinding) {
             rvCategoryToBag.apply {
                 layoutManager = GridLayoutManager(context, 3)
                 adapter = CategoryToBegAdapter(context, data)
@@ -242,10 +161,9 @@ class Home :
 
     }
 
-    private fun setBestOffer(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
+    private fun setBestOffer(data: List<HomeModel.Result.RandomCategory>) {
+        with(viewBinding) {
             rvBestOffer.apply {
-                isNestedScrollingEnabled = false
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = AllTimeSliderAdapter(context, data, this@Home)
             }
@@ -253,17 +171,8 @@ class Home :
 
     }
 
-    private fun setFeatureProduct(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
-            rvFeatureBrands.apply {
-                layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@Home)
-            }
-        }
-    }
-
-    private fun setDealOfTheDay(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
+    private fun setDealOfTheDay(data: List<HomeModel.Result.Deal>) {
+        with(viewBinding) {
             rvDealOfDay.apply {
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = BestProductAdapter(context, data, this@Home)
@@ -271,27 +180,8 @@ class Home :
         }
     }
 
-    private fun setBestProducts(data: List<DummyModel>) {
-        with(viewBinding2) {
-            rvBest.apply {
-                layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@Home)
-            }
-        }
-    }
-
-    private fun setSpecialDeal(data: ArrayList<DummyModel>) {
-        with(viewBinding2) {
-            rvDeals.apply {
-                //isNestedScrollingEnabled = false
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = AllTimeSliderAdapter(context, data, this@Home)
-            }
-        }
-    }
-
-    private fun setAutoImageSlider(data: ArrayList<DummySlider>) {
-        with(viewBinding2) {
+    private fun setAutoImageSlider(data: List<HomeModel.Result.Slider>) {
+        with(viewBinding) {
             sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR;
 
             // below method is used to

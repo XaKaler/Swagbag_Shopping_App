@@ -90,8 +90,8 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
 
             // below method is used to
             // set adapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { sliderView.setSliderAdapter(it) }
+            /*context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }*/
 
             // below method is use to set
             // scroll time in seconds.
@@ -134,7 +134,7 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
         with(viewBinding) {
             rvAccessories.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@TravelFragment)
+                //adapter = BestProductAdapter(context, data, this@TravelFragment)
             }
         }
     }
@@ -143,7 +143,7 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
         with(viewBinding) {
             rvAppliances.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@TravelFragment)
+                //adapter = BestProductAdapter(context, data, this@TravelFragment)
             }
         }
     }

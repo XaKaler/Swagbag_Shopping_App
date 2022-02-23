@@ -713,11 +713,23 @@
         android:id="@+id/editUserDetailFragment"
         android:name="com.shopping.swagbag.user.order.user_details.EditUserDetailFragment"
         android:label="fragment_edit_user_detail"
-        tools:layout="@layout/fragment_edit_user_detail" >
+        tools:layout="@layout/fragment_edit_user_detail">
 
         <argument
             android:name="address"
             app:argType="com.shopping.swagbag.user.order.user_details.AllAddressModel$Result" />
     </fragment>
+    <fragment
+        android:id="@+id/particularCategoryFragment"
+        android:name="com.shopping.swagbag.category.ParticularCategoryFragment"
+        android:label="fragment_particular_category"
+        tools:layout="@layout/fragment_particular_category">
+        <argument
+            android:name="categoryId"
+            app:argType="string" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_particularCategoryFragment"
+        app:destination="@id/particularCategoryFragment" />
 
 </navigation>

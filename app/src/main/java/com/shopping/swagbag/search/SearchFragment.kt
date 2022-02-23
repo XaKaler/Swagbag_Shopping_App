@@ -52,7 +52,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), View.OnClickListener,
         with(viewBinding) {
             rvPopularOnSwagbag.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = DummyData().getDummyData()?.let { AllTimeSliderAdapter(context, it, this@SearchFragment) }
+                //adapter = DummyData().getDummyData()?.let { AllTimeSliderAdapter(context, it, this@SearchFragment) }
             }
         }
     }
@@ -61,7 +61,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), View.OnClickListener,
         with(viewBinding) {
             rvNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = DummyData().getTwoDummyData()?.let { BestProductAdapter(context, it, this@SearchFragment) }
+               // adapter = DummyData().getTwoDummyData()?.let { BestProductAdapter(context, it, this@SearchFragment) }
             }
         }
     }

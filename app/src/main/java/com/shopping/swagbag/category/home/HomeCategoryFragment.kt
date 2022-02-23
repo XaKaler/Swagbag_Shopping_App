@@ -68,10 +68,10 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         val dataChild: ArrayList<DummyChild> = DummyData().getDummyTravel()
 
         if (categoryData != null) {
-            setCategoryToBeg(categoryData)
+           // setCategoryToBeg(categoryData)
         }
 
-        setAutoImageSlider(dataSlider)
+        //setAutoImageSlider(dataSlider)
 
         if (data != null) {
             setMostPopular(data)
@@ -128,7 +128,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         with(viewBinding) {
             rvNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@HomeFragment)
+                //adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -137,7 +137,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         with(viewBinding) {
             rvMostPopular.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@HomeFragment)
+                //adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -146,7 +146,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@HomeFragment)
+                //adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -165,7 +165,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@HomeFragment)
+                //adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -174,7 +174,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@HomeFragment)
+                //adapter = BestProductAdapter(context, data, this@HomeFragment)
             }
         }
     }
@@ -186,8 +186,8 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
 
             // below method is used to
             // set adapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { sliderView.setSliderAdapter(it) }
+            /*context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }*/
 
             // below method is use to set
             // scroll time in seconds.

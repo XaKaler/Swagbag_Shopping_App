@@ -9,25 +9,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
+import com.shopping.swagbag.category.CategoryToBegModel
 import com.shopping.swagbag.databinding.SingleCategorySliderBinding
 import com.shopping.swagbag.databinding.SingleCategoryToBegBinding
 import com.shopping.swagbag.databinding.SingleDealAndPopularBinding
 import com.shopping.swagbag.dummy.DummyModel
+import com.shopping.swagbag.home.HomeModel
 
 class CategoryToBegAdapter(
     private val context: Context,
-    private val data: List<DummyModel>
+    private val data: List<HomeModel.Result.MasterCategory>
 ) :
     RecyclerView.Adapter<CategoryToBegAdapter.CategoryToBegViewHolder>() {
 
     inner class CategoryToBegViewHolder(private val viewBinding: SingleCategoryToBegBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: DummyModel){
+        fun bind(singleData: HomeModel.Result.MasterCategory){
             with(viewBinding){
                 // set image
                 Glide.with(context)
-                    .load(singleData.image)
+                    .load(singleData.file)
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.logo)
                     .into(imgCategoryToBeg)

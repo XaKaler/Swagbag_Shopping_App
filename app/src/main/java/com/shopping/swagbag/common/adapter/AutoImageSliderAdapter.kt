@@ -10,18 +10,19 @@ import com.shopping.swagbag.databinding.SingleAutoImageSliderBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.dummy.DummySlider
+import com.shopping.swagbag.home.HomeModel
 import com.smarteist.autoimageslider.SliderViewAdapter
 
-class AutoImageSliderAdapter(private val context: Context, private val data: List<DummySlider>)
+class AutoImageSliderAdapter(private val context: Context, private val data: List<HomeModel.Result.Slider>)
     : SliderViewAdapter<AutoImageSliderAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(private val viewBinding: SingleAutoImageSliderBinding)
         : SliderViewAdapter.ViewHolder(viewBinding.root){
 
-        fun bind(singleData: DummySlider){
+        fun bind(singleData: HomeModel.Result.Slider){
             Glide
                 .with(context)
-                .load(singleData.image)
+                .load(singleData.file)
                 .centerInside()
                 .into(viewBinding.imgAutoSlider)
             }

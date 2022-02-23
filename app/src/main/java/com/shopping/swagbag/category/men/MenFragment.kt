@@ -93,7 +93,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@MenFragment)
+                //adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -105,8 +105,8 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
 
             // below method is used to
             // set adapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { sliderView.setSliderAdapter(it) }
+            /*context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }*/
 
             // below method is use to set
             // scroll time in seconds.
@@ -129,7 +129,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@MenFragment)
+                //adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -138,7 +138,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         with(viewBinding) {
             rvCategoryToBag.apply {
                 layoutManager = GridLayoutManager(context, 3)
-                adapter = CategoryToBegAdapter(context, data)
+                //adapter = CategoryToBegAdapter(context, data)
             }
         }
 
@@ -148,7 +148,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@MenFragment)
+                //adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -157,7 +157,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         with(viewBinding) {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = DummyData().getDummyData()?.let { AllTimeSliderAdapter(context, it, this@MenFragment) }
+                //adapter = DummyData().getDummyData()?.let { AllTimeSliderAdapter(context, it, this@MenFragment) }
             }
         }
     }
@@ -166,7 +166,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         with(viewBinding) {
             rvMenNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@MenFragment)
+                //adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }
@@ -176,7 +176,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         with(viewBinding) {
             rvBest.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@MenFragment)
+               // adapter = BestProductAdapter(context, data, this@MenFragment)
             }
         }
     }

@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.category.*
 import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.CategorySliderAdapter
 import com.shopping.swagbag.databinding.ActivityMainBinding
 import com.shopping.swagbag.databinding.MainToolbarBinding
@@ -23,8 +24,7 @@ import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
 
 
-class MainActivity : AppCompatActivity(),
-    HomeCategoryRecycleItemClickListener {
+class MainActivity : AppCompatActivity(), RecycleViewItemClick{
 
     private lateinit var viewBinding: ActivityMainBinding
     private lateinit var toolbarBinding: MainToolbarBinding
@@ -251,49 +251,12 @@ class MainActivity : AppCompatActivity(),
         viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
     }
 
+    override fun onItemClickWithName(tag: String, position: Int) {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+        val navController = navHostFragment.navController
+        val action = ParticularCategoryFragmentDirections.actionGlobalParticularCategoryFragment(masterCategories[position].id)
+        navController.navigate(action)
 
-    override fun onHomeCategorySingleItemClickListener(position: Int) {
-        when(masterCategories[position].name){
-            "Men" -> {
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_menFragment)
-            }
-
-            "Women"->{
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_womenFragment)
-            }
-
-            "Kids"->{
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_kidsFragment)
-            }
-
-            "Pets"->{
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_petsFragment)
-            }
-            "Home"->{
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_homeFragment)
-            }
-
-            "Travel accessories"->{
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_travelFragment)
-            }
-        }
     }
 }

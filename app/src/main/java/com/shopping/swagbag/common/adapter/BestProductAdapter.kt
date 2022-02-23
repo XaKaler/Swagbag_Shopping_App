@@ -10,11 +10,12 @@ import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.databinding.SingleBestProductsBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
+import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.search.SearchFragment
 
 class BestProductAdapter(
     private val context: Context,
-    private val data: List<DummyModel>,
+    private val data: List<HomeModel.Result.Deal>,
     private val itemClick: RecycleItemClickListener
 ) :
     RecyclerView.Adapter<BestProductAdapter.BestProductViewHolder>() {
@@ -22,22 +23,22 @@ class BestProductAdapter(
     inner class BestProductViewHolder(private val viewBinding: SingleBestProductsBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: DummyModel, itemClick: RecycleItemClickListener, position: Int){
+            fun bind(singleData: HomeModel.Result.Deal, itemClick: RecycleItemClickListener, position: Int){
                 with(viewBinding){
                     // set imgae
-                  /*  Glide.with(context)
-                        .load(singleData.image)
+                    /*Glide.with(context)
+                        .load(singleData.file)
                         .error(R.drawable.ic_launcher_foreground)
                         .placeholder(R.drawable.logo)
                         .into(imgBestProduct)*/
 
 
-                    val productAdapter = ProductImageAdapter(context, DummyData().getImageResource())
+                    val productAdapter = ProductImageAdapter(context, singleData.file)
                     imgBestProduct.adapter = productAdapter
 
                     // set text
                     tvBestProductName.text = singleData.name
-                    tvBestProductDetails.text = singleData.details
+                    tvBestProductDetails.text = singleData.desc
 
                     singleBestProduct.setOnClickListener{
                         itemClick.onSingleItemClickListener(position)

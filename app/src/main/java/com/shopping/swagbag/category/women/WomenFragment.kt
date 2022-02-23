@@ -103,8 +103,8 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
 
             // below method is used to
             // set adapter to sliderview.
-            context?.let { AutoImageSliderAdapter(it, data) }
-                ?.let { sliderView.setSliderAdapter(it) }
+            /*context?.let { AutoImageSliderAdapter(it, data) }
+                ?.let { sliderView.setSliderAdapter(it) }*/
 
             // below method is use to set
             // scroll time in seconds.
@@ -128,7 +128,7 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
         with(viewBinding) {
             rvKidsPicks.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@WomenFragment)
+                //adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -137,7 +137,7 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
         with(viewBinding) {
             rvCollage.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@WomenFragment)
+                //adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -146,7 +146,7 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
         with(viewBinding) {
             rvCategoryToBag.apply {
                 layoutManager = GridLayoutManager(context, 3)
-                adapter = CategoryToBegAdapter(context, data)
+                //adapter = CategoryToBegAdapter(context, data)
             }
         }
 
@@ -156,7 +156,7 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
         with(viewBinding) {
             rvRecommendForYou.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@WomenFragment)
+                //adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -165,7 +165,7 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
         with(viewBinding) {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter =  AllTimeSliderAdapter(context, data, this@WomenFragment)
+                //adapter =  AllTimeSliderAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -174,7 +174,7 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
         with(viewBinding) {
             rvMenNewArrivals.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@WomenFragment)
+                //adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }
@@ -183,7 +183,7 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
         with(viewBinding) {
             rvBest.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@WomenFragment)
+                //adapter = BestProductAdapter(context, data, this@WomenFragment)
             }
         }
     }

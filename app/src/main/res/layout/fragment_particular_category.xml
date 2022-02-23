@@ -6,28 +6,11 @@
     android:background="@color/main_bg_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.Home">
-    <!-- tools:openDrawer="start"-->
+    tools:context=".category.ParticularCategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <com.smarteist.autoimageslider.SliderView
-            android:id="@+id/sliderView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/auto_image_slider_height"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:sliderIndicatorEnabled="true"
-            app:sliderIndicatorGravity="center_horizontal|bottom"
-            app:sliderIndicatorMargin="15dp"
-            app:sliderIndicatorOrientation="horizontal"
-            app:sliderIndicatorPadding="3dp"
-            app:sliderIndicatorRadius="2dp"
-            app:sliderIndicatorSelectedColor="#577D8A"
-            app:sliderIndicatorUnselectedColor="#DFDFDF" />
 
         <ImageView
             android:id="@+id/homeImg1"
@@ -345,9 +328,8 @@
             android:paddingVertical="@dimen/dimen_10"
             android:text="Top Trending"
             android:textAllCaps="true"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/heading1"
-            app:layout_constraintTop_toBottomOf="@+id/sliderView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTopTrending"

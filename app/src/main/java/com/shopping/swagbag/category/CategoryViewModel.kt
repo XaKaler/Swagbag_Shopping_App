@@ -31,4 +31,15 @@ class CategoryViewModel(private val categoryRepository: CategoryRepository) : Vi
 
         return result
     }
+
+    fun particularCategory(categoryId: String): LiveData<Resource<ParticularCategoryModel>>{
+        val result = MutableLiveData<Resource<ParticularCategoryModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = categoryRepository.particularCategory(categoryId)
+        }
+
+        return result
+    }
 }

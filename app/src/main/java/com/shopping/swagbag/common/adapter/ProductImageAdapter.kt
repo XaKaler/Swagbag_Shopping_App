@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.viewpager.widget.PagerAdapter
+import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
+import com.shopping.swagbag.home.HomeModel
 import java.util.*
 
 
 class ProductImageAdapter(
     private val context: Context,
-    private val image: List<Int>
+    private val image: List<HomeModel.Result.Deal.File>
 ) : PagerAdapter() {
 
     override fun getCount() = image.size
@@ -31,7 +33,11 @@ class ProductImageAdapter(
         val imageView: ImageView = itemView.findViewById<View>(R.id.imgAutoSlider) as ImageView
 
         // setting the image in the imageView
-        imageView.setImageResource(image[position])
+        Glide.with(context)
+            .load(image[position])
+            .error(R.drawable.ic_launcher_foreground)
+            .placeholder(R.drawable.logo)
+            .into(imageView)
 
         // Adding the View
         Objects.requireNonNull(container).addView(itemView)
