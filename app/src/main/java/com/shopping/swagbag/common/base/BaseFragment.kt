@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -60,7 +61,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel, R : BaseRepository
     }
 
     fun stopShowingLoading() {
-        if(this::progressDialog.isInitialized) {
+        if (this::progressDialog.isInitialized) {
             progressDialog.dismiss()
         }
     }
@@ -68,5 +69,8 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel, R : BaseRepository
     fun toast(text: String) {
         Toast.makeText(context, text, Toast.LENGTH_LONG).show()
     }
+
+    fun html2Text(desc: String) =
+        android.text.Html.fromHtml(desc, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
 
 }

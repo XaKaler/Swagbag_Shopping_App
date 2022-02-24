@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -22,9 +21,6 @@ import com.shopping.swagbag.products.*
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
 import com.smarteist.autoimageslider.SliderView
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import kotlin.math.log
 
 class ProductDetailsFragment : BaseFragment<
         FragmentProductDetailsBinding,
@@ -177,9 +173,6 @@ class ProductDetailsFragment : BaseFragment<
         return list
     }
 
-    private fun html2Text(desc: String) =
-        android.text.Html.fromHtml(desc, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
-
     private fun setProductColor() {
         with(viewBinding.colors) {
             rvColors.apply {
@@ -294,7 +287,27 @@ class ProductDetailsFragment : BaseFragment<
     }
 
     private fun addToCart() {
-       // viewModel.addToCart("1", product.result.id, userId, "")
+        val appUtils = context?.let { AppUtils(it) }
+
+        if (appUtils!!.isUserLoggedIn()) {
+            viewModel
+                .addToCart("1", product.result.id, appUtils.getUserId(), "")
+                .observe(
+                    viewLifecycleOwner
+                ) {
+                    when(it){
+                        is Resource.Loading -> showLoading()
+
+                        is Resource.Success -> {
+                            stopShowingLoading()
+
+                            toast(it.value.message)
+                        }
+
+                        is Resource.Failure -> Log.e("TAG", "addToCart: $it", )
+                    }
+                }
+        }
     }
 
     private fun addToWishlist() {

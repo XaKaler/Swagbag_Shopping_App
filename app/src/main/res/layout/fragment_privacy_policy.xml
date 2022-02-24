@@ -60,6 +60,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_marginTop="@dimen/space_between_views"
+                    android:visibility="gone"
                     android:id="@+id/rvFaq"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,6 +69,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView26"
                     tools:listitem="@layout/single_about_us_drop_down" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:id="@+id/privacyPolicy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView26"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView26" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

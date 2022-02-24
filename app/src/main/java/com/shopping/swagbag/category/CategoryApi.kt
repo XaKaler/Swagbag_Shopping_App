@@ -17,4 +17,5 @@ interface CategoryApi {
     suspend fun particularCategory(
         @Query("master_category") masterCategory: String
     ): ParticularCategoryModel
+
 }
