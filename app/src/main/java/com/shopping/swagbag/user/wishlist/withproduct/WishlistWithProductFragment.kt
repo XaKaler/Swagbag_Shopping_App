@@ -183,8 +183,8 @@ class WishlistWithProductFragment : BaseFragment<
     override fun getFragmentRepository() =
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
-    override fun onItemClickWithName(tag: String, position: Int) {
-        when (tag) {
+    override fun onItemClickWithName(name: String, position: Int) {
+        when (name) {
             "moveToBeg" -> addToBeg(position)
             "remove" -> removeFromWishlist(position)
         }
