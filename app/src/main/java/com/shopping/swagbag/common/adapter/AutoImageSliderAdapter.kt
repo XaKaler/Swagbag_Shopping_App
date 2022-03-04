@@ -4,12 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.shopping.swagbag.R
-import com.shopping.swagbag.common.FreeData
 import com.shopping.swagbag.databinding.SingleAutoImageSliderBinding
-import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.dummy.DummyModel
-import com.shopping.swagbag.dummy.DummySlider
 import com.shopping.swagbag.home.HomeModel
 import com.smarteist.autoimageslider.SliderViewAdapter
 

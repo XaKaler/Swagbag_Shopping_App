@@ -1,5 +1,6 @@
 package com.shopping.swagbag.products
 
+import android.util.Log
 import com.shopping.swagbag.common.base.BaseRepository
 
 class ProductRepository(private val api: ProductApi) : BaseRepository() {
@@ -45,5 +46,10 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
 
     suspend fun clearCart(userId: String) = safeApiCall { api.clearCart(userId) }
 
-    suspend fun getHome() = safeApiCall { api.getHome() }
+    suspend fun clearWishlist(userId: String) = safeApiCall { api.clearWishlist(userId) }
+
+    suspend fun getHome() = safeApiCall {
+        Log.e("TAG", "getHome in product repository: ${api.getHome()}", )
+        api.getHome()
+    }
 }

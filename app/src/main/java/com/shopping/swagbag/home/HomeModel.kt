@@ -24,7 +24,7 @@ data class HomeModel(
             val backorders: String,
             val batchno: String, // 232323
             val brand: String, // 61bb7f2166538a1c1f36671d
-            val category: String, // 618e6d31ae7db56d2c449812
+            val category: List<String>,
             val cgst: String,
             @SerializedName("combo_products")
             val comboProducts: Any?, // null
@@ -50,7 +50,7 @@ data class HomeModel(
             @SerializedName("manage_stock")
             val manageStock: Int, // 0
             @SerializedName("master_category")
-            val masterCategory: String, // 61bd25a466538a1c1f366ac3
+            val masterCategory: List<String>,
             val name: String, // Beige Pink Floral Mini Wrap Dress
             val options: List<Option>,
             @SerializedName("packaging_charge")
@@ -58,11 +58,14 @@ data class HomeModel(
             val point: Int, // 20
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-01-30T00:00:00.000Z
-            val price: Int, // 680
+            val price: Int, // 70
             @SerializedName("product_types")
             val productTypes: List<String>,
+            @SerializedName("return_day")
+            val returnDay: String, // 15
+            val returnable: String, // 1
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 440
+            val sellingPrice: Int, // 65
             val sgst: String,
             @SerializedName("shelving_location")
             val shelvingLocation: String, // Zone 1
@@ -77,7 +80,7 @@ data class HomeModel(
             @SerializedName("stock_qty")
             val stockQty: String, // 1000
             @SerializedName("sub_category")
-            val subCategory: String, // 618e6deeae7db56d2c44986c
+            val subCategory: List<String>,
             val tags: String, // Cloth, Floral
             @SerializedName("tax_status")
             val taxStatus: String,
@@ -122,93 +125,96 @@ data class HomeModel(
             @SerializedName("added_by")
             val addedBy: String, // 5fe463f5a9e14206002dd63e
             val attribute: String,
-            val backorders: String,
-            val batchno: String, // 232323
-            val brand: String, // 61bb7f2166538a1c1f36671d
-            val category: String, // 618e6d31ae7db56d2c449812
+            val backorders: String, // yes
+            val batchno: String, // 12123
+            val brand: String, // 61fb80663669ad2911a25fb9
+            val category: List<String>,
             val cgst: String,
             @SerializedName("combo_products")
             val comboProducts: Any?, // null
-            val commission: String, // 10
+            val commission: String, // 0
             @SerializedName("created_date")
-            val createdDate: String, // 2021-12-27T05:54:26.787Z
+            val createdDate: String, // 2022-02-22T07:51:16.617Z
             val cuisine: Any?, // null
-            val deal: Int, // 1
+            val deal: Int, // 0
             val deleted: Int, // 0
-            val desc: String, // <div>Wrap yourself in the dreamiest spring with this perky beige and pink mini dress. Tailored in a wrap design, the dress features an all-over floral print and cutesy balloon sleeves.</div><div><br></div><div>Style Tip: Pair the dress with a hairband and strappy flats.</div><div><br></div><div><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Dispatch: Within&nbsp;</span><span id="shipHours" style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">48-72</span><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Hours</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><b style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">*Note:</b><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Delivery of orders may take longer due to region-wise lockdown and diversion of routes.</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Return/Exchange: If you are not completely satisfied with your purchase, simply select the option of return/exchange within 15 days of receiving your order from your order details page and we will process your return, no questions asked.</span><br></div>
+            val desc: String, // To be used twice a day&nbsp;
             @SerializedName("discounted_price")
             val discountedPrice: Any?, // null
             @SerializedName("end_date")
-            val endDate: String, // 2021-12-27T00:00:00.000Z
+            val endDate: String, // 2022-02-22T00:00:00.000Z
             val express: Boolean, // false
             val featured: Int, // 1
             val `file`: List<File>,
-            val height: String, // 1
+            val height: String,
             @SerializedName("_id")
-            val id: String, // 61c968b2639b7b51637c5da2
+            val id: String, // 621738b860550b55668dfa38
             val igst: String,
-            val length: String, // 1
+            val length: String,
             @SerializedName("manage_stock")
-            val manageStock: Int, // 0
+            val manageStock: Int, // 1
             @SerializedName("master_category")
-            val masterCategory: String, // 61bd25a466538a1c1f366ac3
-            val name: String, // Beige Pink Floral Mini Wrap Dress
+            val masterCategory: List<String>,
+            val name: String, // Saffron Soap
             val options: List<Option>,
             @SerializedName("packaging_charge")
-            val packagingCharge: String, // 40
-            val point: Int, // 20
+            val packagingCharge: String, // 1
+            val point: String, // 1
             @SerializedName("point_exp_date")
-            val pointExpDate: String, // 2022-01-30T00:00:00.000Z
-            val price: Int, // 680
+            val pointExpDate: String, // 2022-04-14T00:00:00.000Z
+            val price: Int, // 115
             @SerializedName("product_types")
-            val productTypes: List<String>,
+            val productTypes: Any?, // null
+            @SerializedName("return_day")
+            val returnDay: String,
+            val returnable: String,
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 440
+            val sellingPrice: Int, // 100
             val sgst: String,
             @SerializedName("shelving_location")
-            val shelvingLocation: String, // Zone 1
+            val shelvingLocation: String,
             @SerializedName("short_desc")
-            val shortDesc: String, // Beige Pink Floral Mini Wrap Dress
-            val sku: String, // IT-3699
-            val slug: String, // beige-pink-floral-mini-wrap-dress
+            val shortDesc: String, // Soap for smoothness
+            val sku: String, // 12345678
+            val slug: String, // saffron-soap
             @SerializedName("slug_history")
             val slugHistory: List<String>,
             @SerializedName("start_date")
-            val startDate: String, // 2021-12-27T00:00:00.000Z
+            val startDate: String, // 2022-02-22T00:00:00.000Z
             @SerializedName("stock_qty")
-            val stockQty: String, // 1000
+            val stockQty: String, // 10
             @SerializedName("sub_category")
-            val subCategory: String, // 618e6deeae7db56d2c44986c
-            val tags: String, // Cloth, Floral
+            val subCategory: List<String>,
+            val tags: String,
             @SerializedName("tax_status")
             val taxStatus: String,
-            val threshold: String,
+            val threshold: String, // 2
             @SerializedName("update_date")
-            val updateDate: String, // 2021-12-27T05:54:26.787Z
+            val updateDate: String, // 2022-02-22T07:51:16.617Z
             @SerializedName("__v")
             val v: Int, // 0
             val vendor: String, // 61fb87943669ad2911a26008
             @SerializedName("video_url")
-            val videoUrl: String, // https://www.youtube.com/embed/Sk0dy_wbXSQ
-            val weight: String, // 1
-            val width: String // 1
+            val videoUrl: String,
+            val weight: String,
+            val width: String
         ) {
             data class File(
                 val acl: String, // public-read
-                val bucket: String, // swagbag-space
+                val bucket: String, // swagbag
                 val contentDisposition: Any?, // null
                 val contentEncoding: Any?, // null
                 val contentType: String, // application/octet-stream
                 val encoding: String, // 7bit
-                val etag: String, // "f2c83d741aeee55d7685dc63177917d0"
+                val etag: String, // "841c4c44fe124cb8bb90ba6e27a1d9b7"
                 val fieldname: String, // upload
-                val key: String, // 1640589488850j4byg.jpeg
-                val location: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1640589488850j4byg.jpeg
+                val key: String, // 1645689012867ihzer.png
+                val location: String, // https://swagbag.sgp1.digitaloceanspaces.com/1645689012867ihzer.png
                 val metadata: Any?, // null
-                val mimetype: String, // image/jpeg
-                val originalname: String, // 4.4.jpg
+                val mimetype: String, // image/png
+                val originalname: String, // 1.png
                 val serverSideEncryption: Any?, // null
-                val size: Int, // 22661
+                val size: Int, // 607861
                 val storageClass: String // STANDARD
             )
 
@@ -246,16 +252,16 @@ data class HomeModel(
             @SerializedName("created_date")
             val createdDate: String, // 2021-11-11T16:24:24.827Z
             val deleted: Int, // 0
-            val description: String, // Men's Wear
+            val description: String, // Shoes
             @SerializedName("description_after_content")
-            val descriptionAfterContent: String, // Men's Wear
-            val `file`: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1636723978732o59ec.png
+            val descriptionAfterContent: String?, // Shoes
+            val `file`: String, // https://swagbag-space.fra1.digitaloceanspaces.com/16367240429507ra4a.png
             @SerializedName("_id")
-            val id: String, // 618e6d0bae7db56d2c449806
+            val id: String, // 618e6d4bae7db56d2c44981e
             val master: String, // 615ae18463d6a6435a183dcc
-            val name: String, // Men's Wear
+            val name: String, // Shoes
             val parent: Any?, // null
-            val slug: String, // men-s-wear
+            val slug: String, // shoes-1
             @SerializedName("slug_history")
             val slugHistory: List<String>,
             @SerializedName("update_date")

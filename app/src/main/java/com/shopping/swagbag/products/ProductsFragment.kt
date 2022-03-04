@@ -63,7 +63,7 @@ class ProductsFragment : BaseFragment<
                         viewBinding.rvProducts.apply{
                             layoutManager = GridLayoutManager(context, 2)
                             addItemDecoration(GridSpaceItemDecoration(5))
-                            adapter = DummyData().getDummyData()?.let { ProductAdapter(context, products) }
+                            adapter = ProductAdapter(context, products)
                         }
                     }
 

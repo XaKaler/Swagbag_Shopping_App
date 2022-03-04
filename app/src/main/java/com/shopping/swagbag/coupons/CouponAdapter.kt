@@ -14,30 +14,36 @@ import com.shopping.swagbag.dummy.DummyModel
 
 class CouponAdapter(
     private val context: Context,
-    private val data: List<DummyModel>
+    private val data: List<GiftCardModel.Result>
 ) :
     RecyclerView.Adapter<CouponAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(private val viewBinding: SingleCouponBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: DummyModel){
+        fun bind(singleData: GiftCardModel.Result){
             with(viewBinding){
+                tvOff.text = singleData.coupon
+                val minAmount = "Rs. ${singleData.minimumAmount}"
+                tvMinimumPurchase.text = minAmount
+                tvExpiryDate.text = singleData.expDate
+                desc.text = singleData.desc
+
                 details.setOnClickListener{
                     details.visibility = View.GONE
                     hide.visibility = View.VISIBLE
-                    rvOfferDetails.visibility = View.VISIBLE
+                    desc.visibility = View.VISIBLE
                 }
                 hide.setOnClickListener{
                     hide.visibility = View.GONE
                     details.visibility = View.VISIBLE
-                    rvOfferDetails.visibility = View.GONE
+                    desc.visibility = View.GONE
                 }
 
-                rvOfferDetails.apply {
+              /*  rvOfferDetails.apply {
                     layoutManager = LinearLayoutManager(context)
                     adapter = OfferDetailsAdapter(context, DummyData().getUserAddress())
-                }
+                }*/
             }
         }
 

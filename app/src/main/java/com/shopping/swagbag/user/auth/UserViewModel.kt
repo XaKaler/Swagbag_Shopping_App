@@ -1,6 +1,5 @@
 package com.shopping.swagbag.user.auth
 
-import androidx.activity.result.ActivityResultRegistryOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -13,9 +13,10 @@ interface CategoryApi {
     @GET("master-category")
     suspend fun masterCategory(): MasterCategoryModel
 
+    @FormUrlEncoded
     @POST("mobile-category")
     suspend fun particularCategory(
-        @Query("master_category") masterCategory: String
+        @Field("master_category") masterCategory: String
     ): ParticularCategoryModel
 
 }

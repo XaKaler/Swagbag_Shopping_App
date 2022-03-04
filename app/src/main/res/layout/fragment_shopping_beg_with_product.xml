@@ -14,91 +14,102 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
+        android:id="@+id/lytWithProduct"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/card"
-        android:padding="@dimen/dimen_10"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="@dimen/dimen_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include">
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView8"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_10"
-            app:cardElevation="@dimen/dimen_5"
-            android:visibility="gone"
+            android:layout_height="0dp"
+            android:padding="@dimen/dimen_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/card"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView8"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/dimen_10">
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_10"
+                android:visibility="gone"
+                app:cardElevation="@dimen/dimen_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_10">
 
 
-                <ImageView
-                    android:id="@+id/imageView46"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_offer_bedge"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/imageView46"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_offer_bedge"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView68"
-                    style="@style/snigiet_normal_14_davys_grey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimen_10"
-                    android:text="Available Offers"
-                    android:textColor="@color/day_black_night_light_silver"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView46"
-                    app:layout_constraintStart_toEndOf="@+id/imageView46"
-                    app:layout_constraintTop_toTopOf="@+id/imageView46" />
+                    <TextView
+                        android:id="@+id/textView68"
+                        style="@style/snigiet_normal_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_10"
+                        android:text="Available Offers"
+                        android:textColor="@color/day_black_night_light_silver"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView46"
+                        app:layout_constraintStart_toEndOf="@+id/imageView46"
+                        app:layout_constraintTop_toTopOf="@+id/imageView46" />
 
-                <TextView
-                    android:id="@+id/textView76"
-                    style="@style/sniglet_normal_12_dark_liver"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:text="15% Instant Discount with Yes Bank Credit and Debit Cards on a min spend of Rs 2,500. TCA"
-                    android:textColor="@color/day_davys_grey_night_Gray"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView68" />
+                    <TextView
+                        android:id="@+id/textView76"
+                        style="@style/sniglet_normal_12_dark_liver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:text="15% Instant Discount with Yes Bank Credit and Debit Cards on a min spend of Rs 2,500. TCA"
+                        android:textColor="@color/day_davys_grey_night_Gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView68" />
 
-                <TextView
-                    android:id="@+id/showMore"
-                    style="@style/snigiet_normal_14_davys_grey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_15"
-                    android:drawableEnd="@drawable/ic_dowb_red_arrow"
-                    android:drawablePadding="@dimen/dimen_10"
-                    android:text="@string/show_more"
-                    android:textColor="@color/red_light"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView76" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/showMore"
+                        style="@style/snigiet_normal_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:drawableEnd="@drawable/ic_dowb_red_arrow"
+                        android:drawablePadding="@dimen/dimen_10"
+                        android:text="@string/show_more"
+                        android:textColor="@color/red_light"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView76" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvShoppingBegItems"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView8"
-            tools:listitem="@layout/single_product_of_shopping_beg" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvShoppingBegItems"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView8"
+                tools:listitem="@layout/single_product_of_shopping_beg" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
@@ -147,5 +158,116 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView92" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lytWithoutProduct"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:padding="@dimen/dimen_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/screen_horizontal_padding">
+
+                <ImageView
+                    android:id="@+id/imageView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:src="@drawable/begs"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    style="@style/roboto_normal_24_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:text="@string/hey_your_bag_is_empty"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    style="@style/roboto_normal_18_dim_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:text="@string/there_is_nothing_in_your_bag_let_s_add_some_items"
+                    android:textAlignment="center"
+                    android:textColor="@color/sonic_silver"
+                    app:layout_constraintEnd_toEndOf="@+id/textView13"
+                    app:layout_constraintStart_toStartOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                <TextView
+                    android:id="@+id/btnShopNow"
+                    style="@style/roboto_normal_18_white"
+                    android:layout_width="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_15"
+                    android:textColor="@color/white"
+                    android:layout_height="@dimen/button_width"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:background="@drawable/google_button_background"
+                    android:gravity="center"
+                    android:backgroundTint="@color/red_light"
+                    android:text="@string/shop_now"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/textView14"
+                    app:layout_constraintStart_toStartOf="@+id/textView14"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    style="@style/sunflower_normal_14_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:text="ITEMS YOU HAVE VIEWED"
+                    android:textAllCaps="true"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvItemViewed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/single_feature_brands" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

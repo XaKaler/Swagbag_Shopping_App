@@ -29,7 +29,6 @@ class CouponsFragment :
 
         initViews()
 
-
     }
 
     private fun initViews() {
@@ -60,7 +59,7 @@ class CouponsFragment :
         with(viewBinding){
             rvCoupons.apply{
                 layoutManager = LinearLayoutManager(context)
-                adapter = DummyData().getDummyData()?.let { CouponAdapter(context, it) }
+                adapter = CouponAdapter(context, data)
             }
         }
     }

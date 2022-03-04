@@ -68,20 +68,10 @@ class NavigationMenuAdapter(
                         viewBinding.masterCategory.visibility = View.VISIBLE
                     }
                 }
-               /* "Category" -> {
-                    activity.closeDrawer()
-                    activity.hideToolbar()
-                    navController.navigate(R.id.action_global_categoryFragment)
-                }*/
                 "Orders" -> {
                     activity.closeDrawer()
                     activity.hideToolbar()
                     navController.navigate(R.id.action_global_orderWithoutItemsFragment)
-                }
-                "Wishlist" -> {
-                    activity.closeDrawer()
-                    activity.hideToolbar()
-                    navController.navigate(R.id.action_global_wishlistWithoutProductFragment)
                 }
                 "Address" -> {
                     activity.closeDrawer()
@@ -93,11 +83,6 @@ class NavigationMenuAdapter(
                     activity.hideToolbar()
                     navController.navigate(R.id.action_global_couponsFragment)
                 }
-               /* "Profile" -> {
-                    activity.closeDrawer()
-                    activity.hideToolbar()
-                    navController.navigate(R.id.action_global_signInFragment)
-                }*/
                 "Help Center" -> {
                     activity.closeDrawer()
                     activity.hideToolbar()

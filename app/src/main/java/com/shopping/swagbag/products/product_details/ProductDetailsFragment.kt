@@ -125,14 +125,13 @@ class ProductDetailsFragment : BaseFragment<
 
                                 if (optionName == "Size") {
 
-                                    Log.e("TAG", "getProductDetails: $optionValue")
+                                    Log.e("TAG", "Size: $optionValue")
 
                                     viewBinding.txtSize.visibility = View.VISIBLE
                                     viewBinding.rvSize.visibility = View.VISIBLE
 
                                     val sizeList = stringToList(optionValue)
 
-                                    Log.e("TAG", "size list : ${stringToList(optionValue)}")
                                     //option is coming in string form seperated with comma
                                     //so we have exclude it
 
@@ -140,6 +139,7 @@ class ProductDetailsFragment : BaseFragment<
                                     //setProductSize(option.value)
                                 } else if (optionName == "Color") {
                                     //setProductColor()
+                                    Log.e("TAG", "Color: $optionValue")
                                 }
                             }
 
@@ -151,25 +151,42 @@ class ProductDetailsFragment : BaseFragment<
             })
     }
 
-    private fun stringToList(optionValue: String): List<String> {
-        val list = ArrayList<String>()
-        val stringSize = optionValue.length
+    private fun stringToList(optionValue: String): List<ProductOptionModel> {
+
+        Log.e("TAG", "stringToList: $optionValue")
+
+        val list = ArrayList<ProductOptionModel>()
         var singleValue: String = ""
 
-        for (i in 0 until stringSize) {
+        var colonCount = 0
+        var value = ""
+        var price = ""
+        var sku = ""
+        var qty = ""
 
-            Log.e("TAG", "i value: ${optionValue[i]}\n")
+        for (option in optionValue) {
 
-            val singleChar = optionValue[i]
-
-            singleValue = if (singleChar == ',') {
-                list.add(singleValue)
-                ""
+            if (option == ':') colonCount += 1
+            else if (option == ',') {
+                colonCount = 0
+                list.add(ProductOptionModel(value, price, sku, qty))
+                value = ""
+                price = ""
+                sku = ""
+                qty = ""
             } else {
-                "$singleValue$singleChar"
+                Log.e("TAG", "stringToList: $option")
+
+                when (colonCount) {
+                    0 -> value + option
+                    1 -> price + option
+                    2 -> sku + option
+                    3 -> qty + option
+                }
             }
         }
 
+        Log.e("TAG", "stringToList: $list  ")
         return list
     }
 

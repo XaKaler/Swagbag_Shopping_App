@@ -1,30 +1,13 @@
 package com.shopping.swagbag.products
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.shopping.swagbag.R
-import com.shopping.swagbag.common.RecycleItemClick
 import com.shopping.swagbag.common.RecycleItemClickListener
-import com.shopping.swagbag.common.adapter.AutoImageSliderAdapter
-import com.shopping.swagbag.common.adapter.BestOfferAdapter
-import com.shopping.swagbag.common.adapter.ProductAutoImageSliderAdapter
-import com.shopping.swagbag.common.adapter.ProductImageAdapter
-import com.shopping.swagbag.databinding.SingleBestOffersBinding
 import com.shopping.swagbag.databinding.SingleCard10Binding
-import com.shopping.swagbag.databinding.SingleProductBinding
-import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.dummy.DummyModel
-import com.shopping.swagbag.dummy.DummySlider
-import com.shopping.swagbag.products.product_details.ProductDetailModel
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
-import com.smarteist.autoimageslider.SliderAnimations
-import com.smarteist.autoimageslider.SliderView
 
 class Card10Adapter(
     private val context: Context,

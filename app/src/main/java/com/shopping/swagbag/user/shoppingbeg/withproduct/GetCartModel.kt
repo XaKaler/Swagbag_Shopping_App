@@ -9,25 +9,25 @@ data class GetCartModel(
 ) {
     data class Result(
         @SerializedName("created_date")
-        val createdDate: String, // 2022-02-16T07:37:27.905Z
+        val createdDate: String, // 2022-03-03T08:11:30.415Z
         @SerializedName("_id")
-        val id: String, // 620caa74b64df43090286f46
+        val id: String, // 62207b7a49ad231a4e66ef26
         val image: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1640589488850j4byg.jpeg
         val name: String, // Beige Pink Floral Mini Wrap Dress
         val option: List<Option>,
-        val price: Int, // 440
+        val price: Int, // 65
         val product: Product,
         val quantity: Int, // 1
         @SerializedName("update_date")
-        val updateDate: String, // 2022-02-16T07:37:27.905Z
+        val updateDate: String, // 2022-03-03T08:11:30.415Z
         val user: String, // 61e82a7acf130b2978d05815
         @SerializedName("__v")
         val v: Int // 0
     ) {
         data class Option(
             val key: String, // Color
-            val price: String, // 0
-            val value: String //  #4dd413
+            val price: String, // 500
+            val value: String // #d41367
         )
 
         data class Product(
@@ -38,7 +38,7 @@ data class GetCartModel(
             val backorders: String,
             val batchno: String, // 232323
             val brand: String, // 61bb7f2166538a1c1f36671d
-            val category: String, // 618e6d31ae7db56d2c449812
+            val category: List<String>,
             val cgst: String,
             @SerializedName("combo_products")
             val comboProducts: Any?, // null
@@ -64,7 +64,7 @@ data class GetCartModel(
             @SerializedName("manage_stock")
             val manageStock: Int, // 0
             @SerializedName("master_category")
-            val masterCategory: String, // 61bd25a466538a1c1f366ac3
+            val masterCategory: List<String>,
             val name: String, // Beige Pink Floral Mini Wrap Dress
             val options: List<Option>,
             @SerializedName("packaging_charge")
@@ -72,11 +72,14 @@ data class GetCartModel(
             val point: Int, // 20
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-01-30T00:00:00.000Z
-            val price: Int, // 680
+            val price: Int, // 70
             @SerializedName("product_types")
             val productTypes: List<String>,
+            @SerializedName("return_day")
+            val returnDay: String, // 15
+            val returnable: String, // 1
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 440
+            val sellingPrice: Int, // 65
             val sgst: String,
             @SerializedName("shelving_location")
             val shelvingLocation: String, // Zone 1
@@ -91,7 +94,7 @@ data class GetCartModel(
             @SerializedName("stock_qty")
             val stockQty: String, // 1000
             @SerializedName("sub_category")
-            val subCategory: String, // 618e6deeae7db56d2c44986c
+            val subCategory: List<String>,
             val tags: String, // Cloth, Floral
             @SerializedName("tax_status")
             val taxStatus: String,
@@ -122,13 +125,12 @@ data class GetCartModel(
                 val originalname: String, // 4.4.jpg
                 val serverSideEncryption: Any?, // null
                 val size: Int, // 22661
-                val storageClass: String, // STANDARD
-                val versionId: Any? // null
+                val storageClass: String // STANDARD
             )
 
             data class Option(
                 val name: String, // Color
-                val value: String // #d41367:500:SKU123:50, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
+                val value: String // #d41367:500:SKU123:51, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
             )
         }
     }

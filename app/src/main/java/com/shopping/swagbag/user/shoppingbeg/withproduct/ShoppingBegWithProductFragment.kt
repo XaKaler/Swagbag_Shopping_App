@@ -36,6 +36,11 @@ class ShoppingBegWithProductFragment : BaseFragment<
 
         toolbarBinding = viewBinding.include
 
+        //when user click on shop now button in shopping beg without product layout
+        viewBinding.btnShopNow.setOnClickListener {
+            findNavController().navigate(R.id.action_global_home2)
+        }
+
         initViews()
     }
 
@@ -62,7 +67,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
                     Log.e("TAG", "getCart: $productCount", )
 
                     if (productCount == 0) {
-                        findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_shoppingBegWithoutProductFragment)
+                        showEmptyCart()
                     } else {
                         product = it.value
                         setItems(it.value.result)
@@ -125,12 +130,19 @@ class ShoppingBegWithProductFragment : BaseFragment<
                     toast(it.value.message)
 
                     //send user to empty cart
-                    findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_shoppingBegWithoutProductFragment)
+                    showEmptyCart()
                 }
 
                 is Resource.Failure -> Log.e("cart", "clearCart: $it")
             }
         })
+    }
+
+    private fun showEmptyCart(){
+        viewBinding.lytWithoutProduct.visibility = View.VISIBLE
+        viewBinding.lytWithProduct.visibility = View.GONE
+
+        toolbarBinding.delete.visibility = View.GONE
     }
 
     override fun onClick(v: View?) {
@@ -149,7 +161,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
     override fun getFragmentRepository() =
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
-    override fun onItemClickWithName(tag: String, position: Int) {
+    override fun onItemClickWithName(name: String, position: Int) {
         val productId = product.result[position].product.id
         val userId = appUtils.getUserId()
 
@@ -166,14 +178,12 @@ class ShoppingBegWithProductFragment : BaseFragment<
                     val productList: MutableList<GetCartModel.Result> =
                         product.result as MutableList
 
+                    productList.removeAt(position)
+                    shoppingBegProductAdapter.updateList(productList)
                     //if size is 0 then show user to empty cart
-                    if (productList.size == 0)
-                        findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_shoppingBegWithoutProductFragment)
-                    else {
-                        productList.removeAt(position)
-                        shoppingBegProductAdapter.updateList(productList)
+                    if (position == 0) {
+                        showEmptyCart()
                     }
-
                 }
 
                 is Resource.Failure -> Log.e("TAG", "onItemClickWithName: $it",)

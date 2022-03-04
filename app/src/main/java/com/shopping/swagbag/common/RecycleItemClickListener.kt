@@ -20,7 +20,7 @@ interface RecycleItemClick{
 }
 
 interface RecycleViewItemClick{
-    fun onItemClickWithName(tag: String, position: Int)
+    fun onItemClickWithName(name: String, position: Int)
 }
 
 

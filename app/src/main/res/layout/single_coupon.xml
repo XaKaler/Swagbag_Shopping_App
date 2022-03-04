@@ -22,7 +22,6 @@
             android:layout_height="match_parent"
             android:paddingBottom="@dimen/dimen_15">
 
-
             <ImageView
                 android:id="@+id/imageView34"
                 android:layout_width="wrap_content"
@@ -65,13 +64,14 @@
 
             <TextView
                 android:id="@+id/textView50"
-                android:textColor="@color/day_dark_liver_night_white"
                 style="@style/roboto_normal_12_sonic_silver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_15"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:text="@string/on_minimum_purchase_of"
+                android:textColor="@color/day_dark_liver_night_white"
+                app:layout_constraintBottom_toTopOf="@+id/view14"
                 app:layout_constraintStart_toEndOf="@+id/view13"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,6 +87,7 @@
 
             <TextView
                 android:id="@+id/textView52"
+                android:visibility="gone"
                 android:textColor="@color/day_dark_liver_night_white"
                 style="@style/roboto_normal_12_sonic_silver"
                 android:layout_width="wrap_content"
@@ -98,6 +99,7 @@
 
             <TextView
                 android:id="@+id/tvCode"
+                android:visibility="gone"
                 style="@style/roboto_medium_12_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,6 +141,7 @@
 
             <TextView
                 android:id="@+id/tvTime"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_5"
@@ -172,7 +175,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvTime" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <!--<androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvOfferDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -182,7 +185,20 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvExpiryDate"
-                tools:listitem="@layout/single_bullet_list" />
+                tools:listitem="@layout/single_bullet_list" />-->
+
+            <TextView
+                android:id="@+id/desc"
+                style="@style/roboto_medium_14_sonic_silver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_15"
+                android:text="@string/hide"
+                android:textColor="@color/steel_teal"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvTime" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

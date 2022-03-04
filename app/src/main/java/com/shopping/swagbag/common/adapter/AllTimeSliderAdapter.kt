@@ -1,44 +1,48 @@
 package com.shopping.swagbag.common.adapter
 
 import android.app.Activity
-import com.shopping.swagbag.common.FreeData
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
-import com.shopping.swagbag.databinding.SingleBestProductsBinding
+import com.shopping.swagbag.common.RecycleViewItemClick
+import com.shopping.swagbag.common.model.AllTimeSliderModel
 import com.shopping.swagbag.databinding.SingleSliderProductsBinding
-import com.shopping.swagbag.dummy.DummyModel
-import android.R
-import com.shopping.swagbag.home.HomeModel
+import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 
 
 class AllTimeSliderAdapter(
     private val context: Context,
-    private val data: List<HomeModel.Result.RandomCategory>,
-    private val itemClick: RecycleItemClickListener
+    private val data: List<AllTimeSliderModel>,
+    private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<AllTimeSliderAdapter.BestProductViewHolder>() {
 
     inner class BestProductViewHolder(private val viewBinding: SingleSliderProductsBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: HomeModel.Result.RandomCategory, itemClick: RecycleItemClickListener, position: Int){
+            fun bind(singleData: AllTimeSliderModel ,itemClick: RecycleViewItemClick, position: Int){
                 with(viewBinding){
                     // set image
                     Glide.with(context)
                         .load(singleData.file)
+                        .placeholder(R.drawable.baby)
+                        .fitCenter()
                         .into(imgBestProduct)
+
+                    Log.e("TAG", "all time slider bind name: ${singleData.file}", )
 
                     // set text
                     tvBestProductName.text = singleData.name
                     tvBestProductDetails.text = singleData.description
 
-                    newId.setOnClickListener{
-                       itemClick.onSingleItemClickListener(position)
+                    itemView.setOnClickListener{
+                        itemClick.onItemClickWithName(singleData.name, position)
                     }
                 }
             }
@@ -50,12 +54,7 @@ class AllTimeSliderAdapter(
     }
 
     override fun onBindViewHolder(holder: BestProductViewHolder, position: Int) {
-        holder.bind(data[position],itemClick = itemClick, position)
-
-       /* if(position == 0){
-            val padding: Int = context.resources.getDimensionPixelOffset(com.shopping.swagbag.R.dimen.screen_padding_15)
-            holder.itemView.setPadding(padding, 0,0,0)
-        }*/
+        holder.bind(data[position] ,itemClick ,position)
     }
 
     override fun getItemCount()= data.size

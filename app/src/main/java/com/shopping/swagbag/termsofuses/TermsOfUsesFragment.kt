@@ -47,7 +47,7 @@ class TermsOfUsesFragment :
                 is Resource.Success -> {
                     stopShowingLoading()
 
-                    viewBinding.termsOfUse.text = it.value.result[7].value
+                    viewBinding.termsOfUse.text = html2Text(it.value.result[7].value)
                 }
 
                 is Resource.Failure -> Log.e("TAG", "getTermsOfUse: $it", )

@@ -11,33 +11,39 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.category.CategoryToBegModel
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleItemClickListener
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.AllTimeSliderAdapter
 import com.shopping.swagbag.common.adapter.AutoImageSliderAdapter
 import com.shopping.swagbag.common.adapter.BestProductAdapter
 import com.shopping.swagbag.common.adapter.CategoryToBegAdapter
 import com.shopping.swagbag.common.base.BaseFragment
+import com.shopping.swagbag.common.model.AllTimeSliderModel
+import com.shopping.swagbag.common.model.BestProductModel
 import com.shopping.swagbag.databinding.FragmentHomeBinding
-import com.shopping.swagbag.databinding.HomeBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
-import com.shopping.swagbag.dummy.DummySlider
 import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
-import com.shopping.swagbag.products.product_details.ProductDetailModel
+import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 import com.shopping.swagbag.service.Resource
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.lang.reflect.Type
 
 class Home :
     BaseFragment<FragmentHomeBinding, ProductViewModel, ProductRepository>(FragmentHomeBinding::inflate),
-    RecycleItemClickListener {
+RecycleViewItemClick{
 
     private lateinit var activity: AppCompatActivity
     private lateinit var mainActivity: MainActivity
@@ -73,9 +79,6 @@ class Home :
 
         getHomeData()
 
-        showOfferImages()
-
-
     }
 
     private fun getHomeData() {
@@ -87,13 +90,15 @@ class Home :
                     stopShowingLoading()
 
                     Log.e("TAG", "getHomeData: $it")
+
                     val result = it.value.result
                     setAutoImageSlider(result.slider)
                     DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
                     setCategoryToBeg(result.masterCategory)
                     setDealOfTheDay(result.deals)
                     setBestOffer(result.randomCategory)
-                    //setFeatureBrands(result.featured)
+                    setFeatureBrands(result.featured)
+                    showOfferImages()
                 }
 
                 is Resource.Failure -> Log.e("TAG", "getHomeData: $it", )
@@ -127,55 +132,117 @@ class Home :
         }
     }
 
-    private fun setFeatureBrands(data: ArrayList<DummyModel>) {
-        with(viewBinding) {
-            rvPromotedBrands.apply {
-                layoutManager = GridLayoutManager(context, 2)
-                //adapter = BestProductAdapter(context, data, this@Home)
-            }
-        }
-    }
-
-    // transforming lists
- /*   private fun List<HomeModel.Result.MasterCategory>.transform(): List<CategoryToBegModel> {
-        return this.map {
-            it.transform()
-        }
-    }
-
-    // Example use
-    private fun listTransform(squares: List<HomeModel.Result.MasterCategory>): List<CategoryToBegModel> {
-        return squares.transform()
-    }*/
-
     private fun setCategoryToBeg(data: List<HomeModel.Result.MasterCategory>) {
         val master = ArrayList<CategoryToBegModel>()
-      //  master.addAll(data as CategoryToBegModel)
+
+        for (item in data) {/*
+            val data1 = GsonBuilder().create().toJson(item)
+            master.add(GsonBuilder().create().fromJson(data1, CategoryToBegModel::class.java))*/
+            master.add(
+                CategoryToBegModel(
+                item.desc,
+                item.file,
+                item.id,
+                item.name,
+                item.shortDesc
+            )
+            )
+        }
 
         with(viewBinding) {
             rvCategoryToBag.apply {
                 layoutManager = GridLayoutManager(context, 3)
-                adapter = CategoryToBegAdapter(context, data)
+                adapter = CategoryToBegAdapter(context, master)
             }
         }
 
     }
 
     private fun setBestOffer(data: List<HomeModel.Result.RandomCategory>) {
+        val allTimeSliderModel = ArrayList<AllTimeSliderModel>()
+        for (item in data) {
+            allTimeSliderModel.add(
+                AllTimeSliderModel(
+                    item.description,
+                    item.file,
+                    item.id,
+                    item.master,
+                    item.name
+                )
+            )
+        }
+
+        Log.e("TAG", "setBestOffer: $allTimeSliderModel", )
+
         with(viewBinding) {
             rvBestOffer.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = AllTimeSliderAdapter(context, data, this@Home)
+                adapter = AllTimeSliderAdapter(context, allTimeSliderModel, this@Home)
             }
         }
 
     }
 
     private fun setDealOfTheDay(data: List<HomeModel.Result.Deal>) {
+        val bestProductModel = ArrayList<BestProductModel>()
+
+        for (item in data) {
+            val file = ArrayList<BestProductModel.File>()
+            for (fileItem in item.file) {
+                file.add(
+                    BestProductModel.File(
+                        fileItem.location
+                    )
+                )
+            }
+
+            bestProductModel.add(
+                BestProductModel(
+                    html2Text(item.desc),
+                    item.shortDesc,
+                    file,
+                    item.id,
+                    item.name
+                )
+            )
+        }
+
         with(viewBinding) {
-            rvDealOfDay.apply {
+            rvPromotedBrands.apply {
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = BestProductAdapter(context, data, this@Home)
+                adapter = BestProductAdapter(context, bestProductModel, this@Home )
+            }
+        }
+    }
+
+    private fun setFeatureBrands(data: List<HomeModel.Result.Featured>) {
+        val bestProductModel = ArrayList<BestProductModel>()
+
+        for (item in data) {
+            val file = ArrayList<BestProductModel.File>()
+            for (fileItem in item.file) {
+                file.add(
+                    BestProductModel.File(
+                        fileItem.location
+                    )
+                )
+            }
+
+            bestProductModel.add(
+                BestProductModel(
+                    html2Text(item.desc),
+                    item.shortDesc,
+                    file,
+                    item.id,
+                    item.name
+                )
+            )
+        }
+
+        with(viewBinding) {
+            rvKidsPicks.apply {
+                layoutManager = GridLayoutManager(context, 2)
+                adapter = BestProductAdapter(context, bestProductModel, this@Home)
             }
         }
     }
@@ -206,15 +273,6 @@ class Home :
         }
     }
 
-    override fun onSingleItemClickListener(position: Int) {
-        mainActivity.hideToolbar()
-        findNavController().navigate(R.id.action_home2_to_productDetailsFragment)
-    }
-
-    override fun itemClickWithName(name: String) {
-        TODO("Not yet implemented")
-    }
-
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -224,5 +282,11 @@ class Home :
 
     override fun getFragmentRepository() =
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
+
+    override fun onItemClickWithName(tag: String, position: Int) {
+        mainActivity.hideToolbar()
+        val action = ProductDetailsFragmentDirections.actionGlobalProductDetailsFragment(tag)
+        findNavController().navigate(action)
+    }
 
 }

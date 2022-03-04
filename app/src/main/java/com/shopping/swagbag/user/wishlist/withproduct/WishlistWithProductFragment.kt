@@ -33,16 +33,15 @@ class WishlistWithProductFragment : BaseFragment<
     private lateinit var wishlistProductAdapter: WishlistWithProductAdapter
     private val appUtils = context?.let { AppUtils(it) }
 
-   /* private val userId: String = if (appUtils!!.isUserLoggedIn()) {
-        appUtils.getUserId()
-    } else {
-        ""
-    }*/
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         toolbarBinding = viewBinding.include
+
+        //when user can see wishlist without product
+        viewBinding.btnShopNow.setOnClickListener {
+            findNavController().navigate(R.id.action_global_home2)
+        }
 
         initViews()
     }
@@ -73,14 +72,20 @@ class WishlistWithProductFragment : BaseFragment<
                         is Resource.Success -> {
                             stopShowingLoading()
 
-                            wistListProduct = it.value
-
-                            Log.e("TAG", "getWishlistProduct: $wistListProduct", )
-
-                            setWishlistProduct(it.value.result)
+                            // if user has not any product in wishlist then send user to empty wishlist screen
+                            if (it.value.result.isEmpty()) {
+                                showEmptyWishlist()
+                            } else {
+                                wistListProduct = it.value
+                                Log.e("TAG", "getWishlistProduct: $wistListProduct")
+                                setWishlistProduct(it.value.result)
+                            }
                         }
 
                         is Resource.Failure -> {
+                            stopShowingLoading()
+                            toast("try again!")
+                            findNavController().popBackStack()
                             Log.e("TAG", "setWishlistProduct: $it")
                         }
                     }
@@ -112,22 +117,59 @@ class WishlistWithProductFragment : BaseFragment<
         }
     }
 
+    private fun showEmptyWishlist(){
+        viewBinding.lytWithProduct.visibility = View.GONE
+        viewBinding.lytWithoutProduct.visibility = View.VISIBLE
+
+        toolbarBinding.delete.visibility = View.GONE
+    }
+
     private fun toolbar() {
         with(toolbarBinding){
             // set title
             tvTitle.text = getString(R.string.wishlist)
 
             //click listeners
-            imgBack.setOnClickListener{
+            imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
 
-            delete.setOnClickListener {}
-
-            imgCart.setOnClickListener {
-                findNavController().navigate(R.id.action_wishlistWithProductFragment_to_shoppingBegWithoutProductFragment)
+            delete.setOnClickListener {
+                clearWishlist()
             }
 
+            imgCart.setOnClickListener {
+                findNavController().navigate(R.id.action_wishlistWithProductFragment_to_shoppingBegWithProductFragment)
+            }
+
+        }
+    }
+
+    private fun clearWishlist() {
+        val isUserLogIn = context?.let { AppUtils(it).isUserLoggedIn() }
+
+        Log.e("TAG", "is User logged in: $isUserLogIn")
+
+        if (isUserLogIn == true) {
+            val userId = context?.let { AppUtils(it).getUserId() }
+
+            Log.e("userId", "check user id: $userId")
+
+            if (userId != null) {
+                viewModel.clearWishlist(userId).observe(viewLifecycleOwner) {
+                    when (it) {
+                        is Resource.Loading -> showLoading()
+
+                        is Resource.Success -> {
+                            stopShowingLoading()
+                            toast(it.value.message)
+                            showEmptyWishlist()
+                        }
+
+                        is Resource.Failure -> Log.e("TAG", "clearWishlist: $it")
+                    }
+                }
+            }
         }
     }
 
@@ -143,7 +185,7 @@ class WishlistWithProductFragment : BaseFragment<
 
     override fun onItemClickWithName(tag: String, position: Int) {
         when (tag) {
-            "moveToBeg" -> addToBeg()
+            "moveToBeg" -> addToBeg(position)
             "remove" -> removeFromWishlist(position)
         }
     }
@@ -164,13 +206,17 @@ class WishlistWithProductFragment : BaseFragment<
 
                             toast(it.value.message)
 
-                            val allDataList: MutableList<GetWishlistModel.Result> = wistListProduct.result as MutableList
+                            val allDataList: MutableList<GetWishlistModel.Result> =
+                                wistListProduct.result as MutableList
                             allDataList.removeAt(position)
-
-                            Log.e("wishlist", "removeFromWishlist: $allDataList", )
                             wishlistProductAdapter.updateData(allDataList)
 
-                            //@todo update recycle view
+                            if (position==0) {
+                                showEmptyWishlist()
+                            }
+                            Log.e("wishlist", "removeFromWishlist: $allDataList")
+
+
                         }
 
                         is Resource.Failure -> Log.e("TAG", "removeFromWishlist: $it")
@@ -179,7 +225,7 @@ class WishlistWithProductFragment : BaseFragment<
         }
     }
 
-    private fun addToBeg() {
+    private fun addToBeg(position: Int) {
 
     }
 

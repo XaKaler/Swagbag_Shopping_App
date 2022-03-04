@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.*
+import com.shopping.swagbag.products.ProductDetailModel
 
 class SingleProductImagesAdatper(
     private val context: Context,

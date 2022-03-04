@@ -1,29 +1,29 @@
 package com.shopping.swagbag.common.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
+import com.shopping.swagbag.common.RecycleViewItemClick
+import com.shopping.swagbag.common.model.BestProductModel
 import com.shopping.swagbag.databinding.SingleBestProductsBinding
-import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.dummy.DummyModel
-import com.shopping.swagbag.home.HomeModel
-import com.shopping.swagbag.search.SearchFragment
+import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 
 class BestProductAdapter(
     private val context: Context,
-    private val data: List<HomeModel.Result.Deal>,
-    private val itemClick: RecycleItemClickListener
+    private val data: List<BestProductModel>,
+    private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<BestProductAdapter.BestProductViewHolder>() {
 
     inner class BestProductViewHolder(private val viewBinding: SingleBestProductsBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: HomeModel.Result.Deal, itemClick: RecycleItemClickListener, position: Int){
+            fun bind(singleData: BestProductModel,itemClick: RecycleViewItemClick , position: Int){
                 with(viewBinding){
                     // set imgae
                     /*Glide.with(context)
@@ -38,11 +38,12 @@ class BestProductAdapter(
 
                     // set text
                     tvBestProductName.text = singleData.name
-                    tvBestProductDetails.text = singleData.desc
+                    tvBestProductDetails.text = singleData.description
 
-                    singleBestProduct.setOnClickListener{
-                        itemClick.onSingleItemClickListener(position)
+                    itemView.setOnClickListener{
+                        itemClick.onItemClickWithName(singleData.name, position)
                     }
+
                 }
             }
 
@@ -53,7 +54,7 @@ class BestProductAdapter(
     }
 
     override fun onBindViewHolder(holder: BestProductViewHolder, position: Int) {
-        holder.bind(data[position], itemClick, position)
+        holder.bind(data[position],itemClick, position)
     }
 
     override fun getItemCount()= data.size

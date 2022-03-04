@@ -3,6 +3,7 @@ package com.shopping.swagbag.utils
 import android.content.Context
 import android.content.SharedPreferences
 import android.text.TextUtils
+import androidx.navigation.fragment.NavHostFragment
 import com.google.gson.Gson
 import com.shopping.swagbag.user.auth.signin.SignInModel
 import javax.inject.Inject
@@ -39,6 +40,16 @@ class AppUtils @Inject constructor(private val context: Context) {
 
     fun isUserLoggedIn(): Boolean{
         val sharedPreferences = context.getSharedPreferences(_myPrefName, Context.MODE_PRIVATE)
+        /*
+        val isLoggedIn: Boolean = sharedPreferences.getBoolean(_isUserLogIn, false)
+        if(isLoggedIn)
+            return true
+        else{
+            findNavC
+            return false
+        }
+        */
+
         return sharedPreferences.getBoolean(_isUserLogIn, false)
     }
 

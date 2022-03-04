@@ -3,11 +3,11 @@ package com.shopping.swagbag.products
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
-import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 import com.shopping.swagbag.user.wishlist.withproduct.AddToWishlistModel
+import com.shopping.swagbag.user.wishlist.withproduct.ClearWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.DeleteSingleWishModel
 import com.shopping.swagbag.user.wishlist.withproduct.GetWishlistModel
 import retrofit2.http.*
@@ -70,6 +70,13 @@ interface ProductApi {
     suspend fun clearCart(
         @Field("userid") userId: String
     ): ClearCartModel
+
+
+    @FormUrlEncoded
+    @POST("clear-cart")
+    suspend fun clearWishlist(
+        @Field("userid") userId: String
+    ): ClearWishlistModel
 
     @FormUrlEncoded
     @POST("add-to-cart")

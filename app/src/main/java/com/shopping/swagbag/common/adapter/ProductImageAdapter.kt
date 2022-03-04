@@ -9,13 +9,13 @@ import android.widget.LinearLayout
 import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
-import com.shopping.swagbag.home.HomeModel
+import com.shopping.swagbag.common.model.BestProductModel
 import java.util.*
 
 
 class ProductImageAdapter(
     private val context: Context,
-    private val image: List<HomeModel.Result.Deal.File>
+    private val image: List<BestProductModel.File>
 ) : PagerAdapter() {
 
     override fun getCount() = image.size
@@ -34,7 +34,7 @@ class ProductImageAdapter(
 
         // setting the image in the imageView
         Glide.with(context)
-            .load(image[position])
+            .load(image[position].location)
             .error(R.drawable.ic_launcher_foreground)
             .placeholder(R.drawable.logo)
             .into(imageView)

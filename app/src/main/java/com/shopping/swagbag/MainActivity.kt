@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -48,6 +49,9 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
             navigationBinding = viewBinding.includeNavigation
             navigationHeaderBinding = navigationBinding.includeHeader
 
+            //disable the swipe gesture that opens the navigation drawer
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
             val repository =
                 CategoryRepository(RemoteDataSource().getBaseUrl().create(CategoryApi::class.java))
 
@@ -63,11 +67,10 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                 when (item.itemId) {
                     R.id.btmWishlist -> {
                         hideToolbar()
-
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-                        navController.navigate(R.id.action_global_wishlistWithoutProductFragment)
+                        navController.navigate(R.id.action_global_wishlistWithProductFragment)
                     }
 
                     R.id.btmCart->{
@@ -213,10 +216,10 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
 
             // add navigation menu
             val navigationMenu: List<NavigationMenu> = OnNavigationMenu().getNavigationMenu()
-            var isCategoryShow = false
 
             rvnavMenu.apply {
                 layoutManager = LinearLayoutManager(context)
+
                 categoryViewModel.category.observe(this@MainActivity, Observer {
                     when (it) {
                         is Resource.Success -> {
@@ -251,7 +254,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
     }
 
-    override fun onItemClickWithName(tag: String, position: Int) {
+    override fun onItemClickWithName(name: String, position: Int) {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
         val navController = navHostFragment.navController

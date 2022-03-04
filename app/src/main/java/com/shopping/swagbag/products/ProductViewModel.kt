@@ -8,12 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
-import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 import com.shopping.swagbag.user.wishlist.withproduct.AddToWishlistModel
+import com.shopping.swagbag.user.wishlist.withproduct.ClearWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.DeleteSingleWishModel
 import com.shopping.swagbag.user.wishlist.withproduct.GetWishlistModel
 import kotlinx.coroutines.launch
@@ -167,6 +167,18 @@ class ProductViewModel(
         return result
     }
 
+
+    fun clearWishlist(userId: String): LiveData<Resource<ClearWishlistModel>>{
+        val result = MutableLiveData<Resource<ClearWishlistModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value  = repository.clearWishlist(userId)
+        }
+
+        return result
+    }
+
     fun getHome(): LiveData<Resource<HomeModel>>{
         val result = MutableLiveData<Resource<HomeModel>>()
 
@@ -174,6 +186,8 @@ class ProductViewModel(
             result.value = Resource.Loading
             result.value = repository.getHome()
         }
+
+        Log.e("TAG", "getHome in view model: ${result.value}", )
 
         return result
     }
