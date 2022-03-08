@@ -73,7 +73,7 @@ interface ProductApi {
 
 
     @FormUrlEncoded
-    @POST("clear-cart")
+    @POST("clear-wishlist")
     suspend fun clearWishlist(
         @Field("userid") userId: String
     ): ClearWishlistModel

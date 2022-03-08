@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClick
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleProductBinding
 import com.shopping.swagbag.databinding.SingleProductSizeBinding
 import com.shopping.swagbag.dummy.DummyModel
@@ -21,8 +22,8 @@ import com.shopping.swagbag.dummy.ProductFilter
 
 class ProductSizeAdapter(
     private val context: Context,
-    private val data: List<ProductFilter>,
-    private val itemClick: RecycleItemClick
+    private val data: List<ProductOptionModel>,
+    private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<ProductSizeAdapter.ProductViewHolder>() {
 
@@ -32,15 +33,10 @@ class ProductSizeAdapter(
         RecyclerView.ViewHolder(viewBinding.root) {
 
         @SuppressLint("NotifyDataSetChanged")
-        fun bind(singleData: ProductFilter, position: Int, itemClick: RecycleItemClick){
+        fun bind(singleData: ProductOptionModel, position: Int, itemClick: RecycleViewItemClick){
             with(viewBinding){
                 // set size
-                sizeType.text = singleData.filterName
-
-                if(position == 0){
-                    sizeOutline.setImageResource(R.drawable.circle_outline_black)
-                    sizeType.setTextColor(ContextCompat.getColor(context, R.color.black))
-                }
+                sizeType.text = singleData.value
 
                 // select when user click
                 if(selectedPosition == position){
@@ -54,10 +50,10 @@ class ProductSizeAdapter(
                     sizeType.setTypeface(null, Typeface.NORMAL)
                 }
 
-                singleSize.setOnClickListener{
+                itemView.setOnClickListener{
                     selectedPosition = position
                     notifyDataSetChanged()
-                    itemClick.onItemClick(singleData.filterName, position)
+                    itemClick.onItemClickWithName("Size", position)
                 }
             }
         }

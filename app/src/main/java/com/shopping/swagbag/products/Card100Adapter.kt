@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.common.RecycleItemClickListener
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleCard10Binding
 
 class Card10Adapter(
     private val context: Context,
     private val data: List<ProductDetailModel.Related>,
-    private val itemClick: RecycleItemClickListener
+    private val itemClick: RecycleViewItemClick
 
 ) :
     RecyclerView.Adapter<Card10Adapter.MyViewHolder>() {
@@ -20,7 +21,7 @@ class Card10Adapter(
     inner class MyViewHolder(private val viewBinding: SingleCard10Binding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: ProductDetailModel.Related,position: Int, itemClick: RecycleItemClickListener){
+        fun bind(singleData: ProductDetailModel.Related,position: Int, itemClick: RecycleViewItemClick){
             with(viewBinding){
                 oldRate.paintFlags = oldRate.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 textView59.paintFlags = textView59.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -43,7 +44,7 @@ class Card10Adapter(
 
                 // click listener
                 itemView.setOnClickListener{
-                    itemClick.itemClickWithName(singleData.name)
+                    itemClick.onItemClickWithName(singleData.name, position)
                 }
             }
         }

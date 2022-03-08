@@ -321,6 +321,9 @@
         <action
             android:id="@+id/action_open_productDetails"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_self"
+            app:destination="@id/productDetailsFragment" />
 
     </fragment>
     <fragment

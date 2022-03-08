@@ -1,29 +1,22 @@
 package com.shopping.swagbag.products.product_details
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
+import android.graphics.PorterDuff
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
-import com.shopping.swagbag.common.RecycleItemClick
-import com.shopping.swagbag.databinding.SingleProductBinding
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleProductColorBinding
-import com.shopping.swagbag.databinding.SingleProductSizeBinding
-import com.shopping.swagbag.dummy.DummyModel
-import com.shopping.swagbag.dummy.ProductFilter
+
 
 class ProductColorAdapter(
     private val context: Context,
-    private val data: List<ProductFilter>,
-    private val itemClick: RecycleItemClick
+    private val data: List<ProductOptionModel>,
+    private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<ProductColorAdapter.ProductViewHolder>() {
 
@@ -33,10 +26,13 @@ class ProductColorAdapter(
         RecyclerView.ViewHolder(viewBinding.root) {
 
         @SuppressLint("NotifyDataSetChanged")
-        fun bind(singleData: ProductFilter, position: Int, itemClick: RecycleItemClick){
+        fun bind(singleData: ProductOptionModel, position: Int, itemClick: RecycleViewItemClick){
             with(viewBinding){
                 // set color
-                //color.setBackgroundColor(singleData.)
+                Log.e("color", "single color: ${singleData.value.toColorInt()}")
+
+                val newColor = singleData.value.toColorInt()
+                color.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP)
 
                 // select when user click
                 if(selectedPosition == position){
@@ -49,6 +45,7 @@ class ProductColorAdapter(
                 itemView.setOnClickListener{
                     selectedPosition = position
                     notifyDataSetChanged()
+                    itemClick.onItemClickWithName("Color", position)
                 }
             }
         }

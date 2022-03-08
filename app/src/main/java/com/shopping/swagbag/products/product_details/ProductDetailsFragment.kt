@@ -11,8 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
-import com.shopping.swagbag.common.RecycleItemClick
-import com.shopping.swagbag.common.RecycleItemClickListener
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.ProductImageSliderAdapter
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProductDetailsBinding
@@ -21,6 +20,7 @@ import com.shopping.swagbag.products.*
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
 import com.smarteist.autoimageslider.SliderView
+import kotlin.properties.Delegates
 
 class ProductDetailsFragment : BaseFragment<
         FragmentProductDetailsBinding,
@@ -28,10 +28,15 @@ class ProductDetailsFragment : BaseFragment<
         ProductRepository
         >(FragmentProductDetailsBinding::inflate),
     View.OnClickListener,
-    RecycleItemClick,
-    RecycleItemClickListener {
+    RecycleViewItemClick {
 
     private lateinit var product: ProductDetailModel
+    private lateinit var sizeList: List<ProductOptionModel>
+    private lateinit var colorList: List<ProductOptionModel>
+    private var finalPrice by Delegates.notNull<Int>()
+    private var finalSize: String = ""
+    private var finalColor: String = ""
+    private var sellingPrice by Delegates.notNull<Int>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -80,13 +85,13 @@ class ProductDetailsFragment : BaseFragment<
         setAllCustomerReviewImages()
 
         setUserReview()
-
-        //setProductSize()
     }
 
     private fun getProductDetails(productsName: String) {
 
         //@todo add product name in productDetails function
+        Log.e("product", "Product name is : $productsName", )
+
         viewModel
             .productDetails("iffalcon-108-cm-43-inches-4k-ultra-hd-certified-android-smart-led-tv-43u61-black-2021-model")
             .observe(viewLifecycleOwner, Observer {
@@ -103,8 +108,8 @@ class ProductDetailsFragment : BaseFragment<
                             // set product details
                             productName.text = it.value.result.name
                             oldRate.text = it.value.result.price.toString()
-                            newRate.text = it.value.result.sellingPrice.toString()
-                            newRate1.text = it.value.result.sellingPrice.toString()
+                            sellingPrice = it.value.result.sellingPrice
+                            newRate.text = sellingPrice.toString()
                             val discount = "(${it.value.result.discountedPrice}%Off)"
                             off.text = discount
                             //sellerName.text = it.value.vendor
@@ -113,7 +118,6 @@ class ProductDetailsFragment : BaseFragment<
                             setViewSimilar(it.value.related)
                             setAutoImageSlider(it.value.result.file)
                             setProductSmallImages(it.value.result.file)
-                            setProductColor()
 
                             // set product options
                             //@todo get product size and color in manner
@@ -124,22 +128,21 @@ class ProductDetailsFragment : BaseFragment<
                                 val optionValue = optionsList[option].value
 
                                 if (optionName == "Size") {
+                                    with(viewBinding) {
+                                        txtSize.visibility = View.VISIBLE
+                                        rvSize.visibility = View.VISIBLE
+                                        size.visibility = View.VISIBLE
+                                        sizeChart.visibility = View.VISIBLE
 
-                                    Log.e("TAG", "Size: $optionValue")
-
-                                    viewBinding.txtSize.visibility = View.VISIBLE
-                                    viewBinding.rvSize.visibility = View.VISIBLE
-
-                                    val sizeList = stringToList(optionValue)
-
+                                        sizeList = stringToList(optionValue)
+                                        setProductSize(sizeList)
+                                    }
                                     //option is coming in string form seperated with comma
                                     //so we have exclude it
-
-
-                                    //setProductSize(option.value)
                                 } else if (optionName == "Color") {
-                                    //setProductColor()
-                                    Log.e("TAG", "Color: $optionValue")
+                                    viewBinding.colors.root.visibility = View.VISIBLE
+                                    colorList = stringToList(optionValue)
+                                    setProductColor(colorList)
                                 }
                             }
 
@@ -152,11 +155,16 @@ class ProductDetailsFragment : BaseFragment<
     }
 
     private fun stringToList(optionValue: String): List<ProductOptionModel> {
+        //1. remove all white spaces from string
+        //2. iterate string
+        //3. value:price:sku:qty these are 4 parameters in string
+        //make list of them
 
-        Log.e("TAG", "stringToList: $optionValue")
+        val updatedOptionValue = optionValue.replace("\\s".toRegex(), "")
+
+        Log.e("TAG", "Remove white space: $updatedOptionValue")
 
         val list = ArrayList<ProductOptionModel>()
-        var singleValue: String = ""
 
         var colonCount = 0
         var value = ""
@@ -164,52 +172,51 @@ class ProductDetailsFragment : BaseFragment<
         var sku = ""
         var qty = ""
 
-        for (option in optionValue) {
+        for (option in updatedOptionValue) {
 
             if (option == ':') colonCount += 1
             else if (option == ',') {
                 colonCount = 0
                 list.add(ProductOptionModel(value, price, sku, qty))
+
+                Log.e("TAG", "option == ,: $list  ")
+
                 value = ""
                 price = ""
                 sku = ""
                 qty = ""
             } else {
-                Log.e("TAG", "stringToList: $option")
-
                 when (colonCount) {
-                    0 -> value + option
-                    1 -> price + option
-                    2 -> sku + option
-                    3 -> qty + option
+                    0 -> value += option
+                    1 -> price += option
+                    2 -> sku += option
+                    3 -> qty += option
                 }
             }
         }
-
-        Log.e("TAG", "stringToList: $list  ")
         return list
     }
 
-    private fun setProductColor() {
+    private fun setProductColor(colors: List<ProductOptionModel>) {
         with(viewBinding.colors) {
             rvColors.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ProductColorAdapter(
                     context,
-                    DummyData().getProductSize(),
+                    colors,
                     this@ProductDetailsFragment
                 )
             }
         }
     }
 
-    private fun setProductSize(sizes: List<String>) {
+    private fun setProductSize(sizes: List<ProductOptionModel>) {
         with(viewBinding) {
             rvSize.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ProductSizeAdapter(
                     context,
-                    DummyData().getProductSize(),
+                    sizes,
                     this@ProductDetailsFragment
                 )
             }
@@ -363,23 +370,32 @@ class ProductDetailsFragment : BaseFragment<
     override fun getFragmentRepository() =
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
-    override fun onItemClick(name: String, position: Int) {
-        viewBinding.size.text = name
-    }
+    override fun onItemClickWithName(name: String, position: Int) {
+        when (name) {
+            "Size" -> {
+                with(viewBinding) {
+                    Log.e("size", "size that user choose: $name", )
+                    finalSize = sizeList[position].value
+                    size.text = finalSize
 
-    override fun onItemClickWithView(position: Int, view: View) {
-        TODO("Not yet implemented")
-    }
+                    //set new price
+                    Log.e("price", "final price is : $finalPrice\nsize price is : ${sizeList[position].price}", )
 
-    override fun onSingleItemClickListener(position: Int) {
-        TODO("Not yet implemented")
-    }
+                    finalPrice += sizeList[position].price.toInt()
+                    newRate.text = finalPrice.toString()
+                }
+            }
+            "Color" -> {
+                finalColor = colorList[position].value
 
-    override fun itemClickWithName(name: String) {
-        val action = ProductDetailsFragmentDirections.actionOpenProductDetails("name")
-        findNavController().navigate(action)
-        //getProductDetails(name)
-        // viewBinding.nestedScrollView.fullScroll(ScrollView.FOCUS_UP)
+                finalPrice += colorList[position].price.toInt()
+                viewBinding.newRate.text = finalPrice.toString()
+            }
+            else -> {
+                val action = ProductDetailsFragmentDirections.actionProductDetailsFragmentSelf(name)
+                findNavController().navigate(action)
+            }
+        }
     }
 
 }

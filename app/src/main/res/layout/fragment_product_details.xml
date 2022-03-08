@@ -140,60 +140,6 @@
                 app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
                 app:layout_constraintTop_toTopOf="@+id/sliderView"/>
 
-
-           <!-- <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/roundedImageView5"
-                android:layout_width="@dimen/small_image_width"
-                android:layout_height="@dimen/small_image_height"
-                android:layout_marginVertical="@dimen/dimen_15"
-                android:scaleType="center"
-                android:src="@mipmap/navigation_header_user_img_foreground"
-                app:layout_constraintBottom_toTopOf="@+id/rvProductImage"
-                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
-                app:riv_border_color="@color/white"
-                app:riv_border_width="@dimen/dimen_0.5"
-                app:riv_corner_radius="@dimen/dimen_5" />
-            
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/roundedImageView6"
-                android:layout_width="@dimen/small_image_width"
-                android:layout_height="@dimen/small_image_height"
-                android:layout_marginVertical="@dimen/dimen_15"
-                android:scaleType="center"
-                android:src="@mipmap/navigation_header_user_img_foreground"
-                app:layout_constraintBottom_toTopOf="@+id/roundedImageView5"
-                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
-                app:riv_border_color="@color/white"
-                app:riv_border_width="@dimen/dimen_0.5"
-                app:riv_corner_radius="@dimen/dimen_5" />
-
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/roundedImageView7"
-                android:layout_width="@dimen/small_image_width"
-                android:layout_height="@dimen/small_image_height"
-                android:layout_marginVertical="@dimen/dimen_15"
-                android:scaleType="center"
-                android:src="@mipmap/navigation_header_user_img_foreground"
-                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
-                app:layout_constraintTop_toBottomOf="@+id/rvProductImage"
-                app:riv_border_color="@color/white"
-                app:riv_border_width="@dimen/dimen_0.5"
-                app:riv_corner_radius="@dimen/dimen_5" />
-
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/roundedImageView"
-                android:layout_width="@dimen/small_image_width"
-                android:layout_height="@dimen/small_image_height"
-                android:layout_marginVertical="@dimen/dimen_15"
-                android:scaleType="center"
-                android:src="@mipmap/navigation_header_user_img_foreground"
-                app:layout_constraintStart_toStartOf="@+id/imgBackBackground"
-                app:layout_constraintTop_toBottomOf="@+id/roundedImageView7"
-                app:riv_border_color="@color/white"
-                app:riv_border_width="@dimen/dimen_0.5"
-                app:riv_corner_radius="@dimen/dimen_5" />
--->
-
             <ImageView
                 android:id="@+id/imgCrusialBackground"
                 android:layout_width="@dimen/dimen_25"
@@ -340,6 +286,8 @@
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Xl"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/txtSize"
                         app:layout_constraintStart_toEndOf="@+id/txtSize"
                         app:layout_constraintTop_toTopOf="@+id/txtSize" />
@@ -351,6 +299,7 @@
                         android:textColor="@color/day_red_night_orange"
                         android:layout_height="wrap_content"
                         android:text="@string/size_chart"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -382,10 +331,9 @@
                         android:id="@+id/colors"
                         layout="@layout/lyt_product_details_color"
                         android:layout_width="0dp"
-                        android:visibility="gone"
-                        android:layout_marginTop="@dimen/space_between_view_and_subview"
                         android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="@id/rvSize"
                         app:layout_constraintTop_toBottomOf="@id/rvSize" />
 
@@ -415,11 +363,12 @@
 
                     <TextView
                         android:id="@+id/textView631"
-                         style="@style/roboto_normal_18_davys_grey"
+                        style="@style/roboto_normal_18_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_views"
                         android:text="@string/Rs"
-                        app:layout_constraintBottom_toBottomOf="@+id/oldRate1"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="@+id/rvSize"
                         app:layout_constraintTop_toTopOf="@+id/oldRate1" />
 
@@ -428,6 +377,7 @@
                         style="@style/roboto_normal_18_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:text="9999"
                         app:layout_constraintBottom_toBottomOf="@+id/textView631"
                         app:layout_constraintStart_toEndOf="@+id/textView631"
