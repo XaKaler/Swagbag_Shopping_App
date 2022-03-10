@@ -3,6 +3,7 @@ package com.shopping.swagbag.products
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
+import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
@@ -10,6 +11,7 @@ import com.shopping.swagbag.user.wishlist.withproduct.AddToWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.ClearWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.DeleteSingleWishModel
 import com.shopping.swagbag.user.wishlist.withproduct.GetWishlistModel
+import org.json.JSONArray
 import retrofit2.http.*
 
 interface ProductApi {
@@ -84,7 +86,7 @@ interface ProductApi {
         @Field("quantity")quantity: String,
         @Field("productid")productId: String,
         @Field("id")userId: String,
-        @Field("option")option: String,
+        @Field("option")option: JSONArray,
     ): AddToCartModel
 
     @GET("mobile-home")

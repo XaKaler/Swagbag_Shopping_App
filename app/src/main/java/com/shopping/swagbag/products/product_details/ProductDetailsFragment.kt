@@ -18,9 +18,12 @@ import com.shopping.swagbag.databinding.FragmentProductDetailsBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.products.*
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.user.shoppingbeg.withproduct.AddToCartProductOptionModel
 import com.shopping.swagbag.utils.AppUtils
 import com.smarteist.autoimageslider.SliderView
+import org.json.JSONArray
 import kotlin.properties.Delegates
+
 
 class ProductDetailsFragment : BaseFragment<
         FragmentProductDetailsBinding,
@@ -31,11 +34,14 @@ class ProductDetailsFragment : BaseFragment<
     RecycleViewItemClick {
 
     private lateinit var product: ProductDetailModel
+
     private lateinit var sizeList: List<ProductOptionModel>
     private lateinit var colorList: List<ProductOptionModel>
-    private var finalPrice by Delegates.notNull<Int>()
-    private var finalSize: String = ""
-    private var finalColor: String = ""
+
+    private var finalPrice: Int = 0
+    private var finalSize: ProductOptionModel? = null
+    private var finalColor: ProductOptionModel? = null
+
     private var sellingPrice by Delegates.notNull<Int>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,17 +74,10 @@ class ProductDetailsFragment : BaseFragment<
                 addToCart()
             }
 
-            /*floatingActionButton.setOnClickListener{
-                nestedScrollView.smoothScrollTo(0,0)
-            }*/
-
             val args: ProductDetailsFragmentArgs by navArgs()
             val productsName = args.productName
             getProductDetails(productsName)
         }
-
-        val data = DummyData().getSingleProductImage()
-        val singleProduct = DummyData().getSingleProduct()
 
         handleClickListeners()
 
@@ -90,7 +89,7 @@ class ProductDetailsFragment : BaseFragment<
     private fun getProductDetails(productsName: String) {
 
         //@todo add product name in productDetails function
-        Log.e("product", "Product name is : $productsName", )
+        Log.e("product", "Product name is : $productsName")
 
         viewModel
             .productDetails("iffalcon-108-cm-43-inches-4k-ultra-hd-certified-android-smart-led-tv-43u61-black-2021-model")
@@ -108,8 +107,11 @@ class ProductDetailsFragment : BaseFragment<
                             // set product details
                             productName.text = it.value.result.name
                             oldRate.text = it.value.result.price.toString()
+
                             sellingPrice = it.value.result.sellingPrice
+                            //finalPrice = sellingPrice
                             newRate.text = sellingPrice.toString()
+
                             val discount = "(${it.value.result.discountedPrice}%Off)"
                             off.text = discount
                             //sellerName.text = it.value.vendor
@@ -119,32 +121,41 @@ class ProductDetailsFragment : BaseFragment<
                             setAutoImageSlider(it.value.result.file)
                             setProductSmallImages(it.value.result.file)
 
-                            // set product options
-                            //@todo get product size and color in manner
+                            //set user review
+                            val review = it.value.review
+                            if (review.isNotEmpty())
+                                setUserReview()
+                            else
+                                viewBinding.lytReview.visibility = View.GONE
+
+                            // set product options like color or size
                             val optionsList = it.value.result.options
-                            for (option in optionsList.indices) {
 
-                                val optionName = optionsList[option].name
-                                val optionValue = optionsList[option].value
+                            if (optionsList.isNotEmpty()) {
+                                for (option in optionsList.indices) {
 
-                                if (optionName == "Size") {
-                                    with(viewBinding) {
-                                        txtSize.visibility = View.VISIBLE
-                                        rvSize.visibility = View.VISIBLE
-                                        size.visibility = View.VISIBLE
-                                        sizeChart.visibility = View.VISIBLE
+                                    val optionName = optionsList[option].name
+                                    val optionValue = optionsList[option].value
 
-                                        sizeList = stringToList(optionValue)
-                                        setProductSize(sizeList)
+                                    if (optionName == "Size") {
+                                        with(viewBinding) {
+                                            txtSize.visibility = View.VISIBLE
+                                            rvSize.visibility = View.VISIBLE
+                                            size.visibility = View.VISIBLE
+                                            sizeChart.visibility = View.VISIBLE
+
+                                            sizeList = stringToList(optionValue)
+                                            setProductSize(sizeList)
+                                        }
+                                        //option is coming in string form seperated with comma
+                                        //so we have exclude it
+                                    } else if (optionName == "Color") {
+                                        viewBinding.colors.root.visibility = View.VISIBLE
+                                        colorList = stringToList(optionValue)
+                                        setProductColor(colorList)
                                     }
-                                    //option is coming in string form seperated with comma
-                                    //so we have exclude it
-                                } else if (optionName == "Color") {
-                                    viewBinding.colors.root.visibility = View.VISIBLE
-                                    colorList = stringToList(optionValue)
-                                    setProductColor(colorList)
                                 }
-                            }
+                            } else viewBinding.optionCard.visibility = View.GONE
 
                         }
                     }
@@ -177,7 +188,7 @@ class ProductDetailsFragment : BaseFragment<
             if (option == ':') colonCount += 1
             else if (option == ',') {
                 colonCount = 0
-                list.add(ProductOptionModel(value, price, sku, qty))
+                list.add(ProductOptionModel(value, price.toInt(), sku, qty.toInt()))
 
                 Log.e("TAG", "option == ,: $list  ")
 
@@ -313,25 +324,91 @@ class ProductDetailsFragment : BaseFragment<
     private fun addToCart() {
         val appUtils = context?.let { AppUtils(it) }
 
-        if (appUtils!!.isUserLoggedIn()) {
-            viewModel
-                .addToCart("1", product.result.id, appUtils.getUserId(), "")
-                .observe(
-                    viewLifecycleOwner
-                ) {
-                    when(it){
-                        is Resource.Loading -> showLoading()
+        // add product size or color
+        val jsArray =  makeOptionList()
 
-                        is Resource.Success -> {
-                            stopShowingLoading()
+        if (jsArray.length() != 0) {
 
-                            toast(it.value.message)
+            Log.e("add to cart", "convert array to gson -> $jsArray")
+
+            if (appUtils!!.isUserLoggedIn()) {
+                viewModel
+                    .addToCart("1", product.result.id, appUtils.getUserId(), jsArray)
+                    .observe(
+                        viewLifecycleOwner
+                    ) {
+                        when (it) {
+                            is Resource.Loading -> showLoading()
+
+                            is Resource.Success -> {
+                                stopShowingLoading()
+
+                                toast(it.value.message)
+                            }
+
+                            is Resource.Failure -> Log.e("TAG", "addToCart: $it")
                         }
-
-                        is Resource.Failure -> Log.e("TAG", "addToCart: $it", )
                     }
-                }
+            }
         }
+    }
+
+    private fun makeOptionList(): JSONArray {
+        val optionList = ArrayList<AddToCartProductOptionModel>()
+
+        if (sizeList.isEmpty() && colorList.isEmpty())
+        {
+            optionList.add(AddToCartProductOptionModel("", "", 0))
+        }
+        else if (sizeList.isEmpty() && colorList.isNotEmpty()) {
+            if (finalColor == null)
+                toast("Choose color")
+            else
+                optionList.add(
+                    AddToCartProductOptionModel(
+                        "Color",
+                        finalColor!!.value,
+                        finalColor!!.price
+                    )
+                )
+        } else if (sizeList.isNotEmpty() && colorList.isEmpty()) {
+            if (finalSize == null)
+                toast("Choose size")
+            else
+                optionList.add(
+                    AddToCartProductOptionModel(
+                        "Size",
+                        finalSize!!.value,
+                        finalSize!!.price
+                    )
+                )
+        } else if (sizeList.isNotEmpty() || colorList.isNotEmpty()) {
+            // add size
+            if (finalSize == null)
+                toast("Choose size")
+            else
+                optionList.add(
+                    AddToCartProductOptionModel(
+                        "Size",
+                        finalSize!!.value,
+                        finalSize!!.price
+                    )
+                )
+
+            // add color
+            if (finalColor == null)
+                toast("Choose color")
+            else
+                optionList.add(
+                    AddToCartProductOptionModel(
+                        "Color",
+                        finalColor!!.value,
+                        finalColor!!.price
+                    )
+                )
+        }
+
+        return JSONArray(optionList)
     }
 
     private fun addToWishlist() {
@@ -342,7 +419,7 @@ class ProductDetailsFragment : BaseFragment<
             val userId = appUtils.getUserId()
 
             viewModel.addToWishList(productId, userId).observe(viewLifecycleOwner, Observer {
-                when(it){
+                when (it) {
                     is Resource.Loading -> showLoading()
 
                     is Resource.Success -> {
@@ -350,7 +427,7 @@ class ProductDetailsFragment : BaseFragment<
                         toast(it.value.message)
                     }
 
-                    is Resource.Failure -> Log.e("wishlist", "addToWishlist: ${it.toString()}", )
+                    is Resource.Failure -> Log.e("wishlist", "addToWishlist: ${it.toString()}")
                 }
             })
         }
@@ -374,22 +451,81 @@ class ProductDetailsFragment : BaseFragment<
         when (name) {
             "Size" -> {
                 with(viewBinding) {
-                    Log.e("size", "size that user choose: $name", )
-                    finalSize = sizeList[position].value
-                    size.text = finalSize
+
+                    finalSize = sizeList[position]
 
                     //set new price
-                    Log.e("price", "final price is : $finalPrice\nsize price is : ${sizeList[position].price}", )
+                    if (colorList.isEmpty() || finalColor == null) {
+                        finalPrice = sellingPrice + sizeList[position].price
 
-                    finalPrice += sizeList[position].price.toInt()
+                        Log.e(
+                            "size",
+                            "color list is empty or final color is null  \n " +
+                                    "final color is null: ${finalColor == null} \n" +
+                                    "color list is empty ${colorList.isEmpty()}\n" +
+                                    "selling price is : $sellingPrice\n" +
+                                    "size price is : ${sizeList[position].price}\n" +
+                                    "final price is : ${sellingPrice + sizeList[position].price}",
+                        )
+
+                    } else {
+                        finalPrice = sellingPrice + sizeList[position].price + finalColor!!.price
+
+                        Log.e(
+                            "size",
+                            "size else -> color list is empty or final color is null  \n " +
+                                    "final color is null: ${finalColor == null} \n" +
+                                    "color list is empty ${colorList.isEmpty()}\n" +
+                                    "selling price is : $sellingPrice\n" +
+                                    "final color price is : ${finalColor!!.price}\n" +
+                                    "size price is : ${sizeList[position].price}\n" +
+                                    "final price is : ${sellingPrice + sizeList[position].price + finalColor!!.price}",
+                        )
+                    }
+
+                    size.text = finalSize!!.value
+
+                    Log.e("price", "final price after select size: $finalPrice")
+
                     newRate.text = finalPrice.toString()
+
                 }
             }
             "Color" -> {
-                finalColor = colorList[position].value
+                finalColor = colorList[position]
 
-                finalPrice += colorList[position].price.toInt()
+                if (finalSize == null || sizeList.isEmpty()) {
+                    finalPrice = sellingPrice + colorList[position].price
+
+                    Log.e(
+                        "color",
+                        "size list is empty or final color is null  \n " +
+                                "final size is null: ${finalSize == null} \n" +
+                                "size list is empty ${sizeList.isEmpty()}\n" +
+                                "selling price is : $sellingPrice\n" +
+                                "color price is : ${colorList[position].price}\n" +
+                                "final price is : ${sellingPrice + colorList[position].price}",
+                    )
+
+                } else {
+                    finalPrice = sellingPrice + finalSize!!.price + colorList[position].price
+
+                    Log.e(
+                        "color",
+                        "color else -> size list is empty or final color is null  \n " +
+                                "final size is null: ${finalSize == null} \n" +
+                                "size list is empty ${sizeList.isEmpty()}\n" +
+                                "selling price is : $sellingPrice\n" +
+                                "final size price is : ${finalSize!!.price}\n" +
+                                "color price is : ${colorList[position].price}\n" +
+                                "final price is : ${sellingPrice + finalSize!!.price + colorList[position].price}",
+                    )
+                }
+
+
                 viewBinding.newRate.text = finalPrice.toString()
+                Log.e("price", "final price after select color: $finalPrice")
+
             }
             else -> {
                 val action = ProductDetailsFragmentDirections.actionProductDetailsFragmentSelf(name)

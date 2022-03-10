@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.databinding.SingleProductImageSliderBinding
-import com.shopping.swagbag.products.ProductDetailModel
+import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.smarteist.autoimageslider.SliderViewAdapter
 
 class ProductImageSliderAdapter(

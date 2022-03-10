@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleCard10Binding
+import com.shopping.swagbag.products.product_details.ProductDetailModel
 
 class Card10Adapter(
     private val context: Context,
@@ -21,7 +21,7 @@ class Card10Adapter(
     inner class MyViewHolder(private val viewBinding: SingleCard10Binding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: ProductDetailModel.Related,position: Int, itemClick: RecycleViewItemClick){
+        fun bind(singleData: ProductDetailModel.Related, position: Int, itemClick: RecycleViewItemClick){
             with(viewBinding){
                 oldRate.paintFlags = oldRate.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 textView59.paintFlags = textView59.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG

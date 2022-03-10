@@ -23,7 +23,6 @@
                 android:id="@+id/sliderView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/product_details_image_height"
-
                 android:paddingHorizontal="@dimen/space_between_views"
                 android:paddingVertical="@dimen/dimen_15"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -251,7 +250,7 @@
 
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView2"
+                android:id="@+id/optionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
@@ -438,7 +437,7 @@
                 app:cardElevation="@dimen/dimen_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
+                app:layout_constraintTop_toBottomOf="@+id/optionCard">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -891,6 +890,14 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lytReview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/verify"
+                >
 
             <com.google.android.material.card.MaterialCardView
                 android:backgroundTint="@color/day_white_Raisin_Black"
@@ -903,7 +910,7 @@
                 app:cardElevation="@dimen/dimen_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/verify">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -1214,7 +1221,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
             <com.google.android.material.card.MaterialCardView
                 android:backgroundTint="@color/day_white_Raisin_Black"
                 android:id="@+id/review"
@@ -1305,6 +1311,8 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
                 android:id="@+id/textView89"
                 style="@style/sunflower_normal_14_grey"
@@ -1312,8 +1320,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_between_views"
                 android:text="View Similar"
-                app:layout_constraintStart_toStartOf="@+id/review"
-                app:layout_constraintTop_toBottomOf="@+id/review" />
+                app:layout_constraintStart_toStartOf="@+id/productDetails"
+                app:layout_constraintTop_toBottomOf="@+id/productDetails" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvViewSimilar"

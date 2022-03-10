@@ -1,10 +1,12 @@
 package com.shopping.swagbag.common.base
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -48,14 +50,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel, R : BaseRepository
 
     abstract fun getFragmentRepository(): R
 
-
     fun showLoading() {
-        showLoading(getString(com.shopping.swagbag.R.string.please_wait), getString(com.shopping.swagbag.R.string.loading))
-    }
-
-    fun showLoading(title: String, message: String) {
         val manager = requireActivity().supportFragmentManager
-        progressDialog = ProgressDialogFragment.newInstance(title, message)
+        progressDialog = ProgressDialogFragment.newInstance()
         progressDialog.isCancelable = false
         progressDialog.show(manager, "progress")
     }

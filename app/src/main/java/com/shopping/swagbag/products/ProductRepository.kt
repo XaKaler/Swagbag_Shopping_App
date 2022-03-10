@@ -1,7 +1,10 @@
 package com.shopping.swagbag.products
 
 import android.util.Log
+import com.google.gson.JsonArray
 import com.shopping.swagbag.common.base.BaseRepository
+import com.shopping.swagbag.user.shoppingbeg.withproduct.AddToCartProductOptionModel
+import org.json.JSONArray
 
 class ProductRepository(private val api: ProductApi) : BaseRepository() {
 
@@ -36,7 +39,7 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
         quantity: String,
         productId: String,
         userId: String,
-        option: String
+        option: JSONArray
     ) = safeApiCall { api.addToCart(quantity, productId, userId, option) }
 
     suspend fun deleteSingleCart(

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class ProductSearchModel(
     val result: List<Result>,
     val status: String, // success
-    val totalCount: Int // 3
+    val totalCount: Int // 1
 ) {
     data class Result(
         val active: Int, // 1
@@ -16,7 +16,7 @@ data class ProductSearchModel(
         val backorders: String,
         val batchno: String, // 232323
         val brand: Brand,
-        val category: Category,
+        val category: List<Category>,
         val cgst: String,
         @SerializedName("combo_products")
         val comboProducts: Any?, // null
@@ -42,19 +42,22 @@ data class ProductSearchModel(
         @SerializedName("manage_stock")
         val manageStock: Int, // 0
         @SerializedName("master_category")
-        val masterCategory: String, // 61bd25a466538a1c1f366ac3
+        val masterCategory: List<String>,
         val name: String, // Beige Pink Floral Mini Wrap Dress
         val options: List<Option>,
         @SerializedName("packaging_charge")
         val packagingCharge: String, // 40
-        val point: Int, // 20
+        val point: String, // 20
         @SerializedName("point_exp_date")
         val pointExpDate: String, // 2022-01-30T00:00:00.000Z
-        val price: Int, // 680
+        val price: Int, // 70
         @SerializedName("product_types")
         val productTypes: List<String>,
+        @SerializedName("return_day")
+        val returnDay: String, // 15
+        val returnable: String, // 1
         @SerializedName("selling_price")
-        val sellingPrice: Int, // 440
+        val sellingPrice: Int, // 65
         val sgst: String,
         @SerializedName("shelving_location")
         val shelvingLocation: String, // Zone 1
@@ -69,7 +72,7 @@ data class ProductSearchModel(
         @SerializedName("stock_qty")
         val stockQty: String, // 1000
         @SerializedName("sub_category")
-        val subCategory: String, // 618e6deeae7db56d2c44986c
+        val subCategory: List<String>,
         val tags: String, // Cloth, Floral
         @SerializedName("tax_status")
         val taxStatus: String,
@@ -92,8 +95,8 @@ data class ProductSearchModel(
 
         data class Category(
             @SerializedName("_id")
-            val id: String, // 618e6d31ae7db56d2c449812
-            val name: String // Ethnic Wear
+            val id: String, // 6214960e60550b55668de7b7
+            val name: String // Bath and Body
         )
 
         data class File(
@@ -112,13 +115,12 @@ data class ProductSearchModel(
             val originalname: String, // 4.4.jpg
             val serverSideEncryption: Any?, // null
             val size: Int, // 22661
-            val storageClass: String, // STANDARD
-            val versionId: Any? // null
+            val storageClass: String // STANDARD
         )
 
         data class Option(
             val name: String, // Color
-            val value: String // #d41367:500:SKU123:50, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
+            val value: String // #d41367:500:SKU123:51, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
         )
     }
 }

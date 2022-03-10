@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ProgressBar
+    <!--<ProgressBar
         android:id="@+id/progressBar5"
         android:indeterminateTint="@color/steel_teal"
         android:layout_width="@dimen/progress_bar_size"
@@ -36,7 +36,17 @@
         android:layout_marginTop="@dimen/dimen_5"
         app:layout_constraintEnd_toEndOf="@+id/progressBar5"
         app:layout_constraintStart_toStartOf="@+id/progressBar5"
-        app:layout_constraintTop_toBottomOf="@+id/tvProgress_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tvProgress_title" />-->
+
+    <ImageView
+        android:id="@+id/loaderImg"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/loading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
+import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
@@ -17,6 +18,7 @@ import com.shopping.swagbag.user.wishlist.withproduct.ClearWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.DeleteSingleWishModel
 import com.shopping.swagbag.user.wishlist.withproduct.GetWishlistModel
 import kotlinx.coroutines.launch
+import org.json.JSONArray
 
 class ProductViewModel(
     private val repository: ProductRepository
@@ -130,7 +132,7 @@ class ProductViewModel(
         quantity: String,
         productId: String,
         userId: String,
-        option: String
+        option: JSONArray
     ): LiveData<Resource<AddToCartModel>> {
         val result = MutableLiveData<Resource<AddToCartModel>>()
 

@@ -1,4 +1,4 @@
-package com.shopping.swagbag.products
+package com.shopping.swagbag.products.product_details
 
 
 import com.google.gson.annotations.SerializedName

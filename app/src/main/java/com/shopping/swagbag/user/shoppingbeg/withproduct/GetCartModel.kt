@@ -69,7 +69,7 @@ data class GetCartModel(
             val options: List<Option>,
             @SerializedName("packaging_charge")
             val packagingCharge: String, // 40
-            val point: Int, // 20
+            val point: String, // 20
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-01-30T00:00:00.000Z
             val price: Int, // 70
