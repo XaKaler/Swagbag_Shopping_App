@@ -39,7 +39,7 @@ class ShoppingBegProductAdapter(
                 off.text = discount
 
                 val quantityCount = "Qty: ${singleData.quantity}"
-                quantity.text = quantityCount
+                size.text = quantityCount
 
                 remove.setOnClickListener{
                     itemClick.onItemClickWithName("remove", position)

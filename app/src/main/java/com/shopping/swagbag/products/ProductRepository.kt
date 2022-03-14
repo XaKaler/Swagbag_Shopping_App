@@ -35,6 +35,11 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
 
     suspend fun getCart(userId: String) = safeApiCall { api.getCart(userId) }
 
+    suspend fun updateCart(
+        userId: String,
+    productId: String,
+    quantity: String) = safeApiCall { api.updateCart(productId, userId, quantity) }
+
     suspend fun addToCart(
         quantity: String,
         productId: String,

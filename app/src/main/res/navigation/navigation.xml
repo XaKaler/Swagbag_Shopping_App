@@ -340,6 +340,12 @@
         <action
             android:id="@+id/action_shoppingBegSelectAddressFragment_to_privacyPolicyFragment"
             app:destination="@id/privacyPolicyFragment" />
+        <action
+            android:id="@+id/action_shoppingBegSelectAddressFragment_to_addUserDetailsFragment"
+            app:destination="@id/addUserDetailsFragment" />
+        <action
+            android:id="@+id/action_shoppingBegSelectAddressFragment_to_editUserDetailFragment"
+            app:destination="@id/editUserDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewUserDetailsFragment"

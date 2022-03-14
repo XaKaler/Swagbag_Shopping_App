@@ -41,6 +41,7 @@ class ProductDetailsFragment : BaseFragment<
     private var finalPrice: Int = 0
     private var finalSize: ProductOptionModel? = null
     private var finalColor: ProductOptionModel? = null
+    private lateinit var jsArray: JSONArray
 
     private var sellingPrice by Delegates.notNull<Int>()
 
@@ -66,14 +67,6 @@ class ProductDetailsFragment : BaseFragment<
                 findNavController().navigate(R.id.action_productDetailsFragment_to_productDetailsEMIPlansFragment)
             }
 
-            wishlist.setOnClickListener {
-                findNavController().navigate(R.id.action_productDetailsFragment_to_wishlistWithProductFragment)
-            }
-
-            addToBeg.setOnClickListener {
-                addToCart()
-            }
-
             val args: ProductDetailsFragmentArgs by navArgs()
             val productsName = args.productName
             getProductDetails(productsName)
@@ -92,8 +85,8 @@ class ProductDetailsFragment : BaseFragment<
         Log.e("product", "Product name is : $productsName")
 
         viewModel
-            .productDetails("iffalcon-108-cm-43-inches-4k-ultra-hd-certified-android-smart-led-tv-43u61-black-2021-model")
-            .observe(viewLifecycleOwner, Observer {
+            .productDetails(productsName)
+            .observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Loading -> showLoading()
 
@@ -125,8 +118,10 @@ class ProductDetailsFragment : BaseFragment<
                             val review = it.value.review
                             if (review.isNotEmpty())
                                 setUserReview()
-                            else
+                            else {
                                 viewBinding.lytReview.visibility = View.GONE
+                                viewBinding.topRating.root.visibility = View.GONE
+                            }
 
                             // set product options like color or size
                             val optionsList = it.value.result.options
@@ -160,9 +155,14 @@ class ProductDetailsFragment : BaseFragment<
                         }
                     }
 
-                    is Resource.Failure -> Log.e("TAG", "getProductDetails: $it")
+                    is Resource.Failure -> {
+                        stopShowingLoading()
+                        toast("try again")
+                        findNavController().popBackStack()
+                        Log.e("TAG", "getProductDetails: $it")
+                    }
                 }
-            })
+            }
     }
 
     private fun stringToList(optionValue: String): List<ProductOptionModel> {
@@ -188,7 +188,7 @@ class ProductDetailsFragment : BaseFragment<
             if (option == ':') colonCount += 1
             else if (option == ',') {
                 colonCount = 0
-                list.add(ProductOptionModel(value, price.toInt(), sku, qty.toInt()))
+                list.add(ProductOptionModel(value, price, sku, qty))
 
                 Log.e("TAG", "option == ,: $list  ")
 
@@ -309,106 +309,158 @@ class ProductDetailsFragment : BaseFragment<
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.wishlist -> {
-                addToWishlist()
-            }
+            R.id.wishlist -> addToWishlist()
             R.id.addToBeg -> {
-                addToCart()
+                when (viewBinding.addToBeg.text) {
+                    "Go to beg" -> findNavController().navigate(R.id.action_global_shoppingBegWithProductFragment)
+                    else -> getUserSelectedOptions()
+                }
             }
 
-            R.id.imgBack -> findNavController().popBackStack()
-            R.id.imgBeg -> findNavController().navigate(R.id.action_productDetailsFragment_to_shoppingBegWithoutProductFragment)
+            R.id.imgWishlistBackground -> findNavController().navigate(R.id.action_global_wishlistWithProductFragment)
+            R.id.imgBackBackground -> findNavController().popBackStack()
+            R.id.imgBegBackground -> findNavController().navigate(R.id.action_global_shoppingBegWithProductFragment)
         }
     }
 
-    private fun addToCart() {
-        val appUtils = context?.let { AppUtils(it) }
-
+    private fun getUserSelectedOptions() {
         // add product size or color
-        val jsArray =  makeOptionList()
-
-        if (jsArray.length() != 0) {
-
-            Log.e("add to cart", "convert array to gson -> $jsArray")
-
-            if (appUtils!!.isUserLoggedIn()) {
-                viewModel
-                    .addToCart("1", product.result.id, appUtils.getUserId(), jsArray)
-                    .observe(
-                        viewLifecycleOwner
-                    ) {
-                        when (it) {
-                            is Resource.Loading -> showLoading()
-
-                            is Resource.Success -> {
-                                stopShowingLoading()
-
-                                toast(it.value.message)
-                            }
-
-                            is Resource.Failure -> Log.e("TAG", "addToCart: $it")
-                        }
-                    }
-            }
-        }
-    }
-
-    private fun makeOptionList(): JSONArray {
         val optionList = ArrayList<AddToCartProductOptionModel>()
 
-        if (sizeList.isEmpty() && colorList.isEmpty())
-        {
-            optionList.add(AddToCartProductOptionModel("", "", 0))
-        }
-        else if (sizeList.isEmpty() && colorList.isNotEmpty()) {
-            if (finalColor == null)
-                toast("Choose color")
-            else
-                optionList.add(
-                    AddToCartProductOptionModel(
-                        "Color",
-                        finalColor!!.value,
-                        finalColor!!.price
+        if (optionList.isEmpty()) {
+            if (sizeList.isEmpty() && colorList.isEmpty()) {
+                optionList.add(AddToCartProductOptionModel("", "", ""))
+            } else if (sizeList.isEmpty() && colorList.isNotEmpty()) {
+                if (finalColor == null)
+                    toast("Choose color")
+                else
+                    optionList.add(
+                        AddToCartProductOptionModel(
+                            "Color",
+                            finalColor!!.value,
+                            finalColor!!.price
+                        )
                     )
-                )
-        } else if (sizeList.isNotEmpty() && colorList.isEmpty()) {
-            if (finalSize == null)
-                toast("Choose size")
-            else
-                optionList.add(
-                    AddToCartProductOptionModel(
-                        "Size",
-                        finalSize!!.value,
-                        finalSize!!.price
+            } else if (sizeList.isNotEmpty() && colorList.isEmpty()) {
+                if (finalSize == null)
+                    toast("Choose size")
+                else
+                    optionList.add(
+                        AddToCartProductOptionModel(
+                            "Size",
+                            finalSize!!.value,
+                            finalSize!!.price
+                        )
                     )
-                )
-        } else if (sizeList.isNotEmpty() || colorList.isNotEmpty()) {
-            // add size
-            if (finalSize == null)
-                toast("Choose size")
-            else
-                optionList.add(
-                    AddToCartProductOptionModel(
-                        "Size",
-                        finalSize!!.value,
-                        finalSize!!.price
+            } else if (sizeList.isNotEmpty() || colorList.isNotEmpty()) {
+                // add size
+                if (finalSize == null)
+                    toast("Choose size")
+                else
+                    optionList.add(
+                        AddToCartProductOptionModel(
+                            "Size",
+                            finalSize!!.value,
+                            finalSize!!.price
+                        )
                     )
-                )
 
-            // add color
-            if (finalColor == null)
-                toast("Choose color")
-            else
-                optionList.add(
-                    AddToCartProductOptionModel(
-                        "Color",
-                        finalColor!!.value,
-                        finalColor!!.price
+                // add color
+                if (finalColor == null)
+                    toast("Choose color")
+                else
+                    optionList.add(
+                        AddToCartProductOptionModel(
+                            "Color",
+                            finalColor!!.value,
+                            finalColor!!.price
+                        )
                     )
-                )
+            }
+            jsArray = JSONArray(optionList)
+        } else {
+            checkCart()
         }
+    }
 
-        return JSONArray(optionList)
+    private fun checkCart() {
+        val isUserLogIn = context?.let { AppUtils(it).isUserLoggedIn() }
+        val userId = context?.let { AppUtils(it).getUserId() }
+
+        if (isUserLogIn == true && userId != null) {
+            viewModel.getCart(userId).observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Loading -> showLoading()
+
+                    is Resource.Success -> {
+                        stopShowingLoading()
+
+                        val cartProductList = it.value.result
+
+                        for (singleProduct in cartProductList) {
+                            if (singleProduct.id == product.result.id)
+                                updateCart(userId, singleProduct.quantity)
+                        }
+                        addToCart(userId)
+                    }
+                    is Resource.Failure -> {
+                        stopShowingLoading()
+                        toast("try again")
+                        Log.e("TAG", "checkCart: $it")
+                    }
+                }
+            }
+        }
+    }
+
+    private fun updateCart(userId: String, quantity: Int) {
+
+        val productId = product.result.id
+        val qty = quantity + 1
+
+        viewModel.updateCart(userId, productId, qty.toString()).observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Loading -> showLoading()
+
+                is Resource.Success -> {
+                    stopShowingLoading()
+                    toast(it.value.message)
+                    viewBinding.addToBeg.text = "Go to beg"
+                }
+
+                is Resource.Failure -> {
+                    stopShowingLoading()
+                    toast("try again")
+                    Log.e("cart", "updateCart: $it")
+                }
+            }
+        }
+    }
+
+    private fun addToCart(userId: String) {
+
+        Log.e("add to cart", "convert array to gson -> $jsArray")
+
+        viewModel
+            .addToCart("1", product.result.id, userId, jsArray)
+            .observe(
+                viewLifecycleOwner
+            ) {
+                when (it) {
+                    is Resource.Loading -> showLoading()
+
+                    is Resource.Success -> {
+                        stopShowingLoading()
+
+                        //set text on button
+                        viewBinding.addToBeg.text = "Go to beg"
+
+                        toast(it.value.message)
+                    }
+
+                    is Resource.Failure -> Log.e("TAG", "addToCart: $it")
+                }
+            }
     }
 
     private fun addToWishlist() {
@@ -456,7 +508,7 @@ class ProductDetailsFragment : BaseFragment<
 
                     //set new price
                     if (colorList.isEmpty() || finalColor == null) {
-                        finalPrice = sellingPrice + sizeList[position].price
+                        finalPrice = sellingPrice + sizeList[position].price.toInt()
 
                         Log.e(
                             "size",
@@ -465,11 +517,11 @@ class ProductDetailsFragment : BaseFragment<
                                     "color list is empty ${colorList.isEmpty()}\n" +
                                     "selling price is : $sellingPrice\n" +
                                     "size price is : ${sizeList[position].price}\n" +
-                                    "final price is : ${sellingPrice + sizeList[position].price}",
+                                    "final price is : ${sellingPrice + sizeList[position].price.toInt()}",
                         )
 
                     } else {
-                        finalPrice = sellingPrice + sizeList[position].price + finalColor!!.price
+                        finalPrice = sellingPrice + sizeList[position].price.toInt() + finalColor!!.price.toInt()
 
                         Log.e(
                             "size",
@@ -479,7 +531,7 @@ class ProductDetailsFragment : BaseFragment<
                                     "selling price is : $sellingPrice\n" +
                                     "final color price is : ${finalColor!!.price}\n" +
                                     "size price is : ${sizeList[position].price}\n" +
-                                    "final price is : ${sellingPrice + sizeList[position].price + finalColor!!.price}",
+                                    "final price is : ${sellingPrice + sizeList[position].price.toInt() + finalColor!!.price.toInt()}",
                         )
                     }
 
@@ -495,8 +547,7 @@ class ProductDetailsFragment : BaseFragment<
                 finalColor = colorList[position]
 
                 if (finalSize == null || sizeList.isEmpty()) {
-                    finalPrice = sellingPrice + colorList[position].price
-
+                    finalPrice = sellingPrice + colorList[position].price.toInt().toInt()
                     Log.e(
                         "color",
                         "size list is empty or final color is null  \n " +
@@ -504,11 +555,11 @@ class ProductDetailsFragment : BaseFragment<
                                 "size list is empty ${sizeList.isEmpty()}\n" +
                                 "selling price is : $sellingPrice\n" +
                                 "color price is : ${colorList[position].price}\n" +
-                                "final price is : ${sellingPrice + colorList[position].price}",
+                                "final price is : ${sellingPrice + colorList[position].price.toInt()}",
                     )
 
                 } else {
-                    finalPrice = sellingPrice + finalSize!!.price + colorList[position].price
+                    finalPrice = sellingPrice + finalSize!!.price.toInt() + colorList[position].price.toInt()
 
                     Log.e(
                         "color",
@@ -518,7 +569,7 @@ class ProductDetailsFragment : BaseFragment<
                                 "selling price is : $sellingPrice\n" +
                                 "final size price is : ${finalSize!!.price}\n" +
                                 "color price is : ${colorList[position].price}\n" +
-                                "final price is : ${sellingPrice + finalSize!!.price + colorList[position].price}",
+                                "final price is : ${sellingPrice + finalSize!!.price.toInt() + colorList[position].price.toInt() }",
                     )
                 }
 

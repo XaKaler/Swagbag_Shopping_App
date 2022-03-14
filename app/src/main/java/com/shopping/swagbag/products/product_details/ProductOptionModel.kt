@@ -2,7 +2,7 @@ package com.shopping.swagbag.products.product_details
 
 data class ProductOptionModel(
     val value: String,
-    val price: Int,
+    val price: String,
     val sku: String,
-    val qty: Int,
+    val qty: String,
 )

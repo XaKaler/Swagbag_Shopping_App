@@ -11,13 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.shopping.swagbag.MainActivity
-import com.shopping.swagbag.R
 import com.shopping.swagbag.category.CategoryToBegModel
 import com.shopping.swagbag.common.GridSpaceItemDecoration
-import com.shopping.swagbag.common.RecycleItemClickListener
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.AllTimeSliderAdapter
 import com.shopping.swagbag.common.adapter.AutoImageSliderAdapter
@@ -37,9 +33,6 @@ import com.shopping.swagbag.service.Resource
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.lang.reflect.Type
 
 class Home :
     BaseFragment<FragmentHomeBinding, ProductViewModel, ProductRepository>(FragmentHomeBinding::inflate),

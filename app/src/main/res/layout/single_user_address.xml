@@ -57,7 +57,7 @@
 
 
             <TextView
-                android:id="@+id/btnCancel"
+                android:id="@+id/btnEdit"
                 style="@style/roboto_medium_12_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -65,7 +65,7 @@
                 android:background="@drawable/rec_outline_5_light"
                 android:gravity="center"
                 android:paddingVertical="@dimen/dimen_12"
-                android:text="Change or add address"
+                android:text="edit address"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/tiffany_blue"

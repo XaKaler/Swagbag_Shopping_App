@@ -25,9 +25,9 @@ class WishlistWithProductAdapter(
         ) {
             with(viewBinding) {
                 // set image
-                Glide.with(context)
+                /*Glide.with(context)
                     .load(singleData.product.file[0].location)
-                    .into(productImg)
+                    .into(productImg)*/
 
                 // set text
                 productName.text = singleData.product.name

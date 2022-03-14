@@ -4,6 +4,7 @@ import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
+import com.shopping.swagbag.products.product_details.UpdateCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
@@ -15,7 +16,7 @@ import org.json.JSONArray
 import retrofit2.http.*
 
 interface ProductApi {
-
+    @Headers("Content-Type: text/html")
     @GET("product-details")
     suspend fun productDetails(
         @Query("slug")slug: String
@@ -59,6 +60,14 @@ interface ProductApi {
     suspend fun getCart(
         @Field("id") userId: String
     ): GetCartModel
+
+    @FormUrlEncoded
+    @POST("update-cart")
+    suspend fun updateCart(
+        @Field("id")productId: String,
+        @Field("userid")userId: String,
+        @Field("quantity")quantity: String
+    ): UpdateCartModel
 
     @FormUrlEncoded
     @POST("delete-cart")

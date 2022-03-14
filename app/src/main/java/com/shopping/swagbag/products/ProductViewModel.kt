@@ -9,6 +9,7 @@ import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
+import com.shopping.swagbag.products.product_details.UpdateCartModel
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
@@ -125,6 +126,21 @@ class ProductViewModel(
             result.value = Resource.Loading
             result.value = repository.getCart(userId)
         }
+        return result
+    }
+
+    fun updateCart(
+        userId: String,
+        productId: String,
+        quantity: String
+    ): LiveData<Resource<UpdateCartModel>>{
+        val result = MutableLiveData<Resource<UpdateCartModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.updateCart(userId, productId, quantity)
+        }
+
         return result
     }
 

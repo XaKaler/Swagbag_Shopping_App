@@ -19,119 +19,126 @@ data class ProductDetailModel(
         val addedBy: String, // 5fe463f5a9e14206002dd63e
         val attribute: String,
         val backorders: String,
-        val batchno: String,
+        val batchno: String, // 232323
         val brand: Brand,
         val category: List<Category>,
         val cgst: String,
         @SerializedName("combo_products")
         val comboProducts: Any?, // null
-        val commission: String,
+        val commission: String, // 10
         @SerializedName("created_date")
-        val createdDate: String, // 2021-12-12T08:19:07.248Z
+        val createdDate: String, // 2021-12-27T05:54:26.787Z
         val cuisine: Any?, // null
-        val deal: Int, // 0
+        val deal: Int, // 1
         val deleted: Int, // 0
-        val desc: String,
+        val desc: String, // <div>Wrap yourself in the dreamiest spring with this perky beige and pink mini dress. Tailored in a wrap design, the dress features an all-over floral print and cutesy balloon sleeves.</div><div><br></div><div>Style Tip: Pair the dress with a hairband and strappy flats.</div><div><br></div><div><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Dispatch: Within&nbsp;</span><span id="shipHours" style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">48-72</span><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Hours</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><b style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">*Note:</b><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Delivery of orders may take longer due to region-wise lockdown and diversion of routes.</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Return/Exchange: If you are not completely satisfied with your purchase, simply select the option of return/exchange within 15 days of receiving your order from your order details page and we will process your return, no questions asked.</span><br></div>
         @SerializedName("discounted_price")
         val discountedPrice: Any?, // null
         @SerializedName("end_date")
-        val endDate: String, // 2021-12-12T00:00:00.000Z
+        val endDate: String, // 2021-12-27T00:00:00.000Z
         val express: Boolean, // false
-        val featured: Int, // 0
+        val featured: Int, // 1
         val `file`: List<File>,
-        val height: String,
+        val height: String, // 1
         @SerializedName("_id")
-        val id: String, // 61b839ef20808a1790d9b1b0
+        val id: String, // 61c968b2639b7b51637c5da2
         val igst: String,
-        val length: String,
+        val length: String, // 1
         @SerializedName("manage_stock")
         val manageStock: Int, // 0
         @SerializedName("master_category")
         val masterCategory: List<String>,
-        val name: String, // soap
+        val name: String, // Beige Pink Floral Mini Wrap Dress
         val options: List<Option>,
         @SerializedName("packaging_charge")
-        val packagingCharge: String,
-        val point: Int, // 0
+        val packagingCharge: String, // 40
+        val point: String, // 20
         @SerializedName("point_exp_date")
-        val pointExpDate: String, // 2025-12-14T00:00:00.000Z
-        val price: Int, // 500
+        val pointExpDate: String, // 2022-01-30T00:00:00.000Z
+        val price: Int, // 70
         @SerializedName("product_types")
         val productTypes: List<String>,
         @SerializedName("return_day")
-        val returnDay: String,
-        val returnable: String,
+        val returnDay: String, // 15
+        val returnable: String, // 1
         @SerializedName("selling_price")
-        val sellingPrice: Int, // 455
+        val sellingPrice: Int, // 65
         val sgst: String,
         @SerializedName("shelving_location")
-        val shelvingLocation: String,
+        val shelvingLocation: String, // Zone 1
         @SerializedName("short_desc")
-        val shortDesc: String,
-        val sku: String,
-        val slug: String, // soap
+        val shortDesc: String, // Beige Pink Floral Mini Wrap Dress
+        val sku: String, // IT-3699
+        val slug: String, // beige-pink-floral-mini-wrap-dress
         @SerializedName("slug_history")
         val slugHistory: List<String>,
         @SerializedName("start_date")
-        val startDate: String, // 2021-12-12T00:00:00.000Z
+        val startDate: String, // 2021-12-27T00:00:00.000Z
         @SerializedName("stock_qty")
-        val stockQty: String, // 12
+        val stockQty: String, // 1000
         @SerializedName("sub_category")
         val subCategory: List<SubCategory>,
-        val tags: String,
+        val tags: String, // Cloth, Floral
         @SerializedName("tax_status")
         val taxStatus: String,
         val threshold: String,
         @SerializedName("update_date")
-        val updateDate: String, // 2021-12-12T08:19:07.248Z
+        val updateDate: String, // 2021-12-27T05:54:26.787Z
         @SerializedName("__v")
         val v: Int, // 0
-        val vendor: Any?, // null
+        val vendor: Vendor,
         @SerializedName("video_url")
-        val videoUrl: String,
-        val weight: String,
-        val width: String
+        val videoUrl: String, // https://www.youtube.com/embed/Sk0dy_wbXSQ
+        val weight: String, // 1
+        val width: String // 1
     ) {
         data class Brand(
             @SerializedName("_id")
-            val id: String, // 6148c87ee40e5da07a1d9eed
-            val name: String // Brand
+            val id: String, // 61bb7f2166538a1c1f36671d
+            val name: String // FABELAB
         )
 
         data class Category(
             @SerializedName("_id")
-            val id: String, // 61bb805e66538a1c1f366787
-            val name: String // Baby Bath Essentials
+            val id: String, // 6214960e60550b55668de7b7
+            val name: String // Bath and Body
         )
 
         data class File(
             val acl: String, // public-read
             val bucket: String, // swagbag-space
             val contentDisposition: Any?, // null
+            val contentEncoding: Any?, // null
             val contentType: String, // application/octet-stream
             val encoding: String, // 7bit
-            val etag: String, // "92034dbbef5a465219733d4d5c0f94a1"
+            val etag: String, // "f2c83d741aeee55d7685dc63177917d0"
             val fieldname: String, // upload
-            val key: String, // 1639933886951seijh.webp
-            val location: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1639933886951seijh.webp
+            val key: String, // 1640589488850j4byg.jpeg
+            val location: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1640589488850j4byg.jpeg
             val metadata: Any?, // null
-            val mimetype: String, // image/webp
-            val originalname: String, // product.webp
+            val mimetype: String, // image/jpeg
+            val originalname: String, // 4.4.jpg
             val serverSideEncryption: Any?, // null
-            val size: Int, // 3396
-            val storageClass: String, // STANDARD
-            val versionId: Any? // null
+            val size: Int, // 22661
+            val storageClass: String // STANDARD
         )
 
         data class Option(
-            val name: String, // Size
-            val value: String // L:20:A1423:10, XL:10:B1423:5
+            val name: String, // Color
+            val value: String // #d41367:500:SKU123:51, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
         )
 
         data class SubCategory(
             @SerializedName("_id")
-            val id: String, // 61bb810866538a1c1f3667c6
-            val name: String // Baby Wash
+            val id: String, // 62149a7b60550b55668de8d0
+            val name: String // Soap Bar
+        )
+
+        data class Vendor(
+            @SerializedName("full_name")
+            val fullName: String, // Khadi Organique
+            @SerializedName("_id")
+            val id: String // 61fb87943669ad2911a26008
         )
     }
 
@@ -139,121 +146,143 @@ data class ProductDetailModel(
         val active: Int, // 1
         @SerializedName("added_by")
         val addedBy: String, // 5fe463f5a9e14206002dd63e
-        val attribute: String, // Color: RED, Black, Green | RAM: 1GB, 2GB
+        val attribute: String,
         val backorders: String,
-        val batchno: String,
+        val batchno: String, // 232323
         val brand: Brand,
         val category: List<Category>,
         val cgst: String,
         @SerializedName("combo_products")
         val comboProducts: Any?, // null
-        val commission: String,
+        val commission: String, // 10
         @SerializedName("created_date")
-        val createdDate: String, // 2021-09-20T17:50:32.475Z
+        val createdDate: String, // 2021-12-27T05:54:26.787Z
         val cuisine: Any?, // null
-        val deal: Int, // 0
+        val deal: Int, // 1
         val deleted: Int, // 0
-        val desc: String, // <ul class="a-unordered-list a-vertical a-spacing-mini" style="margin-right: 0px; margin-bottom: 0px; margin-left: 18px; color: rgb(15, 17, 17); padding: 0px; font-family: &quot;Amazon Ember&quot;, Arial, sans-serif; font-size: 14px;"><li style="list-style: disc; overflow-wrap: break-word; margin: 0px;"><span class="a-list-item">Resolution: 4K Ultra HD (3840 x 2160) | Refresh Rate: 60 Hertz</span></li><li style="list-style: disc; overflow-wrap: break-word; margin: 0px;"><span class="a-list-item">Connectivity : 3 HDMI ports to connect set top box, Blue Ray players | 1 USB ports to connect hard drives and other USB devices</span></li><li style="list-style: disc; overflow-wrap: break-word; margin: 0px;"><span class="a-list-item">Sound: 24 Watts Output | Dolby Audio Power Speakers | Surround Virtualizer</span></li><li style="list-style: disc; overflow-wrap: break-word; margin: 0px;"><span class="a-list-item">Smart TV Features : Google Assistant | 4K Android TV + HDR 10 | AI-IN | T-cast | Bluetooth 5.0</span></li><li style="list-style: disc; overflow-wrap: break-word; margin: 0px;"><span class="a-list-item">Display : A+ Grade Panel | UHD | HDR 10 | Full Screen | Slim Design</span></li><li style="list-style: disc; overflow-wrap: break-word; margin: 0px;"><span class="a-list-item">Warranty Information : 1 Year comprehensive warranty provided by TCL from date of purchase</span></li><li style="list-style: disc; overflow-wrap: break-word; margin: 0px;"><span class="a-list-item">Easy returns: This product is eligible for replacement within 10 days of delivery in case of any product defects, damage or features not matching the description provided</span></li></ul>
+        val desc: String, // <div>Wrap yourself in the dreamiest spring with this perky beige and pink mini dress. Tailored in a wrap design, the dress features an all-over floral print and cutesy balloon sleeves.</div><div><br></div><div>Style Tip: Pair the dress with a hairband and strappy flats.</div><div><br></div><div><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Dispatch: Within&nbsp;</span><span id="shipHours" style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">48-72</span><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Hours</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><b style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">*Note:</b><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Delivery of orders may take longer due to region-wise lockdown and diversion of routes.</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Return/Exchange: If you are not completely satisfied with your purchase, simply select the option of return/exchange within 15 days of receiving your order from your order details page and we will process your return, no questions asked.</span><br></div>
         @SerializedName("discounted_price")
         val discountedPrice: Any?, // null
         @SerializedName("end_date")
-        val endDate: String, // 2021-09-20T00:00:00.000Z
+        val endDate: String, // 2021-12-27T00:00:00.000Z
         val express: Boolean, // false
-        val featured: Int, // 0
+        val featured: Int, // 1
         val `file`: List<File>,
-        val height: String,
+        val height: String, // 1
         @SerializedName("_id")
-        val id: String, // 6148c9ebaaa0e6b191f8bf8a
+        val id: String, // 61c968b2639b7b51637c5da2
         val igst: String,
-        val length: String,
+        val length: String, // 1
         @SerializedName("manage_stock")
         val manageStock: Int, // 0
         @SerializedName("master_category")
         val masterCategory: List<String>,
-        val name: String, // (s) iffalcon 108 cm (43 inches) 4k ultra hd certified android smart led tv 43u61 (black) (2021 model)
+        val name: String, // Beige Pink Floral Mini Wrap Dress
         val options: List<Option>,
         @SerializedName("packaging_charge")
-        val packagingCharge: String,
-        val point: Int, // 0
+        val packagingCharge: String, // 40
+        val point: String, // 20
         @SerializedName("point_exp_date")
-        val pointExpDate: String, // 2021-09-20T00:00:00.000Z
-        val price: Int, // 3990
+        val pointExpDate: String, // 2022-01-30T00:00:00.000Z
+        val price: Int, // 70
         @SerializedName("product_types")
-        val productTypes: List<Any>,
+        val productTypes: List<ProductType>,
         @SerializedName("return_day")
-        val returnDay: String,
-        val returnable: String,
+        val returnDay: String, // 15
+        val returnable: String, // 1
         @SerializedName("selling_price")
-        val sellingPrice: Int, // 23990
+        val sellingPrice: Int, // 65
         val sgst: String,
         @SerializedName("shelving_location")
-        val shelvingLocation: String,
+        val shelvingLocation: String, // Zone 1
         @SerializedName("short_desc")
-        val shortDesc: String, // iFFALCON 4K HDR TV reproduce in stunning details all shades of light, natural colors for a truly immersive viewing experience via 3,840 x 2,160 pixels (4 x the number of pixels on Full HD TVs). Also HDR 10 adjusts the content in dynamic scene-by- scene way for the optimum representation of contrast with wider color gamut. The TV will present you a perfect picture quality in every scene.
-        val sku: String,
-        val slug: String, // iffalcon-108-cm-43-inches-4k-ultra-hd-certified-android-smart-led-tv-43u61-black-2021-model
+        val shortDesc: String, // Beige Pink Floral Mini Wrap Dress
+        val sku: String, // IT-3699
+        val slug: String, // beige-pink-floral-mini-wrap-dress
         @SerializedName("slug_history")
         val slugHistory: List<String>,
         @SerializedName("start_date")
-        val startDate: String, // 2021-09-20T00:00:00.000Z
+        val startDate: String, // 2021-12-27T00:00:00.000Z
         @SerializedName("stock_qty")
-        val stockQty: String, // 12
+        val stockQty: String, // 1000
         @SerializedName("sub_category")
         val subCategory: List<SubCategory>,
-        val tags: String, // 4K, HDR, Dolby, Android
+        val tags: String, // Cloth, Floral
         @SerializedName("tax_status")
         val taxStatus: String,
         val threshold: String,
         @SerializedName("update_date")
-        val updateDate: String, // 2021-09-20T17:50:32.475Z
+        val updateDate: String, // 2021-12-27T05:54:26.787Z
         @SerializedName("__v")
         val v: Int, // 0
-        val vendor: Any?, // null
+        val vendor: Vendor,
         @SerializedName("video_url")
-        val videoUrl: String,
-        val weight: String,
-        val width: String
+        val videoUrl: String, // https://www.youtube.com/embed/Sk0dy_wbXSQ
+        val weight: String, // 1
+        val width: String // 1
     ) {
         data class Brand(
             @SerializedName("_id")
-            val id: String, // 6148c87ee40e5da07a1d9eed
-            val name: String // Brand
+            val id: String, // 61bb7f2166538a1c1f36671d
+            val name: String // FABELAB
         )
 
         data class Category(
             @SerializedName("_id")
-            val id: String, // 618e6d0bae7db56d2c449806
-            val name: String // Men's Wear
+            val id: String, // 6214960e60550b55668de7b7
+            val name: String // Bath and Body
         )
 
         data class File(
             val acl: String, // public-read
             val bucket: String, // swagbag-space
             val contentDisposition: Any?, // null
+            val contentEncoding: Any?, // null
             val contentType: String, // application/octet-stream
             val encoding: String, // 7bit
-            val etag: String, // "92034dbbef5a465219733d4d5c0f94a1"
+            val etag: String, // "f2c83d741aeee55d7685dc63177917d0"
             val fieldname: String, // upload
-            val key: String, // 1639933803507muv20.webp
-            val location: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1639933803507muv20.webp
+            val key: String, // 1640589488850j4byg.jpeg
+            val location: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1640589488850j4byg.jpeg
             val metadata: Any?, // null
-            val mimetype: String, // image/webp
-            val originalname: String, // product.webp
+            val mimetype: String, // image/jpeg
+            val originalname: String, // 4.4.jpg
             val serverSideEncryption: Any?, // null
-            val size: Int, // 3396
-            val storageClass: String, // STANDARD
-            val versionId: Any? // null
+            val size: Int, // 22661
+            val storageClass: String // STANDARD
         )
 
         data class Option(
-            val name: String, // Size
-            val value: String // L:20:A12A3:10, XL:10:B1B23:5
+            val name: String, // Color
+            val value: String // #d41367:500:SKU123:51, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
+        )
+
+        data class ProductType(
+            val active: Int, // 1
+            @SerializedName("created_date")
+            val createdDate: String, // 2022-02-10T10:56:28.605Z
+            val deleted: Int, // 0
+            val `file`: String, // https://swagbag.sgp1.digitaloceanspaces.com/1644492222199rmye9.png
+            @SerializedName("_id")
+            val id: String, // 6204f5beafd461425c9ff207
+            val name: String, // Organic
+            @SerializedName("update_date")
+            val updateDate: String, // 2022-02-10T10:56:28.605Z
+            @SerializedName("__v")
+            val v: Int // 0
         )
 
         data class SubCategory(
             @SerializedName("_id")
-            val id: String, // 618e6d70ae7db56d2c44982b
-            val name: String // Kurta
+            val id: String, // 62149a7b60550b55668de8d0
+            val name: String // Soap Bar
+        )
+
+        data class Vendor(
+            @SerializedName("full_name")
+            val fullName: String, // Khadi Organique
+            @SerializedName("_id")
+            val id: String // 61fb87943669ad2911a26008
         )
     }
 }

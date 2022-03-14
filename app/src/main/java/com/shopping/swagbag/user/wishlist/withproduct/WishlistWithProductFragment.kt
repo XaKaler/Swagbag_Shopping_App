@@ -19,6 +19,7 @@ import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
+import org.json.JSONArray
 
 
 class WishlistWithProductFragment : BaseFragment<
@@ -215,8 +216,6 @@ class WishlistWithProductFragment : BaseFragment<
                                 showEmptyWishlist()
                             }
                             Log.e("wishlist", "removeFromWishlist: $allDataList")
-
-
                         }
 
                         is Resource.Failure -> Log.e("TAG", "removeFromWishlist: $it")
@@ -226,8 +225,29 @@ class WishlistWithProductFragment : BaseFragment<
     }
 
     private fun addToBeg(position: Int) {
+        val isUserLogIn = context?.let { AppUtils(it).isUserLoggedIn() }
+        val userId = context?.let { AppUtils(it).getUserId() }
 
+        val jsonArray = JSONArray()
+
+        if (isUserLogIn == true && userId != null) {
+            viewModel.addToCart("1", wistListProduct.result[position].product.id, userId, jsonArray)
+                .observe(viewLifecycleOwner) {
+                    when (it) {
+                        is Resource.Loading -> showLoading()
+
+                        is Resource.Success -> {
+                            stopShowingLoading()
+                            toast(it.value.message)
+                            removeFromWishlist(position)
+                        }
+
+                        is Resource.Failure -> {
+                            stopShowingLoading()
+                            toast("try again!")
+                        }
+                    }
+                }
+        }
     }
-
-
 }
