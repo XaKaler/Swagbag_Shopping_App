@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
@@ -17,6 +18,7 @@ import com.shopping.swagbag.user.auth.UserApi
 import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.user.order.user_details.AllAddressModel
+import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.UserAddressAdapter
 import com.shopping.swagbag.utils.AppUtils
 
@@ -41,7 +43,7 @@ class ShoppingBegSelectAddressFragment :
 
     private fun initViews() {
         with(viewBinding) {
-            btnContinue.setOnClickListener(this@ShoppingBegSelectAddressFragment)
+            btnContinue.setOnClickListener{moveToPayment()}
             termsOfUse.setOnClickListener(this@ShoppingBegSelectAddressFragment)
             privacyPolicy.setOnClickListener(this@ShoppingBegSelectAddressFragment)
             btnAddAddress.setOnClickListener { findNavController().navigate(R.id.action_shoppingBegSelectAddressFragment_to_addUserDetailsFragment) }
@@ -52,6 +54,15 @@ class ShoppingBegSelectAddressFragment :
         setToolbar()
 
         setDeliveryEstimate()
+    }
+
+    private fun moveToPayment() {
+        // send cart data that we get from cart screen
+        val args: ShoppingBegSelectAddressFragmentArgs by navArgs()
+        val cartData: GetCartModel = args.cartData
+
+        val action = ShoppingBegSelectAddressFragmentDirections.actionShoppingBegSelectAddressFragmentToPaymentModeFragment(cartData, selectedAddress)
+        findNavController().navigate(action)
     }
 
     private fun getAddresses() {
@@ -122,7 +133,6 @@ class ShoppingBegSelectAddressFragment :
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.termsOfUse -> findNavController().navigate(R.id.action_shoppingBegSelectAddressFragment_to_termsOfUsesFragment)
-            R.id.btnContinue -> findNavController().navigate(R.id.action_shoppingBegSelectAddressFragment_to_paymentModeFragment)
             R.id.privacyPolicy -> findNavController().navigate(R.id.action_shoppingBegSelectAddressFragment_to_privacyPolicyFragment)
         }
     }

@@ -346,6 +346,9 @@
         <action
             android:id="@+id/action_shoppingBegSelectAddressFragment_to_editUserDetailFragment"
             app:destination="@id/editUserDetailFragment" />
+        <argument
+            android:name="CartData"
+            app:argType="com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel" />
     </fragment>
     <fragment
         android:id="@+id/viewUserDetailsFragment"
@@ -524,6 +527,12 @@
         <action
             android:id="@+id/action_paymentModeFragment_to_viewOrderDetails"
             app:destination="@id/viewOrderDetails" />
+        <argument
+            android:name="CartData"
+            app:argType="com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel" />
+        <argument
+            android:name="Address"
+            app:argType="com.shopping.swagbag.user.order.user_details.AllAddressModel$Result" />
     </fragment>
     <fragment
         android:id="@+id/orderConfirmedFragment"

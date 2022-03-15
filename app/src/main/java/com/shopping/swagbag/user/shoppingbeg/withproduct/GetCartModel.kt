@@ -1,12 +1,17 @@
 package com.shopping.swagbag.user.shoppingbeg.withproduct
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
+@Parcelize
 data class GetCartModel(
     val result: List<Result>,
     val status: String // success
-) {
+):Parcelable {
+    @Parcelize
     data class Result(
         @SerializedName("created_date")
         val createdDate: String, // 2022-03-03T08:11:30.415Z
@@ -23,13 +28,15 @@ data class GetCartModel(
         val user: String, // 61e82a7acf130b2978d05815
         @SerializedName("__v")
         val v: Int // 0
-    ) {
+    ):Parcelable {
+        @Parcelize
         data class Option(
             val key: String, // Color
             val price: String, // 500
             val value: String // #d41367
-        )
+        ):Parcelable
 
+        @Parcelize
         data class Product(
             val active: Int, // 1
             @SerializedName("added_by")
@@ -41,16 +48,16 @@ data class GetCartModel(
             val category: List<String>,
             val cgst: String,
             @SerializedName("combo_products")
-            val comboProducts: Any?, // null
+            val comboProducts: @RawValue Any? = null, // null
             val commission: String, // 10
             @SerializedName("created_date")
             val createdDate: String, // 2021-12-27T05:54:26.787Z
-            val cuisine: Any?, // null
+            val cuisine:@RawValue Any? = null, // null
             val deal: Int, // 1
             val deleted: Int, // 0
             val desc: String, // <div>Wrap yourself in the dreamiest spring with this perky beige and pink mini dress. Tailored in a wrap design, the dress features an all-over floral print and cutesy balloon sleeves.</div><div><br></div><div>Style Tip: Pair the dress with a hairband and strappy flats.</div><div><br></div><div><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Dispatch: Within&nbsp;</span><span id="shipHours" style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">48-72</span><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Hours</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><b style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">*Note:</b><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Delivery of orders may take longer due to region-wise lockdown and diversion of routes.</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Return/Exchange: If you are not completely satisfied with your purchase, simply select the option of return/exchange within 15 days of receiving your order from your order details page and we will process your return, no questions asked.</span><br></div>
             @SerializedName("discounted_price")
-            val discountedPrice: Any?, // null
+            val discountedPrice: @RawValue Any? = null, // null
             @SerializedName("end_date")
             val endDate: String, // 2021-12-27T00:00:00.000Z
             val express: Boolean, // false
@@ -108,30 +115,32 @@ data class GetCartModel(
             val videoUrl: String, // https://www.youtube.com/embed/Sk0dy_wbXSQ
             val weight: String, // 1
             val width: String // 1
-        ) {
+        ):Parcelable {
+            @Parcelize
             data class File(
                 val acl: String, // public-read
                 val bucket: String, // swagbag-space
-                val contentDisposition: Any?, // null
-                val contentEncoding: Any?, // null
+                val contentDisposition:@RawValue Any? = null, // null
+                val contentEncoding:@RawValue Any? = null, // null
                 val contentType: String, // application/octet-stream
                 val encoding: String, // 7bit
                 val etag: String, // "f2c83d741aeee55d7685dc63177917d0"
                 val fieldname: String, // upload
                 val key: String, // 1640589488850j4byg.jpeg
                 val location: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1640589488850j4byg.jpeg
-                val metadata: Any?, // null
+                val metadata:@RawValue Any? = null, // null
                 val mimetype: String, // image/jpeg
                 val originalname: String, // 4.4.jpg
-                val serverSideEncryption: Any?, // null
+                val serverSideEncryption:@RawValue Any? = null, // null
                 val size: Int, // 22661
                 val storageClass: String // STANDARD
-            )
+            ):Parcelable
 
+            @Parcelize
             data class Option(
                 val name: String, // Color
                 val value: String // #d41367:500:SKU123:51, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
-            )
+            ):Parcelable
         }
     }
 }

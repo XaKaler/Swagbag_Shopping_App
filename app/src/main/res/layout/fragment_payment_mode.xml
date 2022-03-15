@@ -121,344 +121,29 @@
                     android:layout_height="match_parent"
                     android:padding="@dimen/screen_horizontal_padding">
 
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cashOnDelivery"
+                    <RadioGroup
+                        android:id="@+id/paymentOptions"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:id="@+id/imageView48"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/cash_on_delivery"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView99"
-                            style="@style/roboto_normal_12_sonic_silver"
-                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimen_15"
-                            android:text="Cash On Delivery"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView48"
-                            app:layout_constraintStart_toEndOf="@+id/imageView48"
-                            app:layout_constraintTop_toTopOf="@+id/imageView48" />
-
-                        <ImageView
-                            android:id="@+id/imageView49"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_bottom_arrow"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView99"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/textView99" />
-
-                        <View
-                            android:id="@+id/view23"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/horizontal_line_width"
-                            android:layout_marginTop="@dimen/dimen_15"
-                            android:background="@color/horizontal_line_color"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView99" />
-
-                        <include
-                            android:id="@+id/viewCOD"
-                            layout="@layout/cash_on_delivery"
+                        <RadioButton
+                            android:id="@+id/cod"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/view23" />
+                            android:paddingLeft="@dimen/space_between_view_and_subview"
+                            android:text="Cash on delivery" />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/creditDebitCard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cashOnDelivery">
-
-                        <ImageView
-                            android:id="@+id/imageView481"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/todo"
-                            android:src="@drawable/credit_card"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView991"
-                            style="@style/roboto_normal_12_sonic_silver"
-                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimen_15"
-                            android:text="Credit/Debit Card"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView481"
-                            app:layout_constraintStart_toEndOf="@+id/imageView481"
-                            app:layout_constraintTop_toTopOf="@+id/imageView481" />
-
-                        <ImageView
-                            android:id="@+id/imageView491"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_bottom_arrow"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView991"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/textView991" />
-
-                        <View
-                            android:id="@+id/view231"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/horizontal_line_width"
-                            android:layout_marginTop="@dimen/dimen_15"
-                            android:background="@color/horizontal_line_color"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView991" />
-
-
-                        <include
-                            android:id="@+id/includeDebeitCreditCard"
-                            layout="@layout/credit_debit_card"
+                        <RadioButton
+                            android:id="@+id/card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/view231" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            android:paddingStart="@dimen/space_between_view_and_subview"
+                            android:text="Debit/Credit card" />
 
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/upiOptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/creditDebitCard">
-
-                        <ImageView
-                            android:id="@+id/imageView482"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/todo"
-                            android:src="@drawable/phone_payment"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView992"
-                            style="@style/roboto_normal_12_sonic_silver"
-                            android:layout_width="wrap_content"
-                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimen_15"
-                            android:text="PhonePe/Google Pay/BHIM UPI"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView482"
-                            app:layout_constraintStart_toEndOf="@+id/imageView482"
-                            app:layout_constraintTop_toTopOf="@+id/imageView482" />
-
-                        <ImageView
-                            android:id="@+id/imageView492"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_bottom_arrow"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView992"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/textView992" />
-
-                        <View
-                            android:id="@+id/view232"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/horizontal_line_width"
-                            android:layout_marginTop="@dimen/dimen_15"
-                            android:background="@color/horizontal_line_color"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView992" />
-
-                        <include
-                            android:id="@+id/includeUPI"
-                            layout="@layout/upi_payment"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:layout_constraintTop_toBottomOf="@+id/view232" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/wallets"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/upiOptions">
-
-                        <ImageView
-                            android:id="@+id/imageView483"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/todo"
-                            android:src="@drawable/wallet"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView993"
-                            style="@style/roboto_normal_12_sonic_silver"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimen_15"
-                            android:text="PayTm/PayzApp/Wallets"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView483"
-                            app:layout_constraintStart_toEndOf="@+id/imageView483"
-                            app:layout_constraintTop_toTopOf="@+id/imageView483" />
-
-                        <ImageView
-                            android:id="@+id/imageView493"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_bottom_arrow"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView993"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/textView993" />
-
-                        <View
-                            android:id="@+id/view233"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/horizontal_line_width"
-                            android:layout_marginTop="@dimen/dimen_15"
-                            android:background="@color/horizontal_line_color"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView993" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/netBanking"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/wallets">
-
-                        <ImageView
-                            android:id="@+id/imageView484"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/todo"
-                            android:src="@drawable/bank"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView994"
-                            style="@style/roboto_normal_12_sonic_silver"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimen_15"
-                            android:text="Net Banking"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView484"
-                            app:layout_constraintStart_toEndOf="@+id/imageView484"
-                            app:layout_constraintTop_toTopOf="@+id/imageView484" />
-
-                        <ImageView
-                            android:id="@+id/imageView494"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_bottom_arrow"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView994"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/textView994" />
-
-                        <View
-                            android:id="@+id/view234"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/horizontal_line_width"
-                            android:layout_marginTop="@dimen/dimen_15"
-                            android:background="@color/horizontal_line_color"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView994" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/emiOrPayLate5"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/netBanking">
-
-                        <ImageView
-                            android:id="@+id/imageView485"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/todo"
-                            android:src="@drawable/emi"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView995"
-                            style="@style/roboto_normal_12_sonic_silver"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimen_15"
-                            android:text="EMI/Pay Later"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView485"
-                            app:layout_constraintStart_toEndOf="@+id/imageView485"
-                            app:layout_constraintTop_toTopOf="@+id/imageView485" />
-
-                        <ImageView
-                            android:id="@+id/imageView495"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_bottom_arrow"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView995"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/textView995" />
-
-                        <View
-                            android:id="@+id/view235"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/horizontal_line_width"
-                            android:layout_marginTop="@dimen/dimen_15"
-                            android:background="@color/horizontal_line_color"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView995" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
+                    </RadioGroup>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -482,38 +167,28 @@
                     android:padding="@dimen/screen_horizontal_padding">
 
 
-                    <ImageView
-                        android:id="@+id/imageView51"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/couponCode"
+                        style="@style/roboto_medium_12_davys_grey"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/gift"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:hint="Enter coupon code here"
+                        android:layout_marginEnd="@dimen/space_between_views"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        app:layout_constraintEnd_toStartOf="@+id/btnApply"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView104"
+                        android:id="@+id/btnApply"
                         style="@style/roboto_medium_12_davys_grey"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_15"
-                        android:text="Have a Gift Card?"
-
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView51"
-                        app:layout_constraintStart_toEndOf="@+id/imageView51"
-                        app:layout_constraintTop_toTopOf="@+id/imageView51" />
-
-                    <TextView
-                        android:id="@+id/textView105"
-                        style="@style/roboto_medium_12_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="wrap_content" 
                         android:text="@string/apply"
                         android:textColor="@color/red_light"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView104"
+                        app:layout_constraintBottom_toBottomOf="@+id/couponCode"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textView104" />
+                        app:layout_constraintTop_toTopOf="@+id/couponCode" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -761,7 +436,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <TextView
                 android:id="@+id/viewDetails"
                 style="@style/roboto_medium_12_davys_grey"
@@ -775,20 +449,20 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/payNow"
+                app:layout_constraintEnd_toStartOf="@+id/placeOrder"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/payNow"
+                android:id="@+id/placeOrder"
                 style="@style/roboto_medium_16_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/rec_red_fill_top_round"
                 android:gravity="center"
                 android:paddingVertical="@dimen/space_between_views"
-                android:text="@string/pay_now"
+                android:text="@string/place_order"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -797,6 +471,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/viewDetails"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

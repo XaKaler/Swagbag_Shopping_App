@@ -1,17 +1,26 @@
 package com.shopping.swagbag.user.shipping.payment_mode
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.RadioButton
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.FragmentPaymentModeBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.user.order.user_details.AllAddressModel
+import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
+import kotlinx.android.synthetic.*
+
 
 class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
 
     private lateinit var viewBinding: FragmentPaymentModeBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+    private lateinit var paymentMode: String
+    private lateinit var address: AllAddressModel.Result
+    private lateinit var cartData: GetCartModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -21,62 +30,48 @@ class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
 
         initViews()
 
+        //val radioButton = findViewById() as RadioButton
+
 
     }
 
     private fun initViews() {
-        var codVisible = false
-        var cardVisible = false
-        var upiVisible = false
+
+        val genid: Int = viewBinding.paymentOptions.checkedRadioButtonId
+       // val radioButton = findViewById(genid) as RadioButton
+        //val paymentMode = radioButton.text.toString()
 
         with(viewBinding){
 
-            // click listeners
-            cashOnDelivery.setOnClickListener{
-                if(!codVisible){
-                    codVisible = true
-                    viewCOD.root.visibility = View.VISIBLE
-                }
-                else {
-                    codVisible = false
-                    viewCOD.root.visibility = View.GONE
-                }
-            }
-
-            creditDebitCard.setOnClickListener{
-                if(!cardVisible){
-                    cardVisible = true
-                    includeDebeitCreditCard.root.visibility = View.VISIBLE
-                }
-                else {
-                    cardVisible = false
-                    includeDebeitCreditCard.root.visibility = View.GONE
-                }
-            }
-
-            upiOptions.setOnClickListener{
-                if(!upiVisible){
-                    upiVisible = true
-                    includeUPI.root.visibility = View.VISIBLE
-                }
-                else {
-                    upiVisible = false
-                    includeUPI.root.visibility = View.GONE
-                }
-            }
-
-            payNow.setOnClickListener{
-                findNavController().navigate(R.id.action_paymentModeFragment_to_orderConfirmedFragment
-                )
+            placeOrder.setOnClickListener{
+                findNavController().navigate(R.id.action_paymentModeFragment_to_orderConfirmedFragment)
             }
 
             viewDetails.setOnClickListener{
-                findNavController().navigate(R.id.action_paymentModeFragment_to_viewOrderDetails
-                )
+                //findNavController().navigate(R.id.action_paymentModeFragment_to_viewOrderDetails)
             }
 
         }
         setToolbar()
+
+        getArgument()
+    }
+
+    private fun getArgument() {
+        val args: PaymentModeFragmentArgs by navArgs()
+        address = args.address
+        cartData = args.cartData
+
+        setData(cartData)
+    }
+
+    private fun setData(cartData: GetCartModel) {
+        with(viewBinding){
+            val totalCartItem = cartData.result.size
+            itemCount.text = totalCartItem.toString()
+
+
+        }
     }
 
     private fun setToolbar() {
