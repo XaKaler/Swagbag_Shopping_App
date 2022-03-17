@@ -101,34 +101,36 @@ class EditUserDetailFragment :
                     val selectedRadioButton = radioGroup.findViewById<RadioButton>(selectedRadioId)
                     val title = selectedRadioButton.text.toString()
 
-                    viewModel.editAddress(
-                        userId,
-                        title,
-                        address,
-                        "",
-                        city,
-                        state,
-                        "",
-                        pinCode,
-                        name,
-                        phone,
-                        getAddress.id,
-                        "",
-                        ""
-                    ).observe(viewLifecycleOwner){
-                        when(it){
-                            is Resource.Loading -> showLoading()
+                    getAddress.id?.let { it ->
+                        viewModel.editAddress(
+                            userId,
+                            title,
+                            address,
+                            "",
+                            city,
+                            state,
+                            "",
+                            pinCode,
+                            name,
+                            phone,
+                            it,
+                            "",
+                            ""
+                        ).observe(viewLifecycleOwner){
+                            when(it){
+                                is Resource.Loading -> showLoading()
 
-                            is Resource.Success -> {
-                                stopShowingLoading()
+                                is Resource.Success -> {
+                                    stopShowingLoading()
 
-                                toast(it.value.message)
+                                    toast(it.value.message)
 
-                                //send user to address page
-                                findNavController().popBackStack()
+                                    //send user to address page
+                                    findNavController().popBackStack()
+                                }
+
+                                is Resource.Failure -> Log.e("TAG", "getUserData: $it", )
                             }
-
-                            is Resource.Failure -> Log.e("TAG", "getUserData: $it", )
                         }
                     }
 

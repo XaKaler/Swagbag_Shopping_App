@@ -3,6 +3,7 @@ package com.shopping.swagbag.user.shipping.payment_mode
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -11,7 +12,6 @@ import com.shopping.swagbag.databinding.FragmentPaymentModeBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
 import com.shopping.swagbag.user.order.user_details.AllAddressModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
-import kotlinx.android.synthetic.*
 
 
 class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
@@ -29,28 +29,21 @@ class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
         toolbarBinding = viewBinding.include
 
         initViews()
-
-        //val radioButton = findViewById() as RadioButton
-
-
     }
 
     private fun initViews() {
+        val genId: Int = viewBinding.paymentOptions.checkedRadioButtonId
+        /*val radioButton = findViewById(genid) as RadioButton
+        paymentMode = radioButton.text.toString()*/
 
-        val genid: Int = viewBinding.paymentOptions.checkedRadioButtonId
-       // val radioButton = findViewById(genid) as RadioButton
-        //val paymentMode = radioButton.text.toString()
+        with(viewBinding) {
 
-        with(viewBinding){
-
-            placeOrder.setOnClickListener{
+            placeOrder.setOnClickListener {
                 findNavController().navigate(R.id.action_paymentModeFragment_to_orderConfirmedFragment)
             }
 
-            viewDetails.setOnClickListener{
-                //findNavController().navigate(R.id.action_paymentModeFragment_to_viewOrderDetails)
+            viewDetails.setOnClickListener {
             }
-
         }
         setToolbar()
 
@@ -67,10 +60,39 @@ class PaymentModeFragment : Fragment(R.layout.fragment_payment_mode) {
 
     private fun setData(cartData: GetCartModel) {
         with(viewBinding){
-            val totalCartItem = cartData.result.size
+            val totalCartItem = cartData.result?.size
             itemCount.text = totalCartItem.toString()
 
+            var totalMRP = 0
+            val discountOnMRP = 0
+            var totalAmount = 0
+            val deliveryCharge = 0
 
+            for (cart in cartData.result!!) {
+                totalMRP += cart.product.sellingPrice
+                //discountOnMRP += cart.product.discountedPrice
+            }
+
+            totalAmount = totalMRP - discountOnMRP + deliveryCharge
+
+            discountPrice.text = discountOnMRP.toString()
+            totalPrice.text = totalAmount.toString()
+            productPrice.text = totalMRP.toString()
+
+            //delivery charge
+            if (deliveryCharge == 0) {
+                deliveryRupeeSign.visibility = View.GONE
+                deliveryCharges.visibility = View.GONE
+                free.visibility = View.VISIBLE
+            } else {
+                deliveryRupeeSign.visibility = View.VISIBLE
+                deliveryCharges.visibility = View.VISIBLE
+                deliveryCharges.text = deliveryCharge.toString()
+                free.visibility = View.GONE
+            }
+
+            val viewDetailsBtnTxt = "${getString(R.string.Rs)}$totalAmount \nView Details"
+            viewDetails.text = viewDetailsBtnTxt
         }
     }
 

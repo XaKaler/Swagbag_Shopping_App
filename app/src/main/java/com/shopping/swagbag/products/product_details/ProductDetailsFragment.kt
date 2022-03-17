@@ -397,9 +397,11 @@ class ProductDetailsFragment : BaseFragment<
 
                         val cartProductList = it.value.result
 
-                        for (singleProduct in cartProductList) {
-                            if (singleProduct.id == product.result.id)
-                                updateCart(userId, singleProduct.quantity)
+                        if (cartProductList != null) {
+                            for (singleProduct in cartProductList) {
+                                if (singleProduct?.id == product.result.id)
+                                    singleProduct.quantity?.let { it1 -> updateCart(userId, it1) }
+                            }
                         }
                         addToCart(userId)
                     }

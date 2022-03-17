@@ -61,8 +61,17 @@ class ShoppingBegSelectAddressFragment :
         val args: ShoppingBegSelectAddressFragmentArgs by navArgs()
         val cartData: GetCartModel = args.cartData
 
-        val action = ShoppingBegSelectAddressFragmentDirections.actionShoppingBegSelectAddressFragmentToPaymentModeFragment(cartData, selectedAddress)
-        findNavController().navigate(action)
+        if (this::selectedAddress.isInitialized){
+            val action =
+                ShoppingBegSelectAddressFragmentDirections.actionShoppingBegSelectAddressFragmentToPaymentModeFragment(
+                    cartData,
+                    selectedAddress
+                )
+            findNavController().navigate(action)
+        }
+        else
+            toast("Select address")
+
     }
 
     private fun getAddresses() {
@@ -77,7 +86,7 @@ class ShoppingBegSelectAddressFragment :
                     is Resource.Success -> {
                         stopShowingLoading()
 
-                        addressList = it.value.result
+                        addressList = it.value.result!!
 
                         if (addressList.isEmpty()) {
                             viewBinding.noAddress.visibility = View.VISIBLE
@@ -149,15 +158,20 @@ class ShoppingBegSelectAddressFragment :
 
     override fun onItemClickWithName(name: String, position: Int) {
         when (name) {
-            "select" -> selectedAddress = addressList[position]
+            "select" -> {
+                selectedAddress = addressList[position]
+                Log.e("TAG", "onItemClickWithName: $selectedAddress")
+            }
 
             "edit" -> {
+                val editAddress = addressList[position]
+                Log.e("address", "edit address: $editAddress", )
+
                 val action =
                     ShoppingBegSelectAddressFragmentDirections.actionShoppingBegSelectAddressFragmentToEditUserDetailFragment(
                         addressList[position]
                     )
                 findNavController().navigate(action)
-                Log.e("address", "edit address: ${addressList[position]}", )
             }
         }
     }

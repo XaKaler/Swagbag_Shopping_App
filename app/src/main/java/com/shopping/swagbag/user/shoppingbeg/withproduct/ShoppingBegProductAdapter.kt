@@ -12,7 +12,7 @@ import com.shopping.swagbag.databinding.SingleProductOfShoppingBegBinding
 
 class ShoppingBegProductAdapter(
     private val context: Context,
-    private var data: List<GetCartModel.Result>,
+    private var data: List<GetCartModel.Result?>?,
     private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<ShoppingBegProductAdapter.ShoppingBegViewHolder>() {
@@ -24,18 +24,18 @@ class ShoppingBegProductAdapter(
             with(viewBinding){
                 // set image
                 Glide.with(context)
-                    .load(singleData.product.file[0].location)
+                    .load(singleData.product?.file?.get(0)?.location)
                     .into(productImage)
 
-                Log.e("TAG", "bind: ${singleData.product.file[0]}", )
+                Log.e("TAG", "bind: ${singleData.product?.file?.get(0)}", )
 
                 // set text
-                productName.text = singleData.product.name
-                productDetails.text = singleData.product.shortDesc
-                sellerName.text = singleData.product.vendor
-                newPrice.text = singleData.product.sellingPrice.toString()
+                productName.text = singleData.product?.name
+                productDetails.text = singleData.product?.shortDesc
+                sellerName.text = singleData.product?.vendor
+                newPrice.text = singleData.product?.sellingPrice.toString()
 
-                val discount = "${singleData.product.discountedPrice}%Off"
+                val discount = "${singleData.product?.discountedPrice}%Off"
                 off.text = discount
 
                 val quantityCount = "Qty: ${singleData.quantity}"
@@ -60,12 +60,12 @@ class ShoppingBegProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ShoppingBegViewHolder, position: Int) {
-        holder.bind(data[position], position, itemClick)
+        data?.get(position)?.let { holder.bind(it, position, itemClick) }
     }
 
-    override fun getItemCount()= data.size
+    override fun getItemCount()= data!!.size
 
-    fun updateList(updateData: List<GetCartModel.Result>){
+    fun updateList(updateData: MutableList<GetCartModel.Result>){
         data = updateData
         notifyDataSetChanged()
     }

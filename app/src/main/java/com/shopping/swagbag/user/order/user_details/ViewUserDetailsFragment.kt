@@ -71,7 +71,7 @@ class ViewUserDetailsFragment : BaseFragment<
                         stopShowingLoading()
 
                         addresses = it.value
-                        setAddresses(addresses.result)
+                        addresses.result?.let { it1 -> setAddresses(it1) }
                     }
 
                     is Resource.Failure -> Log.e("TAG", "getAllAddresses: $it", )
@@ -80,7 +80,7 @@ class ViewUserDetailsFragment : BaseFragment<
         }
     }
 
-    private fun setAddresses(addresses: List<AllAddressModel.Result>) {
+    private fun setAddresses(addresses: List<AllAddressModel.Result?>) {
         with(viewBinding){
             rvUserDetails.apply{
                 layoutManager = LinearLayoutManager(context)
@@ -116,38 +116,40 @@ class ViewUserDetailsFragment : BaseFragment<
         when(tag){
             //@todo edit address
             "edit" -> {
-                val action =
+                /*val action =
                     ViewUserDetailsFragmentDirections.actionViewUserDetailsFragmentToEditUserDetailFragment(
-                        addresses.result[position]
+                        addresses.result?.get(position)
                     )
-                findNavController().navigate(action)
+                findNavController().navigate(action)*/
             }
             "delete" -> deleteAddress(position)
         }
     }
 
     private fun deleteAddress(position: Int) {
-        val addressId = addresses.result[position].id
+        val addressId = addresses.result?.get(position)?.id
 
         Log.e("addressId", "deleteAddress: $addressId", )
 
-        viewModel.deleteAddress(addressId).observe(viewLifecycleOwner, Observer {
-            when(it){
-                is Resource.Loading -> showLoading()
+        if (addressId != null) {
+            viewModel.deleteAddress(addressId).observe(viewLifecycleOwner, Observer {
+                when(it){
+                    is Resource.Loading -> showLoading()
 
-                is Resource.Success -> {
-                    stopShowingLoading()
+                    is Resource.Success -> {
+                        stopShowingLoading()
 
-                    val addressList: MutableList<AllAddressModel.Result> = addresses.result as MutableList
-                    addressList.removeAt(position)
+                        val addressList: MutableList<AllAddressModel.Result> = addresses.result as MutableList
+                        addressList.removeAt(position)
 
-                    // update address list
-                    addressAdapter.updateAddress(addressList)
+                        // update address list
+                        addressAdapter.updateAddress(addressList)
+                    }
+
+                    is Resource.Failure -> Log.e("address", "deleteAddress: $it", )
                 }
-
-                is Resource.Failure -> Log.e("address", "deleteAddress: $it", )
-            }
-        })
+            })
+        }
 
     }
 }

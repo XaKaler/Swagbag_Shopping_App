@@ -71,7 +71,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
                 is Resource.Success -> {
                     stopShowingLoading()
 
-                    val productCount = it.value.result.size
+                    val productCount = it.value.result?.size
                     Log.e("TAG", "getCart: $productCount", )
 
                     if (productCount == 0) {
@@ -87,7 +87,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
         }
     }
 
-    private fun setItems(product: List<GetCartModel.Result>) {
+    private fun setItems(product: List<GetCartModel.Result?>?) {
         with(viewBinding) {
             rvShoppingBegItems.apply {
                 layoutManager = LinearLayoutManager(context)
@@ -157,31 +157,32 @@ class ShoppingBegWithProductFragment : BaseFragment<
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
     override fun onItemClickWithName(name: String, position: Int) {
-        val productId = product.result[position].product.id
+        val productId = product.result?.get(position)?.product?.id
         val userId = appUtils.getUserId()
 
-        viewModel.deleteSingleWish(productId, userId).observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.Loading -> showLoading()
+        if (productId != null) {
+            viewModel.deleteSingleWish(productId, userId).observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Loading -> showLoading()
 
-                is Resource.Success -> {
-                    stopShowingLoading()
+                    is Resource.Success -> {
+                        stopShowingLoading()
 
-                    toast(it.value.message)
+                        toast(it.value.message)
 
-                    //update list
-                    val productList: MutableList<GetCartModel.Result> =
-                        product.result as MutableList
-
-                    productList.removeAt(position)
-                    shoppingBegProductAdapter.updateList(productList)
-                    //if size is 0 then show user to empty cart
-                    if (position == 0) {
-                        showEmptyCart()
+                        //update list
+                        val productList: MutableList<GetCartModel.Result> =
+                            product.result as MutableList
+                        productList.removeAt(position)
+                        shoppingBegProductAdapter.updateList(productList)
+                        //if size is 0 then show user to empty cart
+                        if (position == 0) {
+                            showEmptyCart()
+                        }
                     }
-                }
 
-                is Resource.Failure -> Log.e("TAG", "onItemClickWithName: $it",)
+                    is Resource.Failure -> Log.e("TAG", "onItemClickWithName: $it",)
+                }
             }
         }
     }

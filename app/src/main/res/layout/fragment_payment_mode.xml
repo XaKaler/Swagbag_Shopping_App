@@ -206,6 +206,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:id="@+id/priceArea"
                     android:layout_height="match_parent"
                     android:padding="@dimen/screen_horizontal_padding">
 
@@ -259,7 +260,7 @@
                         android:layout_width="wrap_content"
                         android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
-                        android:text="3999"
+                        android:text=""
                         app:layout_constraintBottom_toBottomOf="@+id/textView106"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView106" />
@@ -313,7 +314,7 @@
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2999"
+                        android:text=""
                         android:textColor="@color/Paolo_Veronese_Green"
                         app:layout_constraintBottom_toBottomOf="@+id/textView109"
                         app:layout_constraintEnd_toEndOf="@+id/productPrice"
@@ -347,6 +348,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" Free"
+                        android:visibility="gone"
                         android:textColor="@color/Paolo_Veronese_Green"
                         app:layout_constraintBottom_toBottomOf="@+id/textView111"
                         app:layout_constraintEnd_toEndOf="@+id/discountPrice"
@@ -358,13 +360,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        android:text="49"
+                        android:text=""
                         app:layout_constraintBottom_toBottomOf="@+id/free"
                         app:layout_constraintEnd_toStartOf="@+id/free"
                         app:layout_constraintTop_toTopOf="@+id/free" />
 
                     <TextView
-                        android:id="@+id/textView117"
+                        android:id="@+id/deliveryRupeeSign"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
                         android:textColor="@color/day_dark_liver_night_Spanish_Gray"
@@ -399,7 +401,7 @@
                         style="@style/roboto_medium_12_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1,999"
+                        android:text=""
                         app:layout_constraintBottom_toBottomOf="@+id/textView118"
                         app:layout_constraintEnd_toEndOf="@+id/view24"
                         app:layout_constraintTop_toTopOf="@+id/textView118" />
@@ -443,9 +445,9 @@
                 android:layout_width="0dp"
                 android:textColor="@color/red_light"
                 android:layout_height="0dp"
+                android:gravity="center"
                 android:background="@drawable/rec_white_fill_top_round"
-                android:paddingVertical="@dimen/space_between_views"
-                android:text="\u20B91,999 View Details"
+                android:text="View Details"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 app:layout_constraintBottom_toBottomOf="parent"

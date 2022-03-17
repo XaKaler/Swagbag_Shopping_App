@@ -10,7 +10,7 @@ import com.shopping.swagbag.dummy.DummyModel
 
 class AddressAdapter(
     private val context: Context,
-    private var data: List<AllAddressModel.Result>,
+    private var data: List<AllAddressModel.Result?>,
     private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<AddressAdapter.MyViewHolder>() {
@@ -51,12 +51,12 @@ class AddressAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(data[position], position, itemClick)
+        data[position]?.let { holder.bind(it, position, itemClick) }
     }
 
     override fun getItemCount()= data.size
 
-    fun updateAddress(updatedAddress: List<AllAddressModel.Result>){
+    fun updateAddress(updatedAddress: MutableList<AllAddressModel.Result>){
         data = updatedAddress
         notifyDataSetChanged()
     }

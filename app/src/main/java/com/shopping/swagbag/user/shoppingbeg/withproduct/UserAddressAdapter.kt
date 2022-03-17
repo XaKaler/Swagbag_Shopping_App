@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleUserAddressBinding
-import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.dummy.UserAddress
 import com.shopping.swagbag.user.order.user_details.AllAddressModel
 
 
@@ -33,14 +31,14 @@ class UserAddressAdapter(
 
                 userAddress.isChecked = selectedPosition == position
 
-                itemView.setOnClickListener{
+                userAddress.setOnClickListener{
                     selectedPosition = position
                     notifyDataSetChanged()
                     itemClick.onItemClickWithName("select", position)
                 }
 
 
-                //click listners
+                //click listeners
                 btnEdit.setOnClickListener{
                     itemClick.onItemClickWithName("edit", position)
                 }
@@ -59,7 +57,7 @@ class UserAddressAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(data[position], position, itemClick)
+        holder.bind(data[position] , position, itemClick)
     }
 
     override fun getItemCount()= data.size
