@@ -518,7 +518,7 @@
         tools:layout="@layout/dialog_search_using_image"/>
     <fragment
         android:id="@+id/paymentModeFragment"
-        android:name="com.shopping.swagbag.user.shipping.payment_mode.PaymentModeFragment"
+        android:name="com.shopping.swagbag.user.shipping.checkout.CheckoutFragment"
         android:label="fragment_payment_mode"
         tools:layout="@layout/fragment_payment_mode" >
         <action
@@ -758,6 +758,6 @@
         app:destination="@id/productDetailsFragment" />
     <action
         android:id="@+id/action_global_wishlistWithProductFragment"
-        app:destination="@id/wishlistWithProductFragment" />
+        app:destination="@id/wishlistWithProductFragment" /><action android:id="@+id/action_global_orderWithItemsFragment" app:destination="@id/orderWithItemsFragment"/>
 
 </navigation>

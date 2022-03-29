@@ -38,7 +38,7 @@
             app:riv_corner_radius="5dp" />
 
         <TextView
-            android:id="@+id/tvProductCompnayName"
+            android:id="@+id/productName"
             style="@style/snigiet_normal_14_davys_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             app:layout_constraintTop_toTopOf="@+id/productImg" />
 
         <TextView
-            android:id="@+id/tvProductName"
+            android:id="@+id/productDesc"
             style="@style/snigiet_normal_14_davys_grey"
             android:layout_width="0dp"
             android:textColor="@color/day_dark_liver_night_Spanish_Gray"
@@ -63,7 +63,7 @@
             android:text="Washing machine white color"
             app:layout_constraintEnd_toStartOf="@+id/imageView31"
             app:layout_constraintStart_toEndOf="@+id/productImg"
-            app:layout_constraintTop_toBottomOf="@+id/tvProductCompnayName" />
+            app:layout_constraintTop_toBottomOf="@+id/productName" />
 
         <ImageView
             android:id="@+id/imageView31"
@@ -80,8 +80,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Rs"
-            app:layout_constraintStart_toStartOf="@+id/tvProductName"
-            app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+            app:layout_constraintStart_toStartOf="@+id/productDesc"
+            app:layout_constraintTop_toBottomOf="@+id/productDesc" />
 
         <TextView
             android:id="@+id/productPrice"

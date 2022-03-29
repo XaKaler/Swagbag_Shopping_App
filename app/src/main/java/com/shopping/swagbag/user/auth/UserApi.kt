@@ -8,6 +8,7 @@ import com.shopping.swagbag.user.order.user_details.AddAddressModel
 import com.shopping.swagbag.user.order.user_details.AllAddressModel
 import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
 import com.shopping.swagbag.user.order.user_details.EditAddressModel
+import com.shopping.swagbag.user.profile.UserUpdateModel
 import retrofit2.http.*
 
 interface UserApi {
@@ -43,6 +44,16 @@ interface UserApi {
         @Field("email") email: String,
         @Field("otp") otp: String
     ): PasswordResetModel
+
+    @FormUrlEncoded
+    @PUT("user-update/{_id}")
+    suspend fun userUpdate(
+        @Path("_id")userId: String,
+        @Header("authorization")token: String,
+        @Field("fname")fname: String,
+        @Field("lname")lname: String,
+        @Field("email")emial: String,
+    ): UserUpdateModel
 
     @FormUrlEncoded
     @POST("add-address")

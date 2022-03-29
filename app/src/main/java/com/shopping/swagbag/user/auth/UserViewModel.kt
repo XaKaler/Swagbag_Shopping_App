@@ -13,6 +13,7 @@ import com.shopping.swagbag.user.order.user_details.AddAddressModel
 import com.shopping.swagbag.user.order.user_details.AllAddressModel
 import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
 import com.shopping.swagbag.user.order.user_details.EditAddressModel
+import com.shopping.swagbag.user.profile.UserUpdateModel
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val repository: UserRepository) : ViewModel() {
@@ -111,6 +112,17 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
                 lat,
                 lng
             )
+        }
+
+        return result
+    }
+
+    fun userUpdate(userid: String, token: String, fName: String, lName: String, email: String): LiveData<Resource<UserUpdateModel>>{
+        val result = MutableLiveData<Resource<UserUpdateModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.userUpdate(userid, token, fName, lName, email)
         }
 
         return result

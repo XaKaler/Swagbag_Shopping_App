@@ -17,6 +17,7 @@ import com.shopping.swagbag.user.auth.signin.SignInModel
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProfileBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
 import kotlinx.android.synthetic.main.fragment_contact_us.*
 import java.text.SimpleDateFormat
@@ -32,6 +33,7 @@ class ProfileFragment : BaseFragment<
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private var maleSelected: Boolean = false
+    private val appUtils = context?.let { AppUtils(it) }
 
     private val myCalendar: Calendar = Calendar.getInstance()
 
@@ -86,20 +88,39 @@ class ProfileFragment : BaseFragment<
             }
 
             btnSaveDetails.setOnClickListener {
-                getUserDetails()
+                userUpdate()
             }
         }
     }
 
-    private fun getUserDetails() {
+    private fun userUpdate() {
         with(viewBinding){
             val fName = edtFirstName.text.toString()
             val lName = edtLastName.text.toString()
-            val email = edtEmail.text.toString()
+            val email = emailAddress.text.toString()
             val userId = context?.let { AppUtils(it).getUserId() }
+            val token = appUtils?.getUserToken()
 
             //update user
-            //viewModel.editAddress()
+            viewModel.userUpdate(userId!!, token!!, fName, lName, email).observe(viewLifecycleOwner) {
+                    when (it){
+                        is Resource.Loading -> showLoading()
+
+                        is Resource.Success -> {
+                            stopShowingLoading()
+
+                            toast("Profile update successfully")
+                        }
+
+                        is Resource.Failure -> {
+                            stopShowingLoading()
+
+                            toast("try again")
+
+                            Log.e("user", "Update profile: $it", )
+                        }
+                    }
+                }
         }
     }
 
@@ -144,13 +165,7 @@ class ProfileFragment : BaseFragment<
             }
 
             //set gender
-            if (gender == "Male") {
-                maleSelected = true
-               // setGender()
-            } else {
-                maleSelected = false
-               // setGender()
-            }
+            maleSelected = gender == "Male"
         }
     }
 

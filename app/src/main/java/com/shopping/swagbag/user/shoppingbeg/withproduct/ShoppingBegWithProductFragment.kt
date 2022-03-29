@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
@@ -27,7 +26,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
 
     private lateinit var toolbarBinding: ToolbarWithTwoMenusDeleteAndWishlistBinding
     private lateinit var product: GetCartModel
-    private lateinit var appUtils: AppUtils
+    private val userId by lazy { context?.let { AppUtils(it).getUserId() } }
     private lateinit var shoppingBegProductAdapter: ShoppingBegProductAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,7 +38,6 @@ class ShoppingBegWithProductFragment : BaseFragment<
         viewBinding.btnShopNow.setOnClickListener {
             findNavController().navigate(R.id.action_global_home2)
         }
-
         initViews()
     }
 
@@ -61,28 +59,28 @@ class ShoppingBegWithProductFragment : BaseFragment<
     }
 
     private fun getCart() {
-        appUtils = context?.let { AppUtils(it) }!!
-        val userId = appUtils.getUserId()
 
-        viewModel.getCart(userId).observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.Loading -> showLoading()
+        userId?.let { userId ->
+            viewModel.getCart(userId).observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Loading -> showLoading()
 
-                is Resource.Success -> {
-                    stopShowingLoading()
+                    is Resource.Success -> {
+                        stopShowingLoading()
 
-                    val productCount = it.value.result?.size
-                    Log.e("TAG", "getCart: $productCount", )
+                        val productCount = it.value.result?.size
+                        Log.e("TAG", "getCart: $productCount")
 
-                    if (productCount == 0) {
-                        showEmptyCart()
-                    } else {
-                        product = it.value
-                        setItems(it.value.result)
+                        if (productCount == 0) {
+                            showEmptyCart()
+                        } else {
+                            product = it.value
+                            setItems(it.value.result)
+                        }
                     }
-                }
 
-                is Resource.Failure -> Log.e("TAG", "getCart: $it")
+                    is Resource.Failure -> Log.e("TAG", "getCart: $it")
+                }
             }
         }
     }
@@ -120,23 +118,24 @@ class ShoppingBegWithProductFragment : BaseFragment<
     }
 
     private fun clearCart() {
-        val userId = appUtils.getUserId()
-        viewModel.clearCart(userId).observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is Resource.Loading -> showLoading()
+        userId?.let { userId ->
+            viewModel.clearCart(userId).observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Loading -> showLoading()
 
-                is Resource.Success -> {
-                    stopShowingLoading()
+                    is Resource.Success -> {
+                        stopShowingLoading()
 
-                    toast(it.value.message)
+                        toast(it.value.message)
 
-                    //send user to empty cart
-                    showEmptyCart()
+                        //send user to empty cart
+                        showEmptyCart()
+                    }
+
+                    is Resource.Failure -> Log.e("cart", "clearCart: $it")
                 }
-
-                is Resource.Failure -> Log.e("cart", "clearCart: $it")
             }
-        })
+        }
     }
 
     private fun showEmptyCart() {
@@ -157,12 +156,46 @@ class ShoppingBegWithProductFragment : BaseFragment<
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
     override fun onItemClickWithName(name: String, position: Int) {
-        val productId = product.result?.get(position)?.product?.id
-        val userId = appUtils.getUserId()
+        when (name) {
+            "remove" -> {
+                val productId = product.result?.get(position)?.product?.id
 
-        if (productId != null) {
-            viewModel.deleteSingleWish(productId, userId).observe(viewLifecycleOwner) {
-                when (it) {
+                if (productId != null) {
+                    userId?.let { userId ->
+                        viewModel.deleteSingleWish(productId, userId).observe(viewLifecycleOwner) {
+                            when (it) {
+                                is Resource.Loading -> showLoading()
+
+                                is Resource.Success -> {
+                                    stopShowingLoading()
+
+                                    toast(it.value.message)
+
+                                    //update list
+                                    val productList: MutableList<GetCartModel.Result> =
+                                        product.result as MutableList
+                                    productList.removeAt(position)
+                                    shoppingBegProductAdapter.updateList(productList)
+                                    //if size is 0 then show user to empty cart
+                                    if (position == 0) {
+                                        showEmptyCart()
+                                    }
+                                }
+
+                                is Resource.Failure -> Log.e("TAG", "onItemClickWithName: $it")
+                            }
+                        }
+                    }
+                }
+            }
+            else -> updateCart(name, position)
+        }
+    }
+
+    private fun updateCart(productId: String, qty: Int) {
+        userId?.let { viewModel.updateCart(it, productId, qty.toString()) }
+            ?.observe(viewLifecycleOwner) {
+                when(it){
                     is Resource.Loading -> showLoading()
 
                     is Resource.Success -> {
@@ -170,20 +203,14 @@ class ShoppingBegWithProductFragment : BaseFragment<
 
                         toast(it.value.message)
 
-                        //update list
-                        val productList: MutableList<GetCartModel.Result> =
-                            product.result as MutableList
-                        productList.removeAt(position)
-                        shoppingBegProductAdapter.updateList(productList)
-                        //if size is 0 then show user to empty cart
-                        if (position == 0) {
-                            showEmptyCart()
-                        }
+                        getCart()
                     }
 
-                    is Resource.Failure -> Log.e("TAG", "onItemClickWithName: $it",)
+                    is Resource.Failure -> {
+                        stopShowingLoading()
+                        toast("try again")
+                    }
                 }
             }
-        }
     }
 }

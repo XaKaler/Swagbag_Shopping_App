@@ -35,8 +35,8 @@ class ProductDetailsFragment : BaseFragment<
 
     private lateinit var product: ProductDetailModel
 
-    private lateinit var sizeList: List<ProductOptionModel>
-    private lateinit var colorList: List<ProductOptionModel>
+    private var sizeList = ArrayList<ProductOptionModel>()
+    private var colorList = ArrayList<ProductOptionModel>()
 
     private var finalPrice: Int = 0
     private var finalSize: ProductOptionModel? = null
@@ -80,8 +80,6 @@ class ProductDetailsFragment : BaseFragment<
     }
 
     private fun getProductDetails(productsName: String) {
-
-        //@todo add product name in productDetails function
         Log.e("product", "Product name is : $productsName")
 
         viewModel
@@ -165,7 +163,7 @@ class ProductDetailsFragment : BaseFragment<
             }
     }
 
-    private fun stringToList(optionValue: String): List<ProductOptionModel> {
+    private fun stringToList(optionValue: String): ArrayList<ProductOptionModel> {
         //1. remove all white spaces from string
         //2. iterate string
         //3. value:price:sku:qty these are 4 parameters in string
@@ -330,10 +328,11 @@ class ProductDetailsFragment : BaseFragment<
         if (optionList.isEmpty()) {
             if (sizeList.isEmpty() && colorList.isEmpty()) {
                 optionList.add(AddToCartProductOptionModel("", "", ""))
+                checkCart(optionList)
             } else if (sizeList.isEmpty() && colorList.isNotEmpty()) {
                 if (finalColor == null)
                     toast("Choose color")
-                else
+                else {
                     optionList.add(
                         AddToCartProductOptionModel(
                             "Color",
@@ -341,6 +340,8 @@ class ProductDetailsFragment : BaseFragment<
                             finalColor!!.price
                         )
                     )
+                    checkCart(optionList)
+                }
             } else if (sizeList.isNotEmpty() && colorList.isEmpty()) {
                 if (finalSize == null)
                     toast("Choose size")
@@ -354,36 +355,40 @@ class ProductDetailsFragment : BaseFragment<
                     )
             } else if (sizeList.isNotEmpty() || colorList.isNotEmpty()) {
                 // add size
-                if (finalSize == null)
-                    toast("Choose size")
-                else
-                    optionList.add(
-                        AddToCartProductOptionModel(
-                            "Size",
-                            finalSize!!.value,
-                            finalSize!!.price
+                if (finalSize == null || finalColor == null) {
+                    if (finalSize == null)
+                        toast("Choose size")
+                    else {
+                        optionList.add(
+                            AddToCartProductOptionModel(
+                                "Size",
+                                finalSize!!.value,
+                                finalSize!!.price
+                            )
                         )
-                    )
+                    }
 
-                // add color
-                if (finalColor == null)
-                    toast("Choose color")
-                else
-                    optionList.add(
-                        AddToCartProductOptionModel(
-                            "Color",
-                            finalColor!!.value,
-                            finalColor!!.price
+                    // add color
+                    if (finalColor == null)
+                        toast("Choose color")
+                    else
+                        optionList.add(
+                            AddToCartProductOptionModel(
+                                "Color",
+                                finalColor!!.value,
+                                finalColor!!.price
+                            )
                         )
-                    )
+                }
+                else
+                    checkCart(optionList)
             }
-            jsArray = JSONArray(optionList)
-        } else {
-            checkCart()
-        }
+        } else
+            checkCart(optionList)
+
     }
 
-    private fun checkCart() {
+    private fun checkCart(optionList: ArrayList<AddToCartProductOptionModel>) {
         val isUserLogIn = context?.let { AppUtils(it).isUserLoggedIn() }
         val userId = context?.let { AppUtils(it).getUserId() }
 
@@ -399,11 +404,11 @@ class ProductDetailsFragment : BaseFragment<
 
                         if (cartProductList != null) {
                             for (singleProduct in cartProductList) {
-                                if (singleProduct?.id == product.result.id)
-                                    singleProduct.quantity?.let { it1 -> updateCart(userId, it1) }
+                                if (singleProduct.id == product.result.id)
+                                    updateCart(userId, singleProduct.quantity)
                             }
                         }
-                        addToCart(userId)
+                        addToCart(userId, optionList)
                     }
                     is Resource.Failure -> {
                         stopShowingLoading()
@@ -439,9 +444,9 @@ class ProductDetailsFragment : BaseFragment<
         }
     }
 
-    private fun addToCart(userId: String) {
+    private fun addToCart(userId: String, optionList: ArrayList<AddToCartProductOptionModel>) {
 
-        Log.e("add to cart", "convert array to gson -> $jsArray")
+        jsArray = JSONArray(optionList)
 
         viewModel
             .addToCart("1", product.result.id, userId, jsArray)

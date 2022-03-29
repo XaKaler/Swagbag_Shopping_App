@@ -15,16 +15,65 @@
 
     <include
         android:id="@+id/searchBar"
-        android:layout_marginTop="@dimen/dimen_2"
         layout="@layout/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        tools:listitem="@layout/single_product" />
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/noProductFound"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar">
+
+
+        <TextView
+            android:id="@+id/textView14"
+            style="@style/roboto_normal_18_dim_grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No product found"
+            android:textAlignment="center"
+            android:textColor="@color/sonic_silver"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/roboto_normal_24_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sorry!"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,8 +135,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
-
+    </androidx.core.widget.NestedScrollView>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

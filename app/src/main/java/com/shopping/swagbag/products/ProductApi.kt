@@ -5,6 +5,8 @@ import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.products.product_details.UpdateCartModel
+import com.shopping.swagbag.user.order.with_items.OrderModel
+import com.shopping.swagbag.user.shipping.checkout.CheckoutModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
@@ -31,9 +33,11 @@ interface ProductApi {
         @Query("brand")brand: String,
         @Query("sub_category")sub_category: String,
         @Query("category")category: String,
-        @Query("price")option: String,
+        @Query("price")price: String,
+        @Query("option")option: String,
         @Query("sortby")sortby: String,
-        @Query("master")master: String
+        @Query("master")master: String,
+        @Query("s")name: String,
     ): ProductSearchModel
 
     @FormUrlEncoded
@@ -100,4 +104,27 @@ interface ProductApi {
 
     @GET("mobile-home")
     suspend fun getHome(): HomeModel
+
+    @FormUrlEncoded
+    @POST("checkout")
+    suspend fun checkout(
+        @Field("userid")userId: String,
+        @Field("address")address: String,
+        @Field("cart_data")cartData: String
+    ): CheckoutModel
+
+    @FormUrlEncoded
+    @POST("checkout-confirm")
+    suspend fun checkoutConfirm(
+        @Field("orderid")orderId: String,
+        @Field("gateway")gateway: String,
+        @Field("transactionid")transactionId: String
+    ): CheckoutModel
+
+    @GET("order-user")
+    suspend fun orderUser(
+        @Header("authorization")token: String,
+        @Query("filter_by")filterBy: String,
+        @Query("id")userId: String
+    ): OrderModel
 }

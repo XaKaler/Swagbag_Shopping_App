@@ -24,18 +24,18 @@ class ShoppingBegProductAdapter(
             with(viewBinding){
                 // set image
                 Glide.with(context)
-                    .load(singleData.product?.file?.get(0)?.location)
+                    .load(singleData.product.file[0].location)
                     .into(productImage)
 
-                Log.e("TAG", "bind: ${singleData.product?.file?.get(0)}", )
+                Log.e("TAG", "bind: ${singleData.product.file[0]}", )
 
                 // set text
-                productName.text = singleData.product?.name
-                productDetails.text = singleData.product?.shortDesc
-                sellerName.text = singleData.product?.vendor
-                newPrice.text = singleData.product?.sellingPrice.toString()
+                productName.text = singleData.product.name
+                productDetails.text = singleData.product.shortDesc
+                sellerName.text = singleData.product.vendor
+                newPrice.text = singleData.product.sellingPrice.toString()
 
-                val discount = "${singleData.product?.discountedPrice}%Off"
+                val discount = "${singleData.product.discountedPrice}%Off"
                 off.text = discount
 
                 val quantityCount = "Qty: ${singleData.quantity}"
@@ -43,6 +43,9 @@ class ShoppingBegProductAdapter(
 
                 remove.setOnClickListener{
                     itemClick.onItemClickWithName("remove", position)
+                }
+                size.setOnClickListener{
+                    itemClick.onItemClickWithName(singleData.product.id, position)
                 }
             }
         }

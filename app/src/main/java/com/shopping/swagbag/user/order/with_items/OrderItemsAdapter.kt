@@ -14,26 +14,28 @@ import com.shopping.swagbag.dummy.DummyModel
 
 class OrderItemsAdapter(
     private val context: Context,
-    private val data: List<DummyModel>
+    private val data: List<OrderModel.OrderModelItem.Product>
 ) :
     RecyclerView.Adapter<OrderItemsAdapter.BestProductViewHolder>() {
 
     inner class BestProductViewHolder(private val viewBinding: SingleOrderItemBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: DummyModel, position: Int){
+            fun bind(singleData: OrderModel.OrderModelItem.Product, position: Int){
                 with(viewBinding){
                     // set image
                     Glide.with(context)
-                        .load(singleData.image)
+                        .load(singleData.product.file[0].location)
                         .into(productImg)
 
 
                     // set text
-                    tvProductCompnayName.text = singleData.name.toString()
-                    tvProductName.text = singleData.details
-                    val activity = context as Activity
+                    productName.text = singleData.productname
+                    productDesc.text = singleData.product.desc
+                    productPrice.text = singleData.product.price.toString()
+                    deliveryTime.text = singleData.product.endDate
 
+                    val activity = context as Activity
                     cancel.setOnClickListener {
                         activity.findNavController(R.id.cancel)
                             .navigate(R.id.action_orderWithItemsFragment_to_cancellationOrderFragment)

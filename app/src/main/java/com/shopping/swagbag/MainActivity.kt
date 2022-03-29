@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
     private lateinit var navigationHeaderBinding: NavigationHeaderBinding
     private lateinit var categoryViewModel: CategoryViewModel
     private lateinit var masterCategories: List<MasterCategoryModel.Result>
+    private var appUtils = AppUtils(this@MainActivity)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +71,11 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-                        navController.navigate(R.id.action_global_wishlistWithProductFragment)
+
+                        if (appUtils.isUserLoggedIn())
+                            navController.navigate(R.id.action_global_wishlistWithProductFragment)
+                        else
+                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmCart->{
@@ -78,7 +83,11 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-                        navController.navigate(R.id.action_global_shoppingBegWithProductFragment)
+
+                        if (appUtils.isUserLoggedIn())
+                            navController.navigate(R.id.action_global_shoppingBegWithProductFragment)
+                        else
+                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmCategory->{
@@ -86,7 +95,11 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-                        navController.navigate(R.id.action_global_categoryFragment)
+
+                        if (appUtils.isUserLoggedIn())
+                            navController.navigate(R.id.action_global_categoryFragment)
+                        else
+                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmOffers -> {
@@ -94,7 +107,12 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-                        navController.navigate(R.id.action_global_brandFragment)
+
+
+                        if (appUtils.isUserLoggedIn())
+                            navController.navigate(R.id.action_global_brandFragment)
+                        else
+                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmProfile -> {
@@ -103,12 +121,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
 
-                        // check whether user is already login or not
-                        val isUserLogIn = AppUtils(this@MainActivity).isUserLoggedIn()
-
-                        Log.e("TAG", "initViews: $isUserLogIn")
-
-                        if (AppUtils(this@MainActivity).isUserLoggedIn())
+                        if (appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_profileFragment)
                         else
                             navController.navigate(R.id.action_global_signInFragment)
@@ -191,23 +204,6 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                 val navController = navHostFragment.navController
                 navController.navigate(R.id.action_global_notificationFragment)
             }
-
-            fragmentWishtlistWithoutProduct.setOnClickListener {
-                hideToolbar()
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_wishlistWithoutProductFragment)
-            }
-
-
-            fragmentShoppingBegWithProduct.setOnClickListener {
-                hideToolbar()
-                val navHostFragment =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
-                val navController = navHostFragment.navController
-                navController.navigate(R.id.action_global_shoppingBegWithProductFragment)
-            }
         }
     }
 
@@ -228,7 +224,6 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         }
 
                         is Resource.Failure -> Log.e("TAG", "setUpNavigation: $it", )
-                        else -> {}
                     }
                 })
             }

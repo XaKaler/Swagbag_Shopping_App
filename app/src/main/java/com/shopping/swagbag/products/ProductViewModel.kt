@@ -11,6 +11,8 @@ import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.products.product_details.UpdateCartModel
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.user.order.with_items.OrderModel
+import com.shopping.swagbag.user.shipping.checkout.CheckoutModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.DeleteSingleCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
@@ -56,8 +58,10 @@ class ProductViewModel(
         sub_category: String,
         category: String,
         price: String,
+        option: String,
         sortby: String,
         master: String,
+        name: String,
     ): LiveData<Resource<ProductSearchModel>> {
 
         Log.e("", "category id: $master", )
@@ -72,8 +76,10 @@ class ProductViewModel(
                 sub_category,
                 category,
                 price,
+                option,
                 sortby,
-                master
+                master,
+                name
             )
         }
 
@@ -205,8 +211,43 @@ class ProductViewModel(
             result.value = repository.getHome()
         }
 
-        Log.e("TAG", "getHome in view model: ${result.value}", )
-
         return result
     }
+
+    fun checkout(userId: String, address: String, cartData: String): LiveData<Resource<CheckoutModel>>{
+        val result = MutableLiveData<Resource<CheckoutModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.checkout(userId, address, cartData)
+        }
+        return result
+    }
+
+
+    fun checkoutConfirm(orderId: String, gateway: String, transactionId: String): LiveData<Resource<CheckoutModel>>{
+        val result = MutableLiveData<Resource<CheckoutModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.checkoutConfirm(orderId, gateway, transactionId)
+        }
+        return result
+    }
+
+
+    fun orderUser(token: String, filterBy: String, userId: String): LiveData<Resource<OrderModel>>{
+        val result = MutableLiveData<Resource<OrderModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.orderUser(token, filterBy, userId)
+        }
+
+        Log.e("TAG", "get orders: ${result.value}", )
+        return result
+    }
+
+
+
 }

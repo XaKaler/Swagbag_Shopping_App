@@ -93,4 +93,7 @@ class UserRepository(private val api: UserApi) : BaseRepository() {
     suspend fun allAddress(userId: String)= safeApiCall { api.allAddress(userId) }
 
     suspend fun deleteAddress(addressId: String) = safeApiCall { api.deleteAddress(addressId) }
+
+    suspend fun userUpdate(userid: String, token: String, fName: String, lName: String, email: String) =
+        safeApiCall { api.userUpdate(userid, token, fName, lName, email) }
 }

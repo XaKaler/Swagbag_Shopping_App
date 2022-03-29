@@ -50,7 +50,7 @@ class ProductsFragment : BaseFragment<
         val args: ProductsFragmentArgs by navArgs()
         val productId = args.productId
 
-        viewModel.productSearch("", "", "", "", "", "", productId)
+        viewModel.productSearch("", "", "", "", "", "","",  productId, "")
             .observe(viewLifecycleOwner, Observer {
                 when(it){
                     is Resource.Loading -> showLoading()

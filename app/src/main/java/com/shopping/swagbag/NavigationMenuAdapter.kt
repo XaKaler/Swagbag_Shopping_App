@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.shopping.swagbag.category.*
+import com.shopping.swagbag.category.CategoryModel
 import com.shopping.swagbag.common.adapter.DropDownCategoryAdapter
 import com.shopping.swagbag.databinding.SingleNavigationMenuBinding
 import com.shopping.swagbag.dummy.DummyData
@@ -20,6 +20,8 @@ class NavigationMenuAdapter(
     private val category: List<CategoryModel.Result>
 ) :
     RecyclerView.Adapter<NavigationMenuAdapter.MyViewHolder>() {
+
+    private var appUtils = AppUtils(context)
 
     inner class MyViewHolder(private val viewBinding: SingleNavigationMenuBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
@@ -69,14 +71,20 @@ class NavigationMenuAdapter(
                     }
                 }
                 "Orders" -> {
-                    activity.closeDrawer()
-                    activity.hideToolbar()
-                    navController.navigate(R.id.action_global_orderWithoutItemsFragment)
+                    if (appUtils.isUserLoggedIn()) {
+                        activity.closeDrawer()
+                        activity.hideToolbar()
+                        navController.navigate(R.id.action_global_orderWithItemsFragment)
+                    } else
+                        navController.navigate(R.id.action_global_signInFragment)
                 }
                 "Address" -> {
-                    activity.closeDrawer()
-                    activity.hideToolbar()
-                    navController.navigate(R.id.action_global_viewUserDetailsFragment)
+                    if (appUtils.isUserLoggedIn()) {
+                        activity.closeDrawer()
+                        activity.hideToolbar()
+                        navController.navigate(R.id.action_global_viewUserDetailsFragment)
+                    } else
+                        navController.navigate(R.id.action_global_signInFragment)
                 }
                 "Coupons" -> {
                     activity.closeDrawer()

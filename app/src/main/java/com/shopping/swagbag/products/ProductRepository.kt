@@ -1,9 +1,8 @@
 package com.shopping.swagbag.products
 
 import android.util.Log
-import com.google.gson.JsonArray
 import com.shopping.swagbag.common.base.BaseRepository
-import com.shopping.swagbag.user.shoppingbeg.withproduct.AddToCartProductOptionModel
+import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 import org.json.JSONArray
 
 class ProductRepository(private val api: ProductApi) : BaseRepository() {
@@ -18,9 +17,11 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
         sub_category: String,
         category: String,
         price: String,
+        option: String,
         sortby: String,
         master: String,
-    ) = safeApiCall { api.productSearch(deal, brand, sub_category, category, price, sortby, master) }
+        name: String,
+    ) = safeApiCall { api.productSearch(deal, brand, sub_category, category, price, option, sortby, master, name) }
 
     suspend fun addToWishlist(
         productId: String,
@@ -57,7 +58,16 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
     suspend fun clearWishlist(userId: String) = safeApiCall { api.clearWishlist(userId) }
 
     suspend fun getHome() = safeApiCall {
-        Log.e("TAG", "getHome in product repository: ${api.getHome()}", )
+        Log.e("TAG", "getHome in product repository: ${api.getHome()}")
         api.getHome()
     }
+
+    suspend fun checkout(userId: String, address: String, cartData: String) =
+        safeApiCall { api.checkout(userId, address, cartData) }
+
+    suspend fun checkoutConfirm(orderId: String, gateway: String, transactionId: String) =
+        safeApiCall { api.checkoutConfirm(orderId, gateway, transactionId) }
+
+    suspend fun orderUser(token: String, filterBy: String, userId: String) =
+        safeApiCall { api.orderUser(token, filterBy, userId) }
 }
