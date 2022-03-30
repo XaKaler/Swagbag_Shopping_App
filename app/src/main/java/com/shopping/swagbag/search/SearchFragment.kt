@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.shopping.swagbag.R
@@ -31,48 +32,49 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private lateinit var searchBarBinding: SearchBarBinding
-    //private lateinit var searchBar: EditText
+    private lateinit var searchBar: EditText
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         toolbarBinding = viewBinding.include
-        searchBarBinding = viewBinding.searchBar
-        // searchBar = view.findViewById(R.id.searchBar) as EditText
+        searchBarBinding = viewBinding.lytSearchBar
+
+        searchBar = view.findViewById(R.id.searchBar) as EditText
 
         initViews()
     }
 
     private fun initViews() {
-
         // click listeners
         with(searchBarBinding) {
             searchByImage.setOnClickListener(this@SearchFragment)
             searchByVoice.setOnClickListener(this@SearchFragment)
         }
 
-        productSearch("face wash")
-/*
         searchBar.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
 
                 // get text that user enter
-                val userSearch = "face wash" //searchBarBinding.searchBar.text.toString()
+                val userSearch = searchBarBinding.searchBar.text.toString()
                 productSearch(userSearch)
 
                 return@OnEditorActionListener true
             }
             false
-        })*/
+        })
 
-        openKeyboard()
+        searchBar.requestFocus()
+        showSoftKeyboard(searchBar)
         setToolbar()
     }
 
-    private fun openKeyboard() {
-        //searchBar.requestFocus()
-        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+    private fun showSoftKeyboard(view: View) {
+        if (view.requestFocus()) {
+            val imm: InputMethodManager =
+                context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+        }
     }
 
     private fun productSearch(userSearch: String) {
@@ -92,7 +94,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
 
                         toast("try again")
 
-                        Log.e("productSearch", "$it", )
+                        Log.e("productSearch", "$it")
                     }
                 }
             }

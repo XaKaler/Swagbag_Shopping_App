@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleItemClickWithView
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
+import com.shopping.swagbag.common.base.BaseFunction
 import com.shopping.swagbag.databinding.FragmentShoppingBegWithProductBinding
 import com.shopping.swagbag.databinding.ToolbarWithTwoMenusDeleteAndWishlistBinding
 import com.shopping.swagbag.products.ProductApi
@@ -22,7 +24,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
         FragmentShoppingBegWithProductBinding,
         ProductViewModel,
         ProductRepository>(FragmentShoppingBegWithProductBinding::inflate),
-    RecycleViewItemClick {
+    RecycleViewItemClick, RecycleItemClickWithView {
 
     private lateinit var toolbarBinding: ToolbarWithTwoMenusDeleteAndWishlistBinding
     private lateinit var product: GetCartModel
@@ -90,7 +92,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
             rvShoppingBegItems.apply {
                 layoutManager = LinearLayoutManager(context)
                 shoppingBegProductAdapter =
-                    ShoppingBegProductAdapter(context, product, this@ShoppingBegWithProductFragment)
+                    ShoppingBegProductAdapter(context, product, this@ShoppingBegWithProductFragment, this@ShoppingBegWithProductFragment)
                 adapter = shoppingBegProductAdapter
             }
         }
@@ -182,35 +184,58 @@ class ShoppingBegWithProductFragment : BaseFragment<
                                     }
                                 }
 
-                                is Resource.Failure -> Log.e("TAG", "onItemClickWithName: $it")
+                                is Resource.Failure -> {
+                                    stopShowingLoading()
+                                    tryAgain()
+                                    Log.e("TAG", "onItemClickWithName: $it")
+                                }
                             }
                         }
                     }
                 }
             }
-            else -> updateCart(name, position)
         }
     }
 
-    private fun updateCart(productId: String, qty: Int) {
-        userId?.let { viewModel.updateCart(it, productId, qty.toString()) }
-            ?.observe(viewLifecycleOwner) {
-                when(it){
-                    is Resource.Loading -> showLoading()
+    private fun updateCart(productId: String, qty: String, position: Int) {
 
-                    is Resource.Success -> {
-                        stopShowingLoading()
+        Log.e("TAG", "updateCart: product id  : $productId\n" +
+                "qty : $qty", )
 
-                        toast(it.value.message)
+            userId?.let { viewModel.updateCart(it, productId, qty) }
+                ?.observe(viewLifecycleOwner) {
+                    when(it){
+                        is Resource.Loading -> showLoading()
 
-                        getCart()
-                    }
+                        is Resource.Success -> {
+                            stopShowingLoading()
 
-                    is Resource.Failure -> {
-                        stopShowingLoading()
-                        toast("try again")
+                            toast(it.value.message)
+
+                            /*val productList: MutableList<GetCartModel.Result> =
+                                product.result as MutableList
+                            productList[position].quantity = qty
+                            shoppingBegProductAdapter.updateList(productList)*/
+
+                            getCart()
+                        }
+
+                        is Resource.Failure -> {
+                            stopShowingLoading()
+                            toast("try again")
+                        }
                     }
                 }
-            }
+    }
+
+    override fun itemClickWithView(name: String, position: Int, view: View) {
+        openListDialog(
+            view,
+            BaseFunction.getProductQty(),
+            isWrapContent = true,
+        ) { result ->
+            Log.e("qty", "quantity choose by user: $result", )
+           updateCart(name, result.toString(), position)
+        }
     }
 }

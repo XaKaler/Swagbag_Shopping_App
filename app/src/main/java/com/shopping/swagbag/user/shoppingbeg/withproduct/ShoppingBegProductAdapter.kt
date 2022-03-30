@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.shopping.swagbag.common.RecycleItemClick
+import com.shopping.swagbag.common.RecycleItemClickWithView
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleProductOfShoppingBegBinding
 
@@ -13,14 +15,15 @@ import com.shopping.swagbag.databinding.SingleProductOfShoppingBegBinding
 class ShoppingBegProductAdapter(
     private val context: Context,
     private var data: List<GetCartModel.Result?>?,
-    private val itemClick: RecycleViewItemClick
+    private val itemClick: RecycleViewItemClick,
+    private val itemViewClick: RecycleItemClickWithView,
 ) :
     RecyclerView.Adapter<ShoppingBegProductAdapter.ShoppingBegViewHolder>() {
 
     inner class ShoppingBegViewHolder(private val viewBinding: SingleProductOfShoppingBegBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: GetCartModel.Result, position: Int, itemClick: RecycleViewItemClick){
+        fun bind(singleData: GetCartModel.Result, position: Int, itemClick: RecycleViewItemClick,itemViewClick: RecycleItemClickWithView){
             with(viewBinding){
                 // set image
                 Glide.with(context)
@@ -39,13 +42,13 @@ class ShoppingBegProductAdapter(
                 off.text = discount
 
                 val quantityCount = "Qty: ${singleData.quantity}"
-                size.text = quantityCount
+                qtyInCart.text = quantityCount
 
                 remove.setOnClickListener{
                     itemClick.onItemClickWithName("remove", position)
                 }
-                size.setOnClickListener{
-                    itemClick.onItemClickWithName(singleData.product.id, position)
+                qtyInCart.setOnClickListener{
+                    itemViewClick.itemClickWithView(singleData.product.id, position, qtyInCart)
                 }
             }
         }
@@ -63,7 +66,7 @@ class ShoppingBegProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ShoppingBegViewHolder, position: Int) {
-        data?.get(position)?.let { holder.bind(it, position, itemClick) }
+        data?.get(position)?.let { holder.bind(it, position, itemClick, itemViewClick) }
     }
 
     override fun getItemCount()= data!!.size

@@ -403,11 +403,18 @@ class ProductDetailsFragment : BaseFragment<
                         val cartProductList = it.value.result
 
                         if (cartProductList != null) {
+                            var isFound = false
                             for (singleProduct in cartProductList) {
-                                if (singleProduct.id == product.result.id)
+                                if (singleProduct.product.id == product.result.id) {
                                     updateCart(userId, singleProduct.quantity)
+                                    isFound = true
+                                    break
+                                }
                             }
+                            if(!isFound)
+                                addToCart(userId, optionList)
                         }
+                        else
                         addToCart(userId, optionList)
                     }
                     is Resource.Failure -> {
@@ -424,6 +431,8 @@ class ProductDetailsFragment : BaseFragment<
 
         val productId = product.result.id
         val qty = quantity + 1
+
+        Log.e("TAG", "updateCart: $productId and $qty")
 
         viewModel.updateCart(userId, productId, qty.toString()).observe(viewLifecycleOwner) {
             when (it) {

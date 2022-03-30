@@ -12,6 +12,10 @@ interface HomeCategoryRecycleItemClickListener {
     fun onHomeCategorySingleItemClickListener(position: Int)
 }
 
+interface RecycleItemClickWithView{
+    fun itemClickWithView(name: String, position: Int, view: View)
+}
+
 interface RecycleItemClick{
     fun onItemClick(name: String, position: Int)
 

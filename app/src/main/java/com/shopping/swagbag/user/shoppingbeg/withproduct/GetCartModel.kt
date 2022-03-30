@@ -21,7 +21,7 @@ data class GetCartModel(
         val option: List<Any>,
         val price: Int, // 100
         val product: Product,
-        val quantity: Int, // 1
+        var quantity: Int, // 1
         val uniqueid: String,
         @SerializedName("update_date")
         val updateDate: String, // 2022-03-12T08:09:33.446Z

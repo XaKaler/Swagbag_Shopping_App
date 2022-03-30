@@ -85,7 +85,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView91" />
 
             <TextView
-                android:id="@+id/size"
+                android:id="@+id/qtyInCart"
                 style="@style/asap_normal_12_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,9 +121,9 @@
                 android:textColor="@color/black"
                 app:drawableEndCompat="@drawable/ic_down_arrow_black"
                 app:drawableTint="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/size"
-                app:layout_constraintStart_toEndOf="@+id/size"
-                app:layout_constraintTop_toTopOf="@+id/size" />
+                app:layout_constraintBottom_toBottomOf="@+id/qtyInCart"
+                app:layout_constraintStart_toEndOf="@+id/qtyInCart"
+                app:layout_constraintTop_toTopOf="@+id/qtyInCart" />
 
             <TextView
                 android:id="@+id/textView94"
@@ -132,8 +132,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:text="@string/Rs"
-                app:layout_constraintStart_toStartOf="@+id/size"
-                app:layout_constraintTop_toBottomOf="@+id/size" />
+                app:layout_constraintStart_toStartOf="@+id/qtyInCart"
+                app:layout_constraintTop_toBottomOf="@+id/qtyInCart" />
 
             <TextView
                 android:id="@+id/newPrice"
