@@ -23,8 +23,6 @@
                 android:id="@+id/sliderView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/product_details_image_height"
-                android:paddingHorizontal="@dimen/space_between_views"
-                android:paddingVertical="@dimen/dimen_15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

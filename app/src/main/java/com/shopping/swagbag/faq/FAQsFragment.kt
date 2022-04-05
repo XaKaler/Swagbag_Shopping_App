@@ -37,7 +37,7 @@ class FAQsFragment :
     }
 
     private fun getFAQs() {
-        viewModel.settings().observe(viewLifecycleOwner){
+        /*viewModel.settings().observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading -> showLoading()
 
@@ -49,7 +49,7 @@ class FAQsFragment :
 
                 is Resource.Failure -> Log.e("TAG", "getFAQs: $it", )
             }
-        }
+        }*/
     }
 
     private fun setToolbar() {

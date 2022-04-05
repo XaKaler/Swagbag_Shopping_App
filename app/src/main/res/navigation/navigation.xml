@@ -548,7 +548,7 @@
     </fragment>
     <fragment
         android:id="@+id/orderWithItemsFragment"
-        android:name="com.shopping.swagbag.user.order.with_items.OrderWithItemsFragment"
+        android:name="com.shopping.swagbag.user.order.with_items.OrderFragment"
         android:label="fragment_order_with_items"
         tools:layout="@layout/fragment_order_with_items" >
         <action
@@ -557,6 +557,9 @@
         <action
             android:id="@+id/action_orderWithItemsFragment_to_cancellationOrderFragment"
             app:destination="@id/cancellationOrderFragment" />
+        <action
+            android:id="@+id/action_orderWithItemsFragment_to_viewOrderDetails"
+            app:destination="@id/viewOrderDetails" />
     </fragment>
     <fragment
         android:id="@+id/viewOrderDetails"
@@ -569,6 +572,12 @@
         <action
             android:id="@+id/action_viewOrderDetails_to_viewItemDetailsFragment"
             app:destination="@id/viewItemDetailsFragment" />
+       <!-- <argument
+            android:name="orderItems"
+            app:argType="com.shopping.swagbag.user.order.with_items.OrderModel$OrderModelItem" />
+        --><argument
+            android:name="stringProducts"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/getInvoiceFragment"
@@ -587,12 +596,19 @@
         <action
             android:id="@+id/action_viewItemDetailsFragment_to_helpCenterWithOrderFragment"
             app:destination="@id/helpCenterWithOrderFragment" />
+        <argument
+            android:name="product"
+            app:argType="com.shopping.swagbag.user.order.with_items.OrderModel$OrderModelItem" />
     </fragment>
     <fragment
         android:id="@+id/helpCenterWithOrderFragment"
         android:name="com.shopping.swagbag.helpcenter.with_order.HelpCenterWithOrderFragment"
         android:label="fragment_help_center_with_order"
-        tools:layout="@layout/fragment_help_center_with_order" />
+        tools:layout="@layout/fragment_help_center_with_order" >
+        <argument
+            android:name="product"
+            app:argType="com.shopping.swagbag.user.order.with_items.OrderModel$OrderModelItem" />
+    </fragment>
     <fragment
         android:id="@+id/orderWithoutItemsFragment"
         android:name="com.shopping.swagbag.user.order.without_items.OrderWithoutItemsFragment"
@@ -758,6 +774,9 @@
         app:destination="@id/productDetailsFragment" />
     <action
         android:id="@+id/action_global_wishlistWithProductFragment"
-        app:destination="@id/wishlistWithProductFragment" /><action android:id="@+id/action_global_orderWithItemsFragment" app:destination="@id/orderWithItemsFragment"/>
+        app:destination="@id/wishlistWithProductFragment" /><action
+
+    android:id="@+id/action_global_orderWithItemsFragment"
+    app:destination="@id/orderWithItemsFragment"/>
 
 </navigation>

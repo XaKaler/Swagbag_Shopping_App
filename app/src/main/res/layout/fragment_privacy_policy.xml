@@ -40,6 +40,7 @@
                     android:id="@+id/textView26"
                     style="@style/roboto_normal_14_davys_grey"
                     android:layout_width="0dp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:text="@string/swagbag_privacy_policy"
                     android:textAllCaps="true"
@@ -53,9 +54,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="16dp"
                     android:src="@drawable/privacy_policy"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -71,12 +72,12 @@
                     tools:listitem="@layout/single_about_us_drop_down" />
 
                 <TextView
-                    android:layout_marginTop="@dimen/space_between_views"
                     android:id="@+id/privacyPolicy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView26"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:text=""
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView26" />
             </androidx.constraintlayout.widget.ConstraintLayout>

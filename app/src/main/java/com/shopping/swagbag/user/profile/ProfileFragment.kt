@@ -99,7 +99,16 @@ class ProfileFragment : BaseFragment<
             val lName = edtLastName.text.toString()
             val email = emailAddress.text.toString()
             val userId = context?.let { AppUtils(it).getUserId() }
-            val token = appUtils?.getUserToken()
+            val token = context?.let { AppUtils(it).getUserToken() }
+
+            Log.e(
+                "user data",
+                "fName: $fName\n" +
+                        "email: $email\n" +
+                        "lName: $lName\n" +
+                        "userId: $userId\n" +
+                        "token: $token\n",
+            )
 
             //update user
             viewModel.userUpdate(userId!!, token!!, fName, lName, email).observe(viewLifecycleOwner) {

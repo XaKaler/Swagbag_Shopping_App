@@ -40,19 +40,22 @@ class PrivacyPolicyFragment :
     }
 
     private fun getPrivacyPolicy() {
-        viewModel.settings().observe(viewLifecycleOwner){
+       /* viewModel.settings().observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading -> showLoading()
 
                 is Resource.Success -> {
                     stopShowingLoading()
 
-                    viewBinding.privacyPolicy.text = html2Text(it.value.result[6].value)
+                    for (singleResult in it.value.result) {
+                        if (singleResult.name == "Privacy")
+                            viewBinding.privacyPolicy.text = html2Text(singleResult.value)
+                    }
                 }
 
                 is Resource.Failure -> Log.e("TAG", "getPrivacyPolicy: $it", )
             }
-        }
+        }*/
     }
 
     private fun setToolbar() {

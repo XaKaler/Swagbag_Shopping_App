@@ -2,48 +2,39 @@ package com.shopping.swagbag.user.order.with_items
 
 import android.app.Activity
 import android.content.Context
-import androidx.navigation.fragment.findNavController
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleOrderItemBinding
-import com.shopping.swagbag.dummy.DummyModel
+import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 
 class OrderItemsAdapter(
     private val context: Context,
-    private val data: List<OrderModel.OrderModelItem.Product>
+    private var data: List<OrderModel.OrderModelItem>,
+    private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<OrderItemsAdapter.BestProductViewHolder>() {
 
     inner class BestProductViewHolder(private val viewBinding: SingleOrderItemBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-            fun bind(singleData: OrderModel.OrderModelItem.Product, position: Int){
+            fun bind(singleData: OrderModel.OrderModelItem, position: Int, itemClick: RecycleViewItemClick){
                 with(viewBinding){
-                    // set image
-                    Glide.with(context)
-                        .load(singleData.product.file[0].location)
-                        .into(productImg)
+                    orderStatus.text = singleData.status
+                    orderDate.text = singleData.createdDate
+                    totalPrice.text = singleData.finalprice
 
-
-                    // set text
-                    productName.text = singleData.productname
-                    productDesc.text = singleData.product.desc
-                    productPrice.text = singleData.product.price.toString()
-                    deliveryTime.text = singleData.product.endDate
-
-                    val activity = context as Activity
                     cancel.setOnClickListener {
-                        activity.findNavController(R.id.cancel)
-                            .navigate(R.id.action_orderWithItemsFragment_to_cancellationOrderFragment)
+                        itemClick.onItemClickWithName("cancel", position)
                     }
 
-                    itemView.setOnClickListener {
-                        activity.findNavController(R.id.cancel)
-                            .navigate(R.id.action_orderWithItemsFragment_to_viewItemDetailsFragment)
+                    view.setOnClickListener {
+                        itemClick.onItemClickWithName("view", position)
                     }
                 }
             }
@@ -55,8 +46,13 @@ class OrderItemsAdapter(
     }
 
     override fun onBindViewHolder(holder: BestProductViewHolder, position: Int) {
-        holder.bind(data[position], position)
+        holder.bind(data[position], position, itemClick)
     }
 
     override fun getItemCount()= data.size
+
+    fun updateList(updateData: MutableList<OrderModel.OrderModelItem>){
+        data = updateData
+        notifyDataSetChanged()
+    }
 }

@@ -1,28 +1,37 @@
 package com.shopping.swagbag.user.shipping.order
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.shopping.swagbag.R
-import com.shopping.swagbag.common.RecycleItemClickListener
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.OrderItemDetailAdapter
+import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentViewOrderDetailsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.dummy.DummyData
+import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.products.ProductRepository
+import com.shopping.swagbag.products.ProductViewModel
+import com.shopping.swagbag.user.order.with_items.OrderModel
 
 
-class ViewOrderDetails : Fragment(R.layout.fragment_view_order_details), RecycleItemClickListener {
+class ViewOrderDetails : BaseFragment<
+        FragmentViewOrderDetailsBinding,
+        ProductViewModel,
+        ProductRepository>(FragmentViewOrderDetailsBinding::inflate), RecycleViewItemClick {
 
-
-    private lateinit var viewBinding: FragmentViewOrderDetailsBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+    private lateinit var orderItems: OrderModel.OrderModelItem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding = FragmentViewOrderDetailsBinding.bind(view)
         toolbarBinding = viewBinding.include
 
         initViews()
@@ -35,45 +44,79 @@ class ViewOrderDetails : Fragment(R.layout.fragment_view_order_details), Recycle
             getInvoice.setOnClickListener{
                 findNavController().navigate(R.id.action_viewOrderDetails_to_getInvoiceFragment)
             }
-
-            getInvoice.setOnClickListener{
-                findNavController().navigate(R.id.action_viewOrderDetails_to_getInvoiceFragment)
-            }
+            //val orderModel = OrderModel.fromString()
         }
 
-        setOrderItems()
+        getArgument()
 
         setToolbar()
     }
 
-    private fun setOrderItems() {
-        with(viewBinding){
-            rvProductOrderDetails.apply{
+    private fun getArgument() {
+        val args: ViewOrderDetailsArgs by navArgs()
+        orderItems = Gson().fromJson(args.stringProducts, OrderModel.OrderModelItem::class.java)
+
+        Log.e("TAG", "getArgument in view order details screen: $orderItems", )
+
+        setOrderItems(orderItems)
+        setData(orderItems)
+    }
+
+    private fun setData(orderItems: OrderModel.OrderModelItem) {
+        with(viewBinding) {
+            placedOn.text = orderItems.createdDate
+            orderNo.text = orderItems.orderid
+            totalPrice.text = orderItems.finalprice
+            price.text = orderItems.finalprice
+            mobile.text = orderItems.address?.contactMobile
+            Username.text = orderItems.address?.contactName
+            address.text = orderItems.address?.address
+
+            if (orderItems.gateway == "COD")
+                paymentMode.text = "Cash on delivery"
+            else
+                paymentMode.text = "Online"
+        }
+    }
+
+    private fun setOrderItems(products: OrderModel.OrderModelItem) {
+        with(viewBinding) {
+            rvProductOrderDetails.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = DummyData().getDummyData()
-                    ?.let { OrderItemDetailAdapter(context, it, this@ViewOrderDetails) }
+                adapter = OrderItemDetailAdapter(context, products, this@ViewOrderDetails)
             }
         }
     }
 
     private fun setToolbar() {
-        with(toolbarBinding){
+        with(toolbarBinding) {
             // set title
             tvTitle.text = getString(R.string.order_details)
 
             // back button click
-            imgBack.setOnClickListener{
+            imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
         }
     }
 
-    override fun onSingleItemClickListener(position: Int) {
-        findNavController().navigate(R.id.action_viewOrderDetails_to_viewItemDetailsFragment)
+    override fun onItemClickWithName(name: String, position: Int) {
+        when(name){
+            "detail" -> {
+                val action = ViewOrderDetailsDirections.actionGlobalProductDetailsFragment(orderItems.products[position].productname)
+                findNavController().navigate(action)
+            }
+        }
     }
 
-    override fun itemClickWithName(name: String) {
-        TODO("Not yet implemented")
-    }
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentViewOrderDetailsBinding.inflate(inflater, container, false)
+
+    override fun getViewModel() = ProductViewModel::class.java
+
+    override fun getFragmentRepository() =
+        ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
 }

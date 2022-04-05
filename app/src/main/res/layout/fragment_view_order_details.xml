@@ -133,7 +133,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView128" />
 
                     <TextView
-                        android:id="@+id/textView131"
+                        android:id="@+id/price"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView135" />
 
                     <TextView
-                        android:id="@+id/textView136"
+                        android:id="@+id/mobile"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -208,7 +208,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView136" />
+                        app:layout_constraintTop_toBottomOf="@+id/mobile" />
 
                     <TextView
                         android:id="@+id/textView137"
@@ -232,7 +232,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/view28" />
 
                     <TextView
-                        android:id="@+id/textView139"
+                        android:id="@+id/address"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -243,6 +243,7 @@
 
                     <TextView
                         android:id="@+id/changeAddres"
+                        android:visibility="gone"
                         style="@style/roboto_medium_13_red_light"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -255,7 +256,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView139" />
+                        app:layout_constraintTop_toBottomOf="@+id/address" />
 
                     <TextView
                         android:id="@+id/getInvoice"
@@ -268,6 +269,7 @@
                         android:paddingVertical="@dimen/dimen_15"
                         android:text="Get Invoice"
                         android:textColor="@color/medium_electric_blue"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -290,7 +292,7 @@
                         android:layout_marginTop="@dimen/dimen_15"
                         android:text="Payment Mode"
                         android:textColor="@color/Nickel"
-                        app:layout_constraintStart_toStartOf="@+id/textView139"
+                        app:layout_constraintStart_toStartOf="@+id/address"
                         app:layout_constraintTop_toBottomOf="@+id/view29" />
 
                     <TextView

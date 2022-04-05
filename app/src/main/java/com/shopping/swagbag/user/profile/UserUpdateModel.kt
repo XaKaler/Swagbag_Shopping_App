@@ -60,17 +60,17 @@ data class UserUpdateModel(
     val doc3Type: String,
     val email: String, // test@gmail.com
     @SerializedName("email_otp")
-    val emailOtp: Int, // 322031
+    val emailOtp: Int, // 408167
     val `file`: String,
     @SerializedName("first_time")
     val firstTime: Int, // 0
     val fname: String, // Super
     @SerializedName("full_name")
-    val fullName: String,
+    val fullName: String, // User Name
     @SerializedName("_id")
     val id: String, // 61e82a7acf130b2978d05815
     val ifsc: Any?, // null
-    val lname: String, // Adminn
+    val lname: String, // Admin
     @SerializedName("login_active")
     val loginActive: Int, // 1
     @SerializedName("lp_manager")

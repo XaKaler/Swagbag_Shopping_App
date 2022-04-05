@@ -23,6 +23,8 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
         name: String,
     ) = safeApiCall { api.productSearch(deal, brand, sub_category, category, price, option, sortby, master, name) }
 
+    suspend fun headerSearch(search: String) = safeApiCall { api.headerSearch(search) }
+
     suspend fun addToWishlist(
         productId: String,
         userId: String
@@ -37,9 +39,9 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
     suspend fun getCart(userId: String) = safeApiCall { api.getCart(userId) }
 
     suspend fun updateCart(
-        userId: String,
+        cartId: String,
     productId: String,
-    quantity: String) = safeApiCall { api.updateCart(productId, userId, quantity) }
+    quantity: String) = safeApiCall { api.updateCart(productId, cartId, quantity) }
 
     suspend fun addToCart(
         quantity: String,
@@ -62,12 +64,14 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
         api.getHome()
     }
 
-    suspend fun checkout(userId: String, address: String, cartData: String) =
-        safeApiCall { api.checkout(userId, address, cartData) }
+    suspend fun checkout(login: String, userId: String, address: String,billingAddress: String, cartData: String) =
+        safeApiCall { api.checkout(login, userId, address,billingAddress,  cartData) }
 
     suspend fun checkoutConfirm(orderId: String, gateway: String, transactionId: String) =
         safeApiCall { api.checkoutConfirm(orderId, gateway, transactionId) }
 
     suspend fun orderUser(token: String, filterBy: String, userId: String) =
         safeApiCall { api.orderUser(token, filterBy, userId) }
+
+    suspend fun cancelOrder(orderId: String) = safeApiCall{api.cancelOrder(orderId)}
 }

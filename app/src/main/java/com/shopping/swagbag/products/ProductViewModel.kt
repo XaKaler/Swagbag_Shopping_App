@@ -10,7 +10,9 @@ import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.products.product_details.UpdateCartModel
+import com.shopping.swagbag.search.HeaderSearchModel
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.user.order.with_items.CancelOrderModel
 import com.shopping.swagbag.user.order.with_items.OrderModel
 import com.shopping.swagbag.user.shipping.checkout.CheckoutModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
@@ -86,6 +88,17 @@ class ProductViewModel(
         return products
     }
 
+    fun headerSearch(search: String): LiveData<Resource<HeaderSearchModel>>{
+        val result = MutableLiveData<Resource<HeaderSearchModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.headerSearch(search)
+        }
+
+        return result
+    }
+
     // Wishlist
     fun addToWishList(
         productId: String,
@@ -136,7 +149,7 @@ class ProductViewModel(
     }
 
     fun updateCart(
-        userId: String,
+        cartId: String,
         productId: String,
         quantity: String
     ): LiveData<Resource<UpdateCartModel>>{
@@ -144,7 +157,7 @@ class ProductViewModel(
 
         viewModelScope.launch {
             result.value = Resource.Loading
-            result.value = repository.updateCart(userId, productId, quantity)
+            result.value = repository.updateCart(cartId, productId, quantity)
         }
 
         return result
@@ -214,12 +227,12 @@ class ProductViewModel(
         return result
     }
 
-    fun checkout(userId: String, address: String, cartData: String): LiveData<Resource<CheckoutModel>>{
+    fun checkout(login: String, userId: String, address: String,billingAddress: String, cartData: String): LiveData<Resource<CheckoutModel>>{
         val result = MutableLiveData<Resource<CheckoutModel>>()
 
         viewModelScope.launch {
             result.value = Resource.Loading
-            result.value = repository.checkout(userId, address, cartData)
+            result.value = repository.checkout(login,userId, address,billingAddress, cartData)
         }
         return result
     }
@@ -246,6 +259,18 @@ class ProductViewModel(
 
         Log.e("TAG", "get orders: ${result.value}", )
         return result
+    }
+
+    fun cancelOrder(orderId: String): LiveData<Resource<CancelOrderModel>>{
+        val result = MutableLiveData<Resource<CancelOrderModel>>()
+
+        viewModelScope.launch{
+            result.value = Resource.Loading
+            result.value = repository.cancelOrder(orderId)
+        }
+
+        return result
+
     }
 
 

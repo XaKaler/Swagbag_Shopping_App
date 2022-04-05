@@ -78,7 +78,7 @@ RecycleViewItemClick{
                     stopShowingLoading()
 
                     val result = it.value.result
-                    DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
+                   setTopTrending(result.section)
                     showOfferImages()
                     setCategoryToBeg(result.category)
                     setBestOffer(result.featured)
@@ -105,12 +105,12 @@ RecycleViewItemClick{
         CategoryRepository(remoteDataSource.getBaseUrl().create(CategoryApi::class.java))
 
 
-    private fun setTopTrending(data: ArrayList<DummyModel>) {
+    private fun setTopTrending(data: List<ParticularCategoryModel.Result.Section>) {
         with(viewBinding) {
             rvTopTrending.apply {
                 addItemDecoration(GridSpaceItemDecoration(20))
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = TopTrendingAdapter(context, DummyData().getTopTrending())
+                adapter = TopTrendingAdapter(context, data)
             }
         }
     }

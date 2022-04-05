@@ -78,7 +78,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
     }
 
     private fun productSearch(userSearch: String) {
-        viewModel.productSearch("", "", "", "", "", "", "", "", userSearch)
+        viewModel.headerSearch( userSearch)
             .observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Loading -> showLoading()
@@ -100,12 +100,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
             }
     }
 
-    private fun showSearchResult(products: List<ProductSearchModel.Result>) {
+    private fun showSearchResult(products: List<HeaderSearchModel.Result>) {
         with(viewBinding) {
             rvSearchProducts.apply {
                 layoutManager = GridLayoutManager(context, 2)
                 addItemDecoration(GridSpaceItemDecoration(5))
-                adapter = ProductAdapter(context, products)
+                //adapter = ProductAdapter(context, products)
             }
         }
     }

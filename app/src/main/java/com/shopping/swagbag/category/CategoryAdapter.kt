@@ -42,7 +42,7 @@ class CategoryAdapter(
 
                     Log.e("TAG", "bind: itemClick ${singleData.id}", )
 
-                    itemClick.onItemClick(singleData.id, position)
+                    itemClick.onItemClick(singleData.name.lowercase(), position)
                 }
             }
         }

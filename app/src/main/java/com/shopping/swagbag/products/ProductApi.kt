@@ -5,6 +5,8 @@ import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.products.product_details.UpdateCartModel
+import com.shopping.swagbag.search.HeaderSearchModel
+import com.shopping.swagbag.user.order.with_items.CancelOrderModel
 import com.shopping.swagbag.user.order.with_items.OrderModel
 import com.shopping.swagbag.user.shipping.checkout.CheckoutModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.ClearCartModel
@@ -40,6 +42,11 @@ interface ProductApi {
         @Query("s")name: String,
     ): ProductSearchModel
 
+    @GET("header-search")
+    suspend fun headerSearch(
+        @Query("s")search: String
+    ):HeaderSearchModel
+
     @FormUrlEncoded
     @POST("add-to-wish")
     suspend fun addToWishlist(
@@ -69,7 +76,7 @@ interface ProductApi {
     @POST("update-cart")
     suspend fun updateCart(
         @Field("id")productId: String,
-        @Field("userid")userId: String,
+        @Field("cartid")cartId: String,
         @Field("quantity")quantity: String
     ): UpdateCartModel
 
@@ -108,8 +115,10 @@ interface ProductApi {
     @FormUrlEncoded
     @POST("checkout")
     suspend fun checkout(
+        @Field("login")login: String,
         @Field("userid")userId: String,
         @Field("address")address: String,
+        @Field("billing_address")billingAddress: String,
         @Field("cart_data")cartData: String
     ): CheckoutModel
 
@@ -127,4 +136,8 @@ interface ProductApi {
         @Query("filter_by")filterBy: String,
         @Query("id")userId: String
     ): OrderModel
+
+    @FormUrlEncoded
+    @POST("cancel-order")
+    suspend fun cancelOrder(@Field("orderid") orderId: String): CancelOrderModel
 }

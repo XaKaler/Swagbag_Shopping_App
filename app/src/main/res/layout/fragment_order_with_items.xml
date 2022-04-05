@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_bg_color_with_day_white"
-    tools:context=".user.order.with_items.OrderWithItemsFragment">
+    tools:context=".user.order.with_items.OrderFragment">
 
     <include
         android:id="@+id/include"
@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/orderWithItems"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:paddingHorizontal="@dimen/screen_horizontal_padding"
@@ -44,8 +45,8 @@
             app:layout_constraintTop_toBottomOf="@+id/lytOrderFilter" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/orderWithoutItems"
         android:visibility="gone"
         android:layout_width="0dp"
         android:padding="@dimen/screen_horizontal_padding"

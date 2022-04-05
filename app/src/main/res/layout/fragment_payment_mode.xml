@@ -136,7 +136,7 @@
                             android:text="Cash on delivery" />
 
                         <RadioButton
-                            android:id="@+id/card"
+                            android:id="@+id/online"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/space_between_view_and_subview"
@@ -205,8 +205,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView16">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
                     android:id="@+id/priceArea"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="@dimen/screen_horizontal_padding">
 
@@ -249,18 +249,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_10"
-                        android:text="Total MRP"
+                        android:text="Subtotal"
                         android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         app:layout_constraintStart_toStartOf="@+id/textView1041"
                         app:layout_constraintTop_toBottomOf="@+id/textView1041" />
 
                     <TextView
-                        android:id="@+id/productPrice"
+                        android:id="@+id/subTotal"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:text=""
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         app:layout_constraintBottom_toBottomOf="@+id/textView106"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView106" />
@@ -269,34 +269,45 @@
                         android:id="@+id/textView108"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:text="@string/Rs"
-                        app:layout_constraintBottom_toBottomOf="@+id/productPrice"
-                        app:layout_constraintEnd_toStartOf="@+id/productPrice"
-                        app:layout_constraintTop_toTopOf="@+id/productPrice" />
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        app:layout_constraintBottom_toBottomOf="@+id/subTotal"
+                        app:layout_constraintEnd_toStartOf="@+id/subTotal"
+                        app:layout_constraintTop_toTopOf="@+id/subTotal" />
 
                     <TextView
                         android:id="@+id/textView109"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_10"
                         android:text="Discount on  MRP"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         app:layout_constraintStart_toStartOf="@+id/textView106"
                         app:layout_constraintTop_toBottomOf="@+id/textView106" />
+
+                    <TextView
+                        android:id="@+id/taxPercentage"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:text="Tax"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        app:layout_constraintStart_toStartOf="@+id/textView106"
+                        app:layout_constraintTop_toBottomOf="@+id/textView109" />
 
                     <TextView
                         android:id="@+id/textView110"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_10"
                         android:text="Delivery Charges "
-                        app:layout_constraintStart_toStartOf="@+id/textView109"
-                        app:layout_constraintTop_toBottomOf="@+id/textView109" />
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        app:layout_constraintStart_toStartOf="@+id/taxPercentage"
+                        app:layout_constraintTop_toBottomOf="@+id/taxPercentage" />
 
                     <TextView
                         android:id="@+id/textView111"
@@ -317,8 +328,21 @@
                         android:text=""
                         android:textColor="@color/Paolo_Veronese_Green"
                         app:layout_constraintBottom_toBottomOf="@+id/textView109"
-                        app:layout_constraintEnd_toEndOf="@+id/productPrice"
+                        app:layout_constraintEnd_toEndOf="@+id/subTotal"
                         app:layout_constraintTop_toTopOf="@+id/textView109" />
+
+
+                    <TextView
+                        android:id="@+id/taxPrice"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/Paolo_Veronese_Green"
+                        app:layout_constraintBottom_toBottomOf="@+id/taxPercentage"
+                        app:layout_constraintEnd_toEndOf="@+id/subTotal"
+                        app:layout_constraintTop_toTopOf="@+id/taxPercentage" />
+
 
                     <TextView
                         android:id="@+id/textView113"
@@ -332,6 +356,17 @@
                         app:layout_constraintTop_toTopOf="@+id/discountPrice" />
 
                     <TextView
+                        android:id="@+id/textView49"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Rs"
+                        android:textColor="@color/Paolo_Veronese_Green"
+                        app:layout_constraintBottom_toBottomOf="@+id/taxPrice"
+                        app:layout_constraintEnd_toStartOf="@+id/taxPrice"
+                        app:layout_constraintTop_toTopOf="@+id/taxPrice" />
+
+                    <TextView
                         android:id="@+id/textView114"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
@@ -343,13 +378,24 @@
                         app:layout_constraintTop_toTopOf="@+id/discountPrice" />
 
                     <TextView
+                        android:id="@+id/textView48"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+"
+                        android:textColor="@color/Paolo_Veronese_Green"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView49"
+                        app:layout_constraintEnd_toStartOf="@+id/textView49"
+                        app:layout_constraintTop_toTopOf="@+id/taxPrice" />
+
+                    <TextView
                         android:id="@+id/free"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" Free"
-                        android:visibility="gone"
                         android:textColor="@color/Paolo_Veronese_Green"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textView111"
                         app:layout_constraintEnd_toEndOf="@+id/discountPrice"
                         app:layout_constraintTop_toTopOf="@+id/textView111" />
@@ -359,8 +405,8 @@
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:text=""
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         app:layout_constraintBottom_toBottomOf="@+id/free"
                         app:layout_constraintEnd_toStartOf="@+id/free"
                         app:layout_constraintTop_toTopOf="@+id/free" />
@@ -369,9 +415,9 @@
                         android:id="@+id/deliveryRupeeSign"
                         style="@style/roboto_normal_12_sonic_silver"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:layout_height="wrap_content"
                         android:text="@string/Rs"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         app:layout_constraintBottom_toBottomOf="@+id/deliveryCharges"
                         app:layout_constraintEnd_toStartOf="@+id/deliveryCharges"
                         app:layout_constraintTop_toTopOf="@+id/deliveryCharges" />

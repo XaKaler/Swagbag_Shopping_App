@@ -10,7 +10,6 @@
         android:id="@+id/imgProduct"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/product_image_height"
-        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,6 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="@dimen/product_sale_rating_size"
+        android:visibility="gone"
         android:layout_marginBottom="@dimen/space_between_views"
         android:background="@drawable/rec_white_12"
         android:paddingHorizontal="@dimen/dimen_10"
@@ -144,6 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_10"
             android:text="(55% Off)"
+            android:visibility="gone"
             android:textAllCaps="true"
             android:textColor="@color/sonic_silver"
             app:layout_constraintBottom_toBottomOf="@+id/textView22"

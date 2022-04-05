@@ -46,9 +46,9 @@ interface UserApi {
     ): PasswordResetModel
 
     @FormUrlEncoded
-    @PUT("user-update/{_id}")
+    @PUT("user-update/{id}")
     suspend fun userUpdate(
-        @Path("_id")userId: String,
+        @Path("id")userId: String,
         @Header("authorization")token: String,
         @Field("fname")fname: String,
         @Field("lname")lname: String,

@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.category.*
-import com.shopping.swagbag.common.HomeCategoryRecycleItemClickListener
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.CategorySliderAdapter
 import com.shopping.swagbag.databinding.ActivityMainBinding
@@ -23,6 +22,7 @@ import com.shopping.swagbag.databinding.NavigationHeaderBinding
 import com.shopping.swagbag.service.RemoteDataSource
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
+import com.shopping.swagbag.utils.SettingViewModel
 
 
 class MainActivity : AppCompatActivity(), RecycleViewItemClick{
@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
     private lateinit var navigationBinding: NavigationDrawerBinding
     private lateinit var navigationHeaderBinding: NavigationHeaderBinding
     private lateinit var categoryViewModel: CategoryViewModel
+    private lateinit var settingViewModel: SettingViewModel
+    private lateinit var settingResult: SettingsModel
     private lateinit var masterCategories: List<MasterCategoryModel.Result>
     private var appUtils = AppUtils(this@MainActivity)
 
@@ -53,15 +55,23 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
             //disable the swipe gesture that opens the navigation drawer
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
+            // category repository
             val repository =
                 CategoryRepository(RemoteDataSource().getBaseUrl().create(CategoryApi::class.java))
-
             categoryViewModel = ViewModelProvider(
                 this@MainActivity,
                 CategoryViewModelFactory(repository)
             )[CategoryViewModel::class.java]
 
+            // setting repository
+            val settingRepository =
+                SettingRepository(RemoteDataSource().getBaseUrl().create(SettingApi::class.java))
+            settingViewModel = ViewModelProvider(
+                this@MainActivity,
+                SettingViewModelFactory(settingRepository))[SettingViewModel::class.java]
+
             setCategorySlider()
+            getSettings()
 
             // click listeners
             btmNavigation.setOnItemSelectedListener { item ->
@@ -145,6 +155,11 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         with(navigationHeaderBinding) {
             closeDrawer.setOnClickListener {
                 closeDrawer()
+            }
+            if (AppUtils(this@MainActivity).isUserLoggedIn()) {
+                val user = AppUtils(this@MainActivity).getUser()
+                navHeaderUserName.text = user?.result?.fname
+                navHeaderUserEmail.text = user?.result?.email
             }
         }
     }
@@ -249,11 +264,39 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
     }
 
+    fun getSettingResult(name: String): String{
+        var result: String = ""
+       for(settingName in settingResult.result){
+           if(settingName.name == name){
+               result = settingName.value
+           }
+       }
+        return result
+    }
+
+    private fun getSettings() {
+        val userId = appUtils.getUserId()
+        settingViewModel.settings(userId).observe(this){
+            when(it){
+                is Resource.Success -> {
+
+                    settingResult  = it.value
+                }
+
+                is Resource.Failure -> {
+                    Log.e("settings", "getSettings: $it", )
+                }
+            }
+        }
+    }
+
     override fun onItemClickWithName(name: String, position: Int) {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
         val navController = navHostFragment.navController
-        val action = ParticularCategoryFragmentDirections.actionGlobalParticularCategoryFragment(masterCategories[position].id)
+        val action = ParticularCategoryFragmentDirections.actionGlobalParticularCategoryFragment(
+            masterCategories[position].id
+        )
         navController.navigate(action)
 
     }

@@ -203,6 +203,7 @@ class ProductDetailsFragment : BaseFragment<
                 }
             }
         }
+        list.add(ProductOptionModel(value, price, sku, qty))
         return list
     }
 
@@ -315,9 +316,20 @@ class ProductDetailsFragment : BaseFragment<
                 }
             }
 
-            R.id.imgWishlistBackground -> findNavController().navigate(R.id.action_global_wishlistWithProductFragment)
+            R.id.imgWishlistBackground -> {
+                if (context?.let { AppUtils(it).isUserLoggedIn() } == true)
+                    findNavController().navigate(R.id.action_global_wishlistWithProductFragment)
+                else
+                    findNavController().navigate(R.id.action_global_signInFragment)
+
+            }
             R.id.imgBackBackground -> findNavController().popBackStack()
-            R.id.imgBegBackground -> findNavController().navigate(R.id.action_global_shoppingBegWithProductFragment)
+            R.id.imgBegBackground -> {
+                if (context?.let { AppUtils(it).isUserLoggedIn() } == true)
+                    findNavController().navigate(R.id.action_global_shoppingBegWithProductFragment)
+                else
+                    findNavController().navigate(R.id.action_global_signInFragment)
+            }
         }
     }
 
@@ -327,7 +339,7 @@ class ProductDetailsFragment : BaseFragment<
 
         if (optionList.isEmpty()) {
             if (sizeList.isEmpty() && colorList.isEmpty()) {
-                optionList.add(AddToCartProductOptionModel("", "", ""))
+                //optionList.add(AddToCartProductOptionModel("", "", ""))
                 checkCart(optionList)
             } else if (sizeList.isEmpty() && colorList.isNotEmpty()) {
                 if (finalColor == null)
@@ -390,51 +402,58 @@ class ProductDetailsFragment : BaseFragment<
 
     private fun checkCart(optionList: ArrayList<AddToCartProductOptionModel>) {
         val isUserLogIn = context?.let { AppUtils(it).isUserLoggedIn() }
-        val userId = context?.let { AppUtils(it).getUserId() }
 
-        if (isUserLogIn == true && userId != null) {
-            viewModel.getCart(userId).observe(viewLifecycleOwner) {
-                when (it) {
-                    is Resource.Loading -> showLoading()
+        if (isUserLogIn == true) {
+            val userId = context?.let { AppUtils(it).getUserId() }
+            if (userId != null) {
+                viewModel.getCart(userId).observe(viewLifecycleOwner) {
+                    when (it) {
+                        is Resource.Loading -> showLoading()
 
-                    is Resource.Success -> {
-                        stopShowingLoading()
+                        is Resource.Success -> {
+                            stopShowingLoading()
 
-                        val cartProductList = it.value.result
+                            val cartProductList = it.value.result
 
-                        if (cartProductList != null) {
-                            var isFound = false
-                            for (singleProduct in cartProductList) {
-                                if (singleProduct.product.id == product.result.id) {
-                                    updateCart(userId, singleProduct.quantity)
-                                    isFound = true
-                                    break
+                            if (cartProductList != null) {
+                                var isFound = false
+                                for (singleProduct in cartProductList) {
+                                    if (singleProduct.product.id == product.result.id) {
+                                        updateCart(singleProduct.id, singleProduct.quantity)
+                                        isFound = true
+                                        break
+                                    }
                                 }
-                            }
-                            if(!isFound)
+                                if (!isFound)
+                                    addToCart(userId, optionList)
+                            } else
                                 addToCart(userId, optionList)
                         }
-                        else
-                        addToCart(userId, optionList)
-                    }
-                    is Resource.Failure -> {
-                        stopShowingLoading()
-                        toast("try again")
-                        Log.e("TAG", "checkCart: $it")
+                        is Resource.Failure -> {
+                            stopShowingLoading()
+                            toast("try again")
+                            Log.e("TAG", "checkCart: $it")
+                        }
                     }
                 }
             }
+        } else {
+            findNavController().navigate(R.id.action_global_signInFragment)
         }
+
     }
 
-    private fun updateCart(userId: String, quantity: Int) {
+    private fun updateCart(cartId: String, quantity: Int) {
 
         val productId = product.result.id
         val qty = quantity + 1
 
-        Log.e("TAG", "updateCart: $productId and $qty")
+        Log.e("TAG", "updateCart: product id  : \n" +
+                "cart id : $cartId" +
+                "product id : $productId\n" +
+                "qty : $qty", )
 
-        viewModel.updateCart(userId, productId, qty.toString()).observe(viewLifecycleOwner) {
+        viewModel.updateCart(cartId, productId, qty.toString()).observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> showLoading()
 
@@ -469,12 +488,18 @@ class ProductDetailsFragment : BaseFragment<
                         stopShowingLoading()
 
                         //set text on button
-                        viewBinding.addToBeg.text = "Go to beg"
 
+                        if (it.value.message != "Out of stock")
+                            viewBinding.addToBeg.text = "Go to beg"
                         toast(it.value.message)
                     }
 
-                    is Resource.Failure -> Log.e("TAG", "addToCart: $it")
+                    is Resource.Failure -> {
+                        stopShowingLoading()
+                        tryAgain()
+                        findNavController().popBackStack()
+                        Log.e("TAG", "addToCart: $it")
+                    }
                 }
             }
     }
@@ -500,9 +525,6 @@ class ProductDetailsFragment : BaseFragment<
             })
         }
 
-        else{
-            //@todo if user is not logged in then save product in local database
-        }
     }
 
     override fun getFragmentBinding(

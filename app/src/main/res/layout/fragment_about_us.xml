@@ -74,7 +74,7 @@
                     android:layout_marginTop="@dimen/space_between_views"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text=""
                     app:layout_constraintEnd_toEndOf="@+id/imageView26"
                     app:layout_constraintStart_toStartOf="@+id/textView26"
                     app:layout_constraintTop_toBottomOf="@+id/imageView26" />

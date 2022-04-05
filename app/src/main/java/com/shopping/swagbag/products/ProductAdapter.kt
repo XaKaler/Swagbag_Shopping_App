@@ -13,6 +13,7 @@ import com.shopping.swagbag.common.adapter.BestOfferAdapter
 import com.shopping.swagbag.databinding.SingleBestOffersBinding
 import com.shopping.swagbag.databinding.SingleProductBinding
 import com.shopping.swagbag.dummy.DummyModel
+import com.shopping.swagbag.search.HeaderSearchModel
 
 class ProductAdapter(
     private val context: Context,
@@ -28,7 +29,6 @@ class ProductAdapter(
                 // set imgae
                 Glide.with(context)
                     .load(singleData.file[0].location)
-                    .fitCenter()
                     .into(imgProduct)
 
                 // set text

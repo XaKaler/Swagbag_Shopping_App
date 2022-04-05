@@ -40,19 +40,22 @@ class TermsOfUsesFragment :
     }
 
     private fun getTermsOfUse() {
-        viewModel.settings().observe(viewLifecycleOwner){
+       /* viewModel.settings().observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading -> showLoading()
 
                 is Resource.Success -> {
                     stopShowingLoading()
 
-                    viewBinding.termsOfUse.text = html2Text(it.value.result[7].value)
+                    for (singleResult in it.value.result) {
+                        if (singleResult.name == "Terms")
+                            viewBinding.termsOfUse.text = html2Text(singleResult.value)
+                    }
                 }
 
                 is Resource.Failure -> Log.e("TAG", "getTermsOfUse: $it", )
             }
-        }
+        }*/
     }
 
     private fun setToolbar() {

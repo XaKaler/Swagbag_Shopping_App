@@ -86,7 +86,7 @@ RecycleViewItemClick{
 
                     val result = it.value.result
                     setAutoImageSlider(result.slider)
-                    DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
+                    //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
                     setCategoryToBeg(result.masterCategory)
                     setDealOfTheDay(result.deals)
                     setBestOffer(result.randomCategory)
@@ -120,7 +120,7 @@ RecycleViewItemClick{
             rvTopTrending.apply {
                 addItemDecoration(GridSpaceItemDecoration(20))
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = TopTrendingAdapter(context, DummyData().getTopTrending())
+               // adapter = TopTrendingAdapter(context, DummyData().getTopTrending())
             }
         }
     }

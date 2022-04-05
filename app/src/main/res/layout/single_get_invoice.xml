@@ -57,8 +57,8 @@
         <TextView
             android:id="@+id/textView144"
             style="@style/roboto_normal_12_sonic_silver"
-            android:layout_width="wrap_content"
             android:textColor="@color/day_dark_liver_night_white"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_15"
             android:text="Charge"

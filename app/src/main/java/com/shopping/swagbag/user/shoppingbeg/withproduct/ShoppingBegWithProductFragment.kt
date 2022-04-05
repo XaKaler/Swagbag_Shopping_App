@@ -46,7 +46,11 @@ class ShoppingBegWithProductFragment : BaseFragment<
     private fun initViews() {
         toolbar()
 
-        getCart()
+
+        if (context?.let { AppUtils(it).isUserLoggedIn() } == true)
+            getCart()
+        else
+            findNavController().navigate(R.id.action_global_signInFragment)
 
         with(viewBinding) {
             placeOrder.setOnClickListener {
@@ -199,33 +203,36 @@ class ShoppingBegWithProductFragment : BaseFragment<
 
     private fun updateCart(productId: String, qty: String, position: Int) {
 
-        Log.e("TAG", "updateCart: product id  : $productId\n" +
+        Log.e("TAG", "updateCart: product id  : \n" +
+                "cart id : ${product.result?.get(position)?.id}" +
+                "product id : $productId\n" +
                 "qty : $qty", )
 
-            userId?.let { viewModel.updateCart(it, productId, qty) }
-                ?.observe(viewLifecycleOwner) {
-                    when(it){
-                        is Resource.Loading -> showLoading()
+        product.result?.get(position)?.id?.let {
+            viewModel.updateCart(it, productId, qty).observe(viewLifecycleOwner) {
+                when(it){
+                    is Resource.Loading -> showLoading()
 
-                        is Resource.Success -> {
-                            stopShowingLoading()
+                    is Resource.Success -> {
+                        stopShowingLoading()
 
-                            toast(it.value.message)
+                        toast(it.value.message)
 
-                            /*val productList: MutableList<GetCartModel.Result> =
-                                product.result as MutableList
-                            productList[position].quantity = qty
-                            shoppingBegProductAdapter.updateList(productList)*/
+                        /*val productList: MutableList<GetCartModel.Result> =
+                                        product.result as MutableList
+                                    productList[position].quantity = qty
+                                    shoppingBegProductAdapter.updateList(productList)*/
 
-                            getCart()
-                        }
+                        getCart()
+                    }
 
-                        is Resource.Failure -> {
-                            stopShowingLoading()
-                            toast("try again")
-                        }
+                    is Resource.Failure -> {
+                        stopShowingLoading()
+                        toast("try again")
                     }
                 }
+            }
+        }
     }
 
     override fun itemClickWithView(name: String, position: Int, view: View) {

@@ -2,7 +2,6 @@ package com.shopping.swagbag.products
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.*
-import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.utils.AppUtils
 
 
 class ProductsFragment : BaseFragment<
@@ -48,9 +46,9 @@ class ProductsFragment : BaseFragment<
 
     private fun setProducts() {
         val args: ProductsFragmentArgs by navArgs()
-        val productId = args.productId
+        val masterCategory = args.productId
 
-        viewModel.productSearch("", "", "", "", "", "","",  productId, "")
+        viewModel.productSearch("", "", "", "", "", "","",  masterCategory, "")
             .observe(viewLifecycleOwner, Observer {
                 when(it){
                     is Resource.Loading -> showLoading()
@@ -67,7 +65,12 @@ class ProductsFragment : BaseFragment<
                         }
                     }
 
-                    is Resource.Failure -> Log.e("TAG", "setProducts: $it", )
+                    is Resource.Failure -> {
+                        stopShowingLoading()
+                        tryAgain()
+                        findNavController().popBackStack()
+                        Log.e("TAG", "setProducts: $it", )
+                    }
                 }
             })
     }
@@ -87,11 +90,11 @@ class ProductsFragment : BaseFragment<
             }
 
             imgWishlist.setOnClickListener{
-                findNavController().navigate(R.id.action_productsFragment_to_wishlistWithProductFragment)
+                findNavController().navigate(R.id.action_global_wishlistWithProductFragment)
             }
 
             imgCart.setOnClickListener{
-                findNavController().navigate(R.id.action_productsFragment_to_shoppingBegWithoutProductFragment)
+                findNavController().navigate(R.id.action_global_shoppingBegWithProductFragment)
             }
 
         }

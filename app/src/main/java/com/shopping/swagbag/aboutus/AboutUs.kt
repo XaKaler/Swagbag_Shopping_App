@@ -37,19 +37,22 @@ class AboutUs :
     }
 
     private fun getAboutUs() {
-        viewModel.settings().observe(viewLifecycleOwner){
+       /* viewModel.settings("About").observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading -> showLoading()
 
                 is Resource.Success -> {
                     stopShowingLoading()
 
-                    viewBinding.aboutUs.text = html2Text(it.value.result[8].value)
+                    for (singleResult in it.value.result) {
+                        if (singleResult.name == "About")
+                            viewBinding.aboutUs.text = html2Text(singleResult.value)
+                    }
                 }
 
                 is Resource.Failure -> Log.e("TAG", "getAboutUs: $it", )
             }
-        }
+        }*/
     }
 
     private fun setToolbar() {

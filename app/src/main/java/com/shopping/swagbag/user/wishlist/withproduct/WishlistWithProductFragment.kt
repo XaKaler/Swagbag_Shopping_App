@@ -49,18 +49,16 @@ class WishlistWithProductFragment : BaseFragment<
 
     private fun initViews() {
         setCategory()
-
-        getWishlistProduct()
-
         toolbar()
+
+        if (context?.let { AppUtils(it).isUserLoggedIn() } == true)
+            getWishlistProduct()
+        else
+            findNavController().navigate(R.id.action_global_signInFragment)
     }
 
     private fun getWishlistProduct() {
-        val isUserLogIn = context?.let { AppUtils(it).isUserLoggedIn() }
 
-        Log.e("TAG", "is User logged in: $isUserLogIn",)
-
-        if (isUserLogIn == true) {
             val userId = context?.let { AppUtils(it).getUserId() }
 
             Log.e("userId", "check user id: $userId", )
@@ -92,7 +90,7 @@ class WishlistWithProductFragment : BaseFragment<
                     }
                 })
             }
-        }
+
     }
 
     private fun setWishlistProduct(products: List<GetWishlistModel.Result>) {
