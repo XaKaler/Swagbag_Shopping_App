@@ -38,8 +38,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_mike_outline" />
+            />
 
+        <!--app:srcCompat="@drawable/ic_mike_outline"
+        app:srcCompat="@drawable/ic_camera_outline"
+        -->
         <ImageView
             android:id="@+id/searchByImage"
             android:layout_width="wrap_content"
@@ -47,8 +50,7 @@
             android:padding="@dimen/screen_horizontal_padding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/searchByVoice"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_camera_outline" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

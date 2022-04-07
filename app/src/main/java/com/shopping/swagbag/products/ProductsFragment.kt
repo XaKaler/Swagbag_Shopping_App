@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.base.BaseFragment
-import com.shopping.swagbag.databinding.*
+import com.shopping.swagbag.databinding.FragmentProductsBinding
+import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
 
@@ -24,6 +25,7 @@ class ProductsFragment : BaseFragment<
         >(FragmentProductsBinding::inflate), View.OnClickListener {
 
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
+    private lateinit var appUtils: AppUtils
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,8 +40,10 @@ class ProductsFragment : BaseFragment<
 
         setProducts()
 
+        appUtils = context?.let { AppUtils(it) }!!
+
         // click listeners
-        with(viewBinding){
+        with(viewBinding) {
             tvSortBy.setOnClickListener(this@ProductsFragment)
         }
     }
@@ -90,11 +94,17 @@ class ProductsFragment : BaseFragment<
             }
 
             imgWishlist.setOnClickListener{
-                findNavController().navigate(R.id.action_global_wishlistWithProductFragment)
+                if (appUtils.isUserLoggedIn())
+                    findNavController().navigate(R.id.action_global_wishlistWithProductFragment)
+                else
+                    findNavController().navigate(R.id.action_global_signInFragment)
             }
 
             imgCart.setOnClickListener{
+                if (appUtils.isUserLoggedIn())
                 findNavController().navigate(R.id.action_global_shoppingBegWithProductFragment)
+                else
+                    findNavController().navigate(R.id.action_global_signInFragment)
             }
 
         }

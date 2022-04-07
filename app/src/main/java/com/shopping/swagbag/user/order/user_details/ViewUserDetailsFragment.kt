@@ -61,9 +61,7 @@ class ViewUserDetailsFragment : BaseFragment<
     private fun getAllAddresses() {
         val appUtils = context?.let { AppUtils(it) }
 
-        if(appUtils!!.isUserLoggedIn()){
-
-            val userId = appUtils.getUserId()
+            val userId = appUtils!!.getUserId()
 
             viewModel.allAddress(userId).observe(viewLifecycleOwner, Observer {
                 when(it){
@@ -80,9 +78,6 @@ class ViewUserDetailsFragment : BaseFragment<
                     is Resource.Failure -> Log.e("TAG", "getAllAddresses: $it", )
                 }
             })
-        }
-        else
-            findNavController().navigate(R.id.action_global_signInFragment)
     }
 
     private fun setAddresses(addresses: List<AllAddressModel.Result?>) {

@@ -87,9 +87,9 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                 ProductViewModelFactory(productRepository)
             )[ProductViewModel::class.java]
 
-            setCategorySlider()
+            setMasterCategorySlider()
             getSettings()
-            getHomeScreenData()
+            //getHomeScreenData()
 
             // click listeners
             btmNavigation.setOnItemSelectedListener { item ->
@@ -99,7 +99,11 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
+
+                        if(appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_wishlistWithProductFragment)
+                        else
+                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmCart->{
@@ -107,7 +111,11 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
+
+                        if(appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_shoppingBegWithProductFragment)
+                        else
+                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmCategory->{
@@ -131,7 +139,12 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
+
+                        if(appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_profileFragment)
+                        else
+                            navController.navigate(R.id.action_global_signInFragment)
+
                     }
                 }
                 true
@@ -158,22 +171,29 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         }
     }
 
-    fun setCategorySlider() {
+    fun setMasterCategorySlider(){
+        if(this::masterCategories.isInitialized) {
+            viewBinding.rvCategorySlider.apply {
+                layoutManager =
+                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = CategorySliderAdapter(
+                    this@MainActivity,
+                    masterCategories,
+                    this@MainActivity
+                )
+            }
+        }
+        else
+            getMasterCategories()
+    }
+
+    private fun getMasterCategories() {
         if (this::viewBinding.isInitialized) {
             categoryViewModel.masterCategory().observe(this, Observer {
                 when (it) {
                     is Resource.Success -> {
                         masterCategories = it.value.result
-
-                        viewBinding.rvCategorySlider.apply {
-                            layoutManager =
-                                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                            adapter = CategorySliderAdapter(
-                                this@MainActivity,
-                                it.value.result,
-                                this@MainActivity
-                            )
-                        }
+                        setMasterCategorySlider()
                     }
 
                     is Resource.Failure -> Toast.makeText(

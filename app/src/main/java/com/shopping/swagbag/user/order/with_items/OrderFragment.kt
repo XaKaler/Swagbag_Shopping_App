@@ -38,13 +38,7 @@ class OrderFragment : BaseFragment<
     }
 
     private fun initViews() {
-        val appUtils = context?.let { AppUtils(it) }
-        if (appUtils != null) {
-            if (appUtils.isUserLoggedIn())
-                getOrderItems()
-            else
-                findNavController().navigate(R.id.action_global_signInFragment)
-        }
+        getOrderItems()
 
         setToolbar()
     }

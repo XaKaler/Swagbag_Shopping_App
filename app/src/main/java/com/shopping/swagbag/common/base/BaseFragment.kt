@@ -3,7 +3,6 @@ package com.shopping.swagbag.common.base
 import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
-import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -12,7 +11,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.ListPopupWindow
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
@@ -22,6 +20,8 @@ import androidx.viewbinding.ViewBinding
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.ProgressDialogFragment
 import com.shopping.swagbag.service.RemoteDataSource
+import java.text.SimpleDateFormat
+import java.util.*
 
 abstract class BaseFragment<VB : ViewBinding, VM : ViewModel, BR : BaseRepository>(
     private val bindingInflater: (inflater: LayoutInflater) -> VB
@@ -121,5 +121,6 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel, BR : BaseRepositor
     }
 
     private fun Int.asDimen(context: Context) = context.resources.getDimensionPixelSize(this)
+
 
 }

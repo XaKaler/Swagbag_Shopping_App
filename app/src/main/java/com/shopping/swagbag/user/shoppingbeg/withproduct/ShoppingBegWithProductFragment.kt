@@ -11,7 +11,7 @@ import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickWithView
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
-import com.shopping.swagbag.common.base.BaseFunction
+import com.shopping.swagbag.common.base.GeneralFunction
 import com.shopping.swagbag.databinding.FragmentShoppingBegWithProductBinding
 import com.shopping.swagbag.databinding.ToolbarWithTwoMenusDeleteAndWishlistBinding
 import com.shopping.swagbag.products.ProductApi
@@ -46,11 +46,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
     private fun initViews() {
         toolbar()
 
-
-        if (context?.let { AppUtils(it).isUserLoggedIn() } == true)
             getCart()
-        else
-            findNavController().navigate(R.id.action_global_signInFragment)
 
         with(viewBinding) {
             placeOrder.setOnClickListener {
@@ -114,7 +110,10 @@ class ShoppingBegWithProductFragment : BaseFragment<
             }
 
             imgWishlist.setOnClickListener {
-                findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_wishlistWithProductFragment)
+                    findNavController().navigate(R.id.action_shoppingBegWithProductFragment_to_wishlistWithProductFragment)
+                /*if (context?.let { it1 -> AppUtils(it1).isUserLoggedIn() } == true)
+                else
+                    findNavController().navigate(R.id.action_global_signInFragment)*/
             }
 
             delete.setOnClickListener {
@@ -243,7 +242,7 @@ class ShoppingBegWithProductFragment : BaseFragment<
     override fun itemClickWithView(name: String, position: Int, view: View) {
         openListDialog(
             view,
-            BaseFunction.getProductQty(),
+            GeneralFunction.getProductQty(),
             isWrapContent = true,
         ) { result ->
             Log.e("qty", "quantity choose by user: $result", )

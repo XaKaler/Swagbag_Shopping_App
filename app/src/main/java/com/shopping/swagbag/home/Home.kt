@@ -28,6 +28,7 @@ import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
+import com.shopping.swagbag.service.Resource
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
@@ -55,26 +56,40 @@ RecycleViewItemClick{
 
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
 
         mainActivity.showToolbar()
-        mainActivity.setCategorySlider()
+        mainActivity.setMasterCategorySlider()
+
+        Log.e("TAG", "onViewCreated: ", )
 
     }
 
     private fun initViews() {
         activity = context as AppCompatActivity
 
-        getHomeData()
+        if(this::homeResult.isInitialized)
+            setData()
+        else
+            getHomeData()
 
     }
 
+    fun setData(){
+        setAutoImageSlider(homeResult.result.slider)
+        //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
+        setCategoryToBeg(homeResult.result.masterCategory)
+        setDealOfTheDay(homeResult.result.deals)
+        setBestOffer(homeResult.result.randomCategory)
+        setFeatureBrands(homeResult.result.featured)
+        showOfferImages()
+    }
+
     private fun getHomeData() {
-        /* viewModel.getHome().observe(viewLifecycleOwner){
+         viewModel.getHome().observe(viewLifecycleOwner){
              when(it){
                  is Resource.Loading ->  showLoading()
 
@@ -83,25 +98,22 @@ RecycleViewItemClick{
 
                      Log.e("TAG", "getHomeData: $it")
 
-                     val result = it.value.result
-                     setAutoImageSlider(result.slider)
-                     //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
-                     setCategoryToBeg(result.masterCategory)
-                     setDealOfTheDay(result.deals)
-                     setBestOffer(result.randomCategory)
-                     setFeatureBrands(result.featured)
-                     showOfferImages()
+                     homeResult = it.value
+
+                     setData()
                  }
 
                  is Resource.Failure -> Log.e("TAG", "getHomeData: $it", )
              }
-         }*/
-       /* homeResult = mainActivity.getHomeResult()
+         }
+
+
+  /*      homeResult = mainActivity.getHomeResult()
         setAutoImageSlider(homeResult.result.slider)
         //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
         setCategoryToBeg(homeResult.result.masterCategory)
         setDealOfTheDay(homeResult.result.deals)
-        setBestOffer(homeResult.result.rando    mCategory)
+        setBestOffer(homeResult.result.randomCategory)
         setFeatureBrands(homeResult.result.featured)
         showOfferImages()*/
 

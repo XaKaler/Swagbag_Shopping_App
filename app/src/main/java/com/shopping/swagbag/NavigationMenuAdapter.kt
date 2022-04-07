@@ -71,15 +71,20 @@ class NavigationMenuAdapter (
                     }
                 }
                 "Orders" -> {
-
-                        activity.closeDrawer()
-                        activity.hideToolbar()
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    if (appUtils.isUserLoggedIn())
                         navController.navigate(R.id.action_global_orderWithItemsFragment)
+                    else
+                        navController.navigate(R.id.action_global_signInFragment)
                 }
                 "Address" -> {
-                        activity.closeDrawer()
-                        activity.hideToolbar()
+                    activity.closeDrawer()
+                    activity.hideToolbar()
+                    if (appUtils.isUserLoggedIn())
                         navController.navigate(R.id.action_global_viewUserDetailsFragment)
+                     else
+                        navController.navigate(R.id.action_global_signInFragment)
                 }
                 "Coupons" -> {
                     activity.closeDrawer()

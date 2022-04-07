@@ -50,11 +50,7 @@ class WishlistWithProductFragment : BaseFragment<
     private fun initViews() {
         setCategory()
         toolbar()
-
-        if (context?.let { AppUtils(it).isUserLoggedIn() } == true)
             getWishlistProduct()
-        else
-            findNavController().navigate(R.id.action_global_signInFragment)
     }
 
     private fun getWishlistProduct() {

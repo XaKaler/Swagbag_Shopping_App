@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
+import com.shopping.swagbag.common.base.GeneralFunction
 import com.shopping.swagbag.databinding.SingleOrderItemBinding
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 
@@ -26,8 +27,10 @@ class OrderItemsAdapter(
             fun bind(singleData: OrderModel.OrderModelItem, position: Int, itemClick: RecycleViewItemClick){
                 with(viewBinding){
                     orderStatus.text = singleData.status
-                    orderDate.text = singleData.createdDate
-                    totalPrice.text = singleData.finalprice
+                    orderDate.text = GeneralFunction.convertServerDateToUserTimeZoneTask(singleData.createdDate)
+
+                   // val orderPrice = singleData.products[position].price *singleData.products[position].quantity
+                    totalPrice.text = singleData.price
 
                     cancel.setOnClickListener {
                         itemClick.onItemClickWithName("cancel", position)
