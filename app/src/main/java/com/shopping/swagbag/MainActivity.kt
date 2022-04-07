@@ -13,12 +13,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.category.*
+import com.shopping.swagbag.common.ProgressDialogFragment
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.CategorySliderAdapter
 import com.shopping.swagbag.databinding.ActivityMainBinding
 import com.shopping.swagbag.databinding.MainToolbarBinding
 import com.shopping.swagbag.databinding.NavigationDrawerBinding
 import com.shopping.swagbag.databinding.NavigationHeaderBinding
+import com.shopping.swagbag.home.HomeModel
+import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.products.ProductRepository
+import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.RemoteDataSource
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
@@ -33,9 +38,12 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
     private lateinit var navigationHeaderBinding: NavigationHeaderBinding
     private lateinit var categoryViewModel: CategoryViewModel
     private lateinit var settingViewModel: SettingViewModel
+    private lateinit var productViewModel: ProductViewModel
     private lateinit var settingResult: SettingsModel
+    private lateinit var homeResult: HomeModel
     private lateinit var masterCategories: List<MasterCategoryModel.Result>
     private var appUtils = AppUtils(this@MainActivity)
+    private lateinit var progressDialog: ProgressDialogFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +76,20 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                 SettingRepository(RemoteDataSource().getBaseUrl().create(SettingApi::class.java))
             settingViewModel = ViewModelProvider(
                 this@MainActivity,
-                SettingViewModelFactory(settingRepository))[SettingViewModel::class.java]
+                SettingViewModelFactory(settingRepository)
+            )[SettingViewModel::class.java]
+
+            // product repository
+            val productRepository =
+                ProductRepository(RemoteDataSource().getBaseUrl().create(ProductApi::class.java))
+            productViewModel = ViewModelProvider(
+                this@MainActivity,
+                ProductViewModelFactory(productRepository)
+            )[ProductViewModel::class.java]
 
             setCategorySlider()
             getSettings()
+            getHomeScreenData()
 
             // click listeners
             btmNavigation.setOnItemSelectedListener { item ->
@@ -81,11 +99,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-
-                        if (appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_wishlistWithProductFragment)
-                        else
-                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmCart->{
@@ -93,11 +107,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-
-                        if (appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_shoppingBegWithProductFragment)
-                        else
-                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmCategory->{
@@ -105,11 +115,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-
-                        if (appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_categoryFragment)
-                        else
-                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmOffers -> {
@@ -117,12 +123,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-
-
-                        if (appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_brandFragment)
-                        else
-                            navController.navigate(R.id.action_global_signInFragment)
                     }
 
                     R.id.btmProfile -> {
@@ -130,18 +131,11 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
-
-                        if (appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_profileFragment)
-                        else
-                            navController.navigate(R.id.action_global_signInFragment)
                     }
-
-
                 }
                 true
             }
-
         }
 
         setUpNavigation()
@@ -151,7 +145,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         setUPToolbar()
     }
 
-    private fun setUpNavigationHeader() {
+    fun setUpNavigationHeader() {
         with(navigationHeaderBinding) {
             closeDrawer.setOnClickListener {
                 closeDrawer()
@@ -264,29 +258,70 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         viewBinding.drawerLayout.closeDrawer(Gravity.LEFT)
     }
 
-    fun getSettingResult(name: String): String{
+    fun getSettingResult(name: String): String {
+        /* Log.e("TAG", "getSettingResult: $name\n" +
+                 "setting result is : $settingResult", )*/
+
         var result: String = ""
-       for(settingName in settingResult.result){
-           if(settingName.name == name){
-               result = settingName.value
-           }
-       }
+        for (settingName in settingResult.result) {
+            // Log.e("TAG", "setting name is : ${settingName.name}", )
+            if (settingName.name == name) {
+                result = settingName.value
+            }
+        }
         return result
     }
 
     private fun getSettings() {
-        val userId = appUtils.getUserId()
-        settingViewModel.settings(userId).observe(this){
-            when(it){
+        settingViewModel.settings().observe(this) {
+            when (it) {
                 is Resource.Success -> {
-
-                    settingResult  = it.value
+                    settingResult = it.value
                 }
 
                 is Resource.Failure -> {
-                    Log.e("settings", "getSettings: $it", )
+                    Log.e("settings", "getSettings: $it")
                 }
             }
+        }
+    }
+
+    fun getHomeResult(): HomeModel {
+        if (this::homeResult.isInitialized)
+            return homeResult
+        else
+            return homeResult
+    }
+
+    private fun getHomeScreenData() {
+        productViewModel.getHome().observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+                    showLoading()
+                }
+                is Resource.Success -> {
+                    stopShowingLoading()
+                    homeResult = it.value
+                }
+                is Resource.Failure -> {
+                    stopShowingLoading()
+                    Log.e("home", "getHomeScreenData: $it")
+                }
+            }
+
+        }
+    }
+
+    fun showLoading() {
+        val manager = this.supportFragmentManager
+        progressDialog = ProgressDialogFragment.newInstance()
+        progressDialog.isCancelable = false
+        progressDialog.show(manager, "progress")
+    }
+
+    fun stopShowingLoading() {
+        if (this::progressDialog.isInitialized) {
+            progressDialog.dismiss()
         }
     }
 

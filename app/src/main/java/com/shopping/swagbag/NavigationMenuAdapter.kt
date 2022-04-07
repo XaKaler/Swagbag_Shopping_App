@@ -14,7 +14,7 @@ import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.utils.AppUtils
 
 
-class NavigationMenuAdapter(
+class NavigationMenuAdapter (
     private val context: Context,
     private val data: List<NavigationMenu>,
     private val category: List<CategoryModel.Result>
@@ -71,20 +71,15 @@ class NavigationMenuAdapter(
                     }
                 }
                 "Orders" -> {
-                    if (appUtils.isUserLoggedIn()) {
+
                         activity.closeDrawer()
                         activity.hideToolbar()
                         navController.navigate(R.id.action_global_orderWithItemsFragment)
-                    } else
-                        navController.navigate(R.id.action_global_signInFragment)
                 }
                 "Address" -> {
-                    if (appUtils.isUserLoggedIn()) {
                         activity.closeDrawer()
                         activity.hideToolbar()
                         navController.navigate(R.id.action_global_viewUserDetailsFragment)
-                    } else
-                        navController.navigate(R.id.action_global_signInFragment)
                 }
                 "Coupons" -> {
                     activity.closeDrawer()

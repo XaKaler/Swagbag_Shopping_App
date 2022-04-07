@@ -163,7 +163,7 @@ class CheckoutFragment : BaseFragment<
             val deliveryCharge = 0
 
             for (cart in cartData.result!!) {
-                totalMRP += cart.product.sellingPrice
+                totalMRP += cart.product.sellingPrice*cart.quantity
                 //discountOnMRP += cart.product.discountedPrice
             }
 
@@ -171,12 +171,12 @@ class CheckoutFragment : BaseFragment<
             discountPrice.text = discountOnMRP.toString()
             subTotal.text = totalMRP.toString()
 
-            /*val tax = mainActivity.getSettingResult("Tax").toInt()
+            val tax = mainActivity.getSettingResult("TAX (Percentage)").toInt()
+            Log.e("tax", "setData: $tax", )
             taxPercentage.text = "Tax($tax%)"
             val taxAmount = totalMRP*tax/100
             taxPrice.text = taxAmount.toString()
-*/
-            totalAmount = totalMRP - discountOnMRP + deliveryCharge
+            totalAmount = totalMRP - discountOnMRP + deliveryCharge+taxAmount
             totalPrice.text = totalAmount.toString()
 
             //delivery charge

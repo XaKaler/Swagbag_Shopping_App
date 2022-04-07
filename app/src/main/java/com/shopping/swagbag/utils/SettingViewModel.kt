@@ -24,12 +24,12 @@ class SettingViewModel(private val repository: SettingRepository): ViewModel() {
         return result
     }
 
-    fun settings(userId: String): LiveData<Resource<SettingsModel>>{
+    fun settings(): LiveData<Resource<SettingsModel>>{
         val result = MutableLiveData<Resource<SettingsModel>>()
 
         viewModelScope.launch {
             result.value = Resource.Loading
-            result.value = repository.settings(userId)
+            result.value = repository.settings()
         }
 
         return result

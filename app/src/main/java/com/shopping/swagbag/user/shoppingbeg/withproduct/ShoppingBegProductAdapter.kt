@@ -36,13 +36,16 @@ class ShoppingBegProductAdapter(
                 productName.text = singleData.product.name
                 productDetails.text = singleData.product.shortDesc
                 sellerName.text = singleData.product.vendor
-                newPrice.text = singleData.product.sellingPrice.toString()
+
+                val quantityCount = "Qty: ${singleData.quantity}"
+                qtyInCart.text = quantityCount
+
+                val price = singleData.product.sellingPrice*singleData.quantity
+                newPrice.text = price.toString()
 
                 val discount = "${singleData.product.discountedPrice}%Off"
                 off.text = discount
 
-                val quantityCount = "Qty: ${singleData.quantity}"
-                qtyInCart.text = quantityCount
 
                 remove.setOnClickListener{
                     itemClick.onItemClickWithName("remove", position)

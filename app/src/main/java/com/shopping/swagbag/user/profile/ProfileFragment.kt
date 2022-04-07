@@ -10,16 +10,15 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
-import com.shopping.swagbag.user.auth.UserApi
-import com.shopping.swagbag.user.auth.UserRepository
-import com.shopping.swagbag.user.auth.UserViewModel
-import com.shopping.swagbag.user.auth.signin.SignInModel
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProfileBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.user.auth.UserApi
+import com.shopping.swagbag.user.auth.UserRepository
+import com.shopping.swagbag.user.auth.UserViewModel
+import com.shopping.swagbag.user.auth.signin.SignInModel
 import com.shopping.swagbag.utils.AppUtils
-import kotlinx.android.synthetic.main.fragment_contact_us.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -135,47 +134,53 @@ class ProfileFragment : BaseFragment<
 
     private fun setUserData() {
         // get user from app utils
-        val user: SignInModel? = context?.let { AppUtils(it).getUser() }
+        val appUtils = context?.let { AppUtils(it) }
 
-        with(viewBinding) {
-            val fName = user?.result?.fname
-            val lName = user?.result?.lname
-            val mobile = user?.result?.mobile
-            val email = user?.result?.email
-            val birthDate = ""
-            val address = user?.result?.address
-            val gender = "Male"
+        if (appUtils!!.isUserLoggedIn()) {
+            val user: SignInModel? = appUtils.getUser()
 
-            Log.e(
-                "user data",
-                "username: $fName\n" +
-                        "mobile: $mobile\n" +
-                        "email: $email\n" +
-                        "birthday: $birthDate\n" +
-                        "address: $address\n" +
-                        "gender: $gender\n",
-            )
+            with(viewBinding) {
+                val fName = user?.result?.fname
+                val lName = user?.result?.lname
+                val mobile = user?.result?.mobile
+                val email = user?.result?.email
+                val birthDate = ""
+                val address = user?.result?.address
+                val gender = "Male"
 
-            //set user data
-            edtFirstName.setText(fName)
-            edtLastName.setText(lName)
-            mobileNo.setText(mobile)
-            emailAddress.setText(email)
-            location.setText(address)
-            birthday.setText(birthDate)
+                Log.e(
+                    "user data",
+                    "username: $fName\n" +
+                            "mobile: $mobile\n" +
+                            "email: $email\n" +
+                            "birthday: $birthDate\n" +
+                            "address: $address\n" +
+                            "gender: $gender\n",
+                )
 
-            Log.e("TAG", "setUserData: ${user?.result?.file}", )
+                //set user data
+                edtFirstName.setText(fName)
+                edtLastName.setText(lName)
+                mobileNo.setText(mobile)
+                emailAddress.setText(email)
+                location.setText(address)
+                birthday.setText(birthDate)
 
-            context?.let {
-                Glide.with(it)
-                    .load(user?.result?.file)
-                    .placeholder(R.mipmap.navigation_header_user_img_foreground)
-                    .into(imgUser)
+                Log.e("TAG", "setUserData: ${user?.result?.file}")
+
+                context?.let {
+                    Glide.with(it)
+                        .load(user?.result?.file)
+                        .placeholder(R.mipmap.navigation_header_user_img_foreground)
+                        .into(imgUser)
+                }
+
+                //set gender
+                maleSelected = gender == "Male"
             }
+        } else
+            findNavController().navigate(R.id.action_global_signInFragment)
 
-            //set gender
-            maleSelected = gender == "Male"
-        }
     }
 
     private fun setGender() {

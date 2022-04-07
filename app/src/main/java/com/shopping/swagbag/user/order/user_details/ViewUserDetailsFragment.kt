@@ -59,9 +59,12 @@ class ViewUserDetailsFragment : BaseFragment<
     }
 
     private fun getAllAddresses() {
-        val userId = context?.let { AppUtils(it).getUserId() }
+        val appUtils = context?.let { AppUtils(it) }
 
-        if (userId != null) {
+        if(appUtils!!.isUserLoggedIn()){
+
+            val userId = appUtils.getUserId()
+
             viewModel.allAddress(userId).observe(viewLifecycleOwner, Observer {
                 when(it){
                     is Resource.Loading -> showLoading()
@@ -78,6 +81,8 @@ class ViewUserDetailsFragment : BaseFragment<
                 }
             })
         }
+        else
+            findNavController().navigate(R.id.action_global_signInFragment)
     }
 
     private fun setAddresses(addresses: List<AllAddressModel.Result?>) {
@@ -114,13 +119,12 @@ class ViewUserDetailsFragment : BaseFragment<
 
     override fun onItemClickWithName(tag: String, position: Int) {
         when(tag){
-            //@todo edit address
             "edit" -> {
-                /*val action =
+                val action =
                     ViewUserDetailsFragmentDirections.actionViewUserDetailsFragmentToEditUserDetailFragment(
-                        addresses.result?.get(position)
+                        addresses.result!![position]
                     )
-                findNavController().navigate(action)*/
+                findNavController().navigate(action)
             }
             "delete" -> deleteAddress(position)
         }

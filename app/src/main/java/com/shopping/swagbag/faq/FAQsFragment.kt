@@ -1,11 +1,13 @@
 package com.shopping.swagbag.faq
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.SettingApi
 import com.shopping.swagbag.SettingRepository
@@ -19,6 +21,18 @@ class FAQsFragment :
     BaseFragment<FragmentFAQsBinding, SettingViewModel, SettingRepository>(FragmentFAQsBinding::inflate) {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+    private lateinit var mainActivity: MainActivity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+
+        if (mainActivity !is MainActivity) {
+            Log.e("TAG", "onAttach: is instance of main actvity")
+        } else {
+            Log.e("TAG", "onAttach:not is instance of main actvity")
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,6 +64,9 @@ class FAQsFragment :
                 is Resource.Failure -> Log.e("TAG", "getFAQs: $it", )
             }
         }*/
+
+        val faq = mainActivity.getSettingResult("FAQ")
+        viewBinding.questionAnswers.text = html2Text(faq)
     }
 
     private fun setToolbar() {

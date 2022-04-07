@@ -33,8 +33,11 @@ class OrderItemDetailAdapter(
                     // set text
                     productName.text = singleData.products[position].productname
                     productDesc.text = singleData.products[position].product.shortDesc
-                    productDesc.text = singleData.products[position].product.price.toString()
-                    orderStatus.text = singleData.status
+
+                    val price = singleData.products[position].product.sellingPrice?.times(singleData.products[position].quantity)
+                    productPrice.text = price.toString()
+
+                    //orderStatus.text = singleData.status
 
                     itemView.setOnClickListener{
                         itemClick.onItemClickWithName("detail", position)

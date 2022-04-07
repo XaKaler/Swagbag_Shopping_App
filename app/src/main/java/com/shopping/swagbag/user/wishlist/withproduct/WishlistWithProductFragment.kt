@@ -210,7 +210,7 @@ class WishlistWithProductFragment : BaseFragment<
                             allDataList.removeAt(position)
                             wishlistProductAdapter.updateData(allDataList)
 
-                            if (position==0) {
+                            if (position==0 && allDataList.isEmpty()) {
                                 showEmptyWishlist()
                             }
                             Log.e("wishlist", "removeFromWishlist: $allDataList")

@@ -1,11 +1,13 @@
 package com.shopping.swagbag.privacypolicy
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.SettingApi
 import com.shopping.swagbag.SettingRepository
@@ -22,6 +24,19 @@ class PrivacyPolicyFragment :
     ) {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+    private lateinit var mainActivity: MainActivity
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+
+        if (mainActivity !is MainActivity) {
+            Log.e("TAG", "onAttach: is instance of main actvity")
+        } else {
+            Log.e("TAG", "onAttach:not is instance of main actvity")
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,6 +71,9 @@ class PrivacyPolicyFragment :
                 is Resource.Failure -> Log.e("TAG", "getPrivacyPolicy: $it", )
             }
         }*/
+
+        val aboutUs = mainActivity.getSettingResult("About")
+        viewBinding.privacyPolicy.text = html2Text(aboutUs)
     }
 
     private fun setToolbar() {

@@ -1,11 +1,13 @@
 package com.shopping.swagbag.aboutus
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.SettingApi
 import com.shopping.swagbag.SettingRepository
@@ -18,7 +20,19 @@ import com.shopping.swagbag.utils.SettingViewModel
 class AboutUs :
     BaseFragment<FragmentAboutUsBinding, SettingViewModel, SettingRepository>(FragmentAboutUsBinding::inflate) {
 
+    private lateinit var mainActivity: MainActivity
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+
+        if (mainActivity !is MainActivity) {
+            Log.e("TAG", "onAttach: is instance of main actvity")
+        } else {
+            Log.e("TAG", "onAttach:not is instance of main actvity")
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,8 +50,8 @@ class AboutUs :
         getAboutUs()
     }
 
-    private fun getAboutUs() {
-       /* viewModel.settings("About").observe(viewLifecycleOwner){
+    private fun getAboutUs() {/*
+        viewModel.settings().observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading -> showLoading()
 
@@ -53,6 +67,9 @@ class AboutUs :
                 is Resource.Failure -> Log.e("TAG", "getAboutUs: $it", )
             }
         }*/
+
+        val aboutUs = mainActivity.getSettingResult("About")
+        viewBinding.aboutUs.text = html2Text(aboutUs)
     }
 
     private fun setToolbar() {

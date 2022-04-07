@@ -6,5 +6,5 @@ class SettingRepository(private val api: SettingApi) : BaseRepository() {
 
     suspend fun giftCard() = safeApiCall { api.giftCard() }
 
-    suspend fun settings(userId: String) = safeApiCall { api.settings(userId) }
+    suspend fun settings() = safeApiCall { api.settings() }
 }

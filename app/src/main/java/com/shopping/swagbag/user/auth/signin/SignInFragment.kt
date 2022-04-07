@@ -1,5 +1,6 @@
 package com.shopping.swagbag.user.auth.signin
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.user.auth.UserApi
 import com.shopping.swagbag.user.auth.UserRepository
@@ -22,6 +24,13 @@ class SignInFragment :
             UserViewModel,
             UserRepository>
         (FragmentSignInBinding::inflate) {
+
+    private lateinit var mainActivity: MainActivity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,6 +72,7 @@ class SignInFragment :
                         else {
                             toast(loginResponse.message)
                             context?.let { it1 -> AppUtils(it1).saveUser(loginResponse) }
+                            mainActivity.setUpNavigationHeader()
                             moveToHome()
                         }
 

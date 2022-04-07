@@ -23,13 +23,11 @@ import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.common.model.AllTimeSliderModel
 import com.shopping.swagbag.common.model.BestProductModel
 import com.shopping.swagbag.databinding.FragmentHomeBinding
-import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
-import com.shopping.swagbag.service.Resource
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
@@ -40,6 +38,7 @@ RecycleViewItemClick{
 
     private lateinit var activity: AppCompatActivity
     private lateinit var mainActivity: MainActivity
+    private lateinit var homeResult: HomeModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -75,28 +74,37 @@ RecycleViewItemClick{
     }
 
     private fun getHomeData() {
-        viewModel.getHome().observe(viewLifecycleOwner){
-            when(it){
-                is Resource.Loading ->  showLoading()
+        /* viewModel.getHome().observe(viewLifecycleOwner){
+             when(it){
+                 is Resource.Loading ->  showLoading()
 
-                is Resource.Success -> {
-                    stopShowingLoading()
+                 is Resource.Success -> {
+                     stopShowingLoading()
 
-                    Log.e("TAG", "getHomeData: $it")
+                     Log.e("TAG", "getHomeData: $it")
 
-                    val result = it.value.result
-                    setAutoImageSlider(result.slider)
-                    //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
-                    setCategoryToBeg(result.masterCategory)
-                    setDealOfTheDay(result.deals)
-                    setBestOffer(result.randomCategory)
-                    setFeatureBrands(result.featured)
-                    showOfferImages()
-                }
+                     val result = it.value.result
+                     setAutoImageSlider(result.slider)
+                     //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
+                     setCategoryToBeg(result.masterCategory)
+                     setDealOfTheDay(result.deals)
+                     setBestOffer(result.randomCategory)
+                     setFeatureBrands(result.featured)
+                     showOfferImages()
+                 }
 
-                is Resource.Failure -> Log.e("TAG", "getHomeData: $it", )
-            }
-        }
+                 is Resource.Failure -> Log.e("TAG", "getHomeData: $it", )
+             }
+         }*/
+       /* homeResult = mainActivity.getHomeResult()
+        setAutoImageSlider(homeResult.result.slider)
+        //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
+        setCategoryToBeg(homeResult.result.masterCategory)
+        setDealOfTheDay(homeResult.result.deals)
+        setBestOffer(homeResult.result.rando    mCategory)
+        setFeatureBrands(homeResult.result.featured)
+        showOfferImages()*/
+
     }
 
     private fun showOfferImages() {

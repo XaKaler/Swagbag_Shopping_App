@@ -164,36 +164,41 @@ class ShoppingBegWithProductFragment : BaseFragment<
     override fun onItemClickWithName(name: String, position: Int) {
         when (name) {
             "remove" -> {
-                val productId = product.result?.get(position)?.product?.id
+                removeSingleItem(position)
 
-                if (productId != null) {
-                    userId?.let { userId ->
-                        viewModel.deleteSingleWish(productId, userId).observe(viewLifecycleOwner) {
-                            when (it) {
-                                is Resource.Loading -> showLoading()
+            }
+        }
+    }
 
-                                is Resource.Success -> {
-                                    stopShowingLoading()
+    private fun removeSingleItem(position: Int) {
+        val productId = product.result?.get(position)?.product?.id
 
-                                    toast(it.value.message)
+        if (productId != null) {
+            userId?.let { userId ->
+                viewModel.deleteSingleWish(productId, userId).observe(viewLifecycleOwner) {
+                    when (it) {
+                        is Resource.Loading -> showLoading()
 
-                                    //update list
-                                    val productList: MutableList<GetCartModel.Result> =
-                                        product.result as MutableList
-                                    productList.removeAt(position)
-                                    shoppingBegProductAdapter.updateList(productList)
-                                    //if size is 0 then show user to empty cart
-                                    if (position == 0) {
-                                        showEmptyCart()
-                                    }
-                                }
+                        is Resource.Success -> {
+                            stopShowingLoading()
 
-                                is Resource.Failure -> {
-                                    stopShowingLoading()
-                                    tryAgain()
-                                    Log.e("TAG", "onItemClickWithName: $it")
-                                }
+                            toast(it.value.message)
+
+                            //update list
+                            val productList: MutableList<GetCartModel.Result> =
+                                product.result as MutableList
+                            productList.removeAt(position)
+                            shoppingBegProductAdapter.updateList(productList)
+                            //if size is 0 then show user to empty cart
+                            if (position == 0 && productList.isEmpty()) {
+                                showEmptyCart()
                             }
+                        }
+
+                        is Resource.Failure -> {
+                            stopShowingLoading()
+                            tryAgain()
+                            Log.e("TAG", "onItemClickWithName: $it")
                         }
                     }
                 }
@@ -208,8 +213,8 @@ class ShoppingBegWithProductFragment : BaseFragment<
                 "product id : $productId\n" +
                 "qty : $qty", )
 
-        product.result?.get(position)?.id?.let {
-            viewModel.updateCart(it, productId, qty).observe(viewLifecycleOwner) {
+        product.result?.get(position)?.id?.let { cartId ->
+            viewModel.updateCart(cartId, productId, qty).observe(viewLifecycleOwner) {
                 when(it){
                     is Resource.Loading -> showLoading()
 

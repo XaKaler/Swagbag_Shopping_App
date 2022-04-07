@@ -17,8 +17,6 @@ import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.Resource
-import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
-import com.shopping.swagbag.user.shoppingbeg.withproduct.ShoppingBegProductAdapter
 import com.shopping.swagbag.utils.AppUtils
 
 class OrderFragment : BaseFragment<
@@ -40,7 +38,13 @@ class OrderFragment : BaseFragment<
     }
 
     private fun initViews() {
-        getOrderItems()
+        val appUtils = context?.let { AppUtils(it) }
+        if (appUtils != null) {
+            if (appUtils.isUserLoggedIn())
+                getOrderItems()
+            else
+                findNavController().navigate(R.id.action_global_signInFragment)
+        }
 
         setToolbar()
     }

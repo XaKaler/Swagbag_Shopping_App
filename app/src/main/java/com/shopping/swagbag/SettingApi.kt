@@ -10,7 +10,6 @@ interface SettingApi {
     @GET("gift-card")
     suspend fun giftCard(): GiftCardModel
 
-    @FormUrlEncoded
     @GET("settings")
-    suspend fun settings(@Field("id")userId: String): SettingsModel
+    suspend fun settings(): SettingsModel
 }
