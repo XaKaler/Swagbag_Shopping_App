@@ -2,6 +2,7 @@ package com.shopping.swagbag.common.adapter
 
 import android.app.Activity
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -24,6 +25,9 @@ class BestProductAdapter(
         RecyclerView.ViewHolder(viewBinding.root) {
 
             fun bind(singleData: BestProductModel,itemClick: RecycleViewItemClick , position: Int){
+
+                Log.e("home", "home page deals single data $singleData", )
+
                 with(viewBinding){
                     // set imgae
                     /*Glide.with(context)

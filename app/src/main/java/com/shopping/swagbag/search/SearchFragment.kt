@@ -22,17 +22,20 @@ import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentSearchBinding
 import com.shopping.swagbag.databinding.SearchBarBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.products.*
+import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.products.ProductRepository
+import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.Resource
 
 
 class SearchFragment : BaseFragment<FragmentSearchBinding,
         ProductViewModel,
-        ProductRepository>(FragmentSearchBinding::inflate), View.OnClickListener, RecycleViewItemClick {
+        ProductRepository>(FragmentSearchBinding::inflate), View.OnClickListener {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private lateinit var searchBarBinding: SearchBarBinding
     private lateinit var searchBar: EditText
+    private lateinit var searchProduct: HeaderSearchModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,6 +54,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
             searchByImage.setOnClickListener(this@SearchFragment)
             searchByVoice.setOnClickListener(this@SearchFragment)
         }
+
+        if(this::searchProduct.isInitialized)
+            showSearchResult()
 
         searchBar.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -85,11 +91,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
 
                     is Resource.Success -> {
                         stopShowingLoading()
-
+                        searchProduct = it.value
                         if (it.value.result.isEmpty())
                             showNoProductFound()
                         else
-                            showSearchResult(it.value.result)
+                            showSearchResult()
                     }
 
                     is Resource.Failure -> {
@@ -110,24 +116,25 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
         }
     }
 
-    private fun showSearchResult(products: List<HeaderSearchModel.Result>) {
+    private fun showSearchResult() {
         val product = ArrayList<HeaderSearchModel.Result.Product>()
-        for(singleResult in products){
+        for(singleResult in searchProduct.result){
             product.addAll(singleResult.product)
         }
 
-        with(viewBinding){
+        with(viewBinding) {
             rvSearchProducts.visibility = View.VISIBLE
             noProductFound.visibility = View.GONE
-        }
 
-        Log.e("TAG", "showSearchResult: $products")
-
-        with(viewBinding) {
             rvSearchProducts.apply {
                 layoutManager = GridLayoutManager(context, 2)
                 addItemDecoration(GridSpaceItemDecoration(5))
-                adapter = HeaderSearchAdapter(context, product, this@SearchFragment)
+                adapter = HeaderSearchAdapter(context, product, object : RecycleViewItemClick {
+                    override fun onItemClickWithName(name: String, position: Int) {
+                        val action = SearchFragmentDirections.actionGlobalProductDetailsFragment(name)
+                        findNavController().navigate(action)
+                    }
+                })
             }
         }
     }
@@ -199,7 +206,4 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
     override fun getFragmentRepository() =
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
-    override fun onItemClickWithName(name: String, position: Int) {
-        TODO("Not yet implemented")
-    }
 }

@@ -45,12 +45,7 @@ class HeaderSearchAdapter(
                 // set imgae
 
                 singlePrdouct.setOnClickListener{
-                    val activity = context as Activity
-                    val action =
-                        ProductsFragmentDirections.actionGlobalProductDetailsFragment(
-                            singleData.name
-                        )
-                    activity.findNavController(R.id.singlePrdouct).navigate(action)
+                    itemClick.onItemClickWithName(singleData.name, position)
                 }
             }
         }
