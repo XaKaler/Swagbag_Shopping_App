@@ -40,7 +40,7 @@ class ShoppingBegProductAdapter(
                 val quantityCount = "Qty: ${singleData.quantity}"
                 qtyInCart.text = quantityCount
 
-                val price = singleData.product.sellingPrice*singleData.quantity
+                val price = singleData.price*singleData.quantity
                 newPrice.text = price.toString()
 
                 val discount = "${singleData.product.discountedPrice}%Off"

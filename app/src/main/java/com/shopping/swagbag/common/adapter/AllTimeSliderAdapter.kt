@@ -31,11 +31,12 @@ class AllTimeSliderAdapter(
                     // set image
                     Glide.with(context)
                         .load(singleData.file)
-                        .placeholder(R.drawable.baby)
+                        .error(R.drawable.glide_error)
+                        .placeholder(R.drawable.glide_error)
                         .fitCenter()
                         .into(imgBestProduct)
 
-                    Log.e("TAG", "all time slider bind name ${singleData.name}  and file is: ${singleData.file}", )
+                    //Log.e("TAG", "all time slider bind name ${singleData.name}  and file is: ${singleData.file}", )
 
                     // set text
                     tvBestProductName.text = singleData.name
@@ -46,7 +47,6 @@ class AllTimeSliderAdapter(
                     }
                 }
             }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BestProductViewHolder {

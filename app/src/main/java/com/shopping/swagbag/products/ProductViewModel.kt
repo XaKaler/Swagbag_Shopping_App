@@ -227,12 +227,12 @@ class ProductViewModel(
         return result
     }
 
-    fun checkout(login: String, userId: String, address: String,billingAddress: String, cartData: String): LiveData<Resource<CheckoutModel>>{
+    fun checkout(login: String, userId: String, address: String,finalPrice: String, billingAddress: String, cartData: String): LiveData<Resource<CheckoutModel>>{
         val result = MutableLiveData<Resource<CheckoutModel>>()
 
         viewModelScope.launch {
             result.value = Resource.Loading
-            result.value = repository.checkout(login,userId, address,billingAddress, cartData)
+            result.value = repository.checkout(login,userId, address,finalPrice, billingAddress, cartData)
         }
         return result
     }

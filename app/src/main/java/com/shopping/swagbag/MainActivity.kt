@@ -1,6 +1,8 @@
 package com.shopping.swagbag
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -24,8 +26,13 @@ import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
+import com.shopping.swagbag.products.ProductViewModelFactory
 import com.shopping.swagbag.service.RemoteDataSource
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.user.auth.UserApi
+import com.shopping.swagbag.user.auth.UserRepository
+import com.shopping.swagbag.user.auth.UserViewModel
+import com.shopping.swagbag.user.wallet.WalletModel
 import com.shopping.swagbag.utils.AppUtils
 import com.shopping.swagbag.utils.SettingViewModel
 
@@ -38,12 +45,16 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
     private lateinit var navigationHeaderBinding: NavigationHeaderBinding
     private lateinit var categoryViewModel: CategoryViewModel
     private lateinit var settingViewModel: SettingViewModel
+    private lateinit var userViewModel: UserViewModel
     private lateinit var productViewModel: ProductViewModel
     private lateinit var settingResult: SettingsModel
-    private lateinit var homeResult: HomeModel
+    private lateinit var walletResult: WalletModel
+    private var homeResult: HomeModel? = null
     private lateinit var masterCategories: List<MasterCategoryModel.Result>
+    private lateinit var allCategories: List<CategoryModel.Result>
     private var appUtils = AppUtils(this@MainActivity)
     private lateinit var progressDialog: ProgressDialogFragment
+    private var handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +65,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
     }
 
     private fun initViews() {
+
         with(viewBinding) {
             // initialize variable
             toolbarBinding = viewBinding.toolbar
@@ -62,34 +74,6 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
 
             //disable the swipe gesture that opens the navigation drawer
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
-            // category repository
-            val repository =
-                CategoryRepository(RemoteDataSource().getBaseUrl().create(CategoryApi::class.java))
-            categoryViewModel = ViewModelProvider(
-                this@MainActivity,
-                CategoryViewModelFactory(repository)
-            )[CategoryViewModel::class.java]
-
-            // setting repository
-            val settingRepository =
-                SettingRepository(RemoteDataSource().getBaseUrl().create(SettingApi::class.java))
-            settingViewModel = ViewModelProvider(
-                this@MainActivity,
-                SettingViewModelFactory(settingRepository)
-            )[SettingViewModel::class.java]
-
-            // product repository
-            val productRepository =
-                ProductRepository(RemoteDataSource().getBaseUrl().create(ProductApi::class.java))
-            productViewModel = ViewModelProvider(
-                this@MainActivity,
-                ProductViewModelFactory(productRepository)
-            )[ProductViewModel::class.java]
-
-            setMasterCategorySlider()
-            getSettings()
-            //getHomeScreenData()
 
             // click listeners
             btmNavigation.setOnItemSelectedListener { item ->
@@ -140,7 +124,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
 
-                        if(appUtils.isUserLoggedIn())
+                        if (appUtils.isUserLoggedIn())
                             navController.navigate(R.id.action_global_profileFragment)
                         else
                             navController.navigate(R.id.action_global_signInFragment)
@@ -150,12 +134,87 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                 true
             }
         }
+        setUPToolbar()
 
-        setUpNavigation()
+        initializeRepositories()
+
+        apiCalls()
 
         setUpNavigationHeader()
 
-        setUPToolbar()
+    }
+
+    private fun initializeRepositories() {
+        // category repository
+        val repository =
+            CategoryRepository(RemoteDataSource().getBaseUrl().create(CategoryApi::class.java))
+        categoryViewModel = ViewModelProvider(
+            this@MainActivity,
+            CategoryViewModelFactory(repository)
+        )[CategoryViewModel::class.java]
+
+        // setting repository
+        val settingRepository =
+            SettingRepository(RemoteDataSource().getBaseUrl().create(SettingApi::class.java))
+        settingViewModel = ViewModelProvider(
+            this@MainActivity,
+            SettingViewModelFactory(settingRepository)
+        )[SettingViewModel::class.java]
+
+        // product repository
+        val productRepository =
+            ProductRepository(RemoteDataSource().getBaseUrl().create(ProductApi::class.java))
+        productViewModel = ViewModelProvider(
+            this@MainActivity,
+            ProductViewModelFactory(productRepository)
+        )[ProductViewModel::class.java]
+
+        //user repository
+        val userRepository =
+            UserRepository(RemoteDataSource().getBaseUrl().create(UserApi::class.java))
+        userViewModel = ViewModelProvider(
+            this@MainActivity,
+            UserViewModelFactory(userRepository)
+        )[UserViewModel::class.java]
+
+    }
+
+    private fun apiCalls() {
+        //getHomeScreenData()
+        setMasterCategories()
+        setAllCategories()
+        getSettings()
+        getHomeScreenData()
+        getWallet()
+        //Background work here
+    }
+
+    fun getWalletResult(): WalletModel {
+        Log.e("wallet", "getWalletResult: $walletResult")
+        return if (this::walletResult.isInitialized)
+            walletResult
+        else {
+            getWallet()
+            Log.e("wallet", "getWalletResult if not initialized: $walletResult")
+            walletResult
+        }
+    }
+
+    private fun getWallet() {
+        if (appUtils.isUserLoggedIn()) {
+            userViewModel.wallet(appUtils.getUserId(), "", "").observe(this) {
+                when (it) {
+                    is Resource.Success -> {
+                        walletResult = it.value
+                        Log.e("wallet", "getWallet in main activity: $walletResult")
+                    }
+                    is Resource.Failure -> {
+                        Toast.makeText(this, "Failed to get wallet", Toast.LENGTH_SHORT).show()
+                        Log.e("wallet", "getWallet error in main activity: $it")
+                    }
+                }
+            }
+        }
     }
 
     fun setUpNavigationHeader() {
@@ -171,8 +230,8 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         }
     }
 
-    fun setMasterCategorySlider(){
-        if(this::masterCategories.isInitialized) {
+    fun setMasterCategories() {
+        if (this::masterCategories.isInitialized) {
             viewBinding.rvCategorySlider.apply {
                 layoutManager =
                     LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -182,9 +241,29 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                     this@MainActivity
                 )
             }
-        }
-        else
+        } else
             getMasterCategories()
+    }
+
+    private fun setAllCategories() {
+        if (this::allCategories.isInitialized)
+            setUpNavigation()
+        else
+            getAllCategories()
+    }
+
+    private fun getAllCategories() {
+        categoryViewModel.category.observe(this@MainActivity) {
+            when (it) {
+                is Resource.Success -> {
+                    allCategories = it.value.result
+                    setAllCategories()
+                }
+
+                is Resource.Failure ->
+                    Log.e("TAG", "setUpNavigation: $it")
+            }
+        }
     }
 
     private fun getMasterCategories() {
@@ -193,7 +272,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                 when (it) {
                     is Resource.Success -> {
                         masterCategories = it.value.result
-                        setMasterCategorySlider()
+                        setMasterCategories()
                     }
 
                     is Resource.Failure -> Toast.makeText(
@@ -238,27 +317,19 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
 
     private fun setUpNavigation() {
         with(navigationBinding) {
-
             // add navigation menu
             val navigationMenu: List<NavigationMenu> = OnNavigationMenu().getNavigationMenu()
 
             rvnavMenu.apply {
                 layoutManager = LinearLayoutManager(context)
-
-                categoryViewModel.category.observe(this@MainActivity, Observer {
-                    when (it) {
-                        is Resource.Success -> {
-                            Log.e("TAG", "setUpNavigation: $it", )
-                            adapter = NavigationMenuAdapter(this@MainActivity, navigationMenu, it.value.result)
-                        }
-
-                        is Resource.Failure -> Log.e("TAG", "setUpNavigation: $it", )
-                    }
-                })
+                adapter = NavigationMenuAdapter(
+                    this@MainActivity,
+                    navigationMenu,
+                    allCategories
+                )
             }
         }
     }
-
 
     fun showToolbar() {
         if (this::viewBinding.isInitialized) {
@@ -306,12 +377,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         }
     }
 
-    fun getHomeResult(): HomeModel {
-        if (this::homeResult.isInitialized)
-            return homeResult
-        else
-            return homeResult
-    }
+    fun getHomeResult() = homeResult
 
     private fun getHomeScreenData() {
         productViewModel.getHome().observe(this) {

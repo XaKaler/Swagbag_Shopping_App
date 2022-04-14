@@ -61,7 +61,6 @@ class ShoppingBegWithProductFragment : BaseFragment<
     }
 
     private fun getCart() {
-
         userId?.let { userId ->
             viewModel.getCart(userId).observe(viewLifecycleOwner) {
                 when (it) {
@@ -97,7 +96,6 @@ class ShoppingBegWithProductFragment : BaseFragment<
             }
         }
     }
-
 
     private fun toolbar() {
         with(toolbarBinding) {

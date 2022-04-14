@@ -1,12 +1,7 @@
-package com.shopping.swagbag
+package com.shopping.swagbag.products
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.shopping.swagbag.category.CategoryRepository
-import com.shopping.swagbag.category.CategoryViewModel
-import com.shopping.swagbag.products.ProductRepository
-import com.shopping.swagbag.products.ProductViewModel
-import com.shopping.swagbag.utils.SettingViewModel
 
 class ProductViewModelFactory(private val repository: ProductRepository) :
     ViewModelProvider.Factory {

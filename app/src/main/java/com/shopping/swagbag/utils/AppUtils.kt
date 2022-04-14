@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.gson.Gson
 import com.shopping.swagbag.user.auth.signin.SignInModel
-import javax.inject.Inject
 
 class AppUtils(private val context: Context) {
 

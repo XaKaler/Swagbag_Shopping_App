@@ -13,11 +13,11 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentSearchBinding
 import com.shopping.swagbag.databinding.SearchBarBinding
@@ -28,7 +28,7 @@ import com.shopping.swagbag.service.Resource
 
 class SearchFragment : BaseFragment<FragmentSearchBinding,
         ProductViewModel,
-        ProductRepository>(FragmentSearchBinding::inflate), View.OnClickListener {
+        ProductRepository>(FragmentSearchBinding::inflate), View.OnClickListener, RecycleViewItemClick {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private lateinit var searchBarBinding: SearchBarBinding
@@ -86,7 +86,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
                     is Resource.Success -> {
                         stopShowingLoading()
 
-                        showSearchResult(it.value.result)
+                        if (it.value.result.isEmpty())
+                            showNoProductFound()
+                        else
+                            showSearchResult(it.value.result)
                     }
 
                     is Resource.Failure -> {
@@ -100,12 +103,31 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
             }
     }
 
+    private fun showNoProductFound() {
+        with(viewBinding){
+            rvSearchProducts.visibility = View.GONE
+            noProductFound.visibility = View.VISIBLE
+        }
+    }
+
     private fun showSearchResult(products: List<HeaderSearchModel.Result>) {
+        val product = ArrayList<HeaderSearchModel.Result.Product>()
+        for(singleResult in products){
+            product.addAll(singleResult.product)
+        }
+
+        with(viewBinding){
+            rvSearchProducts.visibility = View.VISIBLE
+            noProductFound.visibility = View.GONE
+        }
+
+        Log.e("TAG", "showSearchResult: $products")
+
         with(viewBinding) {
             rvSearchProducts.apply {
                 layoutManager = GridLayoutManager(context, 2)
                 addItemDecoration(GridSpaceItemDecoration(5))
-                //adapter = ProductAdapter(context, products)
+                adapter = HeaderSearchAdapter(context, product, this@SearchFragment)
             }
         }
     }
@@ -176,4 +198,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
 
     override fun getFragmentRepository() =
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
+
+    override fun onItemClickWithName(name: String, position: Int) {
+        TODO("Not yet implemented")
+    }
 }

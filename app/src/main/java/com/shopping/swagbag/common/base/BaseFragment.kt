@@ -17,11 +17,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.ProgressDialogFragment
 import com.shopping.swagbag.service.RemoteDataSource
-import java.text.SimpleDateFormat
-import java.util.*
+import com.shopping.swagbag.user.auth.signin.SignInModel
+import java.lang.reflect.Type
 
 abstract class BaseFragment<VB : ViewBinding, VM : ViewModel, BR : BaseRepository>(
     private val bindingInflater: (inflater: LayoutInflater) -> VB
@@ -116,11 +117,18 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel, BR : BaseRepositor
     }
 
     private fun Context.hideKeyboard(view: View) {
-        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun Int.asDimen(context: Context) = context.resources.getDimensionPixelSize(this)
+
+    fun gsonToJsonString(src: Any, typeOfSrc: Type): String = Gson().toJson(src, typeOfSrc)
+
+    fun jsonStringToGson(src: String,typeOfSrc: Type): Type = Gson().fromJson(src, typeOfSrc)
+
+
 
 
 }

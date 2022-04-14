@@ -3,6 +3,7 @@ package com.shopping.swagbag.user.shipping.order
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import com.shopping.swagbag.R
 import com.shopping.swagbag.databinding.FragmentOrderConfirmedBinding
@@ -16,12 +17,15 @@ class OrderConfirmedFragment : Fragment(R.layout.fragment_order_confirmed) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // handle back pressed
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_global_home2)
+        }
+
         viewBinding = FragmentOrderConfirmedBinding.bind(view)
         toolbarBinding = viewBinding.include
 
         initViews()
-
-
     }
 
     private fun initViews() {

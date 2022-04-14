@@ -118,6 +118,7 @@ interface ProductApi {
         @Field("login")login: String,
         @Field("userid")userId: String,
         @Field("address")address: String,
+        @Field("finalprice")finalPrice: String,
         @Field("billing_address")billingAddress: String,
         @Field("cart_data")cartData: String
     ): CheckoutModel

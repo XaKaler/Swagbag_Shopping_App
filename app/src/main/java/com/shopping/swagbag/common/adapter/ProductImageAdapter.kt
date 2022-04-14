@@ -35,8 +35,8 @@ class ProductImageAdapter(
         // setting the image in the imageView
         Glide.with(context)
             .load(image[position].location)
-            .error(R.drawable.ic_launcher_foreground)
-            .placeholder(R.drawable.logo)
+            .error(R.drawable.glide_error)
+            .placeholder(R.drawable.glide_error)
             .into(imageView)
 
         // Adding the View

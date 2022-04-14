@@ -663,7 +663,11 @@
         android:id="@+id/productDetailsSizeChart"
         android:name="com.shopping.swagbag.products.product_details.ProductDetailsSizeChart"
         android:label="fragment_product_details_size_chart"
-        tools:layout="@layout/fragment_product_details_size_chart" />
+        tools:layout="@layout/fragment_product_details_size_chart" >
+        <argument
+            android:name="product"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailsEMIPlansFragment"
         android:name="com.shopping.swagbag.products.product_details.emi_plans.ProductDetailsEMIPlansFragment"
@@ -692,7 +696,11 @@
         app:destination="@id/orderWithoutItemsFragment" />
 
     <action android:id="@+id/action_global_categoryFragment"
-        app:destination="@id/categoryFragment"/>
+        app:destination="@id/categoryFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
     <action android:id="@+id/action_global_wishlistWithoutProductFragment" app:destination="@id/wishlistWithoutProductFragment" />
 

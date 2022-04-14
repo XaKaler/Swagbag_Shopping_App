@@ -19,7 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@+id/include9"
+        app:layout_constraintBottom_toTopOf="@+id/bottomButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +64,8 @@
                     android:id="@+id/productDetails"
                     style="@style/roboto_normal_14_sonic_silver"
                     android:layout_width="0dp"
+                    android:maxLines="3"
+                    android:minLines="3"
                     android:layout_height="wrap_content"
                     android:text="@string/varanga_women_magenta_n_gold_toned_embroidered_kurta_with_ntrousers_dupatta"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +83,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/productDetails" />
 
                 <TextView
-                    android:id="@+id/productPric"
+                    android:id="@+id/productPrice"
                     style="@style/roboto_medium_14_davys_grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,17 +94,19 @@
 
                 <TextView
                     android:id="@+id/textView172"
+                    android:visibility="gone"
                     style="@style/roboto_normal_14_sonic_silver"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/space_between_view_and_subview"
                     android:text="@string/Rs"
-                    app:layout_constraintBottom_toBottomOf="@+id/productPric"
-                    app:layout_constraintStart_toEndOf="@+id/productPric"
-                    app:layout_constraintTop_toTopOf="@+id/productPric" />
+                    app:layout_constraintBottom_toBottomOf="@+id/productPrice"
+                    app:layout_constraintStart_toEndOf="@+id/productPrice"
+                    app:layout_constraintTop_toTopOf="@+id/productPrice" />
 
                 <TextView
                     android:id="@+id/oldPrice"
+                    android:visibility="gone"
                     style="@style/roboto_normal_14_sonic_silver"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,6 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/space_between_view_and_subview"
                     android:text="("
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/oldPrice"
                     app:layout_constraintStart_toEndOf="@+id/oldPrice"
                     app:layout_constraintTop_toTopOf="@+id/oldPrice" />
@@ -128,6 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="55"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/oldPrice"
                     app:layout_constraintStart_toEndOf="@+id/textView174"
                     app:layout_constraintTop_toTopOf="@+id/oldPrice" />
@@ -138,6 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="% Off)"
+                    android:visibility="gone"
                     android:textAllCaps="true"
                     app:layout_constraintBottom_toBottomOf="@+id/oldPrice"
                     app:layout_constraintStart_toEndOf="@+id/produtOff"
@@ -278,10 +285,11 @@
     </androidx.core.widget.NestedScrollView>
 
     <include
-        android:id="@+id/include9"
+        android:id="@+id/bottomButtons"
         layout="@layout/product_details_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

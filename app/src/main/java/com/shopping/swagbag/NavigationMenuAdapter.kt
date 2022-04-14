@@ -22,6 +22,7 @@ class NavigationMenuAdapter (
     RecyclerView.Adapter<NavigationMenuAdapter.MyViewHolder>() {
 
     private var appUtils = AppUtils(context)
+    private var currentDrawerItem = ""
 
     inner class MyViewHolder(private val viewBinding: SingleNavigationMenuBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {

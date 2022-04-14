@@ -19,6 +19,7 @@
     <dimen name="screen_horizontal_padding">20dp</dimen>
     <dimen name="recycle_view_horizontal_space">12dp</dimen>
     <dimen name="screen_padding_10">10dp</dimen>
+    <dimen name="screen_padding_5">5dp</dimen>
     <dimen name="screen_padding_15">15dp</dimen>
     <dimen name="screen_padding_20">20dp</dimen>
     <dimen name="drawable_padding_10">10dp</dimen>

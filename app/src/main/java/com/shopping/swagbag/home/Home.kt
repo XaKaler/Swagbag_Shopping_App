@@ -1,11 +1,13 @@
 package com.shopping.swagbag.home
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -32,6 +34,8 @@ import com.shopping.swagbag.service.Resource
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
+import kotlin.system.exitProcess
+
 
 class Home :
     BaseFragment<FragmentHomeBinding, ProductViewModel, ProductRepository>(FragmentHomeBinding::inflate),
@@ -47,10 +51,10 @@ RecycleViewItemClick{
         mainActivity = context as MainActivity
 
         if(mainActivity !is MainActivity) {
-            Log.e("TAG", "onAttach: is instance of main activity", )
+            Log.e("TAG", "onAttach: is instance of main activity")
         }
         else{
-            Log.e("TAG", "onAttach:not is instance of main actvity", )
+            Log.e("TAG", "onAttach:not is instance of main actvity")
         }
 
 
@@ -59,26 +63,30 @@ RecycleViewItemClick{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // handle back pressed
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            exitProcess(0)
+        }
+
         initViews()
 
         mainActivity.showToolbar()
-        mainActivity.setMasterCategorySlider()
-
-        Log.e("TAG", "onViewCreated: ", )
-
+        mainActivity.setMasterCategories()
     }
 
     private fun initViews() {
         activity = context as AppCompatActivity
 
-        if(this::homeResult.isInitialized)
-            setData()
-        else
+        if(mainActivity.getHomeResult() == null)
             getHomeData()
+        else {
+            homeResult = mainActivity.getHomeResult()!!
+            setData()
+        }
 
     }
 
-    fun setData(){
+    private fun setData(){
         setAutoImageSlider(homeResult.result.slider)
         //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
         setCategoryToBeg(homeResult.result.masterCategory)
@@ -103,7 +111,7 @@ RecycleViewItemClick{
                      setData()
                  }
 
-                 is Resource.Failure -> Log.e("TAG", "getHomeData: $it", )
+                 is Resource.Failure -> Log.e("TAG", "getHomeData: $it")
              }
          }
 
@@ -185,7 +193,7 @@ RecycleViewItemClick{
             )
         }
 
-        Log.e("TAG", "setBestOffer: $allTimeSliderModel", )
+        Log.e("TAG", "setBestOffer: $allTimeSliderModel")
 
         with(viewBinding) {
             rvBestOffer.apply {

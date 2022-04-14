@@ -1,11 +1,13 @@
 package com.shopping.swagbag.category
 
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.gson.GsonBuilder
 import com.shopping.swagbag.MainActivity
+import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.AllTimeSliderAdapter
@@ -61,6 +64,16 @@ RecycleViewItemClick{
     }
 
     private fun initViews() {
+        // set foreground color color of screen to white
+        // and remove after data get from api
+        viewBinding.scrlParticularCategory.foreground =
+            context?.let { it1 ->
+                ContextCompat.getColor(
+                    it1,
+                    R.color.white
+                )
+            }?.let { it2 -> ColorDrawable(it2) }
+
         getCategoryData()
     }
 
@@ -76,6 +89,9 @@ RecycleViewItemClick{
 
                 is Resource.Success -> {
                     stopShowingLoading()
+
+                    // remove foreground color so
+                    viewBinding.scrlParticularCategory.foreground = null
 
                     val result = it.value.result
                    setTopTrending(result.section)

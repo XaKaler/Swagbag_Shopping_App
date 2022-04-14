@@ -21,37 +21,37 @@
 
 
             <TextView
-                android:id="@+id/wishlist"
+                android:id="@+id/addToWishlist"
                 style="@style/roboto_medium_14_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/rec_white_fill_top_round"
                 android:paddingVertical="@dimen/space_between_views"
-                android:text="Wishlist"
+                android:text="Add To Wishlist"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/addToBeg"
+                app:layout_constraintEnd_toStartOf="@+id/addToCart"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/addToBeg"
+                android:id="@+id/addToCart"
                 style="@style/roboto_medium_14_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/rec_red_fill_top_round"
                 android:gravity="center"
                 android:paddingVertical="@dimen/space_between_views"
-                android:text="@string/add_to_beg"
+                android:text="@string/add_to_cart"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/wishlist"
+                app:layout_constraintStart_toEndOf="@+id/addToWishlist"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

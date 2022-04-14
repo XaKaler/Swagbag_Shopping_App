@@ -1,5 +1,6 @@
 package com.shopping.swagbag.products.product_details
 
+import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
@@ -60,23 +61,96 @@ class ProductDetailsFragment : BaseFragment<
             textView590.paintFlags = textView590.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 
             sizeChart.setOnClickListener {
-                findNavController().navigate(R.id.action_productDetailsFragment_to_productDetailsSizeChart)
+                val action =
+                    ProductDetailsFragmentDirections.actionProductDetailsFragmentToProductDetailsSizeChart(
+                        gsonToJsonString(product, ProductDetailModel::class.java)
+                    )
+                findNavController().navigate(action)
             }
 
             viewEmiPlan.setOnClickListener {
                 findNavController().navigate(R.id.action_productDetailsFragment_to_productDetailsEMIPlansFragment)
             }
 
-            val args: ProductDetailsFragmentArgs by navArgs()
-            val productsName = args.productName
-            getProductDetails(productsName)
         }
+
+        getArgument()
 
         handleClickListeners()
 
         setAllCustomerReviewImages()
 
         setUserReview()
+    }
+
+    private fun getArgument() {
+        val args: ProductDetailsFragmentArgs by navArgs()
+        val productsName = args.productName
+
+        if (this@ProductDetailsFragment::product.isInitialized)
+            setData()
+        else
+            getProductDetails(productsName)
+    }
+
+    private fun setData() {
+        with(viewBinding) {
+            // set product details
+            productName.text = product.result.name
+            oldRate.text = product.result.price.toString()
+
+            sellingPrice = product.result.sellingPrice
+            //finalPrice = sellingPrice
+            newRate.text = sellingPrice.toString()
+
+            val discount = "(${product.result.discountedPrice}%Off)"
+            off.text = discount
+            //sellerName.text = it.value.vendor
+            productInDetail.text = html2Text(product.result.desc)
+
+            setViewSimilar(product.related)
+            setAutoImageSlider(product.result.file)
+            setProductSmallImages(product.result.file)
+
+            //set user review
+            val review = product.review
+            if (review.isNotEmpty())
+                setUserReview()
+            else {
+                viewBinding.lytReview.visibility = View.GONE
+                viewBinding.topRating.root.visibility = View.GONE
+            }
+
+            // set product options like color or size
+            val optionsList = product.result.options
+
+            if (optionsList.isNotEmpty()) {
+                for (option in optionsList.indices) {
+
+                    val optionName = optionsList[option].name
+                    val optionValue = optionsList[option].value
+
+                    if (optionName == "Size") {
+                        with(viewBinding) {
+                            txtSize.visibility = View.VISIBLE
+                            rvSize.visibility = View.VISIBLE
+                            size.visibility = View.VISIBLE
+                            sizeChart.visibility = View.VISIBLE
+
+                            sizeList = stringToList(optionValue)
+                            setProductSize(sizeList)
+                        }
+                        //option is coming in string form seperated with comma
+                        //so we have exclude it
+                    } else if (optionName == "Color") {
+                        viewBinding.colors.root.visibility = View.VISIBLE
+                        colorList = stringToList(optionValue)
+                        setProductColor(colorList)
+                    }
+                }
+            } else viewBinding.optionCard.visibility = View.GONE
+
+        }
     }
 
     private fun getProductDetails(productsName: String) {
@@ -91,66 +165,10 @@ class ProductDetailsFragment : BaseFragment<
                     is Resource.Success -> {
                         stopShowingLoading()
 
-                        Log.e("TAG", "getProductDetails: ${it.value.result.id}")
+                        product = it.value
+                        setData()
+                        Log.e("product detail", "getProductDetails: $it")
 
-                        with(viewBinding) {
-                            product = it.value
-                            // set product details
-                            productName.text = it.value.result.name
-                            oldRate.text = it.value.result.price.toString()
-
-                            sellingPrice = it.value.result.sellingPrice
-                            //finalPrice = sellingPrice
-                            newRate.text = sellingPrice.toString()
-
-                            val discount = "(${it.value.result.discountedPrice}%Off)"
-                            off.text = discount
-                            //sellerName.text = it.value.vendor
-                            productInDetail.text = html2Text(it.value.result.desc)
-
-                            setViewSimilar(it.value.related)
-                            setAutoImageSlider(it.value.result.file)
-                            setProductSmallImages(it.value.result.file)
-
-                            //set user review
-                            val review = it.value.review
-                            if (review.isNotEmpty())
-                                setUserReview()
-                            else {
-                                viewBinding.lytReview.visibility = View.GONE
-                                viewBinding.topRating.root.visibility = View.GONE
-                            }
-
-                            // set product options like color or size
-                            val optionsList = it.value.result.options
-
-                            if (optionsList.isNotEmpty()) {
-                                for (option in optionsList.indices) {
-
-                                    val optionName = optionsList[option].name
-                                    val optionValue = optionsList[option].value
-
-                                    if (optionName == "Size") {
-                                        with(viewBinding) {
-                                            txtSize.visibility = View.VISIBLE
-                                            rvSize.visibility = View.VISIBLE
-                                            size.visibility = View.VISIBLE
-                                            sizeChart.visibility = View.VISIBLE
-
-                                            sizeList = stringToList(optionValue)
-                                            setProductSize(sizeList)
-                                        }
-                                        //option is coming in string form seperated with comma
-                                        //so we have exclude it
-                                    } else if (optionName == "Color") {
-                                        viewBinding.colors.root.visibility = View.VISIBLE
-                                        colorList = stringToList(optionValue)
-                                        setProductColor(colorList)
-                                    }
-                                }
-                            } else viewBinding.optionCard.visibility = View.GONE
-
-                        }
                     }
 
                     is Resource.Failure -> {
@@ -239,6 +257,7 @@ class ProductDetailsFragment : BaseFragment<
             wishlist.setOnClickListener(this@ProductDetailsFragment)
             addToBeg.setOnClickListener(this@ProductDetailsFragment)
             imgBegBackground.setOnClickListener(this@ProductDetailsFragment)
+            imgShareBackground.setOnClickListener(this@ProductDetailsFragment)
         }
     }
 
@@ -330,7 +349,18 @@ class ProductDetailsFragment : BaseFragment<
                 else
                     findNavController().navigate(R.id.action_global_signInFragment)
             }
+            R.id.imgShareBackground -> shareProduct()
         }
+    }
+
+    private fun shareProduct() {
+        val sharingIntent = Intent(Intent.ACTION_SEND)
+        sharingIntent.type = "text/plain"
+        val shareBody =
+            "https://uae.swagbag.com/${product.result.masterCategory}/product/${product.result.slug}"
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here")
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+        startActivity(Intent.createChooser(sharingIntent, "Share via"))
     }
 
     private fun getUserSelectedOptions() {
@@ -448,10 +478,13 @@ class ProductDetailsFragment : BaseFragment<
         val productId = product.result.id
         val qty = quantity + 1
 
-        Log.e("TAG", "updateCart: product id  : \n" +
-                "cart id : $cartId" +
-                "product id : $productId\n" +
-                "qty : $qty", )
+        Log.e(
+            "TAG",
+            "updateCart: product id  : \n" +
+                    "cart id : $cartId" +
+                    "product id : $productId\n" +
+                    "qty : $qty",
+        )
 
         viewModel.updateCart(cartId, productId, qty.toString()).observe(viewLifecycleOwner) {
             when (it) {

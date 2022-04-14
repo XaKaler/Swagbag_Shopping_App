@@ -32,77 +32,68 @@
                 android:id="@+id/materialCardView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/screen_margin_5"
                 android:background="@drawable/rec_white_5"
                 app:cardCornerRadius="@dimen/card_corner_radius"
-                android:visibility="gone"
                 app:cardElevation="@dimen/dimen_5"
-                android:layout_margin="@dimen/screen_margin_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/textView28">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/dimen_10">
+                    android:padding="@dimen/screen_horizontal_padding">
 
 
-                    <ImageView
-                        android:id="@+id/imageView46"
-                        android:layout_width="wrap_content"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="0dp"
+                        android:id="@+id/rvCheckoutProducts"
+                        tools:listitem="@layout/single_chekcout_product"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_offer_bedge"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView68"
-                        style="@style/snigiet_normal_14_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_10"
-                        android:text="Bank Offers"
-                        android:textColor="@color/day_black_night_white"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView46"
-                        app:layout_constraintStart_toEndOf="@+id/imageView46"
-                        app:layout_constraintTop_toTopOf="@+id/imageView46" />
-
-                    <TextView
-                        android:id="@+id/textView76"
-                        style="@style/sniglet_normal_12_dark_liver"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_10"
-                        android:text="10% Instant Savings on Citi Credit and Debit Cards on a min spend of Rs 3,000. TCA"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView68" />
-
-                    <TextView
-                        android:id="@+id/bankOffer"
-                        style="@style/snigiet_normal_14_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        android:drawableEnd="@drawable/ic_dowb_red_arrow"
-                        android:drawablePadding="@dimen/dimen_10"
-                        android:text="Bank Offer"
-                        android:textColor="@color/red_light"
-                        app:layout_constraintStart_toStartOf="@+id/textView76"
-                        app:layout_constraintTop_toBottomOf="@+id/textView76" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/textView97"
+                android:layout_marginTop="@dimen/space_between_view_and_subview"
                 style="@style/roboto_medium_12_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PAYMENT OPTIONS"
+                android:textAllCaps="true"
                 android:textColor="@color/day_dark_liver_night_white"
                 app:layout_constraintStart_toStartOf="@+id/materialCardView15"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView8" />
+
+            <TextView
+                android:id="@+id/textView56"
+                style="@style/roboto_medium_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_view_and_subview"
+                android:text="Coupon and wallet"
+                android:textAllCaps="true"
+                android:textColor="@color/day_dark_liver_night_white"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView15"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView15" />
+
+            <TextView
+                android:id="@+id/textView28"
+                style="@style/roboto_medium_12_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Products"
+                android:textAllCaps="true"
+                android:textColor="@color/day_dark_liver_night_white"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView15"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView15"
@@ -159,7 +150,7 @@
                 android:layout_margin="@dimen/screen_margin_5"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView15"
                 app:layout_constraintStart_toStartOf="@+id/materialCardView15"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView15">
+                app:layout_constraintTop_toBottomOf="@+id/textView56">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -183,20 +174,31 @@
                         android:id="@+id/btnApply"
                         style="@style/roboto_medium_12_davys_grey"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" 
+                        android:layout_height="0dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
                         android:text="@string/apply"
                         android:textColor="@color/red_light"
                         app:layout_constraintBottom_toBottomOf="@+id/couponCode"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/couponCode" />
+
+                    <CheckBox
+                        android:id="@+id/wallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wallet"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        app:layout_constraintStart_toStartOf="@+id/couponCode"
+                        app:layout_constraintTop_toBottomOf="@+id/couponCode" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/screen_margin_5"
+                android:layout_marginVertical="@dimen/space_between_view_and_subview"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/dimen_5"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -316,6 +318,7 @@
                         android:layout_height="wrap_content"
                         android:text="Know More"
                         android:textColor="@color/red_light"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textView110"
                         app:layout_constraintStart_toEndOf="@+id/textView110"
                         app:layout_constraintTop_toTopOf="@+id/textView110" />

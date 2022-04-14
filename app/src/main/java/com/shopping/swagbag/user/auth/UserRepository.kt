@@ -96,4 +96,6 @@ class UserRepository(private val api: UserApi) : BaseRepository() {
 
     suspend fun userUpdate(userid: String, token: String, fName: String, lName: String, email: String) =
         safeApiCall { api.userUpdate(userid, token, fName, lName, email) }
+
+    suspend fun wallet(userId: String,limit: String, page: String) = safeApiCall { api.wallet(userId, limit, page) }
 }

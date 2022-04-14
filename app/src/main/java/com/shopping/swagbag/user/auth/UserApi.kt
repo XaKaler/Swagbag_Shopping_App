@@ -9,6 +9,7 @@ import com.shopping.swagbag.user.order.user_details.AllAddressModel
 import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
 import com.shopping.swagbag.user.order.user_details.EditAddressModel
 import com.shopping.swagbag.user.profile.UserUpdateModel
+import com.shopping.swagbag.user.wallet.WalletModel
 import retrofit2.http.*
 
 interface UserApi {
@@ -100,4 +101,11 @@ interface UserApi {
     suspend fun deleteAddress(
         @Query("id")addressId: String
     ): DeleteAddressModel
+
+    @GET("wallet-transactions")
+    suspend fun wallet(
+        @Query("id")userId: String,
+        @Query("limit")limit: String,
+        @Query("page")page: String
+    ): WalletModel
 }

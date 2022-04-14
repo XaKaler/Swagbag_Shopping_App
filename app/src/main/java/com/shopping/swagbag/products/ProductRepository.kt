@@ -64,8 +64,8 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
         api.getHome()
     }
 
-    suspend fun checkout(login: String, userId: String, address: String,billingAddress: String, cartData: String) =
-        safeApiCall { api.checkout(login, userId, address,billingAddress,  cartData) }
+    suspend fun checkout(login: String, userId: String, address: String,finalPrice: String, billingAddress: String, cartData: String) =
+        safeApiCall { api.checkout(login, userId, address,finalPrice, billingAddress,  cartData) }
 
     suspend fun checkoutConfirm(orderId: String, gateway: String, transactionId: String) =
         safeApiCall { api.checkoutConfirm(orderId, gateway, transactionId) }

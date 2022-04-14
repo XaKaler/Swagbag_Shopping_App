@@ -14,6 +14,7 @@ import com.shopping.swagbag.user.order.user_details.AllAddressModel
 import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
 import com.shopping.swagbag.user.order.user_details.EditAddressModel
 import com.shopping.swagbag.user.profile.UserUpdateModel
+import com.shopping.swagbag.user.wallet.WalletModel
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val repository: UserRepository) : ViewModel() {
@@ -187,5 +188,17 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         }
 
         return result
+    }
+
+    fun wallet(userid: String, limit: String, page: String): LiveData<Resource<WalletModel>> {
+        val result = MutableLiveData<Resource<WalletModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.wallet(userid, limit, page)
+        }
+
+        return result
+
     }
 }
