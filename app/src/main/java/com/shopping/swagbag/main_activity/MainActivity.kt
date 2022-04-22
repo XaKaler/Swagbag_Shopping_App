@@ -369,6 +369,8 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         return result
     }
 
+    fun getReturnReason() = settingResult.returnReason
+
     private fun getSettings() {
         settingViewModel.settings().observe(this) {
             when (it) {

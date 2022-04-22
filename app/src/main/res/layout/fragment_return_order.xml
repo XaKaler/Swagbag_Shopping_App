@@ -35,8 +35,8 @@
             <Spinner
                 android:id="@+id/reasonSpinner"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/space_between_views"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_views"
                 android:tooltipText="Select return reason"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -78,6 +78,20 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/edtOtherReason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:background="@drawable/rec_outline_5"
+                android:hint="Enter reason"
+                android:inputType="textPersonName"
+                android:padding="@dimen/dimen_5"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/reasonSpinner"
+                app:layout_constraintStart_toStartOf="@+id/reasonSpinner"
+                app:layout_constraintTop_toBottomOf="@+id/reasonSpinner" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
