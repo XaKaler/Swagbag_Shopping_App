@@ -1,4 +1,4 @@
-package com.shopping.swagbag
+package com.shopping.swagbag.main_activity
 
 import android.os.Bundle
 import android.os.Handler
@@ -14,6 +14,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.shopping.swagbag.R
+import com.shopping.swagbag.settings.SettingRepository
+import com.shopping.swagbag.settings.SettingViewModelFactory
+import com.shopping.swagbag.settings.SettingsModel
 import com.shopping.swagbag.category.*
 import com.shopping.swagbag.common.ProgressDialogFragment
 import com.shopping.swagbag.common.RecycleViewItemClick
@@ -23,13 +27,15 @@ import com.shopping.swagbag.databinding.MainToolbarBinding
 import com.shopping.swagbag.databinding.NavigationDrawerBinding
 import com.shopping.swagbag.databinding.NavigationHeaderBinding
 import com.shopping.swagbag.home.HomeModel
-import com.shopping.swagbag.products.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.products.ProductViewModelFactory
-import com.shopping.swagbag.service.RemoteDataSource
-import com.shopping.swagbag.service.Resource
-import com.shopping.swagbag.user.auth.UserApi
+import com.shopping.swagbag.service.*
+import com.shopping.swagbag.user.UserViewModelFactory
+import com.shopping.swagbag.service.apis.UserApi
+import com.shopping.swagbag.service.apis.CategoryApi
+import com.shopping.swagbag.service.apis.ProductApi
+import com.shopping.swagbag.service.apis.SettingApi
 import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.user.wallet.WalletModel
@@ -90,7 +96,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                             navController.navigate(R.id.action_global_signInFragment)
                     }
 
-                    R.id.btmCart->{
+                    R.id.btmCart ->{
                         hideToolbar()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
@@ -102,7 +108,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                             navController.navigate(R.id.action_global_signInFragment)
                     }
 
-                    R.id.btmCategory->{
+                    R.id.btmCategory ->{
                         hideToolbar()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment

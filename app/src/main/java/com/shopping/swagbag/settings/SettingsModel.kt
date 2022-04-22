@@ -1,4 +1,4 @@
-package com.shopping.swagbag
+package com.shopping.swagbag.settings
 
 
 import com.google.gson.annotations.SerializedName

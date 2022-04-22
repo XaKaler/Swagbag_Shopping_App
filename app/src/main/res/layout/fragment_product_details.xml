@@ -1334,11 +1334,7 @@
                 tools:itemCount="1"
                 tools:listitem="@layout/single_card_10" />
 
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.core.widget.NestedScrollView>
 

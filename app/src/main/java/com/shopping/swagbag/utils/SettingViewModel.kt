@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shopping.swagbag.SettingRepository
-import com.shopping.swagbag.SettingsModel
-import com.shopping.swagbag.category.CategoryRepository
+import com.shopping.swagbag.settings.SettingRepository
+import com.shopping.swagbag.settings.SettingsModel
 import com.shopping.swagbag.coupons.GiftCardModel
 import com.shopping.swagbag.service.Resource
 import kotlinx.coroutines.launch

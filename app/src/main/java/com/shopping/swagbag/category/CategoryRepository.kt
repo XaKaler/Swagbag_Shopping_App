@@ -1,6 +1,7 @@
 package com.shopping.swagbag.category
 
 import com.shopping.swagbag.common.base.BaseRepository
+import com.shopping.swagbag.service.apis.CategoryApi
 
 class CategoryRepository(private val apiService: CategoryApi): BaseRepository() {
 

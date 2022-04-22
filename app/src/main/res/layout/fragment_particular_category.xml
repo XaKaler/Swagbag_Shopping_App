@@ -91,20 +91,16 @@
         <ImageView
             android:id="@+id/homeImg3"
             android:layout_width="match_parent"
-            android:layout_height="275dp"
+            android:layout_height="@dimen/banner_230"
             android:layout_marginTop="@dimen/space_between_views"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/navigation_header_background_foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvBest" />
+            app:layout_constraintTop_toBottomOf="@+id/rvTopTrending" />
 
         <ImageView
             android:id="@+id/homeImg5"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/banner_275"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/navigation_header_background_foreground"
+            android:layout_height="@dimen/banner_230"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bestOfferScrollView" />

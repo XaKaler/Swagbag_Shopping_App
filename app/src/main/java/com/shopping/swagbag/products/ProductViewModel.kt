@@ -12,6 +12,7 @@ import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.products.product_details.UpdateCartModel
 import com.shopping.swagbag.search.HeaderSearchModel
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.user.order.return_order.ReturnModel
 import com.shopping.swagbag.user.order.with_items.CancelOrderModel
 import com.shopping.swagbag.user.order.with_items.OrderModel
 import com.shopping.swagbag.user.shipping.checkout.CheckoutModel
@@ -264,7 +265,7 @@ class ProductViewModel(
     fun cancelOrder(orderId: String): LiveData<Resource<CancelOrderModel>>{
         val result = MutableLiveData<Resource<CancelOrderModel>>()
 
-        viewModelScope.launch{
+        viewModelScope.launch {
             result.value = Resource.Loading
             result.value = repository.cancelOrder(orderId)
         }
@@ -274,5 +275,19 @@ class ProductViewModel(
     }
 
 
+    fun returnOrder(
+        orderId: String,
+        products: String,
+        reason: String
+    ): LiveData<Resource<ReturnModel>> {
+        val result = MutableLiveData<Resource<ReturnModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.returnOrder(orderId, products, reason)
+        }
+
+        return result
+    }
 
 }

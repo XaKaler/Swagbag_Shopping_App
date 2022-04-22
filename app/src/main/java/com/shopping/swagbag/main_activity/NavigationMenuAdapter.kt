@@ -1,4 +1,4 @@
-package com.shopping.swagbag
+ package com.shopping.swagbag.main_activity
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shopping.swagbag.R
 import com.shopping.swagbag.category.CategoryModel
 import com.shopping.swagbag.common.adapter.DropDownCategoryAdapter
 import com.shopping.swagbag.databinding.SingleNavigationMenuBinding

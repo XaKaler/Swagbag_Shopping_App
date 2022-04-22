@@ -14,6 +14,7 @@ import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProductsBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
+import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.AppUtils
 
@@ -125,5 +126,6 @@ class ProductsFragment : BaseFragment<
 
     override fun getViewModel() = ProductViewModel::class.java
 
-    override fun getFragmentRepository() = ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
+    override fun getFragmentRepository() = ProductRepository(remoteDataSource.getBaseUrl().create(
+        ProductApi::class.java))
 }

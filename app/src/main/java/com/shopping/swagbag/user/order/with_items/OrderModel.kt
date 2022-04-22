@@ -18,7 +18,7 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
         @SerializedName("created_date")
         val createdDate: String, // 2022-04-05T11:31:22.584Z
         val deleted: Int, // 0
-        val finalprice: String,
+        val finalprice: String, // 1
         val gateway: String, // COD
         @SerializedName("gift_code")
         val giftCode: String,
@@ -43,13 +43,13 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
         val price: String,
         val products: List<Product>,
         @SerializedName("return_products")
-        val returnProducts: List<Product>,
+        val returnProducts: @RawValue List<Any>,
         @SerializedName("return_reason")
         val returnReason: String,
         val shipping: String,
         val status: String, // pending_payment
         val tax: String, // 0
-        val transactionid: String,
+        val transactionid: String?,
         val type: String, // Normal
         @SerializedName("update_date")
         val updateDate: String, // 2022-04-05T11:31:22.584Z
@@ -60,7 +60,7 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
         @Parcelize
         data class Address(
             val address: String, // Abu Dhabi - United Arab Emirates
-            val address2: String, // abu dhabi
+            val address2: String,
             val city: String, // Abu Dhabi
             @SerializedName("contact_mobile")
             val contactMobile: String, // 08860639597
@@ -75,9 +75,9 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
             val pincode: String, // 123456
             val position: Position,
             @SerializedName("post_office")
-            val postOffice: String,
+            val postOffice: @RawValue Any?, // null
             val state: String, // abc
-            val title: String, // abv
+            val title: String, // Office
             @SerializedName("update_date")
             val updateDate: String, // 2022-03-30T08:21:30.932Z
             val user: String, // 61e82a7acf130b2978d05815
@@ -86,7 +86,7 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
         ): Parcelable {
             @Parcelize
             data class Position(
-                val coordinates: List<Double>,
+                val coordinates: List<Float>,
                 val type: String // Point
             ): Parcelable
         }
@@ -94,7 +94,7 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
         @Parcelize
         data class Billing(
             val address: String, // Abu Dhabi - United Arab Emirates
-            val address2: String, // abu dhabi
+            val address2: String,
             val city: String, // Abu Dhabi
             @SerializedName("contact_mobile")
             val contactMobile: String, // 08860639597
@@ -109,9 +109,9 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
             val pincode: String, // 123456
             val position: Position,
             @SerializedName("post_office")
-            val postOffice: String,
+            val postOffice: @RawValue Any?, // null
             val state: String, // abc
-            val title: String, // abv
+            val title: String, // Office
             @SerializedName("update_date")
             val updateDate: String, // 2022-03-30T08:21:30.932Z
             val user: String, // 61e82a7acf130b2978d05815
@@ -120,7 +120,7 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
         ): Parcelable {
             @Parcelize
             data class Position(
-                val coordinates: List<Double>,
+                val coordinates: List<Float>,
                 val type: String // Point
             ): Parcelable
         }
@@ -131,7 +131,7 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
             @SerializedName("_id")
             val id: String, // 624c288abd181f127144aef5
             val option: List<Option>,
-            val price: Int, // 190
+            val price: String, // 190
             val product: Product,
             val productname: String, // test product demo test product demo
             val quantity: Int // 10
@@ -160,13 +160,13 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
                 val comboProducts: @RawValue Any?, // null
                 val commission: String,
                 @SerializedName("created_date")
-                val createdDate: String, // 2022-03-22T13:27:37.114Z
-                val cuisine: @RawValue  Any?, // null
+                val createdDate: @RawValue String, // 2022-03-22T13:27:37.114Z
+                val cuisine:  @RawValue Any?, // null
                 val deal: Int, // 0
-                val deleted: Int, // 0
+                val deleted: Int, // 1
                 val desc: String, // <strong style="margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;">Lorem Ipsum</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span><div><span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;"><br></span></div><div><span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;"><b>How to use it ?</b></span></div><div><span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop pu</span><span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;"><b><br></b></span></div>
                 @SerializedName("discounted_price")
-                val discountedPrice: @RawValue  Any?, // null
+                val discountedPrice: @RawValue Any?, // null
                 @SerializedName("end_date")
                 val endDate: String, // 2022-03-22T00:00:00.000Z
                 val express: Boolean, // false
@@ -188,14 +188,14 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
                 val point: Int, // 2
                 @SerializedName("point_exp_date")
                 val pointExpDate: String, // 2022-03-22T13:27:37.114Z
-                val price: Int, // 200
+                val price: String, // 200
                 @SerializedName("product_types")
                 val productTypes: List<String>,
                 @SerializedName("return_day")
                 val returnDay: String, // 5
                 val returnable: String, // 1
                 @SerializedName("selling_price")
-                val sellingPrice: Int?, // 190
+                val sellingPrice: String = "0.0", // 190
                 val sgst: String,
                 @SerializedName("shelving_location")
                 val shelvingLocation: String,
@@ -229,21 +229,21 @@ class OrderModel : ArrayList<OrderModel.OrderModelItem>(){
                 data class File(
                     val acl: String, // public-read
                     val bucket: String, // swagbag
-                    val contentDisposition: @RawValue  Any?, // null
-                    val contentEncoding: @RawValue  Any?, // null
+                    val contentDisposition: @RawValue Any?, // null
+                    val contentEncoding: @RawValue Any?, // null
                     val contentType: String, // application/octet-stream
                     val encoding: String, // 7bit
                     val etag: String, // "63d8926cc1a253582a9274b2342fe5af"
                     val fieldname: String, // upload
                     val key: String, // 1648061096256jigpt.png
                     val location: String, // https://swagbag.sgp1.digitaloceanspaces.com/1648061096256jigpt.png
-                    val metadata: @RawValue  Any?, // null
+                    val metadata: @RawValue Any?, // null
                     val mimetype: String, // image/png
                     val originalname: String, // kids.png
-                    val serverSideEncryption: @RawValue  Any?, // null
+                    val serverSideEncryption: @RawValue Any?, // null
                     val size: Int, // 245348
                     val storageClass: String, // STANDARD
-                    val versionId: @RawValue  Any? // null
+                    val versionId: @RawValue Any? // null
                 ): Parcelable
 
                 @Parcelize

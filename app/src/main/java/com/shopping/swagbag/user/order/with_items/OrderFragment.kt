@@ -13,7 +13,7 @@ import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentOrderWithItemsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.Resource
@@ -22,7 +22,7 @@ import com.shopping.swagbag.utils.AppUtils
 class OrderFragment : BaseFragment<
         FragmentOrderWithItemsBinding,
         ProductViewModel,
-        ProductRepository>(FragmentOrderWithItemsBinding::inflate), RecycleViewItemClick {
+        ProductRepository>(FragmentOrderWithItemsBinding::inflate){
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private lateinit var orderProducts: OrderModel
@@ -60,10 +60,10 @@ class OrderFragment : BaseFragment<
                             if (orderProducts.isEmpty()) {
                                showEmptyOrder()
                             } else {
-                                setOrderItems(it.value)
                                 Log.e("order", "getOrderItems: ${it.value}")
                                 viewBinding.orderWithItems.visibility = View.VISIBLE
                                 viewBinding.orderWithoutItems.visibility = View.GONE
+                                setOrderItems(it.value)
                             }
 
                         }
@@ -86,7 +86,29 @@ class OrderFragment : BaseFragment<
                 layoutManager = LinearLayoutManager(context)
                 orderItemsAdapter = OrderItemsAdapter(
                     context,
-                    orderList, this@OrderFragment
+                    orderList, object: RecycleViewItemClick{
+                        override fun onItemClickWithName(name: String, position: Int) {
+                            when (name) {
+                                "view" -> {
+                                    val gsonString = Gson().toJson(orderProducts[position])
+                                    val action = OrderFragmentDirections.actionOrderWithItemsFragmentToViewOrderDetails(
+                                        gsonString
+                                    )
+                                    findNavController().navigate(action)
+                                }
+                                "cancel" -> {
+                                    cancelOrder(orderProducts[position].id, position)
+                                }
+                                "return" -> {
+                                    val gsonString = Gson().toJson(orderProducts[position])
+                                    val action = OrderFragmentDirections.actionOrderWithItemsFragmentToReturnOrderFragment(
+                                        gsonString
+                                    )
+                                    findNavController().navigate(action)
+                                }
+                            }
+                        }
+                    }
                 )
                 adapter = orderItemsAdapter
             }
@@ -114,33 +136,6 @@ class OrderFragment : BaseFragment<
 
     override fun getFragmentRepository() =
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
-
-    override fun onItemClickWithName(name: String, position: Int) {
-        when (name) {
-            "view" -> {
-                val gsonString = Gson().toJson(orderProducts[position])
-                val action = OrderFragmentDirections.actionOrderWithItemsFragmentToViewOrderDetails(
-                    gsonString
-                )
-                findNavController().navigate(action)
-
-                /* try {
-                     val bundle = bundleOf("products" to orderProducts[position])
-
-                     //val action = OrderFragmentDirections.actionOrderWithItemsFragmentToViewOrderDetails(orderProducts[position])
-                     findNavController().navigate(
-                         R.id.action_orderWithItemsFragment_to_viewOrderDetails,
-                         bundle
-                     )
-                 } catch (e: Exception) {
-                     Log.d("TAG", "onItemClickWithName: " + e.message)
-                 }*/
-            }
-            "cancel" -> {
-                cancelOrder(orderProducts[position].id, position)
-            }
-        }
-    }
 
     private fun cancelOrder(orderId: String, position: Int) {
         viewModel.cancelOrder(orderId).observe(viewLifecycleOwner) {

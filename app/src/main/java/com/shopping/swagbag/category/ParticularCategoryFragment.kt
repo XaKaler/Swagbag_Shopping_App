@@ -13,8 +13,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.google.gson.GsonBuilder
-import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleViewItemClick
@@ -24,12 +22,13 @@ import com.shopping.swagbag.common.adapter.CategoryToBegAdapter
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.common.model.AllTimeSliderModel
 import com.shopping.swagbag.common.model.BestProductModel
+import com.shopping.swagbag.common.model.TopTrendingModel
 import com.shopping.swagbag.databinding.FragmentParticularCategoryBinding
-import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.home.TopTrendingAdapter
+import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.CategoryApi
 
 class ParticularCategoryFragment :
     BaseFragment<FragmentParticularCategoryBinding,
@@ -122,11 +121,35 @@ RecycleViewItemClick{
 
 
     private fun setTopTrending(data: List<ParticularCategoryModel.Result.Section>) {
+        val topTrendingData = ArrayList<TopTrendingModel>()
+
+        for (singleData in data) {
+            singleData.run {
+                topTrendingData.add(
+                    TopTrendingModel(
+                        active,
+                        brand,
+                        category,
+                        createdDate,
+                        deleted,
+                        file,
+                        id,
+                        masterCategory,
+                        product,
+                        section,
+                        updateDate,
+                        url,
+                        v
+                    )
+                )
+            }
+        }
+
         with(viewBinding) {
             rvTopTrending.apply {
                 addItemDecoration(GridSpaceItemDecoration(20))
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = TopTrendingAdapter(context, data)
+                adapter = TopTrendingAdapter(context, topTrendingData)
             }
         }
     }
@@ -135,11 +158,13 @@ RecycleViewItemClick{
         with(viewBinding) {
             context?.let {
                 Glide.with(it)
-                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
+                    .load("https://uae.swagbag.com/img/down1.png")
+                    .centerCrop()
                     .into(homeImg3)
 
                 Glide.with(it)
-                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
+                    .load("https://uae.swagbag.com/img/down2.jpg")
+                    .centerCrop()
                     .into(homeImg5)
 
 

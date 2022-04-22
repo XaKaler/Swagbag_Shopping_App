@@ -1,29 +1,34 @@
 package com.shopping.swagbag.user.shipping.checkout
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.shopping.swagbag.MainActivity
+import com.google.gson.JsonObject
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentPaymentModeBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
+import com.shopping.swagbag.service.RemoteDataSource
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.PaymentApi
+import com.shopping.swagbag.service.apis.PaymentDataSource
+import com.shopping.swagbag.service.apis.ProductApi
+import com.shopping.swagbag.settings.PaymentViewModelFactory
 import com.shopping.swagbag.user.order.user_details.AllAddressModel
+import com.shopping.swagbag.user.shipping.checkout.payment.PaymentRepository
+import com.shopping.swagbag.user.shipping.checkout.payment.PaymentViewModel
+import com.shopping.swagbag.user.shipping.checkout.payment.SampleRequestModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 import com.shopping.swagbag.user.wallet.WalletModel
 import com.shopping.swagbag.utils.AppUtils
@@ -36,6 +41,7 @@ class CheckoutFragment : BaseFragment<
         ProductRepository>(FragmentPaymentModeBinding::inflate) {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+    private lateinit var paymentViewModel: PaymentViewModel
     private var paymentMode: String = ""
     private lateinit var address: AllAddressModel.Result
     private lateinit var cartData: GetCartModel
@@ -43,7 +49,7 @@ class CheckoutFragment : BaseFragment<
     private lateinit var mainActivity: MainActivity
     private lateinit var walletData: WalletModel
     private var tax by Delegates.notNull<Int>()
-    private var totalAmount: Int = 0
+    private var totalAmount: Float = 0.0F
     private var walletAmount: Int = 0
     private var couponAmount: Int = 0
     private var isCouponsApplied = false
@@ -70,6 +76,14 @@ class CheckoutFragment : BaseFragment<
     }
 
     private fun initViews() {
+        //initialize payment view model
+        val repository =
+            PaymentRepository(PaymentDataSource().getBaseUrl().create(PaymentApi::class.java))
+        paymentViewModel = ViewModelProvider(
+            this@CheckoutFragment,
+            PaymentViewModelFactory(repository)
+        )[PaymentViewModel::class.java]
+
         with(viewBinding) {
             placeOrder.setOnClickListener {
                 placeOrders()
@@ -92,7 +106,9 @@ class CheckoutFragment : BaseFragment<
     private fun placeOrders() {
         when (paymentMode) {
             "COD" -> checkout(paymentMode)
-            "Online" -> {}
+            "Online" -> {
+                //checkout(paymentMode)
+            }
             else -> toast("Select payment option")
         }
     }
@@ -127,22 +143,63 @@ class CheckoutFragment : BaseFragment<
                             stopShowingLoading()
 
                             val orderId = it.value.orderId
-                            checkoutConfirm(orderId, gateway, "")
+
+                            if (gateway == "COD")
+                                checkoutConfirm(orderId, gateway, "")
+                            else
+                                payment()
+                            //checkoutConfirm(orderId, gateway, payment())
                         }
 
-                    is Resource.Failure -> {
-                        stopShowingLoading()
-                        toast("try again")
-                        Log.e("checkout", "$it")
+                        is Resource.Failure -> {
+                            stopShowingLoading()
+                            toast("try again")
+                            Log.e("checkout", "$it")
+                        }
                     }
+                }
+        }
+    }
+
+    private fun payment(): String {
+        var transactionId = ""
+
+        val registration = SampleRequestModel.Registration(
+            "2.00",
+            "Web",
+            "AED",
+            "Demo Merchant",
+            "7210055701315195",
+            "Paybill",
+            "Comtrust@20182018",
+            "https://localhost/callbackURL",
+            "0000",
+            "0000",
+            "CPT:Y;VCC:Y;",
+            "Demo_fY9c"
+        )
+
+        val sampleRequestModel = SampleRequestModel(registration)
+
+        paymentViewModel.paymentRequest(sampleRequestModel).observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Success -> {
+                    Log.e("payment", "payment success: $it")
+                    transactionId = it.value.transaction.transactionID
+                }
+
+                is Resource.Failure -> {
+                    Log.e("payment", "payment fail : $it")
                 }
             }
         }
+
+        return transactionId
     }
 
     private fun checkoutConfirm(orderId: String, gateway: String, transactionId: String) {
         viewModel.checkoutConfirm(orderId, gateway, transactionId).observe(viewLifecycleOwner) {
-            when(it){
+            when (it) {
                 is Resource.Loading -> showLoading()
 
                 is Resource.Success -> {
@@ -185,7 +242,7 @@ class CheckoutFragment : BaseFragment<
             val totalCartItem = cartData.result?.size
             itemCount.text = totalCartItem.toString()
 
-            var totalMRP = 0
+            var totalMRP = 0.0F
             val discountOnMRP = 0
             val deliveryCharge = 0
 

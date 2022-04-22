@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class HeaderSearchModel(
     val result: List<Result>,
     val status: String // success
+
 ) {
     data class Result(
         val name: String, // Kids

@@ -7,16 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.shopping.swagbag.MainActivity
+import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.R
-import com.shopping.swagbag.SettingApi
-import com.shopping.swagbag.SettingRepository
+import com.shopping.swagbag.service.apis.SettingApi
+import com.shopping.swagbag.settings.SettingRepository
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentPrivacyPolicyBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.SettingViewModel
-import kotlinx.android.synthetic.main.fragment_privacy_policy.*
 
 class PrivacyPolicyFragment :
     BaseFragment<FragmentPrivacyPolicyBinding, SettingViewModel, SettingRepository>(

@@ -28,14 +28,13 @@ class CategoryToBegAdapter(
                 // set image
                 Glide.with(context)
                     .load(singleData.file)
-                    .error(R.drawable.baby)
-                    .placeholder(R.drawable.logo)
+                    .error(R.drawable.glide_error)
+                    .placeholder(R.drawable.glide_error)
                     .into(imgCategoryToBeg)
 
                 tvCategoryToBeg.text = singleData.name
 
-                Log.e("TAG", "bind: ${singleData.name}", )
-
+                //Log.e("TAG", "bind: ${singleData.name}", )
             }
         }
     }

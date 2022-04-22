@@ -101,14 +101,14 @@ data class ParticularCategoryModel(
             val point: Int, // 20
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-01-30T00:00:00.000Z
-            val price: Int, // 70
+            val price: Float, // 70
             @SerializedName("product_types")
             val productTypes: List<String>,
             @SerializedName("return_day")
             val returnDay: String, // 15
             val returnable: String, // 1
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 65
+            val sellingPrice: Float, // 65
             val sgst: String,
             @SerializedName("shelving_location")
             val shelvingLocation: String, // Zone 1
@@ -205,14 +205,14 @@ data class ParticularCategoryModel(
             val point: Double, // 0.1
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-04-06T00:00:00.000Z
-            val price: Int, // 70
+            val price: Float, // 70
             @SerializedName("product_types")
             val productTypes: Any?, // null
             @SerializedName("return_day")
             val returnDay: String,
             val returnable: String,
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 65
+            val sellingPrice: Float, // 65
             val sgst: String,
             @SerializedName("shelving_location")
             val shelvingLocation: String,

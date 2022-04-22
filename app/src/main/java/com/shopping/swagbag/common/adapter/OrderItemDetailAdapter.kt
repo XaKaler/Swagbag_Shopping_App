@@ -34,7 +34,7 @@ class OrderItemDetailAdapter(
                     productName.text = singleData.products[position].productname
                     productDesc.text = singleData.products[position].product.shortDesc
 
-                    val price = singleData.products[position].product.sellingPrice?.times(singleData.products[position].quantity)
+                    val price = singleData.products[position].price.toFloat()*singleData.products[position].quantity
                     productPrice.text = price.toString()
 
                     //orderStatus.text = singleData.status

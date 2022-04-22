@@ -18,7 +18,7 @@ class AutoImageSliderAdapter(private val context: Context, private val data: Lis
             Glide
                 .with(context)
                 .load(singleData.file)
-                .centerInside()
+                .centerCrop()
                 .into(viewBinding.imgAutoSlider)
             }
         }

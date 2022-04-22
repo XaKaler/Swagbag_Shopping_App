@@ -1,4 +1,6 @@
-package com.shopping.swagbag
+package com.shopping.swagbag.main_activity
+
+import com.shopping.swagbag.R
 
 data class NavigationMenu(val icon: Int, val menu: String)
 

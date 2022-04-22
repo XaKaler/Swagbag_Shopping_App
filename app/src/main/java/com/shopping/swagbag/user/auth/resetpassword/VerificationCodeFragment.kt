@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.shopping.swagbag.R
-import com.shopping.swagbag.user.auth.UserApi
+import com.shopping.swagbag.service.apis.UserApi
 import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.common.base.BaseFragment

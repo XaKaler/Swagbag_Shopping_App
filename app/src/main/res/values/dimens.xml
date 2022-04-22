@@ -97,7 +97,7 @@
     <dimen name="banner_172">172dp</dimen>
     <dimen name="banner_108">108dp</dimen>
     <dimen name="banner_135">135dp</dimen>
-    <dimen name="banner_275">275dp</dimen>
+    <dimen name="banner_230">230dp</dimen>
 
 
     <!--card-->
@@ -210,7 +210,7 @@
     <dimen name="product_details_size_chart_height">82dp</dimen>
     <dimen name="product_details_size_chart_width">100dp</dimen>
 
-    <dimen name="auto_image_slider_height">235dp</dimen>
+    <dimen name="auto_image_slider_height">190dp</dimen>
 
     
     

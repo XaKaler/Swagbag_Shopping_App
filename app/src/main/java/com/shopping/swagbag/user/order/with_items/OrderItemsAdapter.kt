@@ -1,18 +1,14 @@
 package com.shopping.swagbag.user.order.with_items
 
-import android.app.Activity
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.GeneralFunction
 import com.shopping.swagbag.databinding.SingleOrderItemBinding
-import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 
 class OrderItemsAdapter(
     private val context: Context,
@@ -27,13 +23,23 @@ class OrderItemsAdapter(
             fun bind(singleData: OrderModel.OrderModelItem, position: Int, itemClick: RecycleViewItemClick){
                 with(viewBinding){
                     orderStatus.text = singleData.status
-                    orderDate.text = GeneralFunction.convertServerDateToUserTimeZoneTask(singleData.createdDate)
+                    orderDate.text =
+                        GeneralFunction.convertServerDateToUserTimeZoneTask(singleData.createdDate)
 
-                   // val orderPrice = singleData.products[position].price *singleData.products[position].quantity
-                    totalPrice.text = singleData.price
+                    // val orderPrice = singleData.products[position].price *singleData.products[position].quantity
+                    totalPrice.text = singleData.price.toString()
 
+                    //set cancel and return button text according to order status
+                    if (singleData.status == "delivered")
+                        cancel.text = context.getString(R.string.returns)
+
+                    // button click
                     cancel.setOnClickListener {
-                        itemClick.onItemClickWithName("cancel", position)
+                        Log.e("order", "cancel or return button: ${cancel.text}", )
+                        if (cancel.text == "Cancel")
+                            itemClick.onItemClickWithName("cancel", position)
+                        else
+                            itemClick.onItemClickWithName("return", position)
                     }
 
                     view.setOnClickListener {

@@ -14,7 +14,7 @@ import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentWishlistWithProductBinding
 import com.shopping.swagbag.databinding.ToolbarWithTwoMenusDeleteAndCartBinding
 import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.Resource

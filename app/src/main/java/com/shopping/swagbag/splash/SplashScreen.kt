@@ -1,9 +1,11 @@
-package com.shopping.swagbag
+package com.shopping.swagbag.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.shopping.swagbag.R
+import com.shopping.swagbag.main_activity.MainActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

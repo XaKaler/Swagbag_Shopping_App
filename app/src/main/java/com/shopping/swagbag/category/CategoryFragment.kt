@@ -6,19 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleItemClick
 import com.shopping.swagbag.common.base.BaseFragment
-import com.shopping.swagbag.common.base.ViewModelFactory
 import com.shopping.swagbag.databinding.FragmentCategoryBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.products.ProductApi
-import com.shopping.swagbag.products.ProductRepository
-import com.shopping.swagbag.products.ProductViewModel
+import com.shopping.swagbag.service.apis.CategoryApi
 import com.shopping.swagbag.service.Resource
 
 class CategoryFragment :

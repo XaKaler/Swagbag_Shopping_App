@@ -1,4 +1,4 @@
-package com.shopping.swagbag.user.auth
+package com.shopping.swagbag.service.apis
 
 import com.shopping.swagbag.user.auth.resetpassword.PasswordResetEmailSendModel
 import com.shopping.swagbag.user.auth.resetpassword.PasswordResetModel

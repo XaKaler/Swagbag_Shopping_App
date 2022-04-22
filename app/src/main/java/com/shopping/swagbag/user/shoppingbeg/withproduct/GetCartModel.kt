@@ -19,7 +19,7 @@ data class GetCartModel(
         val image: String, // https://swagbag.sgp1.digitaloceanspaces.com/1645689012867ihzer.png
         val name: String, // Saffron Soap
         val option: List<Any>,
-        val price: Int, // 100
+        val price: Float, // 100
         val product: Product,
         var quantity: Int, // 1
         val uniqueid: String,
@@ -71,14 +71,14 @@ data class GetCartModel(
             val point: String, // 1
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-04-14T00:00:00.000Z
-            val price: Int, // 115
+            val price: Float, // 115
             @SerializedName("product_types")
             val productTypes: @RawValue Any? = null, // null
             @SerializedName("return_day")
             val returnDay: String,
             val returnable: String,
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 100
+            val sellingPrice: Float, // 100
             val sgst: String,
             @SerializedName("shelving_location")
             val shelvingLocation: String,

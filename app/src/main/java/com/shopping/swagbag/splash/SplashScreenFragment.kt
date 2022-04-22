@@ -1,9 +1,10 @@
-package com.shopping.swagbag
+package com.shopping.swagbag.splash
 
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
+import com.shopping.swagbag.R
 
 class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
 

@@ -18,6 +18,7 @@ import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProductDetailsBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.products.*
+import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.user.shoppingbeg.withproduct.AddToCartProductOptionModel
 import com.shopping.swagbag.utils.AppUtils
@@ -39,12 +40,12 @@ class ProductDetailsFragment : BaseFragment<
     private var sizeList = ArrayList<ProductOptionModel>()
     private var colorList = ArrayList<ProductOptionModel>()
 
-    private var finalPrice: Int = 0
+    private var finalPrice: Float = 0.0F
     private var finalSize: ProductOptionModel? = null
     private var finalColor: ProductOptionModel? = null
     private lateinit var jsArray: JSONArray
 
-    private var sellingPrice by Delegates.notNull<Int>()
+    private var sellingPrice: Float = 0.0F
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -94,63 +95,73 @@ class ProductDetailsFragment : BaseFragment<
     }
 
     private fun setData() {
-        with(viewBinding) {
-            // set product details
-            productName.text = product.result.name
-            oldRate.text = product.result.price.toString()
+        try{
+            with(viewBinding) {
+                // set product details
+                productName.text = product.result.name
+                oldRate.text = product.result.price.toString()
 
-            sellingPrice = product.result.sellingPrice
-            //finalPrice = sellingPrice
-            newRate.text = sellingPrice.toString()
+                sellingPrice = product.result.sellingPrice
+                //finalPrice = sellingPrice
+                newRate.text = sellingPrice.toString()
 
-            val discount = "(${product.result.discountedPrice}%Off)"
-            off.text = discount
-            //sellerName.text = it.value.vendor
-            productInDetail.text = html2Text(product.result.desc)
-
-            setViewSimilar(product.related)
-            setAutoImageSlider(product.result.file)
-            setProductSmallImages(product.result.file)
-
-            //set user review
-            val review = product.review
-            if (review.isNotEmpty())
-                setUserReview()
-            else {
-                viewBinding.lytReview.visibility = View.GONE
-                viewBinding.topRating.root.visibility = View.GONE
-            }
-
-            // set product options like color or size
-            val optionsList = product.result.options
-
-            if (optionsList.isNotEmpty()) {
-                for (option in optionsList.indices) {
-
-                    val optionName = optionsList[option].name
-                    val optionValue = optionsList[option].value
-
-                    if (optionName == "Size") {
-                        with(viewBinding) {
-                            txtSize.visibility = View.VISIBLE
-                            rvSize.visibility = View.VISIBLE
-                            size.visibility = View.VISIBLE
-                            sizeChart.visibility = View.VISIBLE
-
-                            sizeList = stringToList(optionValue)
-                            setProductSize(sizeList)
-                        }
-                        //option is coming in string form seperated with comma
-                        //so we have exclude it
-                    } else if (optionName == "Color") {
-                        viewBinding.colors.root.visibility = View.VISIBLE
-                        colorList = stringToList(optionValue)
-                        setProductColor(colorList)
-                    }
+                if(product.result.discountedPrice == null || product.result.discountedPrice == 0)
+                    off.visibility = View.GONE
+                else {
+                    off.visibility = View.VISIBLE
+                    val discount = "(${product.result.discountedPrice}%Off)"
+                    off.text = discount
                 }
-            } else viewBinding.optionCard.visibility = View.GONE
+                //sellerName.text = it.value.vendor
+                productInDetail.text = html2Text(product.result.desc)
 
+                setViewSimilar(product.related)
+                setAutoImageSlider(product.result.file)
+                setProductSmallImages(product.result.file)
+
+                //set user review
+                val review = product.review
+                if (review.isNotEmpty())
+                    setUserReview()
+                else {
+                    viewBinding.lytReview.visibility = View.GONE
+                    viewBinding.topRating.root.visibility = View.GONE
+                }
+
+                // set product options like color or size
+                val optionsList = product.result.options
+
+                if (optionsList.isNotEmpty()) {
+                    for (option in optionsList.indices) {
+
+                        val optionName = optionsList[option].name
+                        val optionValue = optionsList[option].value
+
+                        if (optionName == "Size") {
+                            with(viewBinding) {
+                                txtSize.visibility = View.VISIBLE
+                                rvSize.visibility = View.VISIBLE
+                                size.visibility = View.VISIBLE
+                                sizeChart.visibility = View.VISIBLE
+
+                                sizeList = stringToList(optionValue)
+                                setProductSize(sizeList)
+                            }
+                            //option is coming in string form seperated with comma
+                            //so we have exclude it
+                        } else if (optionName == "Color") {
+                            viewBinding.colors.root.visibility = View.VISIBLE
+                            colorList = stringToList(optionValue)
+                            setProductColor(colorList)
+                        }
+                    }
+                } else viewBinding.optionCard.visibility = View.GONE
+
+            }
+        }catch(e: Exception){
+            Log.e("TAG", "setData: $e", )
         }
+
     }
 
     private fun getProductDetails(productsName: String) {
@@ -579,7 +590,7 @@ class ProductDetailsFragment : BaseFragment<
 
                     //set new price
                     if (colorList.isEmpty() || finalColor == null) {
-                        finalPrice = sellingPrice + sizeList[position].price.toInt()
+                        finalPrice = sellingPrice + sizeList[position].price.toFloat()
 
                         Log.e(
                             "size",
@@ -592,7 +603,7 @@ class ProductDetailsFragment : BaseFragment<
                         )
 
                     } else {
-                        finalPrice = sellingPrice + sizeList[position].price.toInt() + finalColor!!.price.toInt()
+                        finalPrice = sellingPrice + sizeList[position].price.toFloat() + finalColor!!.price.toFloat()
 
                         Log.e(
                             "size",

@@ -2,7 +2,7 @@ package com.shopping.swagbag.products
 
 import android.util.Log
 import com.shopping.swagbag.common.base.BaseRepository
-import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
+import com.shopping.swagbag.service.apis.ProductApi
 import org.json.JSONArray
 
 class ProductRepository(private val api: ProductApi) : BaseRepository() {
@@ -64,8 +64,15 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
         api.getHome()
     }
 
-    suspend fun checkout(login: String, userId: String, address: String,finalPrice: String, billingAddress: String, cartData: String) =
-        safeApiCall { api.checkout(login, userId, address,finalPrice, billingAddress,  cartData) }
+    suspend fun checkout(
+        login: String,
+        userId: String,
+        address: String,
+        finalPrice: String,
+        billingAddress: String,
+        cartData: String
+    ) =
+        safeApiCall { api.checkout(login, userId, address, finalPrice, billingAddress, cartData) }
 
     suspend fun checkoutConfirm(orderId: String, gateway: String, transactionId: String) =
         safeApiCall { api.checkoutConfirm(orderId, gateway, transactionId) }
@@ -73,5 +80,8 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
     suspend fun orderUser(token: String, filterBy: String, userId: String) =
         safeApiCall { api.orderUser(token, filterBy, userId) }
 
-    suspend fun cancelOrder(orderId: String) = safeApiCall{api.cancelOrder(orderId)}
+    suspend fun cancelOrder(orderId: String) = safeApiCall { api.cancelOrder(orderId) }
+
+    suspend fun returnOrder(orderId: String, products: String, reason: String) =
+        safeApiCall { api.returnOrder(orderId, products, reason) }
 }

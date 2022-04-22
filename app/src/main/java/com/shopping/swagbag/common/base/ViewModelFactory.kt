@@ -2,7 +2,7 @@ package com.shopping.swagbag.common.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.shopping.swagbag.SettingRepository
+import com.shopping.swagbag.settings.SettingRepository
 import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.category.CategoryRepository

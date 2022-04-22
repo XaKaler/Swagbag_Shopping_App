@@ -14,109 +14,107 @@ data class HomeModel(
         val masterCategory: List<MasterCategory>,
         @SerializedName("random_category")
         val randomCategory: List<RandomCategory>,
+        val section: List<Section>,
         val slider: List<Slider>
     ) {
         data class Deal(
             val active: Int, // 1
             @SerializedName("added_by")
             val addedBy: String, // 5fe463f5a9e14206002dd63e
+            @SerializedName("additional_description")
+            val additionalDescription: String,
             val attribute: String,
             val backorders: String,
-            val batchno: String, // 232323
-            val brand: String, // 61bb7f2166538a1c1f36671d
+            val batchno: String, // 12345
+            val brand: String, // 6211e64f0fe91d273d2178f8
             val category: List<String>,
             val cgst: String,
             @SerializedName("combo_products")
             val comboProducts: Any?, // null
-            val commission: String, // 10
+            val commission: String,
             @SerializedName("created_date")
-            val createdDate: String, // 2021-12-27T05:54:26.787Z
+            val createdDate: String, // 2022-04-18T16:04:16.486Z
             val cuisine: Any?, // null
             val deal: Int, // 1
             val deleted: Int, // 0
-            val desc: String, // <div>Wrap yourself in the dreamiest spring with this perky beige and pink mini dress. Tailored in a wrap design, the dress features an all-over floral print and cutesy balloon sleeves.</div><div><br></div><div>Style Tip: Pair the dress with a hairband and strappy flats.</div><div><br></div><div><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Dispatch: Within&nbsp;</span><span id="shipHours" style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">48-72</span><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Hours</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><b style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">*Note:</b><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Delivery of orders may take longer due to region-wise lockdown and diversion of routes.</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Return/Exchange: If you are not completely satisfied with your purchase, simply select the option of return/exchange within 15 days of receiving your order from your order details page and we will process your return, no questions asked.</span><br></div>
+            val desc: String, // <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); margin-right: 0px; margin-bottom: 0px; margin-left: 0px;"><font face="Times New Roman" color="#000000" style="font-stretch: normal; font-size: 12px; line-height: normal; font-family: &quot;Times New Roman&quot;; font-variant-ligatures: common-ligatures;">This eco-friendly and stylish bamboo soap dish has been specially designed to keep your luxurious Rohr Remedy soap fresh and dry. Designed especially for larger soaps.</font></p>
             @SerializedName("discounted_price")
             val discountedPrice: Any?, // null
             @SerializedName("end_date")
-            val endDate: String, // 2021-12-27T00:00:00.000Z
+            val endDate: String, // 2022-04-18T00:00:00.000Z
             val express: Boolean, // false
             val featured: Int, // 1
             val `file`: List<File>,
-            val height: String, // 1
+            val height: String,
             @SerializedName("_id")
-            val id: String, // 61c968b2639b7b51637c5da2
+            val id: String, // 625e5f0f3bc36763b7938f58
             val igst: String,
-            val length: String, // 1
+            val length: String,
             @SerializedName("manage_stock")
-            val manageStock: Int, // 0
+            val manageStock: Int, // 1
             @SerializedName("master_category")
             val masterCategory: List<String>,
-            val name: String, // Beige Pink Floral Mini Wrap Dress
-            val options: List<Option>,
+            val name: String, // Bamboo Soap Dish
+            val options: List<Any>,
             @SerializedName("packaging_charge")
-            val packagingCharge: String, // 40
-            val point: Int, // 20
+            val packagingCharge: String,
+            val point: Int, // 0
             @SerializedName("point_exp_date")
-            val pointExpDate: String, // 2022-01-30T00:00:00.000Z
-            val price: Int, // 70
+            val pointExpDate: String, // 2022-04-18T16:04:16.486Z
+            val price: Double, // 58.54
             @SerializedName("product_types")
             val productTypes: List<String>,
             @SerializedName("return_day")
-            val returnDay: String, // 15
-            val returnable: String, // 1
+            val returnDay: String,
+            val returnable: String,
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 65
+            val sellingPrice: Any?, // null
             val sgst: String,
             @SerializedName("shelving_location")
-            val shelvingLocation: String, // Zone 1
+            val shelvingLocation: String, // Sharjah
             @SerializedName("short_desc")
-            val shortDesc: String, // Beige Pink Floral Mini Wrap Dress
-            val sku: String, // IT-3699
-            val slug: String, // beige-pink-floral-mini-wrap-dress
+            val shortDesc: String,
+            val sku: String, // SBR4567
+            val slug: String, // bamboo-soap-dish
             @SerializedName("slug_history")
             val slugHistory: List<String>,
             @SerializedName("start_date")
-            val startDate: String, // 2021-12-27T00:00:00.000Z
+            val startDate: String, // 2022-04-18T00:00:00.000Z
             @SerializedName("stock_qty")
-            val stockQty: String, // 1000
+            val stockQty: String, // 100
             @SerializedName("sub_category")
             val subCategory: List<String>,
-            val tags: String, // Cloth, Floral
+            val tags: String, // Travel Accessories for Men and Women
             @SerializedName("tax_status")
             val taxStatus: String,
-            val threshold: String,
+            val threshold: String, // 20
             @SerializedName("update_date")
-            val updateDate: String, // 2021-12-27T05:54:26.787Z
+            val updateDate: String, // 2022-04-18T16:04:16.486Z
             @SerializedName("__v")
             val v: Int, // 0
-            val vendor: String, // 61fb87943669ad2911a26008
+            val vendor: String, // 625e3eb23bc36763b793704d
             @SerializedName("video_url")
-            val videoUrl: String, // https://www.youtube.com/embed/Sk0dy_wbXSQ
-            val weight: String, // 1
-            val width: String // 1
+            val videoUrl: String,
+            val weight: String, // 12.5 x 9 x 2.5cm
+            val width: String
         ) {
             data class File(
                 val acl: String, // public-read
-                val bucket: String, // swagbag-space
+                val bucket: String, // swagbag-files
                 val contentDisposition: Any?, // null
                 val contentEncoding: Any?, // null
                 val contentType: String, // application/octet-stream
                 val encoding: String, // 7bit
-                val etag: String, // "f2c83d741aeee55d7685dc63177917d0"
+                val etag: String, // "b6cf7a9d03d4ed284496bded0b9bc7ae"
                 val fieldname: String, // upload
-                val key: String, // 1640589488850j4byg.jpeg
-                val location: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1640589488850j4byg.jpeg
+                val key: String, // 1650351887558mum5t.jpeg
+                val location: String, // https://swagbag-files.s3.amazonaws.com/1650351887558mum5t.jpeg
                 val metadata: Any?, // null
                 val mimetype: String, // image/jpeg
-                val originalname: String, // 4.4.jpg
+                val originalname: String, // Bamboo Soap Dish P1.jpg
                 val serverSideEncryption: Any?, // null
-                val size: Int, // 22661
+                val size: Int, // 20553
                 val storageClass: String // STANDARD
-            )
-
-            data class Option(
-                val name: String, // Color
-                val value: String // #d41367:500:SKU123:51, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
             )
         }
 
@@ -124,103 +122,100 @@ data class HomeModel(
             val active: Int, // 1
             @SerializedName("added_by")
             val addedBy: String, // 5fe463f5a9e14206002dd63e
+            @SerializedName("additional_description")
+            val additionalDescription: String,
             val attribute: String,
-            val backorders: String, // yes
-            val batchno: String, // 12123
-            val brand: String, // 61fb80663669ad2911a25fb9
+            val backorders: String,
+            val batchno: String, // 12345
+            val brand: String, // 6211e64f0fe91d273d2178f8
             val category: List<String>,
             val cgst: String,
             @SerializedName("combo_products")
             val comboProducts: Any?, // null
-            val commission: String, // 0
+            val commission: String,
             @SerializedName("created_date")
-            val createdDate: String, // 2022-02-22T07:51:16.617Z
+            val createdDate: String, // 2022-04-18T16:04:16.486Z
             val cuisine: Any?, // null
-            val deal: Int, // 0
+            val deal: Int, // 1
             val deleted: Int, // 0
-            val desc: String, // To be used twice a day&nbsp;
+            val desc: String, // <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); margin-right: 0px; margin-bottom: 0px; margin-left: 0px;"><font face="Times New Roman" color="#000000" style="font-stretch: normal; font-size: 12px; line-height: normal; font-family: &quot;Times New Roman&quot;; font-variant-ligatures: common-ligatures;">This eco-friendly and stylish bamboo soap dish has been specially designed to keep your luxurious Rohr Remedy soap fresh and dry. Designed especially for larger soaps.</font></p>
             @SerializedName("discounted_price")
             val discountedPrice: Any?, // null
             @SerializedName("end_date")
-            val endDate: String, // 2022-02-22T00:00:00.000Z
+            val endDate: String, // 2022-04-18T00:00:00.000Z
             val express: Boolean, // false
             val featured: Int, // 1
             val `file`: List<File>,
             val height: String,
             @SerializedName("_id")
-            val id: String, // 621738b860550b55668dfa38
+            val id: String, // 625e5f0f3bc36763b7938f58
             val igst: String,
             val length: String,
             @SerializedName("manage_stock")
             val manageStock: Int, // 1
             @SerializedName("master_category")
             val masterCategory: List<String>,
-            val name: String, // Saffron Soap
-            val options: List<Option>,
+            val name: String, // Bamboo Soap Dish
+            val options: List<Any>,
             @SerializedName("packaging_charge")
-            val packagingCharge: String, // 1
-            val point: String, // 1
+            val packagingCharge: String,
+            val point: Int, // 0
             @SerializedName("point_exp_date")
-            val pointExpDate: String, // 2022-04-14T00:00:00.000Z
-            val price: Int, // 115
+            val pointExpDate: String, // 2022-04-18T16:04:16.486Z
+            val price: Double, // 58.54
             @SerializedName("product_types")
-            val productTypes: Any?, // null
+            val productTypes: List<String>,
             @SerializedName("return_day")
             val returnDay: String,
             val returnable: String,
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 100
+            val sellingPrice: Any?, // null
             val sgst: String,
             @SerializedName("shelving_location")
-            val shelvingLocation: String,
+            val shelvingLocation: String, // Sharjah
             @SerializedName("short_desc")
-            val shortDesc: String, // Soap for smoothness
-            val sku: String, // 12345678
-            val slug: String, // saffron-soap
+            val shortDesc: String,
+            val sku: String, // SBR4567
+            val slug: String, // bamboo-soap-dish
             @SerializedName("slug_history")
             val slugHistory: List<String>,
             @SerializedName("start_date")
-            val startDate: String, // 2022-02-22T00:00:00.000Z
+            val startDate: String, // 2022-04-18T00:00:00.000Z
             @SerializedName("stock_qty")
-            val stockQty: String, // 10
+            val stockQty: String, // 100
             @SerializedName("sub_category")
             val subCategory: List<String>,
-            val tags: String,
+            val tags: String, // Travel Accessories for Men and Women
             @SerializedName("tax_status")
             val taxStatus: String,
-            val threshold: String, // 2
+            val threshold: String, // 20
             @SerializedName("update_date")
-            val updateDate: String, // 2022-02-22T07:51:16.617Z
+            val updateDate: String, // 2022-04-18T16:04:16.486Z
             @SerializedName("__v")
             val v: Int, // 0
-            val vendor: String, // 61fb87943669ad2911a26008
+            val vendor: String, // 625e3eb23bc36763b793704d
             @SerializedName("video_url")
             val videoUrl: String,
-            val weight: String,
+            val weight: String, // 12.5 x 9 x 2.5cm
             val width: String
         ) {
             data class File(
                 val acl: String, // public-read
-                val bucket: String, // swagbag
+                val bucket: String, // swagbag-files
                 val contentDisposition: Any?, // null
                 val contentEncoding: Any?, // null
                 val contentType: String, // application/octet-stream
                 val encoding: String, // 7bit
-                val etag: String, // "841c4c44fe124cb8bb90ba6e27a1d9b7"
+                val etag: String, // "b6cf7a9d03d4ed284496bded0b9bc7ae"
                 val fieldname: String, // upload
-                val key: String, // 1645689012867ihzer.png
-                val location: String, // https://swagbag.sgp1.digitaloceanspaces.com/1645689012867ihzer.png
+                val key: String, // 1650351887558mum5t.jpeg
+                val location: String, // https://swagbag-files.s3.amazonaws.com/1650351887558mum5t.jpeg
                 val metadata: Any?, // null
-                val mimetype: String, // image/png
-                val originalname: String, // 1.png
+                val mimetype: String, // image/jpeg
+                val originalname: String, // Bamboo Soap Dish P1.jpg
                 val serverSideEncryption: Any?, // null
-                val size: Int, // 607861
+                val size: Int, // 20553
                 val storageClass: String // STANDARD
-            )
-
-            data class Option(
-                val name: String, // Color
-                val value: String // #d41367:500:SKU123:51, #1913d4:1000:SKU456:50, #4dd413:0:SKU4578:50
             )
         }
 
@@ -229,19 +224,19 @@ data class HomeModel(
             @SerializedName("created_date")
             val createdDate: String, // 2021-09-23T13:53:06.672Z
             val deleted: Int, // 0
-            val desc: String, // Men
-            val `file`: String, // https://swagbag-space.fra1.digitaloceanspaces.com/1639941989132rg7xa.png
+            val desc: String, // Kids
+            val `file`: String, // https://swagbag-files.s3.amazonaws.com/1649940046666fx2zw.jpeg
             @SerializedName("_id")
-            val id: String, // 615ae18463d6a6435a183dcc
-            val name: String, // Men
+            val id: String, // 615ae14c63d6a6435a183db7
+            val name: String, // Kids
             @SerializedName("short_desc")
-            val shortDesc: String, // Men
-            val slug: String, // men
+            val shortDesc: String, // Kids
+            val slug: String, // kids
             @SerializedName("slug_history")
             val slugHistory: List<String>,
-            val sort: Int, // 1
+            val sort: Int, // 0
             @SerializedName("update_date")
-            val updateDate: String, // 2021-12-19T19:26:33.000Z
+            val updateDate: String, // 2022-04-14T12:40:47.000Z
             @SerializedName("__v")
             val v: Int // 0
         )
@@ -250,38 +245,65 @@ data class HomeModel(
             val active: Int, // 1
             val brands: List<String>,
             @SerializedName("created_date")
-            val createdDate: String, // 2021-11-11T16:24:24.827Z
+            val createdDate: String, // 2022-04-15T11:31:58.835Z
             val deleted: Int, // 0
-            val description: String, // Shoes
+            val description: String,
             @SerializedName("description_after_content")
-            val descriptionAfterContent: String?, // Shoes
-            val `file`: String, // https://swagbag-space.fra1.digitaloceanspaces.com/16367240429507ra4a.png
+            val descriptionAfterContent: String,
+            val `file`: String,
             @SerializedName("_id")
-            val id: String, // 618e6d4bae7db56d2c44981e
-            val master: String, // 615ae18463d6a6435a183dcc
-            val name: String, // Shoes
+            val id: String, // 625d1ab5ad10bc2c6a9bc074
+            val master: String, // 615ae14c63d6a6435a183db7
+            val name: String, // Exclusive
             val parent: Any?, // null
-            val slug: String, // shoes-1
+            val slug: String, // exclusive-2
             @SerializedName("slug_history")
             val slugHistory: List<String>,
             @SerializedName("update_date")
-            val updateDate: String, // 2021-11-11T16:24:24.827Z
+            val updateDate: String, // 2022-04-15T11:31:58.835Z
             @SerializedName("__v")
             val v: Int // 0
         )
+
+        data class Section(
+            val `data`: List<Data>,
+            val id: String, // 615ae14c63d6a6435a183db7
+            val name: String // Kids
+        ) {
+            data class Data(
+                val active: Int, // 1
+                val brand: String, // 616889f3e0f5f5b576434121
+                val category: String, // 618e6d4bae7db56d2c44981e
+                @SerializedName("created_date")
+                val createdDate: String, // 2022-02-16T14:51:03.693Z
+                val deleted: Int, // 0
+                val `file`: String, // https://swagbag.sgp1.digitaloceanspaces.com/1645023075012ey61h.webp
+                @SerializedName("_id")
+                val id: String, // 620d0f6322be9e3768fea0c1
+                @SerializedName("master_category")
+                val masterCategory: String, // 615ae14c63d6a6435a183db7
+                val product: String, // 6148c9ebaaa0e6b191f8bf8a
+                val section: Int, // 1
+                @SerializedName("update_date")
+                val updateDate: String, // 2022-02-19T09:13:46.000Z
+                val url: String,
+                @SerializedName("__v")
+                val v: Int // 0
+            )
+        }
 
         data class Slider(
             val active: Int, // 1
             @SerializedName("created_date")
             val createdDate: String, // 2022-02-10T10:07:16.497Z
             val deleted: Int, // 0
-            val `file`: String, // https://swagbag.sgp1.digitaloceanspaces.com/1644669040751nb7u4.webp
+            val `file`: String, // https://swagbag-files.s3.amazonaws.com/1650019994406nu6c7.jpeg
             @SerializedName("_id")
             val id: String, // 6204e934c7d7133ea49853db
-            val name: String, // Slider 1
+            val name: String, // Slider 3
             @SerializedName("update_date")
-            val updateDate: String, // 2022-02-12T12:42:00.000Z
-            val url: String, // https://uae.swagbag.com/women
+            val updateDate: String, // 2022-04-15T11:35:30.000Z
+            val url: String, // https://uae.swagbag.com/men
             @SerializedName("__v")
             val v: Int // 0
         )

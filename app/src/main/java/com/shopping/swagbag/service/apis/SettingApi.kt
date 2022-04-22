@@ -1,8 +1,7 @@
-package com.shopping.swagbag
+package com.shopping.swagbag.service.apis
 
+import com.shopping.swagbag.settings.SettingsModel
 import com.shopping.swagbag.coupons.GiftCardModel
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 
 interface SettingApi {

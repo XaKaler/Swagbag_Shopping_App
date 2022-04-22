@@ -3,6 +3,7 @@ package com.shopping.swagbag.products
 import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -32,15 +33,19 @@ class Card10Adapter(
                     .load(singleData.file[0].location)
                     .into(imgFeatureBrand)
 
-
                 // set text
                 productName.text = singleData.name
                 productDetails.text = singleData.shortDesc
                 newRate.text = singleData.sellingPrice.toString()
                 oldRate.text = singleData.price.toString()
 
-                val discount = "(${singleData.discountedPrice}%off)"
-                oldRate.text = discount
+                if(singleData.discountedPrice == null || singleData.discountedPrice == 0)
+                    off.visibility = View.GONE
+                else {
+                    off.visibility = View.VISIBLE
+                    val discount = "(${singleData.discountedPrice}%Off)"
+                    off.text = discount
+                }
 
                 // click listener
                 itemView.setOnClickListener{

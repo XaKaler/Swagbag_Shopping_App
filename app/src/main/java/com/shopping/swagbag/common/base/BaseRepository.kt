@@ -1,5 +1,6 @@
 package com.shopping.swagbag.common.base
 
+import android.util.Log
 import com.shopping.swagbag.service.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,6 +16,7 @@ abstract class BaseRepository {
             try {
                 Resource.Success(apiCall.invoke())
             } catch (throwable: Throwable) {
+                Log.e("throwable", "safeApiCall: $throwable", )
                 when (throwable) {
                     is HttpException -> {
                         Resource.Failure(false, throwable.code(), throwable.response()?.errorBody().toString())

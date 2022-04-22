@@ -1,11 +1,13 @@
-package com.shopping.swagbag.products
+package com.shopping.swagbag.service.apis
 
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
+import com.shopping.swagbag.products.ProductSearchModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.products.product_details.UpdateCartModel
 import com.shopping.swagbag.search.HeaderSearchModel
+import com.shopping.swagbag.user.order.return_order.ReturnModel
 import com.shopping.swagbag.user.order.with_items.CancelOrderModel
 import com.shopping.swagbag.user.order.with_items.OrderModel
 import com.shopping.swagbag.user.shipping.checkout.CheckoutModel
@@ -141,4 +143,12 @@ interface ProductApi {
     @FormUrlEncoded
     @POST("cancel-order")
     suspend fun cancelOrder(@Field("orderid") orderId: String): CancelOrderModel
+
+    @FormUrlEncoded
+    @POST("return-order")
+    suspend fun returnOrder(
+        @Field("orderid")orderId: String,
+        @Field("products")products: String,
+        @Field("reason")reason: String,
+    ):ReturnModel
 }

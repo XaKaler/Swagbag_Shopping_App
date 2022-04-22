@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/singleProduct"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/screen_margin_5"
+    app:cardElevation="@dimen/dimen_5">
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout16" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout16"
+        android:layout_width="0dp"
+        android:background="@drawable/rec_cultured_white_5"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/productImg"
+            android:layout_width="@dimen/help_center_with_order_image_width"
+            android:layout_height="@dimen/help_center_with_order_image_height"
+            android:scaleType="center"
+            android:src="@mipmap/navigation_header_user_img_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="5dp" />
+
+        <TextView
+            android:id="@+id/productName"
+            style="@style/snigiet_normal_14_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:maxLines="1"
+            android:minLines="1"
+            android:text="Kenster"
+            android:textAllCaps="true"
+            android:textColor="@color/day_state_green_night_Cambridge_Blue"
+            app:layout_constraintStart_toEndOf="@+id/productImg"
+            app:layout_constraintTop_toTopOf="@+id/productImg" />
+
+        <TextView
+            android:id="@+id/productDesc"
+            style="@style/snigiet_normal_14_davys_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_10"
+            android:maxLines="1"
+            android:minLines="1"
+            android:text="Washing machine white color"
+            android:textColor="@color/day_sonic_silver_dark_silver"
+            app:layout_constraintEnd_toStartOf="@+id/imageView31"
+            app:layout_constraintStart_toEndOf="@+id/productImg"
+            app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+        <ImageView
+            android:id="@+id/imageView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_right_arrow" />
+
+        <TextView
+            android:id="@+id/textView127"
+            style="@style/elmsri_normal_12_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Rs"
+            app:layout_constraintStart_toStartOf="@+id/productDesc"
+            app:layout_constraintTop_toBottomOf="@+id/productDesc" />
+
+        <TextView
+            android:id="@+id/productPrice"
+            style="@style/elmsri_normal_12_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15999"
+            app:layout_constraintBottom_toBottomOf="@+id/textView127"
+            app:layout_constraintStart_toEndOf="@+id/textView127"
+            app:layout_constraintTop_toTopOf="@+id/textView127" />
+
+        <TextView
+            android:id="@+id/textView134"
+            style="@style/roboto_normal_13_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: "
+            android:textColor="@color/sonic_silver"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/productImg"
+            app:layout_constraintStart_toStartOf="@+id/textView127" />
+
+        <TextView
+            android:id="@+id/orderStatus"
+            style="@style/roboto_medium_13_red_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confrimed"
+            android:textColor="@color/day_black_night_white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/textView134"
+            app:layout_constraintStart_toEndOf="@+id/textView134"
+            app:layout_constraintTop_toTopOf="@+id/textView134" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

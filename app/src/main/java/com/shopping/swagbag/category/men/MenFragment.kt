@@ -4,24 +4,16 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.shopping.swagbag.MainActivity
-import com.shopping.swagbag.NavigationMenuAdapter
+import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClickListener
-import com.shopping.swagbag.common.adapter.*
 import com.shopping.swagbag.databinding.FragmentMenBinding
-import com.shopping.swagbag.databinding.NavigationDrawerBinding
-import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
 import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.dummy.DummyModel
 import com.shopping.swagbag.dummy.DummySlider
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
-import com.smarteist.autoimageslider.SliderAnimations
-import com.smarteist.autoimageslider.SliderView
 import java.util.*
 
 class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), RecycleItemClickListener {

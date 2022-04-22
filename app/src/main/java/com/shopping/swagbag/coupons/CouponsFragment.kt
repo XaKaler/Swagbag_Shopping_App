@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shopping.swagbag.R
-import com.shopping.swagbag.SettingApi
-import com.shopping.swagbag.SettingRepository
+import com.shopping.swagbag.service.apis.SettingApi
+import com.shopping.swagbag.settings.SettingRepository
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentCouponsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.utils.SettingViewModel
 

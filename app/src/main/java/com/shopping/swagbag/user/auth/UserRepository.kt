@@ -1,6 +1,7 @@
 package com.shopping.swagbag.user.auth
 
 import com.shopping.swagbag.common.base.BaseRepository
+import com.shopping.swagbag.service.apis.UserApi
 
 class UserRepository(private val api: UserApi) : BaseRepository() {
 

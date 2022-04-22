@@ -14,7 +14,7 @@ import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.common.base.GeneralFunction
 import com.shopping.swagbag.databinding.FragmentShoppingBegWithProductBinding
 import com.shopping.swagbag.databinding.ToolbarWithTwoMenusDeleteAndWishlistBinding
-import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.Resource
@@ -80,7 +80,10 @@ class ShoppingBegWithProductFragment : BaseFragment<
                         }
                     }
 
-                    is Resource.Failure -> Log.e("TAG", "getCart: $it")
+                    is Resource.Failure -> {
+                        stopShowingLoading()
+                        Log.e("TAG", "getCart: $it")
+                    }
                 }
             }
         }

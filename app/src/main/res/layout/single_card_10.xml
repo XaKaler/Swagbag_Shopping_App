@@ -125,20 +125,21 @@
 
             <TextView
                 android:id="@+id/ratingCount"
-                android:drawablePadding="@dimen/dimen_3"
-                android:background="@drawable/rec_outline_5_light_fill_white"
                 style="@style/roboto_normal_10_sonic_silver"
-                android:textColor="@color/tiffany_blue"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_7"
                 android:layout_marginBottom="@dimen/dimen_7"
-                android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/dimen_3"
+                android:background="@drawable/rec_outline_5_light_fill_white"
+                android:drawablePadding="@dimen/dimen_3"
                 android:paddingHorizontal="@dimen/dimen_7"
+                android:paddingVertical="@dimen/dimen_3"
                 android:text="3.5"
+                android:textColor="@color/tiffany_blue"
+                android:visibility="gone"
+                app:drawableEndCompat="@drawable/ic_star"
                 app:layout_constraintBottom_toBottomOf="@+id/imgFeatureBrand"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:drawableEndCompat="@drawable/ic_star" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.shopping.swagbag.home
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.category.CategoryToBegModel
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleViewItemClick
@@ -24,13 +22,14 @@ import com.shopping.swagbag.common.adapter.CategoryToBegAdapter
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.common.model.AllTimeSliderModel
 import com.shopping.swagbag.common.model.BestProductModel
+import com.shopping.swagbag.common.model.TopTrendingModel
 import com.shopping.swagbag.databinding.FragmentHomeBinding
-import com.shopping.swagbag.dummy.DummyModel
-import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.ProductApi
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
@@ -88,7 +87,7 @@ RecycleViewItemClick{
 
     private fun setData(){
         setAutoImageSlider(homeResult.result.slider)
-        //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
+        setTopTrending(homeResult.result.section)
         setCategoryToBeg(homeResult.result.masterCategory)
         setDealOfTheDay(homeResult.result.deals)
         setBestOffer(homeResult.result.randomCategory)
@@ -115,27 +114,19 @@ RecycleViewItemClick{
              }
          }
 
-
-  /*      homeResult = mainActivity.getHomeResult()
-        setAutoImageSlider(homeResult.result.slider)
-        //DummyData().getDummyData()?.let { it1 -> setTopTrending(it1) }
-        setCategoryToBeg(homeResult.result.masterCategory)
-        setDealOfTheDay(homeResult.result.deals)
-        setBestOffer(homeResult.result.randomCategory)
-        setFeatureBrands(homeResult.result.featured)
-        showOfferImages()*/
-
     }
 
     private fun showOfferImages() {
         with(viewBinding) {
             context?.let {
                 Glide.with(it)
-                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
+                    .load("https://uae.swagbag.com/img/down1.png")
+                    .centerCrop()
                     .into(homeImg3)
 
                 Glide.with(it)
-                    .load("https://swagbag-space.fra1.digitaloceanspaces.com/1640072900495xoipv.webp")
+                    .load("https://uae.swagbag.com/img/down2.jpg")
+                    .centerCrop()
                     .into(homeImg5)
 
 
@@ -143,12 +134,43 @@ RecycleViewItemClick{
         }
     }
 
-    private fun setTopTrending(data: ArrayList<DummyModel>) {
+    private fun setTopTrending(sections: List<HomeModel.Result.Section>) {
+        val topTrendingData = ArrayList<TopTrendingModel>()
+
+        // collect data from section
+        for (singleSection in sections) {
+            for (singleData in singleSection.data) {
+                if (topTrendingData.size == 6)
+                    break
+                else {
+                    singleData.run {
+                        topTrendingData.add(
+                            TopTrendingModel(
+                                active,
+                                brand,
+                                category,
+                                createdDate,
+                                deleted,
+                                file,
+                                id,
+                                masterCategory,
+                                product,
+                                section,
+                                updateDate,
+                                url,
+                                v
+                            )
+                        )
+                    }
+                }
+            }
+        }
+
         with(viewBinding) {
             rvTopTrending.apply {
                 addItemDecoration(GridSpaceItemDecoration(20))
                 layoutManager = GridLayoutManager(context, 2)
-               // adapter = TopTrendingAdapter(context, DummyData().getTopTrending())
+                adapter = TopTrendingAdapter(context, topTrendingData)
             }
         }
     }

@@ -1,18 +1,15 @@
 package com.shopping.swagbag.products.filter
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.shopping.swagbag.MainActivity
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleItemClick
 import com.shopping.swagbag.databinding.FragmentFilterBinding
 import com.shopping.swagbag.dummy.DummyData
-import com.shopping.swagbag.products.filter.filter_brand.FilterBrandAdapter
 import com.shopping.swagbag.products.filter.filter_brand.FilterBrandFragment
 import com.shopping.swagbag.products.filter.filter_category.FilterCategoryFragment
 import com.shopping.swagbag.products.filter.filter_color.FilterColorFragment

@@ -14,7 +14,7 @@ import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProductDetailsSizeChartBinding
 import com.shopping.swagbag.databinding.ProductDetailsButtonBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.products.ProductApi
+import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import kotlinx.android.synthetic.main.fragment_product_details_size_chart.*

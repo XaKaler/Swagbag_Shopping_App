@@ -371,6 +371,17 @@
         android:name="com.shopping.swagbag.coupons.CouponsFragment"
         android:label="fragment_coupons"
         tools:layout="@layout/fragment_coupons" />
+
+    <fragment
+        android:id="@+id/returnOrderFragment"
+        android:name="com.shopping.swagbag.user.order.return_order.ReturnOrderFragment"
+        android:label="fragment_return_order"
+        tools:layout="@layout/fragment_return_order" >
+        <argument
+            android:name="order_products"
+            app:argType="string" />
+    </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.shopping.swagbag.user.profile.ProfileFragment"
@@ -560,6 +571,9 @@
         <action
             android:id="@+id/action_orderWithItemsFragment_to_viewOrderDetails"
             app:destination="@id/viewOrderDetails" />
+        <action
+            android:id="@+id/action_orderWithItemsFragment_to_returnOrderFragment"
+            app:destination="@id/returnOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewOrderDetails"

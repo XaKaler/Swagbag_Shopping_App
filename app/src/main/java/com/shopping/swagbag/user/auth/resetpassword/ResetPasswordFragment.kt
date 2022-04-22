@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.shopping.swagbag.R
-import com.shopping.swagbag.user.auth.UserApi
+import com.shopping.swagbag.service.apis.UserApi
 import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.common.base.BaseFragment
@@ -92,6 +92,7 @@ class ResetPassword : BaseFragment<
 
     override fun getViewModel()= UserViewModel::class.java
 
-    override fun getFragmentRepository()= UserRepository(remoteDataSource.getBaseUrl().create(UserApi::class.java))
+    override fun getFragmentRepository()= UserRepository(remoteDataSource.getBaseUrl().create(
+        UserApi::class.java))
 
 }
