@@ -42,7 +42,7 @@ class AddUserDetailsFragment : BaseFragment<
                 getUserData()
             }
             btnCancel.setOnClickListener {
-                findNavController().navigate(R.id.action_addUserDetailsFragment_to_viewUserDetailsFragment)
+                findNavController().popBackStack()
             }
         }
 
@@ -54,9 +54,11 @@ class AddUserDetailsFragment : BaseFragment<
             val name = edtName.text.toString()
             val phone = edtPhone.text.toString()
             val address = edtAddress.text.toString()
-            val pinCode = edtPinCode.text.toString()
-            val state = edtState.text.toString()
+            val address2 = edtAddress2.text.toString()
+            val pinCode = edtPincode.text.toString()
+            val country = edtCountry.text.toString()
             val city = edtCity.text.toString()
+            val title = edtTitle.text.toString()
 
             //@todo add lat and lng
             val lat = ""
@@ -67,25 +69,21 @@ class AddUserDetailsFragment : BaseFragment<
                 phone.isNotEmpty() &&
                 address.isNotEmpty() &&
                 pinCode.isNotEmpty() &&
-                state.isNotEmpty() &&
+                country.isNotEmpty() &&
                 city.isNotEmpty() &&
-                radioGroup.checkedRadioButtonId != -1
+                title.isNotEmpty()
+
             ) {
                 val userId = context?.let { AppUtils(it).getUserId() }
                 if (userId != null) {
-
-                    //get selected type of address
-                    val selectedRadioId = radioGroup.checkedRadioButtonId
-                    val selectedRadioButton = radioGroup.findViewById<RadioButton>(selectedRadioId)
-                    val title = selectedRadioButton.text.toString()
 
                     viewModel.addAddress(
                         userId,
                         title,
                         address,
-                        "",
+                        address2,
                         city,
-                        state,
+                        "",
                         "",
                         pinCode,
                         name,
@@ -122,11 +120,11 @@ class AddUserDetailsFragment : BaseFragment<
             edtName.setText("")
             edtPhone.setText("")
             edtAddress.setText("")
-            edtPinCode.setText("")
-            edtState.setText("")
+            edtAddress2.setText("")
+            edtPincode.setText("")
+            edtCountry.setText("")
             edtCity.setText("")
-            edtName.setText("")
-            radioGroup.clearCheck()
+            edtTitle.setText("")
         }
     }
 

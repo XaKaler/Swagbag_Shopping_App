@@ -42,7 +42,7 @@ class EditUserDetailFragment :
                 getUserData()
             }
             btnCancel.setOnClickListener {
-                findNavController().navigate(R.id.action_addUserDetailsFragment_to_viewUserDetailsFragment)
+                findNavController().popBackStack()
             }
         }
 
@@ -57,14 +57,11 @@ class EditUserDetailFragment :
             edtName.setText(getAddress.contactName)
             edtPhone.setText(getAddress.contactMobile)
             edtAddress.setText(getAddress.address)
-            edtPinCode.setText(getAddress.pincode)
-            edtState.setText(getAddress.state)
+            edtAddress2.setText(getAddress.address2)
             edtCity.setText(getAddress.city)
-
-            when (getAddress.title) {
-                "Home" -> rbHome.isSelected = true
-                "Office" -> rbHome.isSelected = true
-            }
+            edtPincode.setText(getAddress.pincode)
+            edtCountry.setText(getAddress.country)
+            edtTitle.setText(getAddress.title)
 
         }
 
@@ -75,9 +72,11 @@ class EditUserDetailFragment :
             val name = edtName.text.toString()
             val phone = edtPhone.text.toString()
             val address = edtAddress.text.toString()
-            val pinCode = edtPinCode.text.toString()
-            val state = edtState.text.toString()
+            val address2 = edtAddress2.text.toString()
             val city = edtCity.text.toString()
+            val pincode = edtPincode.text.toString()
+            val country = edtCountry.text.toString()
+            val title = edtTitle.text.toString()
 
             //@todo add lat and lng
             val lat = ""
@@ -87,56 +86,53 @@ class EditUserDetailFragment :
                 name.isNotEmpty() &&
                 phone.isNotEmpty() &&
                 address.isNotEmpty() &&
-                pinCode.isNotEmpty() &&
-                state.isNotEmpty() &&
+                //address2.isNotEmpty() &&
                 city.isNotEmpty() &&
-                radioGroup.checkedRadioButtonId != -1
-            ) {
+                pincode.isNotEmpty() &&
+                country.isNotEmpty() &&
+                title.isNotEmpty()){
+
                 val userId = context?.let { AppUtils(it).getUserId() }
-                if (userId != null) {
 
-                    //get selected type of address
-                    val selectedRadioId = radioGroup.checkedRadioButtonId
-                    val selectedRadioButton = radioGroup.findViewById<RadioButton>(selectedRadioId)
-                    val title = selectedRadioButton.text.toString()
+                    getAddress.id.let { it ->
+                        if (userId != null)
+                        {
+                            viewModel.editAddress(
+                                userId,
+                                title,
+                                address,
+                                address2,
+                                city,
+                                "",
+                                "",
+                                pincode,
+                                name,
+                                phone,
+                                it,
+                                "",
+                                ""
+                            ).observe(viewLifecycleOwner){
+                                when(it){
+                                    is Resource.Loading -> showLoading()
 
-                    getAddress.id?.let { it ->
-                        viewModel.editAddress(
-                            userId,
-                            title,
-                            address,
-                            "",
-                            city,
-                            state,
-                            "",
-                            pinCode,
-                            name,
-                            phone,
-                            it,
-                            "",
-                            ""
-                        ).observe(viewLifecycleOwner){
-                            when(it){
-                                is Resource.Loading -> showLoading()
+                                    is Resource.Success -> {
+                                        stopShowingLoading()
 
-                                is Resource.Success -> {
-                                    stopShowingLoading()
+                                        toast(it.value.message)
 
-                                    toast(it.value.message)
+                                        //send user to address page
+                                        findNavController().popBackStack()
+                                    }
 
-                                    //send user to address page
-                                    findNavController().popBackStack()
+                                    is Resource.Failure -> Log.e("TAG", "getUserData: $it", )
                                 }
-
-                                is Resource.Failure -> Log.e("TAG", "getUserData: $it", )
                             }
                         }
+                        else toast("User id not found")
                     }
 
-                } else {
-                    toast("user id not fount")
                 }
-            } else {
+            else {
                 toast("Fill all fields")
             }
         }

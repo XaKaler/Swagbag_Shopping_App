@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.R
 import com.shopping.swagbag.settings.SettingRepository
 import com.shopping.swagbag.settings.SettingViewModelFactory
@@ -427,6 +428,12 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
             masterCategories[position].id
         )
         navController.navigate(action)
+
+    }
+
+    override fun onItemClickWithView(name: String, view: View, position: Int) {
+        super.onItemClickWithView(name, view, position)
+        val rv = view as RecyclerView
 
     }
 }

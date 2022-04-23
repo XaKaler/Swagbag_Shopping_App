@@ -34,8 +34,8 @@ class ProductAdapter(
                 // set text
                 tvProductName.text = singleData.name
                 tvProductDetails.text = singleData.shortDesc
-                tvProductPrice.text = singleData.sellingPrice.toString()
-                tvProductPriceBeforeDiscount.text = singleData.price.toString()
+                tvProductPrice.text = singleData.sellingPrice
+                tvProductPriceBeforeDiscount.text = singleData.price
 
                 tvProductPriceBeforeDiscount.paintFlags = tvProductPriceBeforeDiscount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 textView22.paintFlags = textView22.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG

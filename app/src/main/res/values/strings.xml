@@ -121,7 +121,7 @@
     <string name="return_policy_facility">Return Processing Facility</string>
     <string name="name_star">Name*</string>
     <string name="email_star">Email*</string>
-    <string name="pincode">Pincode*</string>
+    <string name="pincode">Pincode</string>
     <string name="state">State*</string>
     <string name="address_house_no_street_area">Address (House No, Street, Area) *</string>
     <string name="landmark">Landmark</string>

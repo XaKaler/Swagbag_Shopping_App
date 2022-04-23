@@ -63,8 +63,7 @@ class NavigationMenuAdapter (
                         // set master category
                         viewBinding.masterCategory.apply {
                             layoutManager = LinearLayoutManager(context)
-                            adapter = DummyData().getDummyCategory()
-                                ?.let { DropDownCategoryAdapter(context, category) }
+                            adapter =  DropDownCategoryAdapter(context, category)
                         }
                     }
                     else{

@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,8 +13,8 @@ import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentProductsBinding
 import com.shopping.swagbag.databinding.ToolbarWithThreeMenusBinding
-import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.utils.AppUtils
 
 
@@ -27,6 +26,7 @@ class ProductsFragment : BaseFragment<
 
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
     private lateinit var appUtils: AppUtils
+    private lateinit var products: List<ProductSearchModel.Result>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,7 +39,10 @@ class ProductsFragment : BaseFragment<
     private fun initViews() {
         setToolbar()
 
-        setProducts()
+        if (this::products.isInitialized)
+            setProducts()
+        else
+            getProducts()
 
         appUtils = context?.let { AppUtils(it) }!!
 
@@ -49,35 +52,44 @@ class ProductsFragment : BaseFragment<
         }
     }
 
-    private fun setProducts() {
+    private fun getProducts() {
         val args: ProductsFragmentArgs by navArgs()
         val masterCategory = args.productId
+        //in argument we are not getting category id we get its name like(men, women..) and call api accordingly
 
-        viewModel.productSearch("", "", "", "", "", "","",  masterCategory, "")
-            .observe(viewLifecycleOwner, Observer {
-                when(it){
+        viewModel.productSearch("", "", "", "", "", "", "", masterCategory, "")
+            .observe(viewLifecycleOwner) {
+                when (it) {
                     is Resource.Loading -> showLoading()
 
                     is Resource.Success -> {
                         stopShowingLoading()
 
-                        val products = it.value.result
-
-                        viewBinding.rvProducts.apply{
-                            layoutManager = GridLayoutManager(context, 2)
-                            addItemDecoration(GridSpaceItemDecoration(5))
-                            adapter = ProductAdapter(context, products)
-                        }
+                        products = it.value.result
+                        setProducts()
                     }
 
                     is Resource.Failure -> {
                         stopShowingLoading()
                         tryAgain()
                         findNavController().popBackStack()
-                        Log.e("TAG", "setProducts: $it", )
+                        Log.e("TAG", "setProducts: $it")
                     }
                 }
-            })
+            }
+    }
+
+    private fun setProducts() {
+        if (products.isEmpty()) {
+            toast("No product found")
+            findNavController().popBackStack()
+        } else {
+            viewBinding.rvProducts.apply {
+                layoutManager = GridLayoutManager(context, 2)
+                addItemDecoration(GridSpaceItemDecoration(5))
+                adapter = ProductAdapter(context, products)
+            }
+        }
     }
 
     private fun setToolbar() {

@@ -191,7 +191,13 @@ RecycleViewItemClick{
         with(viewBinding) {
             rvCategoryToBag.apply {
                 layoutManager = GridLayoutManager(context, 3)
-                adapter = CategoryToBegAdapter(context, master)
+                adapter = CategoryToBegAdapter(context, master, object : RecycleViewItemClick{
+                    override fun onItemClickWithName(name: String, position: Int) {
+                        when(name){
+                            "products" -> {}
+                        }
+                    }
+                })
             }
         }
 

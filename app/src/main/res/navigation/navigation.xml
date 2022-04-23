@@ -18,6 +18,9 @@
             android:id="@+id/action_home2_to_savedCardsWithCards"
             app:destination="@id/savedCardsWithCards" />
         <action
+            android:id="@+id/action_home2_to_productsFragment"
+            app:destination="@id/productsFragment" />
+        <action
             android:id="@+id/action_home2_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
     </fragment>

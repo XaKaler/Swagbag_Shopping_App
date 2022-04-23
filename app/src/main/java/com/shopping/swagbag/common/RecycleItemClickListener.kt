@@ -25,6 +25,8 @@ interface RecycleItemClick{
 
 interface RecycleViewItemClick{
     fun onItemClickWithName(name: String, position: Int)
+
+    fun onItemClickWithView(name: String, view: View, position: Int){}
 }
 
 

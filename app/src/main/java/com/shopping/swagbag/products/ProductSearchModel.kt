@@ -50,14 +50,14 @@ data class ProductSearchModel(
         val point: String, // 20
         @SerializedName("point_exp_date")
         val pointExpDate: String, // 2022-01-30T00:00:00.000Z
-        val price: Int, // 70
+        val price: String, // 70
         @SerializedName("product_types")
         val productTypes: List<String>,
         @SerializedName("return_day")
         val returnDay: String, // 15
         val returnable: String, // 1
         @SerializedName("selling_price")
-        val sellingPrice: Int, // 65
+        val sellingPrice: String, // 65
         val sgst: String,
         @SerializedName("shelving_location")
         val shelvingLocation: String, // Zone 1
