@@ -1,17 +1,22 @@
 package com.shopping.swagbag.common.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.category.CategoryModel
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleCategoryDropDownBinding
-import com.shopping.swagbag.dummy.DummyData
-import java.util.*
+import com.shopping.swagbag.main_activity.MainActivity
+import com.shopping.swagbag.products.ProductSearchParameters
 import kotlin.math.max
 
 class DropDownCategoryAdapter(
@@ -29,11 +34,11 @@ class DropDownCategoryAdapter(
 
         private val dataSize: Int = data.size
 
-        fun bind(singleData: CategoryModel.Result, position: Int) {
+        fun bind(singleData: CategoryModel.Result, parentPosition: Int) {
             setMap()
             with(viewBinding) {
 
-                if(position == dataSize-1){
+                if (parentPosition == dataSize - 1) {
                     //view.visibility = View.GONE
                 }
 
@@ -46,12 +51,65 @@ class DropDownCategoryAdapter(
                     .placeholder(R.drawable.logo)
                     .into(catIcon)
 
-                if (selectedPosition == position) {
+                if (selectedPosition == parentPosition) {
                     with(viewBinding) {
                         rvCatSubMenu.apply {
                             layoutManager = LinearLayoutManager(context)
-                            adapter =
-                                DummyData().getDummyData()?.let { SubCategoryAdapter(context, data[position].category) }
+                            adapter = SubCategoryAdapter(
+                                context,
+                                data[parentPosition].category,
+                                object : RecycleViewItemClick {
+                                    override fun onItemClickWithName(name: String, position: Int) {}
+                                    override fun onItemClickWithView(
+                                        name: String,
+                                        view: View,
+                                        position: Int
+                                    ) {
+                                        super.onItemClickWithView(name, view, position)
+
+                                        val productSearchParameters =
+                                            ProductSearchParameters(
+                                                "",
+                                                "",
+                                                "",
+                                                singleData.category[position].id,
+                                                "",
+                                                "",
+                                                "",
+                                                singleData.master.name.lowercase(),
+                                                ""
+                                            )
+
+
+                                        val activity = context as MainActivity
+
+                                        val navHostFragment =
+                                            activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
+                                        val navController = navHostFragment.navController
+
+
+                                        Log.e(
+                                            "product",
+                                            "Side navigation sub category click : $productSearchParameters"
+                                        )
+
+                                        activity.run {
+                                            closeDrawer()
+                                            hideToolbar()
+                                        }
+
+                                        navController
+                                            .navigate(
+                                                R.id.action_global_productsFragment,
+                                                bundleOf(
+                                                    "productSearchParameters" to Gson().toJson(
+                                                        productSearchParameters,
+                                                        ProductSearchParameters::class.java
+                                                    )
+                                                )
+                                            )
+                                    }
+                                })
                         }
                     }
                     if (subCategoryVisible) {

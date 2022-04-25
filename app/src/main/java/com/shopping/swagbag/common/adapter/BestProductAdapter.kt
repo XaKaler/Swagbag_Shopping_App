@@ -26,7 +26,7 @@ class BestProductAdapter(
 
             fun bind(singleData: BestProductModel,itemClick: RecycleViewItemClick , position: Int){
 
-                Log.e("home", "home page deals single data $singleData", )
+              //  Log.e("home", "home page deals single data $singleData", )
 
                 with(viewBinding){
                     // set imgae

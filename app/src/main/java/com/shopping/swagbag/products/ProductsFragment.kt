@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.base.BaseFragment
@@ -54,29 +55,42 @@ class ProductsFragment : BaseFragment<
 
     private fun getProducts() {
         val args: ProductsFragmentArgs by navArgs()
-        val masterCategory = args.productId
+        val productSearchParameters =
+            Gson().fromJson(args.productSearchParameters, ProductSearchParameters::class.java)
         //in argument we are not getting category id we get its name like(men, women..) and call api accordingly
 
-        viewModel.productSearch("", "", "", "", "", "", "", masterCategory, "")
-            .observe(viewLifecycleOwner) {
-                when (it) {
-                    is Resource.Loading -> showLoading()
+        productSearchParameters.run {
+            viewModel.productSearch(
+                deal,
+                brand,
+                subCategory,
+                categroy,
+                price,
+                option,
+                sortBy,
+                master,
+                s
+            )
+                .observe(viewLifecycleOwner) {
+                    when (it) {
+                        is Resource.Loading -> showLoading()
 
-                    is Resource.Success -> {
-                        stopShowingLoading()
+                        is Resource.Success -> {
+                            stopShowingLoading()
 
-                        products = it.value.result
-                        setProducts()
-                    }
+                            products = it.value.result
+                            setProducts()
+                        }
 
-                    is Resource.Failure -> {
-                        stopShowingLoading()
-                        tryAgain()
-                        findNavController().popBackStack()
-                        Log.e("TAG", "setProducts: $it")
+                        is Resource.Failure -> {
+                            stopShowingLoading()
+                            tryAgain()
+                            findNavController().popBackStack()
+                            Log.e("TAG", "setProducts: $it")
                     }
                 }
             }
+        }
     }
 
     private fun setProducts() {

@@ -40,7 +40,6 @@ class Home :
     BaseFragment<FragmentHomeBinding, ProductViewModel, ProductRepository>(FragmentHomeBinding::inflate),
 RecycleViewItemClick{
 
-    private lateinit var activity: AppCompatActivity
     private lateinit var mainActivity: MainActivity
     private lateinit var homeResult: HomeModel
 
@@ -53,7 +52,7 @@ RecycleViewItemClick{
             Log.e("TAG", "onAttach: is instance of main activity")
         }
         else{
-            Log.e("TAG", "onAttach:not is instance of main actvity")
+            Log.e("TAG", "onAttach:not is instance of main activity")
         }
 
 
@@ -68,20 +67,14 @@ RecycleViewItemClick{
         }
 
         initViews()
-
-        mainActivity.showToolbar()
-        mainActivity.setMasterCategories()
     }
 
     private fun initViews() {
-        activity = context as AppCompatActivity
+        mainActivity.showToolbar()
+        mainActivity.setMasterCategories()
 
-        if(mainActivity.getHomeResult() == null)
-            getHomeData()
-        else {
-            homeResult = mainActivity.getHomeResult()!!
-            setData()
-        }
+        homeResult = mainActivity.getHome()
+        setData()
 
     }
 
@@ -225,7 +218,7 @@ RecycleViewItemClick{
             )
         }
 
-        Log.e("TAG", "setBestOffer: $allTimeSliderModel")
+        // Log.e("TAG", "setBestOffer: $allTimeSliderModel")
 
         with(viewBinding) {
             rvBestOffer.apply {

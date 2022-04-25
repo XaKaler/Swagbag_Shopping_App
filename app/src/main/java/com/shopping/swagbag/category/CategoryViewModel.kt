@@ -9,16 +9,15 @@ import kotlinx.coroutines.launch
 
 class CategoryViewModel(private val categoryRepository: CategoryRepository) : ViewModel() {
 
-    private val categoryLiveData = MutableLiveData<Resource<CategoryModel>>()
+    fun getAllCategories(): LiveData<Resource<CategoryModel>>{
+        val result = MutableLiveData<Resource<CategoryModel>>()
 
-    val category: LiveData<Resource<CategoryModel>>
-        get() = categoryLiveData
-
-    init {
         viewModelScope.launch {
-            categoryLiveData.value = Resource.Loading
-            categoryLiveData.value = categoryRepository.getAllCategories()
+            result.value = Resource.Loading
+            result.value = categoryRepository.getAllCategories()
         }
+
+        return result
     }
 
     fun masterCategory(): LiveData<Resource<MasterCategoryModel>>{

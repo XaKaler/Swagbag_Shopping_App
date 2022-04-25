@@ -60,7 +60,7 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
     suspend fun clearWishlist(userId: String) = safeApiCall { api.clearWishlist(userId) }
 
     suspend fun getHome() = safeApiCall {
-        Log.e("TAG", "getHome in product repository: ${api.getHome()}")
+        //Log.e("TAG", "getHome in product repository: ${api.getHome()}")
         api.getHome()
     }
 

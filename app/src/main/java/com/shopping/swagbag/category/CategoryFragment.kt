@@ -1,5 +1,6 @@
 package com.shopping.swagbag.category
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,14 +9,17 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleItemClick
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentCategoryBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.service.apis.CategoryApi
+import com.shopping.swagbag.main_activity.MainActivity
+import com.shopping.swagbag.products.ProductSearchParameters
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.CategoryApi
 
 class CategoryFragment :
     BaseFragment<FragmentCategoryBinding,
@@ -23,11 +27,15 @@ class CategoryFragment :
             CategoryRepository>(FragmentCategoryBinding::inflate), RecycleItemClick {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+    private lateinit var mainActivity: MainActivity
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initViews()
     }
 
@@ -52,34 +60,15 @@ class CategoryFragment :
 
         setCategoryData()
     }
-
     private fun setCategoryData() {
-        viewModel.masterCategory().observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is Resource.Loading -> showLoading()
-
-                is Resource.Success -> {
-
-                    stopShowingLoading()
-
-                    with(viewBinding) {
-                        rvCategory.apply {
-                            layoutManager = GridLayoutManager(context, 2)
-                            addItemDecoration(GridSpaceItemDecoration(5))
-                            adapter =
-                                CategoryAdapter(context, it.value.result, this@CategoryFragment)
-                        }
-                    }
-                }
-
-                is Resource.Failure -> {
-                    Log.e("TAG", "onViewCreated: ${it.errorBody}")
-                }
-
-                else -> {}
+        val masterCategories = mainActivity.getMasterCategories()
+        with(viewBinding) {
+            rvCategory.apply {
+                layoutManager = GridLayoutManager(context, 2)
+                addItemDecoration(GridSpaceItemDecoration(5))
+                adapter = CategoryAdapter(context, masterCategories, this@CategoryFragment)
             }
-        })
-
+        }
     }
 
     private fun setToolbar() {
@@ -95,7 +84,15 @@ class CategoryFragment :
     }
 
     override fun onItemClick(name: String, position: Int) {
-        val action = CategoryFragmentDirections.actionCategoryFragmentToProductsFragment(name)
+        val productSearchParameters =
+            ProductSearchParameters("", "", "", "", "", "", "", name, "")
+
+        val action = CategoryFragmentDirections.actionCategoryFragmentToProductsFragment(
+            Gson().toJson(
+                productSearchParameters,
+                ProductSearchParameters::class.java
+            )
+        )
         findNavController().navigate(action)
     }
 

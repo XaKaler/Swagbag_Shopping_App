@@ -286,7 +286,7 @@
             android:id="@+id/action_productsFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
         <argument
-            android:name="product_id"
+            android:name="productSearchParameters"
             app:argType="string" />
     </fragment>
     <fragment
@@ -802,6 +802,6 @@
         app:destination="@id/wishlistWithProductFragment" /><action
 
     android:id="@+id/action_global_orderWithItemsFragment"
-    app:destination="@id/orderWithItemsFragment"/>
+    app:destination="@id/orderWithItemsFragment"/><action android:id="@+id/action_global_productsFragment" app:destination="@id/productsFragment"/>
 
 </navigation>

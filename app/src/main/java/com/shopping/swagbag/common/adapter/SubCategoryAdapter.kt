@@ -5,25 +5,31 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.category.CategoryModel
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleCategoryDropDownMenuBinding
 
 class SubCategoryAdapter(
     private val context: Context,
-    private val data: List<CategoryModel.Result.Category>
+    private val data: List<CategoryModel.Result.Category>,
+    private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<SubCategoryAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(private val viewBinding: SingleCategoryDropDownMenuBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        fun bind(singleData: CategoryModel.Result.Category, position: Int){
+        fun bind(singleData: CategoryModel.Result.Category, position: Int, itemClick: RecycleViewItemClick){
             with(viewBinding){
                 val dataSize: Int = data.size
                 if(position == dataSize-1){
                     //view.visibility = View.GONE
                 }
                 // set text
-                tvCatName.text = singleData.name
+                tvSubCatName.text = singleData.name
+
+                itemView.setOnClickListener {
+                    itemClick.onItemClickWithView("product",itemView,  position)
+                }
             }
         }
 
@@ -40,7 +46,7 @@ class SubCategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(data[position], position)
+        holder.bind(data[position], position,itemClick)
     }
 
     override fun getItemCount()= data.size
