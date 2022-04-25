@@ -898,327 +898,341 @@
                 app:layout_constraintTop_toBottomOf="@+id/verify"
                 >
 
-            <com.google.android.material.card.MaterialCardView
-                android:backgroundTint="@color/day_white_Raisin_Black"
-                android:id="@+id/rating"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
-                android:layout_marginTop="@dimen/space_between_views"
-                android:background="@drawable/rec_white_5"
-                app:cardElevation="@dimen/dimen_5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/btnRateProduct"
+                    style="@style/roboto_medium_16_davys_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/steel_teal"
+                    android:text="Rate product"
+                    android:layout_marginTop="@dimen/screen_horizontal_padding"
+                    android:padding="@dimen/screen_padding_10"
+                    android:background="@drawable/red_rec_outline_5"
+                    android:textAllCaps="true"
+                    app:layout_constraintEnd_toEndOf="@+id/rating"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/rating"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/dimen_15">
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:background="@drawable/rec_white_5"
+                    android:backgroundTint="@color/day_white_Raisin_Black"
+                    app:cardElevation="@dimen/dimen_5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnRateProduct">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/dimen_15">
 
 
-                    <TextView
-                        android:textColor="@color/day_dark_liver_night_white"
-                        android:id="@+id/textView61"
-                        style="@style/roboto_medium_14_sonic_silver"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rating_review"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/textView61"
+                            style="@style/roboto_medium_14_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rating_review"
+                            android:textColor="@color/day_dark_liver_night_white"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView64"
-                        style="@style/roboto_normal_48_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        android:layout_height="wrap_content"
-                        android:text="4.1"
-                        app:layout_constraintStart_toStartOf="@+id/textView61"
-                        app:layout_constraintTop_toBottomOf="@+id/textView61" />
+                        <TextView
+                            android:id="@+id/textView64"
+                            style="@style/roboto_normal_48_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.0"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                            app:layout_constraintStart_toStartOf="@+id/textView61"
+                            app:layout_constraintTop_toBottomOf="@+id/textView61" />
 
-                    <ImageView
-                        android:id="@+id/imageView40"
-                        android:layout_width="@dimen/rating_star_size"
-                        android:layout_height="@dimen/rating_star_size"
-                        android:src="@drawable/ic_star"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView64"
-                        app:layout_constraintStart_toEndOf="@+id/textView64" />
+                        <ImageView
+                            android:id="@+id/imageView40"
+                            android:layout_width="@dimen/rating_star_size"
+                            android:layout_height="@dimen/rating_star_size"
+                            android:src="@drawable/ic_star"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView64"
+                            app:layout_constraintStart_toEndOf="@+id/textView64" />
 
-                    <TextView
-                        android:id="@+id/verifiedBuyersCount"
-                        style="@style/roboto_normal_12_sonic_silver"
-                        android:textColor="@color/day_dark_liver_night_white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="1000"
-                        app:layout_constraintStart_toStartOf="@+id/textView64"
-                        app:layout_constraintTop_toBottomOf="@+id/textView64" />
+                        <TextView
+                            android:id="@+id/verifiedBuyersCount"
+                            style="@style/roboto_normal_12_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="0"
+                            android:textColor="@color/day_dark_liver_night_white"
+                            app:layout_constraintStart_toStartOf="@+id/textView64"
+                            app:layout_constraintTop_toBottomOf="@+id/textView64" />
 
-                    <TextView
-                        android:id="@+id/textView69"
-                        style="@style/roboto_normal_12_sonic_silver"
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" Verified Buyers"
-                        app:layout_constraintBottom_toBottomOf="@+id/verifiedBuyersCount"
-                        app:layout_constraintStart_toEndOf="@+id/verifiedBuyersCount"
-                        app:layout_constraintTop_toTopOf="@+id/verifiedBuyersCount" />
+                        <TextView
+                            android:id="@+id/textView69"
+                            style="@style/roboto_normal_12_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Verified Buyers"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                            app:layout_constraintBottom_toBottomOf="@+id/verifiedBuyersCount"
+                            app:layout_constraintStart_toEndOf="@+id/verifiedBuyersCount"
+                            app:layout_constraintTop_toTopOf="@+id/verifiedBuyersCount" />
 
-                    <View
-                        android:id="@+id/view20"
-                        android:layout_width="@dimen/vertical_line_width"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="@dimen/space_between_views"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView61"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <View
+                            android:id="@+id/view20"
+                            android:layout_width="@dimen/vertical_line_width"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="@dimen/space_between_views"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView61"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView75"
-                        style="@style/roboto_medium_12_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dimen_10"
-                        android:layout_marginStart="@dimen/space_between_views"
-                        android:text="3"
-                        android:textColor="@color/day_black_night_white"
-                        app:layout_constraintBottom_toBottomOf="@+id/view20"
-                        app:layout_constraintStart_toEndOf="@+id/view20"
-                        app:layout_constraintTop_toTopOf="@+id/view20" />
+                        <TextView
+                            android:id="@+id/textView75"
+                            style="@style/roboto_medium_12_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dimen_10"
+                            android:layout_marginStart="@dimen/space_between_views"
+                            android:text="3"
+                            android:textColor="@color/day_black_night_white"
+                            app:layout_constraintBottom_toBottomOf="@+id/view20"
+                            app:layout_constraintStart_toEndOf="@+id/view20"
+                            app:layout_constraintTop_toTopOf="@+id/view20" />
 
-                    <ImageView
-                        android:id="@+id/imageView45"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_2"
-                        android:src="@drawable/ic_star"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView75"
-                        app:layout_constraintStart_toEndOf="@+id/textView75"
-                        app:layout_constraintTop_toTopOf="@+id/textView75"
-                        app:tint="@color/tiffany_blue" />
+                        <ImageView
+                            android:id="@+id/imageView45"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_2"
+                            android:src="@drawable/ic_star"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView75"
+                            app:layout_constraintStart_toEndOf="@+id/textView75"
+                            app:layout_constraintTop_toTopOf="@+id/textView75"
+                            app:tint="@color/tiffany_blue" />
 
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:progress="10"
-                        android:progressTint="@color/tiffany_blue"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView45"
-                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
-                        app:layout_constraintStart_toEndOf="@+id/imageView45"
-                        app:layout_constraintTop_toTopOf="@+id/imageView45" />
+                        <ProgressBar
+                            android:id="@+id/threeStarProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dimen_5"
+                            android:progress="0"
+                            android:progressTint="@color/tiffany_blue"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView45"
+                            app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                            app:layout_constraintStart_toEndOf="@+id/imageView45"
+                            app:layout_constraintTop_toTopOf="@+id/imageView45" />
 
-                    <TextView
-                        android:id="@+id/ratingCount"
-                        style="@style/roboto_normal_12_sonic_silver"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="655"
+                        <TextView
+                            android:id="@+id/ratingCount"
+                            style="@style/roboto_normal_12_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
 
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar" />
-
-
-                    <TextView
-                        android:id="@+id/textView751"
-                        style="@style/roboto_medium_12_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dimen_10"
-                        android:layout_marginStart="@dimen/space_between_views"
-                        android:text="4"
-                        android:textColor="@color/day_black_night_white"
-                        app:layout_constraintBottom_toTopOf="@+id/textView75"
-                        app:layout_constraintStart_toEndOf="@+id/view20" />
-
-                    <ImageView
-                        android:id="@+id/imageView451"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_2"
-                        android:src="@drawable/ic_star"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView751"
-                        app:layout_constraintStart_toEndOf="@+id/textView751"
-                        app:layout_constraintTop_toTopOf="@+id/textView751"
-                        app:tint="@color/viridian_green" />
-
-                    <ProgressBar
-                        android:id="@+id/progressBar1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:progress="30"
-                        android:progressTint="@color/viridian_green"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView451"
-                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
-                        app:layout_constraintStart_toEndOf="@+id/imageView451"
-                        app:layout_constraintTop_toTopOf="@+id/imageView451" />
-
-                    <TextView
-                        android:id="@+id/fourStarRatingCount"
-                        style="@style/roboto_normal_12_sonic_silver"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="655"
-
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar1" />
+                            app:layout_constraintBottom_toBottomOf="@+id/threeStarProgressBar"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/threeStarProgressBar" />
 
 
-                    <TextView
-                        android:id="@+id/textView752"
-                        style="@style/roboto_medium_12_davys_grey"
-                        android:layout_width="6dp"
-                        android:layout_height="9dp"
-                        android:layout_marginVertical="@dimen/dimen_10"
-                        android:layout_marginStart="@dimen/space_between_views"
-                        android:text="5"
-                        android:textColor="@color/day_black_night_white"
-                        app:layout_constraintBottom_toTopOf="@+id/textView751"
-                        app:layout_constraintStart_toEndOf="@+id/view20" />
+                        <TextView
+                            android:id="@+id/textView751"
+                            style="@style/roboto_medium_12_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dimen_10"
+                            android:layout_marginStart="@dimen/space_between_views"
+                            android:text="4"
+                            android:textColor="@color/day_black_night_white"
+                            app:layout_constraintBottom_toTopOf="@+id/textView75"
+                            app:layout_constraintStart_toEndOf="@+id/view20" />
 
-                    <ImageView
-                        android:id="@+id/imageView452"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_2"
-                        android:src="@drawable/ic_star"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView752"
-                        app:layout_constraintStart_toEndOf="@+id/textView752"
-                        app:layout_constraintTop_toTopOf="@+id/textView752"
-                        app:tint="@color/islamic_green" />
+                        <ImageView
+                            android:id="@+id/imageView451"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_2"
+                            android:src="@drawable/ic_star"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView751"
+                            app:layout_constraintStart_toEndOf="@+id/textView751"
+                            app:layout_constraintTop_toTopOf="@+id/textView751"
+                            app:tint="@color/viridian_green" />
 
-                    <ProgressBar
-                        android:id="@+id/progressBar2"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:progress="60"
-                        android:progressTint="@color/islamic_green"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView452"
-                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
-                        app:layout_constraintStart_toEndOf="@+id/imageView452"
-                        app:layout_constraintTop_toTopOf="@+id/imageView452" />
+                        <ProgressBar
+                            android:id="@+id/fourStarProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dimen_5"
+                            android:progress="0"
+                            android:progressTint="@color/viridian_green"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView451"
+                            app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                            app:layout_constraintStart_toEndOf="@+id/imageView451"
+                            app:layout_constraintTop_toTopOf="@+id/imageView451" />
 
-                    <TextView
-                        android:id="@+id/fiveStarRatingCount"
-                        style="@style/roboto_normal_12_sonic_silver"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="655"
+                        <TextView
+                            android:id="@+id/fourStarRatingCount"
+                            style="@style/roboto_normal_12_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
 
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar2" />
-
-
-                    <TextView
-                        android:id="@+id/textView753"
-                        style="@style/roboto_medium_12_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dimen_10"
-                        android:layout_marginStart="@dimen/space_between_views"
-                        android:text="2"
-                        android:textColor="@color/day_black_night_white"
-                        app:layout_constraintStart_toEndOf="@+id/view20"
-                        app:layout_constraintTop_toBottomOf="@+id/textView75" />
-
-                    <ImageView
-                        android:id="@+id/imageView453"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_2"
-                        android:src="@drawable/ic_star"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView753"
-                        app:layout_constraintStart_toEndOf="@+id/textView753"
-                        app:layout_constraintTop_toTopOf="@+id/textView753"
-                        app:tint="@color/ulca_gold" />
-
-                    <ProgressBar
-                        android:id="@+id/progressBar3"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:progress="25"
-                        android:progressTint="@color/ulca_gold"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView453"
-                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
-                        app:layout_constraintStart_toEndOf="@+id/imageView453"
-                        app:layout_constraintTop_toTopOf="@+id/imageView453" />
-
-                    <TextView
-                        android:id="@+id/twoStarRatingCount"
-                        style="@style/roboto_normal_12_sonic_silver"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="655"
-
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar3" />
+                            app:layout_constraintBottom_toBottomOf="@+id/fourStarProgressBar"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/fourStarProgressBar" />
 
 
-                    <TextView
-                        android:id="@+id/textView754"
-                        style="@style/roboto_medium_12_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/dimen_10"
-                        android:layout_marginStart="@dimen/space_between_views"
-                        android:text="1"
-                        android:textColor="@color/day_black_night_white"
-                        app:layout_constraintStart_toEndOf="@+id/view20"
-                        app:layout_constraintTop_toBottomOf="@+id/textView753" />
+                        <TextView
+                            android:id="@+id/textView752"
+                            style="@style/roboto_medium_12_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dimen_10"
+                            android:layout_marginStart="@dimen/space_between_views"
+                            android:text="5"
+                            android:textColor="@color/day_black_night_white"
+                            app:layout_constraintBottom_toTopOf="@+id/textView751"
+                            app:layout_constraintStart_toEndOf="@+id/view20"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/imageView454"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_2"
-                        android:src="@drawable/ic_star"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView754"
-                        app:layout_constraintStart_toEndOf="@+id/textView754"
-                        app:layout_constraintTop_toTopOf="@+id/textView754"
-                        app:tint="@color/pastel_red" />
+                        <ImageView
+                            android:id="@+id/imageView452"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_2"
+                            android:src="@drawable/ic_star"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView752"
+                            app:layout_constraintStart_toEndOf="@+id/textView752"
+                            app:layout_constraintTop_toTopOf="@+id/textView752"
+                            app:tint="@color/islamic_green" />
 
-                    <ProgressBar
-                        android:id="@+id/progressBar4"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:progress="25"
-                        android:progressTint="@color/pastel_red"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView454"
-                        app:layout_constraintEnd_toStartOf="@+id/ratingCount"
-                        app:layout_constraintStart_toEndOf="@+id/imageView454"
-                        app:layout_constraintTop_toTopOf="@+id/imageView454" />
+                        <ProgressBar
+                            android:id="@+id/fiveStarProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dimen_5"
+                            android:progress="0"
+                            android:progressTint="@color/islamic_green"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView452"
+                            app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                            app:layout_constraintStart_toEndOf="@+id/imageView452"
+                            app:layout_constraintTop_toTopOf="@+id/imageView452" />
 
-                    <TextView
-                        android:id="@+id/oneStarRatingCount"
-                        style="@style/roboto_normal_12_sonic_silver"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="655"
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar4"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar4" />
+                        <TextView
+                            android:id="@+id/fiveStarRatingCount"
+                            style="@style/roboto_normal_12_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            app:layout_constraintBottom_toBottomOf="@+id/fiveStarProgressBar"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/fiveStarProgressBar" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/textView753"
+                            style="@style/roboto_medium_12_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dimen_10"
+                            android:layout_marginStart="@dimen/space_between_views"
+                            android:text="2"
+                            android:textColor="@color/day_black_night_white"
+                            app:layout_constraintStart_toEndOf="@+id/view20"
+                            app:layout_constraintTop_toBottomOf="@+id/textView75" />
 
-            </com.google.android.material.card.MaterialCardView>
+                        <ImageView
+                            android:id="@+id/imageView453"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_2"
+                            android:src="@drawable/ic_star"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView753"
+                            app:layout_constraintStart_toEndOf="@+id/textView753"
+                            app:layout_constraintTop_toTopOf="@+id/textView753"
+                            app:tint="@color/ulca_gold" />
+
+                        <ProgressBar
+                            android:id="@+id/twoStarProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dimen_5"
+                            android:progress="0"
+                            android:progressTint="@color/ulca_gold"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView453"
+                            app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                            app:layout_constraintStart_toEndOf="@+id/imageView453"
+                            app:layout_constraintTop_toTopOf="@+id/imageView453" />
+
+                        <TextView
+                            android:id="@+id/twoStarRatingCount"
+                            style="@style/roboto_normal_12_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+
+                            app:layout_constraintBottom_toBottomOf="@+id/twoStarProgressBar"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/twoStarProgressBar" />
+
+
+                        <TextView
+                            android:id="@+id/textView754"
+                            style="@style/roboto_medium_12_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dimen_10"
+                            android:layout_marginStart="@dimen/space_between_views"
+                            android:text="1"
+                            android:textColor="@color/day_black_night_white"
+                            app:layout_constraintStart_toEndOf="@+id/view20"
+                            app:layout_constraintTop_toBottomOf="@+id/textView753" />
+
+                        <ImageView
+                            android:id="@+id/imageView454"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_2"
+                            android:src="@drawable/ic_star"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView754"
+                            app:layout_constraintStart_toEndOf="@+id/textView754"
+                            app:layout_constraintTop_toTopOf="@+id/textView754"
+                            app:tint="@color/pastel_red" />
+
+                        <ProgressBar
+                            android:id="@+id/oneStarProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dimen_5"
+                            android:progress="0"
+                            android:progressTint="@color/pastel_red"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView454"
+                            app:layout_constraintEnd_toStartOf="@+id/ratingCount"
+                            app:layout_constraintStart_toEndOf="@+id/imageView454"
+                            app:layout_constraintTop_toTopOf="@+id/imageView454" />
+
+                        <TextView
+                            android:id="@+id/oneStarRatingCount"
+                            style="@style/roboto_normal_12_sonic_silver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            app:layout_constraintBottom_toBottomOf="@+id/oneStarProgressBar"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/oneStarProgressBar" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:backgroundTint="@color/day_white_Raisin_Black"
@@ -1317,10 +1331,9 @@
                 style="@style/sunflower_normal_14_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_between_views"
                 android:text="View Similar"
                 app:layout_constraintStart_toStartOf="@+id/productDetails"
-                app:layout_constraintTop_toBottomOf="@+id/productDetails" />
+                app:layout_constraintTop_toBottomOf="@+id/lytReview" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvViewSimilar"

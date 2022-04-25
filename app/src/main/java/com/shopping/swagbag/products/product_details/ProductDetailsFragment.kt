@@ -124,8 +124,8 @@ class ProductDetailsFragment : BaseFragment<
                 if (review.isNotEmpty())
                     setUserReview()
                 else {
-                    viewBinding.lytReview.visibility = View.GONE
-                    viewBinding.topRating.root.visibility = View.GONE
+                    viewBinding.review.visibility = View.GONE
+                    //viewBinding.topRating.root.visibility = View.GONE
                 }
 
                 // set product options like color or size

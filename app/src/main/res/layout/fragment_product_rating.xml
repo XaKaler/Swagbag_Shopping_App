@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".products.product_details.ProductRatingFragment">
+
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar_with_no_menu_white_bg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/notReviewing"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2">
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/addReview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/screen_horizontal_padding">
+
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/alexa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/productName"
+                style="@style/roboto_medium_16_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_views"
+                android:gravity="center"
+                android:text="Product Name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
+
+            <TextView
+                android:id="@+id/textView65"
+                style="@style/roboto_medium_20_davys_grey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_50"
+                android:gravity="center"
+                android:text="Rate this product"
+                android:textColor="@color/steel_teal"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/productName"
+                app:layout_constraintStart_toStartOf="@+id/productName"
+                app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+            <TextView
+                android:id="@+id/textView99"
+                style="@style/roboto_normal_14_davys_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_view_and_subview"
+                android:gravity="center"
+                android:text="Your email address will not be published. Required fields are marked *"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/textView65"
+                app:layout_constraintStart_toStartOf="@+id/textView65"
+                app:layout_constraintTop_toBottomOf="@+id/textView65" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_30"
+                app:layout_constraintEnd_toEndOf="@+id/textView99"
+                app:layout_constraintStart_toStartOf="@+id/textView99"
+                app:layout_constraintTop_toBottomOf="@+id/textView99" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout23"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_views"
+                app:layout_constraintEnd_toEndOf="@+id/textView99"
+                app:layout_constraintStart_toStartOf="@+id/textView99"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Comment*" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout24"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_view_and_subview"
+                app:layout_constraintEnd_toEndOf="@+id/textView99"
+                app:layout_constraintStart_toStartOf="@+id/textView99"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout23">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name*" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_between_view_and_subview"
+                app:layout_constraintEnd_toEndOf="@+id/textView99"
+                app:layout_constraintStart_toStartOf="@+id/textView99"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email*" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
