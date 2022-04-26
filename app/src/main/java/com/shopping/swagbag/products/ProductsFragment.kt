@@ -59,6 +59,8 @@ class ProductsFragment : BaseFragment<
             Gson().fromJson(args.productSearchParameters, ProductSearchParameters::class.java)
         //in argument we are not getting category id we get its name like(men, women..) and call api accordingly
 
+        Log.e("products", "$productSearchParameters")
+
         productSearchParameters.run {
             viewModel.productSearch(
                 deal,

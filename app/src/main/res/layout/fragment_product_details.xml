@@ -898,37 +898,36 @@
                 app:layout_constraintTop_toBottomOf="@+id/verify"
                 >
 
-                <TextView
-                    android:id="@+id/btnRateProduct"
-                    style="@style/roboto_medium_16_davys_grey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/steel_teal"
-                    android:text="Rate product"
-                    android:layout_marginTop="@dimen/screen_horizontal_padding"
-                    android:padding="@dimen/screen_padding_10"
-                    android:background="@drawable/red_rec_outline_5"
-                    android:textAllCaps="true"
-                    app:layout_constraintEnd_toEndOf="@+id/rating"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/rating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
-                    android:layout_marginTop="@dimen/space_between_views"
                     android:background="@drawable/rec_white_5"
                     android:backgroundTint="@color/day_white_Raisin_Black"
                     app:cardElevation="@dimen/dimen_5"
+                    android:layout_marginTop="@dimen/space_between_views"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnRateProduct">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="@dimen/dimen_15">
+
+                        <TextView
+                            android:id="@+id/btnRateProduct"
+                            style="@style/roboto_medium_14_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/red_rec_outline_5"
+                            android:padding="@dimen/screen_padding_10"
+                            android:text="Rate product"
+                            android:textAllCaps="true"
+                            android:textColor="@color/steel_teal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                         <TextView
@@ -939,7 +938,7 @@
                             android:text="@string/rating_review"
                             android:textColor="@color/day_dark_liver_night_white"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@+id/btnRateProduct" />
 
                         <TextView
                             android:id="@+id/textView64"
@@ -988,7 +987,7 @@
                             android:layout_marginStart="@dimen/space_between_views"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView61"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@+id/btnRateProduct" />
 
                         <TextView
                             android:id="@+id/textView75"
@@ -1098,7 +1097,7 @@
                             android:textColor="@color/day_black_night_white"
                             app:layout_constraintBottom_toTopOf="@+id/textView751"
                             app:layout_constraintStart_toEndOf="@+id/view20"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@+id/btnRateProduct" />
 
                         <ImageView
                             android:id="@+id/imageView452"
@@ -1234,95 +1233,96 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:backgroundTint="@color/day_white_Raisin_Black"
-                android:id="@+id/review"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
-                android:layout_marginTop="@dimen/space_between_views"
-                android:background="@drawable/rec_white_5"
-                app:cardElevation="@dimen/dimen_5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rating">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/review"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/dimen_15">
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                    android:layout_marginTop="@dimen/space_between_views"
+                    android:background="@drawable/rec_white_5"
+                    android:backgroundTint="@color/day_white_Raisin_Black"
+                    app:cardElevation="@dimen/dimen_5"
+                    android:layout_marginBottom="@dimen/space_between_view_and_subview_5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rating">
 
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvReviewImages"
-                        android:layout_width="0dp"
-                        android:visibility="gone"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView81"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/single_reiview_image" />
-
-                    <TextView
-                        android:textColor="@color/day_dark_liver_night_white"
-                        android:id="@+id/textView81"
-                        android:visibility="gone"
-                        style="@style/roboto_medium_14_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Customer Photos "
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        android:id="@+id/reviewImageCount"
-                        android:visibility="gone"
-                        style="@style/roboto_medium_14_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="55"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView81"
-                        app:layout_constraintStart_toEndOf="@+id/textView81"
-                        app:layout_constraintTop_toTopOf="@+id/textView81" />
-
-
-                    <TextView
-                        android:textColor="@color/day_dark_liver_night_white"
-                        android:id="@+id/textView8"
-                        style="@style/roboto_medium_14_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Customer Reviews "
-                        app:layout_constraintStart_toStartOf="@+id/rvReviewImages"
-                        app:layout_constraintTop_toBottomOf="@+id/rvReviewImages" />
-
-                    <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
-                        android:id="@+id/reviewCount"
-                        style="@style/roboto_medium_14_davys_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="155"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView8"
-                        app:layout_constraintStart_toEndOf="@+id/textView8"
-                        app:layout_constraintTop_toTopOf="@+id/textView8" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvUserReview"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="@+id/textView8"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/single_review" />
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/dimen_15">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvReviewImages"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView81"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/single_reiview_image" />
+
+                        <TextView
+                            android:id="@+id/textView81"
+                            style="@style/roboto_medium_14_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Customer Photos "
+                            android:textColor="@color/day_dark_liver_night_white"
+                            android:visibility="gone"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/reviewImageCount"
+                            style="@style/roboto_medium_14_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="55"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView81"
+                            app:layout_constraintStart_toEndOf="@+id/textView81"
+                            app:layout_constraintTop_toTopOf="@+id/textView81" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/textView8"
+                            style="@style/roboto_medium_14_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Customer Reviews "
+                            android:textColor="@color/day_dark_liver_night_white"
+                            app:layout_constraintStart_toStartOf="@+id/rvReviewImages"
+                            app:layout_constraintTop_toBottomOf="@+id/rvReviewImages" />
 
-            </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/reviewCount"
+                            style="@style/roboto_medium_14_davys_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="155"
+                            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                            app:layout_constraintStart_toEndOf="@+id/textView8"
+                            app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvUserReview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="@+id/textView8"
+                            app:layout_constraintTop_toBottomOf="@+id/textView8"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/single_review" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1332,6 +1332,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View Similar"
+                android:layout_marginTop="@dimen/space_between_views"
                 app:layout_constraintStart_toStartOf="@+id/productDetails"
                 app:layout_constraintTop_toBottomOf="@+id/lytReview" />
 

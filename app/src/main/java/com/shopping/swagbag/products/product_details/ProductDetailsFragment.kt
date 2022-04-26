@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.adapter.ProductImageSliderAdapter
@@ -125,7 +126,7 @@ class ProductDetailsFragment : BaseFragment<
                     setUserReview()
                 else {
                     viewBinding.review.visibility = View.GONE
-                    //viewBinding.topRating.root.visibility = View.GONE
+                    viewBinding.topRating.root.visibility = View.GONE
                 }
 
                 // set product options like color or size
@@ -269,7 +270,16 @@ class ProductDetailsFragment : BaseFragment<
             addToBeg.setOnClickListener(this@ProductDetailsFragment)
             imgBegBackground.setOnClickListener(this@ProductDetailsFragment)
             imgShareBackground.setOnClickListener(this@ProductDetailsFragment)
+            btnRateProduct.setOnClickListener{rateProduct()}
         }
+    }
+
+    private fun rateProduct() {
+        val action = ProductDetailsFragmentDirections.actionProductDetailsFragmentToProductRatingFragment(
+            Gson().toJson(product, ProductDetailModel::class.java)
+        )
+
+        findNavController().navigate(action)
     }
 
     private fun setViewSimilar(relatedProduct: List<ProductDetailModel.Related>) {

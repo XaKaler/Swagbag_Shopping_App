@@ -1,5 +1,6 @@
 package com.shopping.swagbag.user.order.with_items
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentOrderWithItemsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
+import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
@@ -27,6 +29,12 @@ class OrderFragment : BaseFragment<
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private lateinit var orderProducts: OrderModel
     private lateinit var orderItemsAdapter: OrderItemsAdapter
+    private lateinit var mainActivity: MainActivity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -86,7 +94,9 @@ class OrderFragment : BaseFragment<
                 layoutManager = LinearLayoutManager(context)
                 orderItemsAdapter = OrderItemsAdapter(
                     context,
-                    orderList, object: RecycleViewItemClick{
+                    orderList,
+                    mainActivity.getSettingResult("Cancel time (Min.)"),
+                    object: RecycleViewItemClick{
                         override fun onItemClickWithName(name: String, position: Int) {
                             when (name) {
                                 "view" -> {

@@ -35,6 +35,12 @@ class NavigationMenuAdapter (
                 navIcon.setImageResource(singleData.icon)
                 tvNameMenu.text = singleData.menu
 
+                // set master category
+                viewBinding.masterCategory.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter =  DropDownCategoryAdapter(context, category)
+                }
+
                 itemView.setOnClickListener {
                    // itemClick.onItemClickWithView(position, viewBinding.masterCategory)
                     handleNavigationMenuClick(singleData.menu)
@@ -59,12 +65,6 @@ class NavigationMenuAdapter (
                     if(isCategoryShow){
                         isCategoryShow = false
                         viewBinding.masterCategory.visibility = View.GONE
-
-                        // set master category
-                        viewBinding.masterCategory.apply {
-                            layoutManager = LinearLayoutManager(context)
-                            adapter =  DropDownCategoryAdapter(context, category)
-                        }
                     }
                     else{
                         isCategoryShow = true

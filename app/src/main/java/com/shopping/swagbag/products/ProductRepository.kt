@@ -84,4 +84,14 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
 
     suspend fun returnOrder(orderId: String, products: String, reason: String) =
         safeApiCall { api.returnOrder(orderId, products, reason) }
+
+    suspend fun addReview(
+        userId: String,
+        product: String,
+        name: String,
+        email: String,
+        mobile: String,
+        rating: String,
+        review: String,
+    ) = safeApiCall { api.addReview(userId, product, name, email, mobile, rating, review) }
 }

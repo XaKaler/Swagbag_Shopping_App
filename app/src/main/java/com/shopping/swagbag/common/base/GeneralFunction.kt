@@ -8,7 +8,7 @@ object GeneralFunction {
     fun getProductQty() = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 
-    fun convertServerDateToUserTimeZoneTask(serverDate: String?): String? {
+    fun convertServerDateToUserTimeZoneTask(serverDate: String?): String {
         val ourdate: String
         val serverdateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
         val dateFormat = "EEE, d MMM yyyy"

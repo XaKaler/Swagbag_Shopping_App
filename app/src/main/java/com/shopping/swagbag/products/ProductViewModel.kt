@@ -9,6 +9,7 @@ import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
+import com.shopping.swagbag.products.product_details.ProductReviewModel
 import com.shopping.swagbag.products.product_details.UpdateCartModel
 import com.shopping.swagbag.search.HeaderSearchModel
 import com.shopping.swagbag.service.Resource
@@ -23,6 +24,7 @@ import com.shopping.swagbag.user.wishlist.withproduct.AddToWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.ClearWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.DeleteSingleWishModel
 import com.shopping.swagbag.user.wishlist.withproduct.GetWishlistModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
@@ -285,6 +287,26 @@ class ProductViewModel(
         viewModelScope.launch {
             result.value = Resource.Loading
             result.value = repository.returnOrder(orderId, products, reason)
+        }
+
+        return result
+    }
+
+    fun addReview(
+        userId: String,
+        product: String,
+        name: String,
+        email: String,
+        mobile: String,
+        rating: String,
+        review: String,
+    ): LiveData<Resource<ProductReviewModel>> {
+        val result = MutableLiveData<Resource<ProductReviewModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value =
+                repository.addReview(userId, product, name, email, mobile, rating, review)
         }
 
         return result

@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleViewItemClick
@@ -26,6 +27,7 @@ import com.shopping.swagbag.common.model.TopTrendingModel
 import com.shopping.swagbag.databinding.FragmentParticularCategoryBinding
 import com.shopping.swagbag.home.TopTrendingAdapter
 import com.shopping.swagbag.main_activity.MainActivity
+import com.shopping.swagbag.products.ProductSearchParameters
 import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.service.apis.CategoryApi
@@ -38,6 +40,7 @@ RecycleViewItemClick{
 
     private lateinit var categoryData: ParticularCategoryModel
     private lateinit var mainActivity: MainActivity
+    private lateinit var categoryName: String
 
 
     override fun onAttach(context: Context) {
@@ -80,6 +83,11 @@ RecycleViewItemClick{
         val args: ParticularCategoryFragmentArgs by navArgs()
         val categoryId = args.categoryId
 
+        for(singleCategory in mainActivity.getMasterCategories()){
+            if(categoryId == singleCategory.id)
+                categoryName = singleCategory.slug
+        }
+
         Log.e("TAG", "getCategoryData: $categoryId", )
 
         viewModel.particularCategory(categoryId).observe(viewLifecycleOwner){
@@ -93,6 +101,7 @@ RecycleViewItemClick{
                     viewBinding.scrlParticularCategory.foreground = null
 
                     val result = it.value.result
+                    categoryData = it.value
                    setTopTrending(result.section)
                     showOfferImages()
                     setCategoryToBeg(result.category)
@@ -193,8 +202,18 @@ RecycleViewItemClick{
                 layoutManager = GridLayoutManager(context, 3)
                 adapter = CategoryToBegAdapter(context, master, object : RecycleViewItemClick{
                     override fun onItemClickWithName(name: String, position: Int) {
-                        when(name){
-                            "products" -> {}
+                        when (name) {
+                            "products" -> {
+                                mainActivity.hideToolbar()
+                                val productSearchParameters = ProductSearchParameters(
+                                    "", "", "", categoryData.result.category[position].id,
+                                    "", "", "", categoryName, ""
+                                )
+
+                                val action = ParticularCategoryFragmentDirections.actionGlobalProductsFragment(
+                                    Gson().toJson(productSearchParameters, ProductSearchParameters::class.java))
+                                findNavController().navigate(action)
+                            }
                         }
                     }
                 })

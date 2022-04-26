@@ -27,7 +27,6 @@
         <TextView
             android:id="@+id/textView184"
             style="@style/roboto_medium_14_davys_grey"
-            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rec_outline_5"
@@ -37,14 +36,17 @@
             android:paddingVertical="@dimen/dimen_5"
             android:text="@string/filter"
             android:textAllCaps="true"
+            android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCategory"
             android:layout_width="0dp"
-            android:layout_marginEnd="@dimen/space_between_view_and_subview"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_between_view_and_subview"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/textView184"
             app:layout_constraintEnd_toStartOf="@+id/textView184"
             app:layout_constraintStart_toStartOf="parent"

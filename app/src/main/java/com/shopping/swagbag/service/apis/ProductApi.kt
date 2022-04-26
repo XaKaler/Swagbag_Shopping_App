@@ -5,6 +5,7 @@ import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.ProductSearchModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
+import com.shopping.swagbag.products.product_details.ProductReviewModel
 import com.shopping.swagbag.products.product_details.UpdateCartModel
 import com.shopping.swagbag.search.HeaderSearchModel
 import com.shopping.swagbag.user.order.return_order.ReturnModel
@@ -151,4 +152,17 @@ interface ProductApi {
         @Field("products")products: String,
         @Field("reason")reason: String,
     ):ReturnModel
+
+
+    @FormUrlEncoded
+    @POST("add-review")
+    suspend fun addReview(
+        @Field("user")userId: String,
+        @Field("product")product: String,
+        @Field("name")name: String,
+        @Field("email")email: String,
+        @Field("mobile")mobile: String,
+        @Field("rating")rating: String,
+        @Field("review")review: String
+    ): ProductReviewModel
 }

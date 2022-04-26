@@ -8,7 +8,7 @@
 
 
     <include
-        android:id="@+id/include2"
+        android:id="@+id/toolbar"
         layout="@layout/toolbar_with_no_menu_white_bg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -23,14 +23,68 @@
         android:layout_width="match_parent"
         android:backgroundTint="@color/white"
         android:layout_height="0dp"
+        android:visibility="gone"
         android:background="@color/white"
+        android:padding="@dimen/screen_horizontal_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/roboto_medium_20_davys_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_between_view_and_subview"
+            android:gravity="center"
+            android:text="Haven't purchased this product"
+            android:textColor="@color/steel_teal"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/roboto_normal_14_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Only who bought this product may leave a review"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
+        <TextView
+            android:id="@+id/btnContinueShopping"
+            style="@style/roboto_medium_18_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rec_red_fill"
+            android:paddingHorizontal="@dimen/dimen_30"
+            android:paddingVertical="@dimen/txt_13"
+            android:text="Continue Shopping"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <ImageView
+            android:id="@+id/imageView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/found_nothing"
+            android:layout_marginBottom="@dimen/space_between_views"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintHorizontal_bias="0.459"
+            app:layout_constraintStart_toStartOf="@+id/textView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -38,12 +92,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -121,7 +174,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ratingBar">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/comment"
+                    android:id="@+id/edtComment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Comment*" />
@@ -139,7 +192,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout23">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name"
+                    android:id="@+id/edtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Name*" />
@@ -148,6 +201,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout25"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -157,12 +211,30 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email"
+                    android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email*" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/btnContinue"
+                style="@style/roboto_medium_18_davys_grey"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rec_red_fill"
+                android:paddingHorizontal="@dimen/dimen_30"
+                android:paddingVertical="@dimen/txt_13"
+                android:text="Continue"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

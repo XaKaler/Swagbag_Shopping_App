@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.shopping.swagbag.category.CategoryToBegModel
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleViewItemClick
@@ -26,6 +27,7 @@ import com.shopping.swagbag.common.model.TopTrendingModel
 import com.shopping.swagbag.databinding.FragmentHomeBinding
 import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.products.ProductRepository
+import com.shopping.swagbag.products.ProductSearchParameters
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 import com.shopping.swagbag.service.Resource
@@ -193,7 +195,18 @@ RecycleViewItemClick{
                         when(name){
                             "products" -> {
                                 mainActivity.hideToolbar()
-                                val action = HomeDirections.actionHome2ToProductsFragment(homeResult.result.masterCategory[position].slug)
+                                val productSearchParameters = ProductSearchParameters(
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    homeResult.result.masterCategory[position].slug,
+                                    ""
+                                )
+                                val action = HomeDirections.actionHome2ToProductsFragment(Gson().toJson(productSearchParameters, ProductSearchParameters::class.java))
                                 findNavController().navigate(action)
                             }
                         }

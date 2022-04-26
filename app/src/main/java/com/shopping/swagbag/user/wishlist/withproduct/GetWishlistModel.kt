@@ -64,14 +64,14 @@ data class GetWishlistModel(
             val point: Double, // 0.1
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-03-03T08:11:30.402Z
-            val price: Int, // 700
+            val price: String, // 700
             @SerializedName("product_types")
             val productTypes: List<String>,
             @SerializedName("return_day")
             val returnDay: String, // 7
             val returnable: String, // 1
             @SerializedName("selling_price")
-            val sellingPrice: Int, // 650
+            val sellingPrice: String, // 650
             val sgst: String,
             @SerializedName("shelving_location")
             val shelvingLocation: String,

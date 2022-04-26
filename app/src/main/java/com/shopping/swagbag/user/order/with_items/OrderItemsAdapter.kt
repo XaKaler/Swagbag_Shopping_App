@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
@@ -13,6 +14,7 @@ import com.shopping.swagbag.databinding.SingleOrderItemBinding
 class OrderItemsAdapter(
     private val context: Context,
     private var data: List<OrderModel.OrderModelItem>,
+    private val cancelTime: String,
     private val itemClick: RecycleViewItemClick
 ) :
     RecyclerView.Adapter<OrderItemsAdapter.BestProductViewHolder>() {
@@ -22,7 +24,7 @@ class OrderItemsAdapter(
 
             fun bind(singleData: OrderModel.OrderModelItem, position: Int, itemClick: RecycleViewItemClick){
                 with(viewBinding){
-                    orderStatus.text = singleData.status
+                    //orderStatus.text = singleData.status
                     orderDate.text =
                         GeneralFunction.convertServerDateToUserTimeZoneTask(singleData.createdDate)
 
@@ -30,8 +32,19 @@ class OrderItemsAdapter(
                     totalPrice.text = singleData.price.toString()
 
                     //set cancel and return button text according to order status
-                    if (singleData.status == "delivered")
-                        cancel.text = context.getString(R.string.returns)
+                    when(singleData.status){
+                        "delivered" -> {
+                            orderStatus.text = context.getString(R.string.returns)
+                            cancel.text = context.getString(R.string.returns)
+                            cancel.background = ContextCompat.getDrawable(context, R.drawable.rec_white_5)
+                        }
+                        "pending_payment" -> orderStatus.text = "Pending payment"
+                        "return_in_process" -> orderStatus.text = "Return in process"
+                        "cancel" -> orderStatus.text = "Cancel"
+                        "processing" -> {
+                            orderStatus.text = "Processing"
+                        }
+                    }
 
                     // button click
                     cancel.setOnClickListener {

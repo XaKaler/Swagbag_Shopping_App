@@ -36,7 +36,7 @@ class AllTimeSliderAdapter(
                         .fitCenter()
                         .into(imgBestProduct)
 
-                    //Log.e("TAG", "all time slider bind name ${singleData.name}  and file is: ${singleData.file}", )
+                    Log.e("TAG", "all time slider bind name ${singleData.name}  \nand file is: ${singleData.file}", )
 
                     // set text
                     tvBestProductName.text = singleData.name

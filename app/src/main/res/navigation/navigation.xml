@@ -327,6 +327,9 @@
         <action
             android:id="@+id/action_productDetailsFragment_self"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productRatingFragment"
+            app:destination="@id/productRatingFragment" />
 
     </fragment>
     <fragment
@@ -803,5 +806,14 @@
 
     android:id="@+id/action_global_orderWithItemsFragment"
     app:destination="@id/orderWithItemsFragment"/><action android:id="@+id/action_global_productsFragment" app:destination="@id/productsFragment"/>
+    <fragment
+        android:id="@+id/productRatingFragment"
+        android:name="com.shopping.swagbag.products.product_details.ProductRatingFragment"
+        android:label="fragment_product_rating"
+        tools:layout="@layout/fragment_product_rating" >
+        <argument
+            android:name="product"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
