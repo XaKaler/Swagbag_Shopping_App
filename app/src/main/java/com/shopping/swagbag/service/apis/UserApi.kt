@@ -4,10 +4,10 @@ import com.shopping.swagbag.user.auth.resetpassword.PasswordResetEmailSendModel
 import com.shopping.swagbag.user.auth.resetpassword.PasswordResetModel
 import com.shopping.swagbag.user.auth.signin.SignInModel
 import com.shopping.swagbag.user.auth.signup.SignUpModel
-import com.shopping.swagbag.user.order.user_details.AddAddressModel
-import com.shopping.swagbag.user.order.user_details.AllAddressModel
-import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
-import com.shopping.swagbag.user.order.user_details.EditAddressModel
+import com.shopping.swagbag.user.address.add_address.AddAddressModel
+import com.shopping.swagbag.user.address.address_list.AllAddressModel
+import com.shopping.swagbag.user.address.address_list.DeleteAddressModel
+import com.shopping.swagbag.user.address.edit_address.EditAddressModel
 import com.shopping.swagbag.user.profile.UserUpdateModel
 import com.shopping.swagbag.user.wallet.WalletModel
 import retrofit2.http.*
@@ -64,7 +64,7 @@ interface UserApi {
         @Field("address")address: String,
         @Field("address2")address2: String,
         @Field("city")city: String,
-        @Field("state")state: String,
+        @Field("country")country: String,
         @Field("post_office")post_office: String,
         @Field("pincode")pincode: String,
         @Field("contact_name")contact_name: String,
@@ -81,7 +81,7 @@ interface UserApi {
         @Field("address")address: String,
         @Field("address2")address2: String,
         @Field("city")city: String,
-        @Field("state")state: String,
+        @Field("country")country: String,
         @Field("post_office")post_office: String,
         @Field("pincode")pincode: String,
         @Field("contact_name")contact_name: String,

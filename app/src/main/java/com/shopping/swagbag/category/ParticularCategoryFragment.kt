@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -31,6 +32,7 @@ import com.shopping.swagbag.products.ProductSearchParameters
 import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.service.apis.CategoryApi
+import kotlin.system.exitProcess
 
 class ParticularCategoryFragment :
     BaseFragment<FragmentParticularCategoryBinding,
@@ -60,6 +62,11 @@ RecycleViewItemClick{
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // handle back pressed
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_global_home2)
+        }
 
         initViews()
         mainActivity.showToolbar()

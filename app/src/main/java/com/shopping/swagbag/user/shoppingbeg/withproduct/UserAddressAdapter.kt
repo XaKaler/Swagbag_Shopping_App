@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleUserAddressBinding
-import com.shopping.swagbag.user.order.user_details.AllAddressModel
+import com.shopping.swagbag.user.address.address_list.AllAddressModel
 
 
 class UserAddressAdapter(

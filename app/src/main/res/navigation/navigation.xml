@@ -352,15 +352,21 @@
         <action
             android:id="@+id/action_shoppingBegSelectAddressFragment_to_editUserDetailFragment"
             app:destination="@id/editUserDetailFragment" />
+
+        <action
+            android:id="@+id/action_shoppingBegSelectAddressFragment_to_addUserDetailFragment"
+            app:destination="@id/addUserDetailsFragment" />
+
+
         <argument
             android:name="CartData"
             app:argType="com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel" />
     </fragment>
     <fragment
         android:id="@+id/viewUserDetailsFragment"
-        android:name="com.shopping.swagbag.user.order.user_details.ViewUserDetailsFragment"
+        android:name="com.shopping.swagbag.user.address.address_list.AllAddressFragment"
         android:label="fragment_view_user_details"
-        tools:layout="@layout/fragment_view_user_details" >
+        tools:layout="@layout/fragment_all_address" >
         <action
             android:id="@+id/action_viewUserDetailsFragment_to_addUserDetailsFragment"
             app:destination="@id/addUserDetailsFragment" />
@@ -549,7 +555,7 @@
             app:argType="com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel" />
         <argument
             android:name="Address"
-            app:argType="com.shopping.swagbag.user.order.user_details.AllAddressModel$Result" />
+            app:argType="com.shopping.swagbag.user.address.address_list.AllAddressModel$Result" />
     </fragment>
     <fragment
         android:id="@+id/orderConfirmedFragment"
@@ -646,15 +652,16 @@
     </fragment>
     <fragment
         android:id="@+id/addUserDetailsFragment"
-        android:name="com.shopping.swagbag.user.order.user_details.AddUserDetailsFragment"
+        android:name="com.shopping.swagbag.user.address.add_address.AddAddressFragment"
         android:label="fragment_add_user_details"
-        tools:layout="@layout/fragment_add_user_details" >
+        tools:layout="@layout/fragment_add_address" >
         <action
             android:id="@+id/action_addUserDetailsFragment_to_viewUserDetailsFragment"
-            app:destination="@id/viewUserDetailsFragment" /><!--
+            app:destination="@id/viewUserDetailsFragment" />
         <argument
             android:name="address"
-            app:argType="com.shopping.swagbag.user.order.user_details.AllAddressModel.Result" />-->
+            app:argType="string" />
+
     </fragment>
     <fragment
         android:id="@+id/cancellationOrderFragment"
@@ -776,13 +783,13 @@
         tools:layout="@layout/fragment_brand" /><action android:id="@+id/action_global_brandFragment" app:destination="@id/brandFragment"/>
     <fragment
         android:id="@+id/editUserDetailFragment"
-        android:name="com.shopping.swagbag.user.order.user_details.EditUserDetailFragment"
+        android:name="com.shopping.swagbag.user.address.edit_address.EditAddressFragment"
         android:label="fragment_edit_user_detail"
-        tools:layout="@layout/fragment_edit_user_detail">
+        tools:layout="@layout/fragment_edit_address">
 
         <argument
             android:name="address"
-            app:argType="com.shopping.swagbag.user.order.user_details.AllAddressModel$Result" />
+            app:argType="string"/>
 
     </fragment>
     <fragment

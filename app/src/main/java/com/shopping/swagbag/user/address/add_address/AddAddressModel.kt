@@ -1,4 +1,4 @@
-package com.shopping.swagbag.user.order.user_details
+package com.shopping.swagbag.user.address.add_address
 
 
 import com.google.gson.annotations.SerializedName

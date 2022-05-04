@@ -9,10 +9,10 @@ import com.shopping.swagbag.user.auth.resetpassword.PasswordResetEmailSendModel
 import com.shopping.swagbag.user.auth.resetpassword.PasswordResetModel
 import com.shopping.swagbag.user.auth.signin.SignInModel
 import com.shopping.swagbag.user.auth.signup.SignUpModel
-import com.shopping.swagbag.user.order.user_details.AddAddressModel
-import com.shopping.swagbag.user.order.user_details.AllAddressModel
-import com.shopping.swagbag.user.order.user_details.DeleteAddressModel
-import com.shopping.swagbag.user.order.user_details.EditAddressModel
+import com.shopping.swagbag.user.address.add_address.AddAddressModel
+import com.shopping.swagbag.user.address.address_list.AllAddressModel
+import com.shopping.swagbag.user.address.address_list.DeleteAddressModel
+import com.shopping.swagbag.user.address.edit_address.EditAddressModel
 import com.shopping.swagbag.user.profile.UserUpdateModel
 import com.shopping.swagbag.user.wallet.WalletModel
 import kotlinx.coroutines.launch
@@ -87,7 +87,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         address: String,
         address2: String,
         city: String,
-        state: String,
+        country: String,
         post_office: String,
         pincode: String,
         contact_name: String,
@@ -105,7 +105,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
                 address,
                 address2,
                 city,
-                state,
+                country,
                 post_office,
                 pincode,
                 contact_name,
@@ -157,7 +157,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         address: String,
         address2: String,
         city: String,
-        state: String,
+        country: String,
         post_office: String,
         pincode: String,
         contact_name: String,
@@ -176,7 +176,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
                 address,
                 address2,
                 city,
-                state,
+                country,
                 post_office,
                 pincode,
                 contact_name,

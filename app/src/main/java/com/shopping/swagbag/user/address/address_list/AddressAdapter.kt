@@ -1,4 +1,4 @@
-package com.shopping.swagbag.user.order.user_details
+package com.shopping.swagbag.user.address.address_list
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.databinding.SingleUserDetailBinding
-import com.shopping.swagbag.dummy.DummyModel
 
 class AddressAdapter(
     private val context: Context,

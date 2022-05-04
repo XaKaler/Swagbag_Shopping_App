@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentPaymentModeBinding
@@ -19,13 +18,12 @@ import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
 import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
-import com.shopping.swagbag.service.RemoteDataSource
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.service.apis.PaymentApi
 import com.shopping.swagbag.service.apis.PaymentDataSource
 import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.settings.PaymentViewModelFactory
-import com.shopping.swagbag.user.order.user_details.AllAddressModel
+import com.shopping.swagbag.user.address.address_list.AllAddressModel
 import com.shopping.swagbag.user.shipping.checkout.payment.PaymentRepository
 import com.shopping.swagbag.user.shipping.checkout.payment.PaymentViewModel
 import com.shopping.swagbag.user.shipping.checkout.payment.SampleRequestModel

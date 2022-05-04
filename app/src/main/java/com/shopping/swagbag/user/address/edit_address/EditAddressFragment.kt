@@ -1,26 +1,25 @@
-package com.shopping.swagbag.user.order.user_details
+package com.shopping.swagbag.user.address.edit_address
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.shopping.swagbag.R
 import com.shopping.swagbag.common.base.BaseFragment
-import com.shopping.swagbag.databinding.FragmentEditUserDetailBinding
+import com.shopping.swagbag.databinding.FragmentEditAddressBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.service.apis.UserApi
+import com.shopping.swagbag.user.address.address_list.AllAddressModel
 import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.utils.AppUtils
 
-class EditUserDetailFragment :
-    BaseFragment<FragmentEditUserDetailBinding, UserViewModel, UserRepository>(
-        FragmentEditUserDetailBinding::inflate
+class EditAddressFragment :
+    BaseFragment<FragmentEditAddressBinding, UserViewModel, UserRepository>(
+        FragmentEditAddressBinding::inflate
     ) {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
@@ -50,8 +49,8 @@ class EditUserDetailFragment :
     }
 
     private fun setUserData() {
-        val args: EditUserDetailFragmentArgs by navArgs()
-        getAddress = args.address
+        val args: EditAddressFragmentArgs by navArgs()
+        //getAddress = args.address
 
         with(viewBinding) {
             edtName.setText(getAddress.contactName)
@@ -153,7 +152,7 @@ class EditUserDetailFragment :
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentEditUserDetailBinding.inflate(inflater, container, false)
+    ) = FragmentEditAddressBinding.inflate(inflater, container, false)
 
     override fun getViewModel() = UserViewModel::class.java
 

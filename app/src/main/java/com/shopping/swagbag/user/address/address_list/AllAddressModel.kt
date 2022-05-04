@@ -1,4 +1,4 @@
-package com.shopping.swagbag.user.order.user_details
+package com.shopping.swagbag.user.address.address_list
 
 
 import android.os.Parcelable

@@ -1,4 +1,4 @@
-package com.shopping.swagbag.user.order.user_details
+package com.shopping.swagbag.user.address.address_list
 
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
-import com.shopping.swagbag.databinding.FragmentViewUserDetailsBinding
+import com.shopping.swagbag.databinding.FragmentAllAddressBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.service.apis.UserApi
@@ -19,10 +20,10 @@ import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.utils.AppUtils
 
-class ViewUserDetailsFragment : BaseFragment<
-        FragmentViewUserDetailsBinding,
+class AllAddressFragment : BaseFragment<
+        FragmentAllAddressBinding,
         UserViewModel,
-        UserRepository>(FragmentViewUserDetailsBinding::inflate), RecycleViewItemClick {
+        UserRepository>(FragmentAllAddressBinding::inflate), RecycleViewItemClick {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private lateinit var addresses: AllAddressModel
@@ -41,7 +42,8 @@ class ViewUserDetailsFragment : BaseFragment<
     private fun initViews() {
         with(viewBinding){
             addNewAddress.setOnClickListener{
-                findNavController().navigate(R.id.action_viewUserDetailsFragment_to_addUserDetailsFragment)
+                val action = AllAddressFragmentDirections.actionViewUserDetailsFragmentToAddUserDetailsFragment("")
+                findNavController().navigate(action)
             }
 
             btnSelect.setOnClickListener{
@@ -84,7 +86,7 @@ class ViewUserDetailsFragment : BaseFragment<
         with(viewBinding){
             rvUserDetails.apply{
                 layoutManager = LinearLayoutManager(context)
-                addressAdapter = AddressAdapter(context, addresses, this@ViewUserDetailsFragment)
+                addressAdapter = AddressAdapter(context, addresses, this@AllAddressFragment)
                 adapter = addressAdapter
             }
         }
@@ -105,19 +107,19 @@ class ViewUserDetailsFragment : BaseFragment<
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentViewUserDetailsBinding.inflate(inflater, container, false)
+    ) = FragmentAllAddressBinding.inflate(inflater, container, false)
 
     override fun getViewModel() = UserViewModel::class.java
 
     override fun getFragmentRepository() =
         UserRepository(remoteDataSource.getBaseUrl().create(UserApi::class.java))
 
-    override fun onItemClickWithName(tag: String, position: Int) {
-        when(tag){
+    override fun onItemClickWithName(name: String, position: Int) {
+        when(name){
             "edit" -> {
                 val action =
-                    ViewUserDetailsFragmentDirections.actionViewUserDetailsFragmentToEditUserDetailFragment(
-                        addresses.result!![position]
+                    AllAddressFragmentDirections.actionViewUserDetailsFragmentToAddUserDetailsFragment(
+                        Gson().toJson(addresses.result!![position], AllAddressModel.Result::class.java)
                     )
                 findNavController().navigate(action)
             }

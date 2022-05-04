@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
@@ -17,7 +18,7 @@ import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.service.apis.UserApi
 import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
-import com.shopping.swagbag.user.order.user_details.AllAddressModel
+import com.shopping.swagbag.user.address.address_list.AllAddressModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.GetCartModel
 import com.shopping.swagbag.user.shoppingbeg.withproduct.UserAddressAdapter
 import com.shopping.swagbag.utils.AppUtils
@@ -26,8 +27,7 @@ class ShoppingBegSelectAddressFragment :
     BaseFragment<FragmentShoppingBegSelectAddressBinding,
             UserViewModel,
             UserRepository>(FragmentShoppingBegSelectAddressBinding::inflate),
-    View.OnClickListener,
-    RecycleViewItemClick {
+    View.OnClickListener {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
     private lateinit var addressList: List<AllAddressModel.Result>
@@ -122,7 +122,27 @@ class ShoppingBegSelectAddressFragment :
             rvAddress.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter =
-                    UserAddressAdapter(context, addresses, this@ShoppingBegSelectAddressFragment)
+                    UserAddressAdapter(context, addresses, object: RecycleViewItemClick{
+                        override fun onItemClickWithName(name: String, position: Int) {
+                            when (name) {
+                                "select" -> {
+                                    selectedAddress = addressList[position]
+                                    Log.e("TAG", "onItemClickWithName: $selectedAddress")
+                                }
+
+                                "edit" -> {
+                                    val editAddress = addressList[position]
+                                    Log.e("address", "edit address: $editAddress", )
+
+                                    val action =
+                                        ShoppingBegSelectAddressFragmentDirections.actionShoppingBegSelectAddressFragmentToAddUserDetailFragment(
+                                            Gson().toJson(addressList[position], AllAddressModel.Result::class.java)
+                                        )
+                                    findNavController().navigate(action)
+                                }
+                            }
+                        }
+                    })
             }
         }
     }
@@ -156,23 +176,4 @@ class ShoppingBegSelectAddressFragment :
     override fun getFragmentRepository() =
         UserRepository(remoteDataSource.getBaseUrl().create(UserApi::class.java))
 
-    override fun onItemClickWithName(name: String, position: Int) {
-        when (name) {
-            "select" -> {
-                selectedAddress = addressList[position]
-                Log.e("TAG", "onItemClickWithName: $selectedAddress")
-            }
-
-            "edit" -> {
-                val editAddress = addressList[position]
-                Log.e("address", "edit address: $editAddress", )
-
-                val action =
-                    ShoppingBegSelectAddressFragmentDirections.actionShoppingBegSelectAddressFragmentToEditUserDetailFragment(
-                        addressList[position]
-                    )
-                findNavController().navigate(action)
-            }
-        }
-    }
 }

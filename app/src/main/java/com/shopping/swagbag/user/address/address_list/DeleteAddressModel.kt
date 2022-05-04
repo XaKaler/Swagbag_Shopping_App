@@ -1,7 +1,5 @@
-package com.shopping.swagbag.user.order.user_details
+package com.shopping.swagbag.user.address.address_list
 
-
-import com.google.gson.annotations.SerializedName
 
 data class DeleteAddressModel(
     val message: String, // Address has been deleted.

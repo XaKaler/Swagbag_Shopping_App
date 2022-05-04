@@ -8,6 +8,8 @@ import com.shopping.swagbag.settings.SettingRepository
 import com.shopping.swagbag.settings.SettingsModel
 import com.shopping.swagbag.coupons.GiftCardModel
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.settings.AllCityModel
+import com.shopping.swagbag.settings.AllCountryModel
 import kotlinx.coroutines.launch
 
 class SettingViewModel(private val repository: SettingRepository): ViewModel() {
@@ -33,4 +35,29 @@ class SettingViewModel(private val repository: SettingRepository): ViewModel() {
 
         return result
     }
+
+    fun allCountry(): LiveData<Resource<AllCountryModel>>{
+        val result = MutableLiveData<Resource<AllCountryModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.allCountry()
+        }
+
+        return result
+    }
+
+
+    fun allCity(cityId: String): LiveData<Resource<AllCityModel>>{
+        val result = MutableLiveData<Resource<AllCityModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.allCity(cityId)
+        }
+
+        return result
+    }
+
+
 }

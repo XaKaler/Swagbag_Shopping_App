@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.order.user_details.AddUserDetailsFragment">
+    tools:context=".user.address.add_address.AddAddressFragment">
 
 
     <include
@@ -120,7 +120,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_between_views"
@@ -130,13 +130,14 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtCity"
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteCity"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableEnd="@drawable/ic_down_arrow_black"
+                            android:inputType="none"
+                            android:layout_height="match_parent"
                             android:hint="Select City"
-                            android:imeOptions="actionDone" />
+                            />
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -162,19 +163,20 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout1"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="@+id/textInputLayout9"
                         app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtAddress"
-                            android:drawableEnd="@drawable/ic_down_arrow_black"
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteAddress1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Address 1" />
+                            android:layout_height="match_parent"
+                            android:hint="Address 1"
+                             />
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -196,7 +198,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout2"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_between_views"
@@ -204,13 +206,13 @@
                         app:layout_constraintStart_toStartOf="@+id/textInputLayout1"
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout22">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtCountry"
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteCountry"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:layout_height="match_parent"
                             android:hint="Select Country"
-                            android:drawableEnd="@drawable/ic_down_arrow_black"
-                            android:imeOptions="actionDone" />
+                            />
 
 
                     </com.google.android.material.textfield.TextInputLayout>
