@@ -204,6 +204,8 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
 
     private fun apiCalls() {
         setMasterCategories()
+        getSettings()
+        getWallet()
         setAllCategories()
     }
 
@@ -317,8 +319,6 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                 is Resource.Success -> {
                     allCategories = it.value.result
                     setAllCategories()
-                    getSettings()
-                    getWallet()
                 }
 
                 is Resource.Failure ->
