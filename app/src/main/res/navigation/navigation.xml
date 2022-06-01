@@ -107,6 +107,12 @@
         <action
             android:id="@+id/action_createPasswordFragment_to_home2"
             app:destination="@id/home2" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="otp"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"

@@ -122,7 +122,6 @@ class VerificationCodeFragment : BaseFragment<
     }
 
     private fun verifyOtp() {
-
         // get arguument that send from reset password fragment with safe args
         val args: VerificationCodeFragmentArgs by navArgs()
         val email = args.email
@@ -132,7 +131,7 @@ class VerificationCodeFragment : BaseFragment<
         // check all value are set in edit text
         if (otp.isNotEmpty()) {
             Log.e("check otp and email", "verifyOtp: $otp\nemail: $email")
-
+/*
             viewModel.passwordReset(email, otp).observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Loading -> showLoading()
@@ -149,7 +148,11 @@ class VerificationCodeFragment : BaseFragment<
                         toast(it.errorBody.toString())
                     }
                 }
-            }
+            }*/
+
+            val action = VerificationCodeFragmentDirections.actionVerificationCodeFragmentToCreatePasswordFragment(email, otp)
+            findNavController().navigate(action)
+
         } else {
             toast("Enter OTP first")
         }

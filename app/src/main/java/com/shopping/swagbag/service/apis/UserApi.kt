@@ -43,7 +43,8 @@ interface UserApi {
     @POST("passwordreset")
     suspend fun passwordReset(
         @Field("email") email: String,
-        @Field("otp") otp: String
+        @Field("otp") otp: String,
+        @Field("password") password: String
     ): PasswordResetModel
 
     @FormUrlEncoded

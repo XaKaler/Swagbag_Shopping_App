@@ -63,14 +63,15 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun passwordReset(
         email: String,
-        otp: String
+        otp: String,
+        password: String
     ): LiveData<Resource<PasswordResetModel>> {
 
         val result = MutableLiveData<Resource<PasswordResetModel>>()
 
         viewModelScope.launch {
             result.value = Resource.Loading
-            result.value = repository.passwordReset(email, otp)
+            result.value = repository.passwordReset(email, otp, password)
         }
         return result
     }

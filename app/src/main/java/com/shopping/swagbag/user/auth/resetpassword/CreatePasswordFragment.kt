@@ -1,22 +1,31 @@
 package com.shopping.swagbag.user.auth.resetpassword
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentCreatePasswordBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuBinding
+import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.UserApi
+import com.shopping.swagbag.user.auth.UserRepository
+import com.shopping.swagbag.user.auth.UserViewModel
+import kotlinx.android.synthetic.main.fragment_sign_in.*
 
-class CreatePasswordFragment : Fragment(R.layout.fragment_create_password), View.OnClickListener {
+class CreatePasswordFragment :
+    BaseFragment<FragmentCreatePasswordBinding, UserViewModel, UserRepository>(
+        FragmentCreatePasswordBinding::inflate
+    ) {
 
-    private lateinit var viewBinding: FragmentCreatePasswordBinding
     private lateinit var toolbarBinding: ToolbarWithNoMenuBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding = FragmentCreatePasswordBinding.bind(view)
         toolbarBinding = viewBinding.include
 
         initViews()
@@ -28,7 +37,50 @@ class CreatePasswordFragment : Fragment(R.layout.fragment_create_password), View
         setToolbar()
 
         with(viewBinding){
-            save.setOnClickListener(this@CreatePasswordFragment)
+            save.setOnClickListener { collectInfo() }
+        }
+    }
+
+    private fun collectInfo() {
+        //get arguments
+        val args: CreatePasswordFragmentArgs by navArgs()
+        val email = args.email
+        val otp = args.otp
+
+        //check text fields are empty or not
+        with(viewBinding){
+            val newPassword = newPassword.text.toString()
+            val confirmPassword = confirmPassword.text.toString()
+
+            if(newPassword.isEmpty() || confirmPassword.isEmpty())
+                toast("Fill empty fields")
+            else{
+                if(newPassword != confirmPassword)
+                    toast("Password not match")
+                else{
+                    savePassword(email, otp, newPassword)
+                }
+            }
+        }
+
+    }
+
+    private fun savePassword(email: String, otp: String, password: String) {
+        viewModel.passwordReset(email, otp, password).observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading -> showLoading()
+
+                is Resource.Success -> {
+                    stopShowingLoading()
+                    toast(it.value.message)
+                    findNavController().navigate(R.id.action_global_home2)
+                }
+
+                is Resource.Failure -> {
+                    stopShowingLoading()
+                    tryAgain()
+                }
+            }
         }
     }
 
@@ -44,12 +96,13 @@ class CreatePasswordFragment : Fragment(R.layout.fragment_create_password), View
         }
     }
 
-    override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.save->{
-                findNavController().navigate(R.id.action_createPasswordFragment_to_home2)
-            }
-        }
-    }
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentCreatePasswordBinding.inflate(inflater, container, false)
+
+    override fun getViewModel() = UserViewModel::class.java
+
+    override fun getFragmentRepository() = UserRepository(remoteDataSource.getBaseUrl().create(UserApi::class.java))
 
 }

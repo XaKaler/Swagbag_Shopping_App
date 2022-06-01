@@ -24,8 +24,9 @@ class UserRepository(private val api: UserApi) : BaseRepository() {
 
     suspend fun passwordReset(
         email: String,
-        otp: String
-    ) = safeApiCall { api.passwordReset(email, otp) }
+        otp: String,
+        password: String
+    ) = safeApiCall { api.passwordReset(email, otp, password) }
 
     suspend fun addAddress(
         userid: String,
