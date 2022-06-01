@@ -73,6 +73,7 @@ class SignInFragment :
                             toast(loginResponse.message)
                             context?.let { it1 -> AppUtils(it1).saveUser(loginResponse) }
                             mainActivity.setUpNavigationHeader()
+                            mainActivity.getWallet()
                             moveToHome()
                         }
 

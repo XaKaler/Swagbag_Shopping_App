@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account.communication.CommunicationPreferencesFragment">
+
+
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/toolbar_with_no_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="@dimen/screen_horizontal_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeToolbar">
+
+
+        <TextView
+            android:id="@+id/btnSaveChanges"
+            style="@style/roboto_normal_14_davys_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_between_views"
+            android:background="@drawable/rec_light_red_background_5"
+            android:gravity="center"
+            android:paddingVertical="@dimen/dimen_15"
+            android:text="save changes"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/smsCheckBox" />
+
+        <TextView
+            android:id="@+id/textView45"
+            style="@style/roboto_medium_14_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subscribe to be the first with our new arrivals, exclusive collections, offers and more."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView105"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/roboto_normal_13_sonic_silver"
+            android:text="Subscribe to Swagbag newsletters."
+            android:layout_marginTop="@dimen/space_between_view_and_subview"
+            app:layout_constraintStart_toStartOf="@+id/textView45"
+            app:layout_constraintTop_toBottomOf="@+id/textView45" />
+
+        <CheckBox
+            android:id="@+id/emailCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            style="@style/roboto_normal_13_sonic_silver"
+            android:layout_marginTop="@dimen/space_between_view_and_subview"
+            app:layout_constraintStart_toStartOf="@+id/textView105"
+            app:layout_constraintTop_toBottomOf="@+id/textView105" />
+
+
+        <CheckBox
+            android:id="@+id/smsCheckBox"
+            style="@style/roboto_normal_13_sonic_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_between_view_and_subview"
+            android:layout_marginTop="@dimen/space_between_view_and_subview"
+            android:text="sms"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toEndOf="@+id/emailCheckBox"
+            app:layout_constraintTop_toBottomOf="@+id/textView105" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

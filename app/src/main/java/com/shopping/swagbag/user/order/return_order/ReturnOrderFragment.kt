@@ -70,7 +70,7 @@ class ReturnOrderFragment : BaseFragment<FragmentReturnOrderBinding,
 
             btnProceed.setOnClickListener {
                 if(selectedProductIndex.isEmpty())
-                    toast("Select at lease one product")
+                    toast("Select at least one product")
                 else if(reason == "")
                     toast("Select a reason")
                 else if(reason == "Others, pls specify"){
@@ -152,13 +152,7 @@ class ReturnOrderFragment : BaseFragment<FragmentReturnOrderBinding,
             reasonSpinner.adapter = arrayAdapter
         }
 
-        viewBinding.reasonSpinner.run {
-            adapter = arrayAdapter
-            
-        }
         viewBinding.reasonSpinner.onItemSelectedListener = this@ReturnOrderFragment
-
-
     }
 
     private fun setProducts() {

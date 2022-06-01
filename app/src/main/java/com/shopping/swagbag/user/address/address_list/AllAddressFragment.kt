@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.RecycleViewItemClick
@@ -82,14 +83,33 @@ class AllAddressFragment : BaseFragment<
             })
     }
 
-    private fun setAddresses(addresses: List<AllAddressModel.Result?>) {
+    private fun setAddresses(allAddressesList: List<AllAddressModel.Result?>) {
         with(viewBinding){
             rvUserDetails.apply{
                 layoutManager = LinearLayoutManager(context)
-                addressAdapter = AddressAdapter(context, addresses, this@AllAddressFragment)
+                addressAdapter = AddressAdapter(context, allAddressesList, object: RecycleViewItemClick{
+                    override fun onItemClickWithName(name: String, position: Int) {
+                        when(name){
+                            "edit" -> {
+                                val action =
+                                    AllAddressFragmentDirections.actionViewUserDetailsFragmentToAddUserDetailsFragment(
+                                        Gson().toJson(addresses.result!![position], AllAddressModel.Result::class.java)
+                                    )
+                                findNavController().navigate(action)
+                            }
+                            "delete" -> deleteAddress(position)
+                            "default" -> setDefaultAddress(position)
+                        }
+                    }
+                })
+
                 adapter = addressAdapter
             }
         }
+    }
+
+    private fun setDefaultAddress(position: Int) {
+
     }
 
     private fun setToolbar() {

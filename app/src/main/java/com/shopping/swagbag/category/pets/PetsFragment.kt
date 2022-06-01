@@ -45,7 +45,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), RecycleItemClickListener 
         viewBinding = FragmentPetsBinding.bind(view)
 
         initViews()
-        mainActivity.showToolbar()
+        mainActivity.showToolbarAndBottomNavigation()
     }
 
     override fun onSingleItemClickListener(position: Int) {

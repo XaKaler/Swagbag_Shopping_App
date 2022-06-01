@@ -175,6 +175,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtComment"
+                    android:inputType="textMultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Comment*" />
@@ -194,6 +195,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtName"
                     android:layout_width="match_parent"
+                    android:inputType="textPersonName"
                     android:layout_height="wrap_content"
                     android:hint="Name*" />
 
@@ -214,6 +216,7 @@
                     android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
                     android:hint="Email*" />
 
             </com.google.android.material.textfield.TextInputLayout>

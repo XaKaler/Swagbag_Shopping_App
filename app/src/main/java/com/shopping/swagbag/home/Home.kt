@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,8 +55,6 @@ RecycleViewItemClick{
         else{
             Log.e("TAG", "onAttach:not is instance of main activity")
         }
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,7 +69,7 @@ RecycleViewItemClick{
     }
 
     private fun initViews() {
-        mainActivity.showToolbar()
+        mainActivity.showToolbarAndBottomNavigation()
         mainActivity.setMasterCategories()
 
         homeResult = mainActivity.getHome()
@@ -194,7 +191,7 @@ RecycleViewItemClick{
                     override fun onItemClickWithName(name: String, position: Int) {
                         when(name){
                             "products" -> {
-                                mainActivity.hideToolbar()
+                                mainActivity.hideToolbarAndBottomNavigation()
                                 val productSearchParameters = ProductSearchParameters(
                                     "",
                                     "",
@@ -343,7 +340,7 @@ RecycleViewItemClick{
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
     override fun onItemClickWithName(tag: String, position: Int) {
-        mainActivity.hideToolbar()
+        mainActivity.hideToolbarAndBottomNavigation()
         val action = ProductDetailsFragmentDirections.actionGlobalProductDetailsFragment(tag)
         findNavController().navigate(action)
     }

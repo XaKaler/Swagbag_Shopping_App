@@ -69,20 +69,48 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtName"
                             android:imeOptions="flagNavigateNext"
+                            android:inputType="textPersonName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Contact Name" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputLayout8"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/space_between_views"
+                        android:weightSum="3"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="@+id/textInputLayout7"
                         app:layout_constraintStart_toStartOf="@+id/textInputLayout7"
-                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
+                        android:layout_marginTop="@dimen/space_between_views">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout8"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/dimen_5"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteCountryCode"
+                            android:layout_width="match_parent"
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:layout_height="match_parent"
+                            android:hint="Select Country Code"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout81"
+                        android:layout_weight="2"
+                        android:layout_marginStart="@dimen/dimen_5"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtPhone"
@@ -91,7 +119,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Phone Number" />
+
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -254,6 +285,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtTitle"
                             android:layout_width="match_parent"
+                            android:inputType="textPersonName"
                             android:layout_height="wrap_content"
                             android:hint="Title" />
                     </com.google.android.material.textfield.TextInputLayout>

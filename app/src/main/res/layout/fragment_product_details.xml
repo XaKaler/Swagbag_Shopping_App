@@ -903,10 +903,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
+                    android:layout_marginVertical="@dimen/space_between_views"
                     android:background="@drawable/rec_white_5"
                     android:backgroundTint="@color/day_white_Raisin_Black"
                     app:cardElevation="@dimen/dimen_5"
-                    android:layout_marginTop="@dimen/space_between_views"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -1238,13 +1239,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/screen_horizontal_padding"
-                    android:layout_marginTop="@dimen/space_between_views"
+                    android:layout_marginVertical="@dimen/space_between_views"
                     android:background="@drawable/rec_white_5"
                     android:backgroundTint="@color/day_white_Raisin_Black"
                     app:cardElevation="@dimen/dimen_5"
                     android:layout_marginBottom="@dimen/space_between_view_and_subview_5"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rating">
 

@@ -1,25 +1,20 @@
 package com.shopping.swagbag.user.auth.resetpassword
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.shopping.swagbag.R
-import com.shopping.swagbag.service.apis.UserApi
-import com.shopping.swagbag.user.auth.UserRepository
-import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentVerificationCodeBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuBinding
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.UserApi
+import com.shopping.swagbag.user.auth.UserRepository
+import com.shopping.swagbag.user.auth.UserViewModel
 
 class VerificationCodeFragment : BaseFragment<
         FragmentVerificationCodeBinding,
@@ -39,7 +34,9 @@ class VerificationCodeFragment : BaseFragment<
     private fun initViews() {
         setToolbar()
 
-        with(viewBinding) {
+        viewBinding.submit.setOnClickListener { verifyOtp() }
+
+        /*with(viewBinding) {
             //GenericTextWatcher here works only for moving to next EditText when a number is entered
 //first parameter is the current EditText and second parameter is next EditText
             verificationCode1.addTextChangedListener(
@@ -60,7 +57,22 @@ class VerificationCodeFragment : BaseFragment<
                     verificationCode4
                 )
             )
-            verificationCode4.addTextChangedListener(GenericTextWatcher(verificationCode4, null))
+
+            verificationCode4.addTextChangedListener(
+                GenericTextWatcher(
+                    verificationCode4,
+                    verificationCode5
+                )
+            )
+
+            verificationCode5.addTextChangedListener(
+                GenericTextWatcher(
+                    verificationCode5,
+                    verificationCode6
+                )
+            )
+
+            verificationCode4.addTextChangedListener(GenericTextWatcher(verificationCode6, null))
 
 //GenericKeyEvent here works for deleting the element and to switch back to previous EditText
 //first parameter is the current EditText and second parameter is previous EditText
@@ -90,56 +102,56 @@ class VerificationCodeFragment : BaseFragment<
                     verificationCode3
                 )
             )
+
+            verificationCode5.setOnKeyListener(
+                GenericKeyEvent(
+                    verificationCode5,
+                    verificationCode4
+                )
+            )
+
+            verificationCode6.setOnKeyListener(
+                GenericKeyEvent(
+                    verificationCode6,
+                    verificationCode5
+                )
+            )
+
             submit.setOnClickListener { verifyOtp() }
-        }
+        }*/
     }
 
     private fun verifyOtp() {
 
-        with(viewBinding) {
+        // get arguument that send from reset password fragment with safe args
+        val args: VerificationCodeFragmentArgs by navArgs()
+        val email = args.email
 
-            // get arugument that send from reset password fragment with safe args
-            val args: VerificationCodeFragmentArgs by navArgs()
-            var email = args.email
+        val otp = viewBinding.verificationCode.text.toString()
 
-            // get otp that user enter
-            val code1 = verificationCode1.text.toString()
-            val code2 = verificationCode1.text.toString()
-            val code3 = verificationCode1.text.toString()
-            val code4 = verificationCode1.text.toString()
+        // check all value are set in edit text
+        if (otp.isNotEmpty()) {
+            Log.e("check otp and email", "verifyOtp: $otp\nemail: $email")
 
-            // check all value are set in edit text
-            if (
-                code1.isNotEmpty() &&
-                code2.isNotEmpty() &&
-                code3.isNotEmpty() &&
-                code4.isNotEmpty()
-            ) {
-                val otp = code1 + code2 + code3 + code4
+            viewModel.passwordReset(email, otp).observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Loading -> showLoading()
 
-                Log.e("check otp and email", "verifyOtp: $otp\nemail: $email", )
-
-                viewModel.passwordReset(email, otp).observe(viewLifecycleOwner, Observer {
-                    when (it) {
-                        is Resource.Loading -> showLoading()
-
-                        is Resource.Success -> {
-                            stopShowingLoading()
-                            //@todo match email otp and otp that user enter
-                            toast(it.value.message)
+                    is Resource.Success -> {
+                        stopShowingLoading()
+                        //@todo match email otp and otp that user enter
+                        toast(it.value.message)
+                        if (it.value.message != "Invalid email/OTP")
                             findNavController().navigate(R.id.action_verificationCodeFragment_to_createPasswordFragment)
-                        }
-
-                        is Resource.Failure -> {
-                            toast(it.errorBody.toString())
-                        }
                     }
-                })
-            }
 
-            else{
-                toast("Fill otp")
+                    is Resource.Failure -> {
+                        toast(it.errorBody.toString())
+                    }
+                }
             }
+        } else {
+            toast("Enter OTP first")
         }
     }
 
@@ -167,7 +179,7 @@ class VerificationCodeFragment : BaseFragment<
         )
     )
 
-    class GenericKeyEvent internal constructor(
+    /*class GenericKeyEvent internal constructor(
         private val currentView: EditText,
         private val previousView: EditText?
     ) : View.OnKeyListener {
@@ -185,10 +197,7 @@ class VerificationCodeFragment : BaseFragment<
             }
             return false
         }
-
-
     }
-
     class GenericTextWatcher internal constructor(
         private val currentView: View,
         private val nextView: View?
@@ -200,6 +209,8 @@ class VerificationCodeFragment : BaseFragment<
                 R.id.verificationCode1 -> if (text.length == 1) nextView!!.requestFocus()
                 R.id.verificationCode2 -> if (text.length == 1) nextView!!.requestFocus()
                 R.id.verificationCode3 -> if (text.length == 1) nextView!!.requestFocus()
+                R.id.verificationCode4 -> if (text.length == 1) nextView!!.requestFocus()
+                R.id.verificationCode5 -> if (text.length == 1) nextView!!.requestFocus()
                 //You can use EditText4 same as above to hide the keyboard
             }
         }
@@ -220,5 +231,5 @@ class VerificationCodeFragment : BaseFragment<
         ) { // TODO Auto-generated method stub
         }
 
-    }
+    }*/
 }

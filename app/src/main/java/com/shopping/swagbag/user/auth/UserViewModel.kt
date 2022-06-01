@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.settings.SettingsModel
 import com.shopping.swagbag.user.auth.resetpassword.PasswordResetEmailSendModel
 import com.shopping.swagbag.user.auth.resetpassword.PasswordResetModel
 import com.shopping.swagbag.user.auth.signin.SignInModel
@@ -201,4 +202,6 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         return result
 
     }
+
+    fun deactivateAccount(userid: String, deactivateReason: String){}
 }

@@ -8,17 +8,17 @@
 
     <ImageView
         android:id="@+id/imgProduct"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="@dimen/product_image_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@mipmap/navigation_header_user_img" />
 
+<!--
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="@dimen/product_sale_rating_size"
-        android:visibility="gone"
         android:layout_marginBottom="@dimen/space_between_views"
         android:background="@drawable/rec_white_12"
         android:paddingHorizontal="@dimen/dimen_10"
@@ -69,11 +69,11 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imgView"
             app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_10"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,10 +83,11 @@
         <TextView
             android:id="@+id/tvProductName"
             style="@style/autowide_normal_10_state_green"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="@string/verganan"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

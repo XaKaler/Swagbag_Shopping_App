@@ -95,7 +95,7 @@ class DropDownCategoryAdapter(
 
                                         activity.run {
                                             closeDrawer()
-                                            hideToolbar()
+                                            hideToolbarAndBottomNavigation()
                                         }
 
                                         navController

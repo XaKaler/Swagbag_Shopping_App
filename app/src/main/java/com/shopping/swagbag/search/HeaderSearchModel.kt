@@ -55,14 +55,14 @@ data class HeaderSearchModel(
             val point: Int, // 0
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-03-21T13:44:02.881Z
-            val price: Int, // 200
+            val price: String, // 200
             @SerializedName("product_types")
             val productTypes: List<String>,
             @SerializedName("return_day")
             val returnDay: String,
             val returnable: String,
             @SerializedName("selling_price")
-            val sellingPrice: Any?, // null
+            val sellingPrice: String, // null
             val sgst: String,
             @SerializedName("shelving_location")
             val shelvingLocation: String,

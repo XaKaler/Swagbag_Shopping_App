@@ -43,7 +43,7 @@ class TravelFragment : Fragment(R.layout.fragment_travel), RecycleItemClickListe
         viewBinding = FragmentTravelBinding.bind(view)
 
         initViews()
-        mainActivity.showToolbar()
+        mainActivity.showToolbarAndBottomNavigation()
     }
 
 

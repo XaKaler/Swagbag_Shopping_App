@@ -39,8 +39,10 @@ class AddAddressFragment : BaseFragment<
     private lateinit var settingViewModel: SettingViewModel
     private lateinit var getAddress: AllAddressModel.Result
     private val allCountries = ArrayList<String>()
+    private val countryCodes = ArrayList<String>()
     private var allCities = ArrayList<String>()
     private var country: String = ""
+    private var countryCode: String = ""
     private var city: String = ""
     private var addressArgs: String = ""
 
@@ -76,6 +78,43 @@ class AddAddressFragment : BaseFragment<
         }
     }
 
+    private fun setCountryCode() {
+        with(viewBinding) {
+            val arrayAdapter = context?.let { it1 ->
+                ArrayAdapter(
+                    it1,
+                    R.layout.single_text_view,
+                    countryCodes
+                )
+            }
+
+            autoCompleteCountryCode.run {
+                setAdapter(arrayAdapter)
+                addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                    }
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {
+                        countryCode = s.toString()
+                    }
+                })
+            }
+        }
+    }
+
     private fun getArgument() {
         val args: AddAddressFragmentArgs by navArgs()
         addressArgs = args.address
@@ -97,6 +136,7 @@ class AddAddressFragment : BaseFragment<
             autoCompleteCountry.setText(getAddress.country)
             edtTitle.setText(getAddress.title)
         }
+        setCountryCode()
     }
 
     private fun getAllCountries() {
@@ -109,10 +149,12 @@ class AddAddressFragment : BaseFragment<
 
                     for (singleCountry in it.value.result) {
                         allCountries.add(singleCountry.name)
+                        countryCodes.add(singleCountry.countryCode)
                     }
 
-                    // set county in autocomplete edit text
+                    // set county and country code in autocomplete edit text
                     setAllCountries()
+                    setCountryCode()
                 }
 
                 is Resource.Failure -> {
@@ -226,6 +268,7 @@ class AddAddressFragment : BaseFragment<
             val address2 = edtAddress2.text.toString()
             val pinCode = edtPincode.text.toString()
             val userCountry = autoCompleteCountry.text.toString()
+           // val countryCode = autoCompleteCountryCode.text.toString()
             val userCity = autoCompleteCity.text.toString()
             val title = edtTitle.text.toString()
             val postOffice = ""
@@ -238,6 +281,7 @@ class AddAddressFragment : BaseFragment<
                 address.isNotEmpty() &&
                 pinCode.isNotEmpty() &&
                 userCountry.isNotEmpty() &&
+                countryCode.isNotEmpty() &&
                 userCity.isNotEmpty() &&
                 title.isNotEmpty()
 

@@ -23,7 +23,7 @@ class ProductsFragment : BaseFragment<
         FragmentProductsBinding,
         ProductViewModel,
         ProductRepository
-        >(FragmentProductsBinding::inflate), View.OnClickListener {
+        >(FragmentProductsBinding::inflate) {
 
     private lateinit var toolbarBinding: ToolbarWithThreeMenusBinding
     private lateinit var appUtils: AppUtils
@@ -49,7 +49,9 @@ class ProductsFragment : BaseFragment<
 
         // click listeners
         with(viewBinding) {
-            tvSortBy.setOnClickListener(this@ProductsFragment)
+            btnFilter.setOnClickListener {
+                findNavController().navigate(R.id.action_productsFragment_to_filterFragment)
+            }
         }
     }
 
@@ -57,7 +59,6 @@ class ProductsFragment : BaseFragment<
         val args: ProductsFragmentArgs by navArgs()
         val productSearchParameters =
             Gson().fromJson(args.productSearchParameters, ProductSearchParameters::class.java)
-        //in argument we are not getting category id we get its name like(men, women..) and call api accordingly
 
         Log.e("products", "$productSearchParameters")
 
@@ -136,14 +137,6 @@ class ProductsFragment : BaseFragment<
                     findNavController().navigate(R.id.action_global_signInFragment)
             }
 
-        }
-    }
-
-    override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.tvSortBy->{
-                findNavController().navigate(R.id.action_productsFragment_to_filterFragment)
-            }
         }
     }
 

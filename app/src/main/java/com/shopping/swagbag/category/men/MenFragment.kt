@@ -42,7 +42,7 @@ class MenFragment : androidx.fragment.app.Fragment(R.layout.fragment_men), Recyc
         viewBinding = FragmentMenBinding.bind(view)
 
         initViews()
-        mainActivity.showToolbar()
+        mainActivity.showToolbarAndBottomNavigation()
     }
 
     private fun initViews() {

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.wallet.WalletFragment">
+
+
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/toolbar_with_no_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/screen_horizontal_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeToolbar">
+
+
+        <EditText
+            android:id="@+id/edtGiftCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_between_view_and_subview"
+            android:background="@drawable/rec_outline_5"
+            android:ems="10"
+            android:hint="Gift card"
+            android:inputType="textPersonName"
+            android:padding="@dimen/dimen_10"
+            app:layout_constraintEnd_toStartOf="@+id/btnRedeem"
+            app:layout_constraintStart_toStartOf="@+id/swagbagWallet"
+            app:layout_constraintTop_toBottomOf="@+id/swagbagWallet" />
+
+        <TextView
+            android:id="@+id/swagbagWallet"
+            style="@style/roboto_medium_16_davys_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SwagBag Wallet (0)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnRedeem"
+            style="@style/roboto_medium_14_black"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/rec_light_red_background_5"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/screen_padding_15"
+            android:text="redeem"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/edtGiftCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edtGiftCard" />
+
+        <include
+            android:id="@+id/includeWalletHeading"
+            layout="@layout/lyt_wallet_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_between_views"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtGiftCard" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWallet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/includeWalletHeading"
+            tools:listitem="@layout/single_wallet" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

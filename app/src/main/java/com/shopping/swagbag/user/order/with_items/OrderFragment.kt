@@ -15,10 +15,10 @@ import com.shopping.swagbag.common.base.BaseFragment
 import com.shopping.swagbag.databinding.FragmentOrderWithItemsBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
 import com.shopping.swagbag.main_activity.MainActivity
-import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.utils.AppUtils
 
 class OrderFragment : BaseFragment<
@@ -46,7 +46,14 @@ class OrderFragment : BaseFragment<
     }
 
     private fun initViews() {
-        getOrderItems()
+        //set or get orders
+        if (this::orderProducts.isInitialized) {
+            if(orderProducts.isEmpty())
+                showEmptyOrder()
+            else
+                setOrderItems()
+        } else
+            getOrderItems()
 
         setToolbar()
     }
@@ -69,9 +76,7 @@ class OrderFragment : BaseFragment<
                                showEmptyOrder()
                             } else {
                                 Log.e("order", "getOrderItems: ${it.value}")
-                                viewBinding.orderWithItems.visibility = View.VISIBLE
-                                viewBinding.orderWithoutItems.visibility = View.GONE
-                                setOrderItems(it.value)
+                                setOrderItems()
                             }
 
                         }
@@ -88,22 +93,26 @@ class OrderFragment : BaseFragment<
                 }
     }
 
-    private fun setOrderItems(orderList: OrderModel) {
+    private fun setOrderItems() {
         with(viewBinding) {
+            orderWithItems.visibility = View.VISIBLE
+            orderWithoutItems.visibility = View.GONE
+
             rvOrderItems.apply {
                 layoutManager = LinearLayoutManager(context)
                 orderItemsAdapter = OrderItemsAdapter(
                     context,
-                    orderList,
+                    orderProducts,
                     mainActivity.getSettingResult("Cancel time (Min.)"),
-                    object: RecycleViewItemClick{
+                    object : RecycleViewItemClick {
                         override fun onItemClickWithName(name: String, position: Int) {
                             when (name) {
                                 "view" -> {
                                     val gsonString = Gson().toJson(orderProducts[position])
-                                    val action = OrderFragmentDirections.actionOrderWithItemsFragmentToViewOrderDetails(
-                                        gsonString
-                                    )
+                                    val action =
+                                        OrderFragmentDirections.actionOrderWithItemsFragmentToViewOrderDetails(
+                                            gsonString
+                                        )
                                     findNavController().navigate(action)
                                 }
                                 "cancel" -> {

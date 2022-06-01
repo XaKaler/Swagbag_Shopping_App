@@ -46,7 +46,7 @@ class KidsFragment : Fragment(R.layout.fragment_kids), RecycleItemClickListener 
 
         initViews()
 
-        mainActivity.showToolbar()
+        mainActivity.showToolbarAndBottomNavigation()
     }
 
 

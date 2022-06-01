@@ -14,8 +14,11 @@ class AddressAdapter(
 ) :
     RecyclerView.Adapter<AddressAdapter.MyViewHolder>() {
 
+    var selectedPosition = -1
+
     inner class MyViewHolder(private val viewBinding: SingleUserDetailBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
+
 
         fun bind(singleData: AllAddressModel.Result, position: Int, itemClick: RecycleViewItemClick){
             with(viewBinding){
@@ -25,6 +28,9 @@ class AddressAdapter(
                 val fullAddress = "${singleData.address}\n${singleData.city}, ${singleData.state}\n${singleData.pincode}\n\n${singleData.contactMobile}"
                 address.text = fullAddress
 
+                //when user click on checkbox to set default address
+                defaultAddress.isChecked = selectedPosition == position
+
                 //click listners
                 edit.setOnClickListener{
                     itemClick.onItemClickWithName("edit", position)
@@ -32,6 +38,11 @@ class AddressAdapter(
 
                 delete.setOnClickListener{
                     itemClick.onItemClickWithName("delete", position)
+                }
+
+                defaultAddress.setOnClickListener {
+                    selectedPosition = position
+                    itemClick.onItemClickWithName("default", position)
                 }
 
             }

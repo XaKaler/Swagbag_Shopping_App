@@ -9,8 +9,7 @@
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:button="@drawable/checkbox_selector"
-        style="@style/roboto_normal_14_sonic_silver"
+         style="@style/roboto_normal_14_sonic_silver"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/space_between_views"

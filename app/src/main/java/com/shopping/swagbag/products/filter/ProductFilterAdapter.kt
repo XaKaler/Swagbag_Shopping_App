@@ -22,7 +22,7 @@ class ProductFilterAdapter(
 ) :
     RecyclerView.Adapter<ProductFilterAdapter.MyViewHolder>() {
 
-    var selectedPosition =-1
+    var selectedPosition = 0
 
     inner class MyViewHolder(private val viewBinding: SingleFilterBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
@@ -48,7 +48,7 @@ class ProductFilterAdapter(
                         selectedPosition = position
                         notifyDataSetChanged()
                     }
-                    Log.e("TAG", "bind: ${singleData.filterName}", )
+                   // Log.e("TAG", "bind: ${singleData.filterName}", )
 
                 }
             }

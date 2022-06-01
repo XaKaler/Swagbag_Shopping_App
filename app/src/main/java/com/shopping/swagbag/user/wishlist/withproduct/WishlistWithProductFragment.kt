@@ -32,7 +32,7 @@ class WishlistWithProductFragment : BaseFragment<
     private lateinit var toolbarBinding: ToolbarWithTwoMenusDeleteAndCartBinding
     private lateinit var wistListProduct: GetWishlistModel
     private lateinit var wishlistProductAdapter: WishlistWithProductAdapter
-    private val appUtils = context?.let { AppUtils(it) }
+   // private val appUtils = context?.let { AppUtils(it) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -199,7 +199,7 @@ class WishlistWithProductFragment : BaseFragment<
                         is Resource.Success -> {
                             stopShowingLoading()
 
-                            toast(it.value.message)
+                            //toast("")
 
                             val allDataList: MutableList<GetWishlistModel.Result> =
                                 wistListProduct.result as MutableList

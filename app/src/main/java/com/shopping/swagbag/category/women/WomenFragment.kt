@@ -43,7 +43,7 @@ class WomenFragment : Fragment(R.layout.fragment_women), RecycleItemClickListene
         viewBinding = FragmentWomenBinding.bind(view)
 
         initViews()
-        mainActivity.showToolbar()
+        mainActivity.showToolbarAndBottomNavigation()
 
 
     }

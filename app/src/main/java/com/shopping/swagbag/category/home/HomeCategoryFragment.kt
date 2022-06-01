@@ -47,7 +47,7 @@ class HomeFragment : Fragment(R.layout.fragment_home_category), RecycleItemClick
         toolbarBinding = viewBinding.include
 
         initViews()
-        mainActivity.showToolbar()
+        mainActivity.showToolbarAndBottomNavigation()
     }
 
     private fun initViews() {

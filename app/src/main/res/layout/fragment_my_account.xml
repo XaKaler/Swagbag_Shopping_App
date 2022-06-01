@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account.myaccount.MyAccountFragment">
+
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/toolbar_with_no_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeToolbar">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="@dimen/screen_horizontal_padding"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/screen_margin_5"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/screen_horizontal_padding">
+
+
+                    <TextView
+                        android:id="@+id/tvReferCode"
+                        style="@style/roboto_medium_14_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/screen_horizontal_padding"
+                        android:text="Refer Code: "
+                        android:textColor="@color/Nickel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvReferCode2"
+                        style="@style/roboto_medium_14_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/screen_horizontal_padding"
+                        android:text="Your Details"
+                        android:textColor="@color/Nickel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view25" />
+
+                    <TextView
+                        android:id="@+id/btnEditProfile"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/screen_horizontal_padding"
+                        android:text="Edit"
+                        android:textAllCaps="true"
+                        android:textColor="@color/steel_teal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view25" />
+
+                    <TextView
+                        android:id="@+id/btnEditProfileCommunicationPreference"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/screen_horizontal_padding"
+                        android:text="Edit"
+                        android:textAllCaps="true"
+                        android:textColor="@color/steel_teal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+                    <TextView
+                        android:id="@+id/btnEditProfileAddress"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/screen_horizontal_padding"
+                        android:text="Edit Address"
+                        android:textAllCaps="true"
+                        android:textColor="@color/steel_teal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view26" />
+
+                    <TextView
+                        android:id="@+id/textView135"
+                        style="@style/roboto_medium_14_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_views"
+                        android:text="Your address"
+                        android:textColor="@color/Nickel"
+                        app:layout_constraintStart_toStartOf="@+id/tvYourDetails"
+                        app:layout_constraintTop_toBottomOf="@+id/view26" />
+
+                    <View
+                        android:id="@+id/view25"
+                        style="@style/line_horizontal"
+                        android:layout_marginTop="@dimen/space_between_views"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvReferCode" />
+
+                    <TextView
+                        android:id="@+id/tvYourDetails"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="@dimen/space_between_views"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:text="First name : "
+                        app:layout_constraintEnd_toStartOf="@+id/btnEditProfile"
+                        app:layout_constraintStart_toStartOf="@+id/view25"
+                        app:layout_constraintTop_toBottomOf="@+id/tvReferCode2" />
+
+                    <View
+                        android:id="@+id/view26"
+                        style="@style/line_horizontal"
+                        android:layout_marginTop="@dimen/space_between_views"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvYourDetails" />
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        android:text="Please add your delivery address"
+                        app:layout_constraintStart_toStartOf="@+id/textView135"
+                        app:layout_constraintTop_toBottomOf="@+id/textView135" />
+
+                    <View
+                        android:id="@+id/view27"
+                        style="@style/line_horizontal"
+                        android:layout_marginTop="@dimen/space_between_views"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
+
+                    <TextView
+                        android:id="@+id/getInvoice"
+                        style="@style/roboto_medium_13_red_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:background="@drawable/rec_outline_5_electirc_blue"
+                        android:paddingHorizontal="80dp"
+                        android:paddingVertical="@dimen/dimen_15"
+                        android:text="Get Invoice"
+                        android:textColor="@color/medium_electric_blue"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/paymentMode" />
+
+                    <TextView
+                        android:id="@+id/textView141"
+                        style="@style/roboto_medium_14_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_views"
+                        android:text="Communication Preferences"
+                        android:textColor="@color/Nickel"
+                        app:layout_constraintStart_toStartOf="@+id/tvAddress"
+                        app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+                    <TextView
+                        android:id="@+id/paymentMode"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:text="Subscribe to our newsletters and be the first with our new arrivals. exclusive collections. offers and more."
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView141"
+                        app:layout_constraintTop_toBottomOf="@+id/textView141" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_margin_5"
+                android:layout_marginVertical="@dimen/space_between_views"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/card"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_15">
+
+
+                    <TextView
+                        android:id="@+id/btnDeactvateAccount"
+                        style="@style/roboto_normal_14_davys_grey"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_views"
+                        android:background="@drawable/rec_light_red_background_5"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/dimen_15"
+                        android:text="deactivate your account now"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView104" />
+
+                    <TextView
+                        android:id="@+id/textView143"
+                        style="@style/roboto_medium_14_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Deactivate account"
+                        android:textColor="@color/day_davys_grey_night_dark_silver"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView104"
+                        style="@style/roboto_normal_12_sonic_silver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        android:text="Once deactivated, you will not be able to login again."
+                        app:layout_constraintStart_toStartOf="@+id/textView143"
+                        app:layout_constraintTop_toBottomOf="@+id/textView143" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

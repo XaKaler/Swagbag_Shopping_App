@@ -35,10 +35,10 @@ class FilterFragment : Fragment(R.layout.fragment_filter), RecycleItemClick {
 
         with(viewBinding){
             apply.setOnClickListener{
-                findNavController().navigate(R.id.action_filterFragment_to_productsFragment)
+
             }
             close.setOnClickListener{
-                findNavController().navigate(R.id.action_filterFragment_to_productsFragment)
+                findNavController().popBackStack()
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.shopping.swagbag.main_activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -88,7 +87,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
             btmNavigation.setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.btmWishlist -> {
-                        hideToolbar()
+                        hideToolbarAndBottomNavigation()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
@@ -100,7 +99,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                     }
 
                     R.id.btmCart ->{
-                        hideToolbar()
+                        hideToolbarAndBottomNavigation()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
@@ -112,7 +111,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                     }
 
                     R.id.btmCategory ->{
-                        hideToolbar()
+                        hideToolbarAndBottomNavigation()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
@@ -120,21 +119,21 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
                     }
 
                     R.id.btmOffers -> {
-                        hideToolbar()
+                        hideToolbarAndBottomNavigation()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
                             navController.navigate(R.id.action_global_brandFragment)
                     }
 
-                    R.id.btmProfile -> {
-                        hideToolbar()
+                    R.id.btmAccount -> {
+                        hideToolbarAndBottomNavigation()
                         val navHostFragment =
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                         val navController = navHostFragment.navController
 
                         if (appUtils.isUserLoggedIn())
-                            navController.navigate(R.id.action_global_profileFragment)
+                            navController.navigate(R.id.action_global_accountFragment)
                         else
                             navController.navigate(R.id.action_global_signInFragment)
 
@@ -220,7 +219,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         }
     }
 
-    private fun getWallet() {
+    fun getWallet() {
         if (appUtils.isUserLoggedIn()) {
             userViewModel.wallet(appUtils.getUserId(), "", "").observe(this) {
                 when (it) {
@@ -338,7 +337,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
             }
 
             fragmentSearch.setOnClickListener {
-                hideToolbar()
+                hideToolbarAndBottomNavigation()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
@@ -346,7 +345,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
             }
 
             fragmentNotificaiton.setOnClickListener {
-                hideToolbar()
+                hideToolbarAndBottomNavigation()
                 val navHostFragment =
                     supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_home) as NavHostFragment
                 val navController = navHostFragment.navController
@@ -372,7 +371,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         }
     }
 
-    fun showToolbar() {
+    fun showToolbarAndBottomNavigation() {
         if (this::viewBinding.isInitialized) {
             viewBinding.toolbar.root.visibility = View.VISIBLE
             viewBinding.btmNavigation.visibility = View.VISIBLE
@@ -380,7 +379,7 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
         }
     }
 
-    fun hideToolbar() {
+    fun hideToolbarAndBottomNavigation() {
         viewBinding.toolbar.root.visibility = View.GONE
         viewBinding.btmNavigation.visibility = View.GONE
         viewBinding.rvCategorySlider.visibility = View.GONE
@@ -405,6 +404,8 @@ class MainActivity : AppCompatActivity(), RecycleViewItemClick{
     }
 
     fun getReturnReason() = settingResult.returnReason
+
+    fun getDeactivateAccountReason() = settingResult.deactivateReason
 
     private fun getSettings() {
         settingViewModel.settings().observe(this) {

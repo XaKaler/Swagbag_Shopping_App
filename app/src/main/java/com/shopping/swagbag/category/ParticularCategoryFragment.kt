@@ -32,7 +32,6 @@ import com.shopping.swagbag.products.ProductSearchParameters
 import com.shopping.swagbag.products.product_details.ProductDetailsFragmentDirections
 import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.service.apis.CategoryApi
-import kotlin.system.exitProcess
 
 class ParticularCategoryFragment :
     BaseFragment<FragmentParticularCategoryBinding,
@@ -69,7 +68,7 @@ RecycleViewItemClick{
         }
 
         initViews()
-        mainActivity.showToolbar()
+        mainActivity.showToolbarAndBottomNavigation()
     }
 
     private fun initViews() {
@@ -211,7 +210,7 @@ RecycleViewItemClick{
                     override fun onItemClickWithName(name: String, position: Int) {
                         when (name) {
                             "products" -> {
-                                mainActivity.hideToolbar()
+                                mainActivity.hideToolbarAndBottomNavigation()
                                 val productSearchParameters = ProductSearchParameters(
                                     "", "", "", categoryData.result.category[position].id,
                                     "", "", "", categoryName, ""
@@ -317,7 +316,7 @@ RecycleViewItemClick{
     }
 
     override fun onItemClickWithName(name: String, position: Int) {
-        mainActivity.hideToolbar()
+        mainActivity.hideToolbarAndBottomNavigation()
         val action = ProductDetailsFragmentDirections.actionGlobalProductDetailsFragment(name)
         findNavController().navigate(action)
     }

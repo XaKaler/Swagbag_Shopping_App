@@ -11,7 +11,6 @@
         style="@style/roboto_normal_14_sonic_silver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:button="@drawable/checkbox_selector"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

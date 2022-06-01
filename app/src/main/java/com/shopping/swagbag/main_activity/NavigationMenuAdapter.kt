@@ -11,7 +11,6 @@ import com.shopping.swagbag.R
 import com.shopping.swagbag.category.CategoryModel
 import com.shopping.swagbag.common.adapter.DropDownCategoryAdapter
 import com.shopping.swagbag.databinding.SingleNavigationMenuBinding
-import com.shopping.swagbag.dummy.DummyData
 import com.shopping.swagbag.utils.AppUtils
 
 
@@ -73,7 +72,7 @@ class NavigationMenuAdapter (
                 }
                 "Orders" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     if (appUtils.isUserLoggedIn())
                         navController.navigate(R.id.action_global_orderWithItemsFragment)
                     else
@@ -81,7 +80,7 @@ class NavigationMenuAdapter (
                 }
                 "Address" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     if (appUtils.isUserLoggedIn())
                         navController.navigate(R.id.action_global_viewUserDetailsFragment)
                      else
@@ -89,42 +88,42 @@ class NavigationMenuAdapter (
                 }
                 "Coupons" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     navController.navigate(R.id.action_global_couponsFragment)
                 }
                 "Help Center" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     navController.navigate(R.id.action_global_helpCenterWithoutOrder)
                 }
                 "FAQs" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     navController.navigate(R.id.action_global_FAQsFragment)
                 }
                 "About Us" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     navController.navigate(R.id.action_global_aboutUs)
                 }
                 "Contact Us" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     navController.navigate(R.id.action_global_contactUsFragment)
                 }
                 "Terms Of Use" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     navController.navigate(R.id.action_global_termsOfUsesFragment)
                 }
                 "Privacy Policy" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     navController.navigate(R.id.action_global_privacyPolicyFragment)
                 }
                 "Log Out" -> {
                     activity.closeDrawer()
-                    activity.hideToolbar()
+                    activity.hideToolbarAndBottomNavigation()
                     AppUtils(context).logOut()
                     navController.navigate(R.id.action_global_home2)
                 }
