@@ -72,8 +72,11 @@ class CreatePasswordFragment :
 
                 is Resource.Success -> {
                     stopShowingLoading()
-                    toast(it.value.message)
-                    findNavController().navigate(R.id.action_global_home2)
+                    val message = it.value.message
+                    toast(message)
+
+                    if (it.value.message != "Invalid email/OTP")
+                        findNavController().navigate(R.id.action_global_home2)
                 }
 
                 is Resource.Failure -> {

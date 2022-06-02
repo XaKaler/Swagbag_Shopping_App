@@ -1,5 +1,7 @@
 package com.shopping.swagbag.user.address.add_address
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,9 +10,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.model.TypeFilter
+import com.google.android.libraries.places.api.net.PlacesClient
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.gson.Gson
 import com.shopping.swagbag.R
 import com.shopping.swagbag.common.base.BaseFragment
@@ -23,11 +34,12 @@ import com.shopping.swagbag.service.apis.UserApi
 import com.shopping.swagbag.settings.SettingRepository
 import com.shopping.swagbag.settings.SettingViewModelFactory
 import com.shopping.swagbag.user.address.address_list.AllAddressModel
-import com.shopping.swagbag.user.address.edit_address.EditAddressFragmentArgs
 import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.utils.AppUtils
 import com.shopping.swagbag.utils.SettingViewModel
+import java.util.*
+
 
 class AddAddressFragment : BaseFragment<
         FragmentAddAddressBinding,
@@ -45,6 +57,33 @@ class AddAddressFragment : BaseFragment<
     private var countryCode: String = ""
     private var city: String = ""
     private var addressArgs: String = ""
+    private val startAutocomplete = registerForActivityResult(
+        StartActivityForResult(),
+        (ActivityResultCallback { result: ActivityResult ->
+            if (result.resultCode === Activity.RESULT_OK) {
+                val intent: Intent? = result.data
+                if (intent != null) {
+                    val place = Autocomplete.getPlaceFromIntent(intent)
+
+                    // Write a method to read the address components from the Place
+                    // and populate the form with the address components
+                    val addressComp = place.addressComponents?.asList()
+                    var fullAddress = ""
+                    for(singlePlace in addressComp!!){
+                        "$fullAddress${singlePlace.name},"
+                    }
+
+                    Log.e("place", "Place: ${addressComp[0].name}")
+                    //fillInAddress(place)
+                    viewBinding.autoCompleteAddress1.setText(fullAddress)
+                    fullAddress = ""
+                }
+            } else if (result.resultCode === Activity.RESULT_CANCELED) {
+                // The user canceled the operation.
+                Log.i("TAG", "User canceled autocomplete")
+            }
+        } as ActivityResultCallback<ActivityResult>?)!!
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,10 +94,6 @@ class AddAddressFragment : BaseFragment<
     }
 
     private fun initViews() {
-        setToolbar()
-
-        getArgument()
-
         val settingRepository =
             SettingRepository(RemoteDataSource().getBaseUrl().create(SettingApi::class.java))
         settingViewModel = ViewModelProvider(
@@ -66,7 +101,6 @@ class AddAddressFragment : BaseFragment<
             SettingViewModelFactory(settingRepository)
         )[SettingViewModel::class.java]
 
-        getAllCountries()
 
         with(viewBinding) {
             btnSave.setOnClickListener {
@@ -75,7 +109,41 @@ class AddAddressFragment : BaseFragment<
             btnCancel.setOnClickListener {
                 findNavController().popBackStack()
             }
+            autoCompleteAddress1.setOnClickListener {
+                Log.e("click", "autoCompleteAddress1 clicked")
+                startAutocompleteIntent()
+            }
         }
+
+        getAllCountries()
+        //setAutoCompleteAddress()
+        setToolbar()
+        getArgument()
+    }
+
+    private fun startAutocompleteIntent() {
+        if(!Places.isInitialized()){
+            context?.let { Places.initialize(it, getString(R.string.google_map_api_key)) }
+
+        // Set the fields to specify which types of place data to
+        // return after the user has made a selection.
+        val fields: List<Place.Field> = listOf(
+            Place.Field.ADDRESS_COMPONENTS,
+            Place.Field.LAT_LNG, Place.Field.VIEWPORT
+        )
+
+        // Build the autocomplete intent with field, country, and type filters applied
+        val intent =
+            context?.let {
+                Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
+                    // .setCountry("US")
+                    .setTypeFilter(TypeFilter.ADDRESS)
+                    .build(it)
+            }
+
+            Log.e("place", "fields -> $fields\nintent -> $intent")
+        startAutocomplete.launch(intent)
+    }
     }
 
     private fun setCountryCode() {
@@ -341,7 +409,7 @@ class AddAddressFragment : BaseFragment<
                     findNavController().popBackStack()
                 }
 
-                is Resource.Failure -> Log.e("TAG", "getUserData: $it", )
+                is Resource.Failure -> Log.e("TAG", "getUserData: $it")
             }
         }
     }
