@@ -49,9 +49,6 @@ class ProductsFragment : BaseFragment<
 
         // click listeners
         with(viewBinding) {
-            btnFilter.setOnClickListener {
-                findNavController().navigate(R.id.action_productsFragment_to_filterFragment)
-            }
         }
     }
 

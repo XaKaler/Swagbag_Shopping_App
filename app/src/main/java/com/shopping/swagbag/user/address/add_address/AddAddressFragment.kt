@@ -18,8 +18,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
-import com.google.android.libraries.places.api.model.TypeFilter
-import com.google.android.libraries.places.api.net.PlacesClient
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.gson.Gson
@@ -38,7 +36,6 @@ import com.shopping.swagbag.user.auth.UserRepository
 import com.shopping.swagbag.user.auth.UserViewModel
 import com.shopping.swagbag.utils.AppUtils
 import com.shopping.swagbag.utils.SettingViewModel
-import java.util.*
 
 
 class AddAddressFragment : BaseFragment<
@@ -69,13 +66,13 @@ class AddAddressFragment : BaseFragment<
                     // and populate the form with the address components
                     val addressComp = place.addressComponents?.asList()
                     var fullAddress = ""
-                    for(singlePlace in addressComp!!){
+                    /*for(singlePlace in addressComp!!){
                         "$fullAddress${singlePlace.name},"
-                    }
+                    }*/
 
-                    Log.e("place", "Place: ${addressComp[0].name}")
+                    Log.e("place", "Place: ${place.address}")
                     //fillInAddress(place)
-                    viewBinding.autoCompleteAddress1.setText(fullAddress)
+                    viewBinding.autoCompleteAddress1.setText(place.address)
                     fullAddress = ""
                 }
             } else if (result.resultCode === Activity.RESULT_CANCELED) {
@@ -110,7 +107,7 @@ class AddAddressFragment : BaseFragment<
                 findNavController().popBackStack()
             }
             autoCompleteAddress1.setOnClickListener {
-                Log.e("click", "autoCompleteAddress1 clicked")
+                //Log.e("click", "autoCompleteAddress1 clicked")
                 startAutocompleteIntent()
             }
         }
@@ -122,28 +119,31 @@ class AddAddressFragment : BaseFragment<
     }
 
     private fun startAutocompleteIntent() {
-        if(!Places.isInitialized()){
+        if (!Places.isInitialized()) {
             context?.let { Places.initialize(it, getString(R.string.google_map_api_key)) }
+        }
 
         // Set the fields to specify which types of place data to
-        // return after the user has made a selection.
-        val fields: List<Place.Field> = listOf(
-            Place.Field.ADDRESS_COMPONENTS,
-            Place.Field.LAT_LNG, Place.Field.VIEWPORT
+        // return after the user has made a selection. s
+        val fields = listOf(
+            Place.Field.ID,
+            Place.Field.NAME,
+            Place.Field.LAT_LNG,
+            Place.Field.ADDRESS,
+            Place.Field.NAME
         )
 
         // Build the autocomplete intent with field, country, and type filters applied
         val intent =
             context?.let {
-                Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
-                    // .setCountry("US")
-                    .setTypeFilter(TypeFilter.ADDRESS)
+                Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
+                    //.setCountries(allCountries)
+                    .setCountry("IN")
                     .build(it)
             }
 
-            Log.e("place", "fields -> $fields\nintent -> $intent")
+        Log.e("place", "fields -> $fields\nintent -> $intent")
         startAutocomplete.launch(intent)
-    }
     }
 
     private fun setCountryCode() {

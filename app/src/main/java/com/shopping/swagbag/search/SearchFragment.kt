@@ -19,13 +19,15 @@ import com.shopping.swagbag.R
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
+import com.shopping.swagbag.common.base.GeneralFunction
 import com.shopping.swagbag.databinding.FragmentSearchBinding
+import com.shopping.swagbag.databinding.LytProductMenuBinding
 import com.shopping.swagbag.databinding.SearchBarBinding
 import com.shopping.swagbag.databinding.ToolbarWithNoMenuWhiteBgBinding
-import com.shopping.swagbag.service.apis.ProductApi
 import com.shopping.swagbag.products.ProductRepository
 import com.shopping.swagbag.products.ProductViewModel
 import com.shopping.swagbag.service.Resource
+import com.shopping.swagbag.service.apis.ProductApi
 
 
 class SearchFragment : BaseFragment<FragmentSearchBinding,
@@ -33,15 +35,21 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
         ProductRepository>(FragmentSearchBinding::inflate), View.OnClickListener {
 
     private lateinit var toolbarBinding: ToolbarWithNoMenuWhiteBgBinding
+    private lateinit var productMenuBinding: LytProductMenuBinding
     private lateinit var searchBarBinding: SearchBarBinding
     private lateinit var searchBar: EditText
     private lateinit var searchProduct: HeaderSearchModel
+    private val masterCategoryList = ArrayList<String>()
+    private var currentMasterCategory = ""
+    private var currentMasterCategoryItems = ArrayList<HeaderSearchModel.Result.Product>()
+    private val productMap = mutableMapOf<String, List<HeaderSearchModel.Result.Product>>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         toolbarBinding = viewBinding.include
         searchBarBinding = viewBinding.lytSearchBar
+        productMenuBinding = viewBinding.includeProductMenu
 
         searchBar = view.findViewById(R.id.searchBar) as EditText
 
@@ -56,7 +64,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
         }
 
         if(this::searchProduct.isInitialized)
-            showSearchResult()
+            showSearchResult(currentMasterCategoryItems)
+        else
+            showSoftKeyboard(searchBar)
 
         searchBar.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -71,7 +81,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
         })
 
         searchBar.requestFocus()
-        showSoftKeyboard(searchBar)
         setToolbar()
     }
 
@@ -94,8 +103,27 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
                         searchProduct = it.value
                         if (it.value.result.isEmpty())
                             showNoProductFound()
-                        else
-                            showSearchResult()
+                        else {/*
+                            viewBinding.lytSearchBar.root.visibility = View.GONE
+                            viewBinding.includeProductMenu.root.visibility = View.VISIBLE*/
+
+                            //separate data
+                            masterCategoryList.clear()
+                            productMap.clear()
+                            for (singleResult in searchProduct.result) {
+                                masterCategoryList.add(singleResult.name)
+                                productMap[singleResult.name] = singleResult.product
+                            }
+
+                            //show 1st category data
+                            currentMasterCategory = masterCategoryList[0]
+                            currentMasterCategoryItems = productMap[currentMasterCategory]!! as ArrayList
+
+                            //when user click on master category then show him a list dialog
+                            //after click on any item in list then show related result
+                            setProductMenu()
+                            showSearchResult(currentMasterCategoryItems)
+                        }
                     }
 
                     is Resource.Failure -> {
@@ -109,18 +137,54 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
             }
     }
 
+    private fun setProductMenu() {
+        with(productMenuBinding) {
+            //set sort by list
+            tvSortBy.setOnClickListener {
+                openListDialog(
+                    tvSortBy,
+                    GeneralFunction.getSortBY(),
+                    false
+                ) { result ->
+                    when (result) {
+                        "Default" -> {showSearchResult(currentMasterCategoryItems)}
+                        "Latest" -> {currentMasterCategoryItems}
+                        "Sort forward price low" -> {}
+                        "Sort forward price high" -> {}
+                    }
+                }
+            }
+
+            //set master category list
+            masterCategoryName.setOnClickListener {
+                openListDialog(
+                    masterCategoryName,
+                    masterCategoryList.toTypedArray(),
+                    true
+                ) { result ->
+                    for (singleMasterCategory in masterCategoryList) {
+                        if (result == singleMasterCategory) {
+                            currentMasterCategory = result
+                            currentMasterCategoryItems = productMap[currentMasterCategory]!! as ArrayList
+                            showSearchResult(currentMasterCategoryItems)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private fun showNoProductFound() {
-        with(viewBinding){
+        productMenuBinding.root.visibility = View.GONE
+        with(viewBinding) {
             rvSearchProducts.visibility = View.GONE
             noProductFound.visibility = View.VISIBLE
         }
     }
 
-    private fun showSearchResult() {
-        val product = ArrayList<HeaderSearchModel.Result.Product>()
-        for(singleResult in searchProduct.result){
-            product.addAll(singleResult.product)
-        }
+    private fun showSearchResult(product: List<HeaderSearchModel.Result.Product>) {
+        viewBinding.includeProductMenu.root.visibility = View.VISIBLE
+        productMenuBinding.masterCategoryName.text = currentMasterCategory
 
         with(viewBinding) {
             rvSearchProducts.visibility = View.VISIBLE
@@ -131,7 +195,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
                 addItemDecoration(GridSpaceItemDecoration(5))
                 adapter = HeaderSearchAdapter(context, product, object : RecycleViewItemClick {
                     override fun onItemClickWithName(name: String, position: Int) {
-                        val action = SearchFragmentDirections.actionGlobalProductDetailsFragment(name)
+                        val action =
+                            SearchFragmentDirections.actionGlobalProductDetailsFragment(name)
                         findNavController().navigate(action)
                     }
                 })

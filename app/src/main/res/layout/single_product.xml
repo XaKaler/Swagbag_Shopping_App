@@ -10,6 +10,7 @@
         android:id="@+id/imgProduct"
         android:layout_width="0dp"
         android:layout_height="@dimen/product_image_height"
+        android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

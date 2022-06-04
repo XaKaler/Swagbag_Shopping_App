@@ -6,6 +6,7 @@ import java.util.*
 object GeneralFunction {
 
     fun getProductQty() = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    fun getSortBY() = arrayOf("Default", "Latest", "Sort forward price low", "Sort forward price high")
 
 
     fun convertServerDateToUserTimeZoneTask(

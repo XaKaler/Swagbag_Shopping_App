@@ -23,6 +23,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
+    <include
+        android:id="@+id/includeProductMenu"
+        layout="@layout/lyt_product_menu"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lytSearchBar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchProducts"
         android:layout_width="match_parent"
@@ -32,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lytSearchBar"
+        app:layout_constraintTop_toBottomOf="@+id/includeProductMenu"
         tools:listitem="@layout/single_product" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
