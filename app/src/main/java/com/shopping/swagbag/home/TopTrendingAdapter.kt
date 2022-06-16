@@ -27,7 +27,7 @@ class TopTrendingAdapter(
                 Glide
                     .with(context)
                     .load(singleData.file)
-                    .into(viewBinding.productImg)
+                    .into(viewBinding.topTrendingImg)
             }
         }
 

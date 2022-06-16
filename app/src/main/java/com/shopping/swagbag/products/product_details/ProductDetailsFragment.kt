@@ -2,11 +2,13 @@ package com.shopping.swagbag.products.product_details
 
 import android.content.Intent
 import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -24,6 +26,7 @@ import com.shopping.swagbag.service.Resource
 import com.shopping.swagbag.user.shoppingbeg.withproduct.AddToCartProductOptionModel
 import com.shopping.swagbag.utils.AppUtils
 import com.smarteist.autoimageslider.SliderView
+import kotlinx.android.synthetic.main.single_card_10.*
 import org.json.JSONArray
 import kotlin.properties.Delegates
 
@@ -56,11 +59,21 @@ class ProductDetailsFragment : BaseFragment<
 
     private fun initViews() {
         with(viewBinding) {
-            // make text strike threw
+            // set foreground color color of screen to white
+            // and remove after data get from api
+            productDetailsMainLayout.foreground =
+                context?.let { it1 ->
+                    ContextCompat.getColor(
+                        it1,
+                        R.color.white
+                    )
+                }?.let { it2 -> ColorDrawable(it2) }
+
+            /*// make text strike threw
             oldRate.paintFlags = oldRate.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             oldRate1.paintFlags = oldRate1.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             textView59.paintFlags = textView59.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-            textView590.paintFlags = textView590.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            textView590.paintFlags = textView590.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG*/
 
             sizeChart.setOnClickListener {
                 val action =
@@ -98,11 +111,13 @@ class ProductDetailsFragment : BaseFragment<
     private fun setData() {
         try{
             with(viewBinding) {
+                // remove foreground color so data can visible to user
+                productDetailsMainLayout.foreground = null
+
                 // set product details
                 productName.text = product.result.name
-                oldRate.text = product.result.price.toString()
 
-                sellingPrice = product.result.sellingPrice
+                sellingPrice = product.result.price
                 //finalPrice = sellingPrice
                 newRate.text = sellingPrice.toString()
 
@@ -114,7 +129,9 @@ class ProductDetailsFragment : BaseFragment<
                     off.text = discount
                 }
                 //sellerName.text = it.value.vendor
-                productInDetail.text = html2Text(product.result.desc)
+                productInDetail.text = html2Text(product.result.details)
+                description.text = html2Text(product.result.desc)
+                additionalDescription.text = html2Text(product.result.additionalDescription)
 
                 setViewSimilar(product.related)
                 setAutoImageSlider(product.result.file)
@@ -150,7 +167,7 @@ class ProductDetailsFragment : BaseFragment<
                             }
                             //option is coming in string form seperated with comma
                             //so we have exclude it
-                        } else if (optionName == "Color") {
+                        } else if (optionName == "Colour") {
                             viewBinding.colors.root.visibility = View.VISIBLE
                             colorList = stringToList(optionValue)
                             setProductColor(colorList)
@@ -179,7 +196,7 @@ class ProductDetailsFragment : BaseFragment<
 
                         product = it.value
                         setData()
-                        Log.e("product detail", "getProductDetails: $it")
+                       // Log.e("product detail", "getProductDetails: $it")
 
                     }
 
@@ -609,7 +626,7 @@ class ProductDetailsFragment : BaseFragment<
                                     "color list is empty ${colorList.isEmpty()}\n" +
                                     "selling price is : $sellingPrice\n" +
                                     "size price is : ${sizeList[position].price}\n" +
-                                    "final price is : ${sellingPrice + sizeList[position].price.toInt()}",
+                                    "final price is : ${sellingPrice + sizeList[position].price.toFloat()}",
                         )
 
                     } else {
@@ -623,7 +640,7 @@ class ProductDetailsFragment : BaseFragment<
                                     "selling price is : $sellingPrice\n" +
                                     "final color price is : ${finalColor!!.price}\n" +
                                     "size price is : ${sizeList[position].price}\n" +
-                                    "final price is : ${sellingPrice + sizeList[position].price.toInt() + finalColor!!.price.toInt()}",
+                                    "final price is : ${sellingPrice + sizeList[position].price.toFloat() + finalColor!!.price.toFloat()}",
                         )
                     }
 
@@ -639,7 +656,7 @@ class ProductDetailsFragment : BaseFragment<
                 finalColor = colorList[position]
 
                 if (finalSize == null || sizeList.isEmpty()) {
-                    finalPrice = sellingPrice + colorList[position].price.toInt().toInt()
+                    finalPrice = sellingPrice + colorList[position].price.toFloat()
                     Log.e(
                         "color",
                         "size list is empty or final color is null  \n " +
@@ -647,11 +664,11 @@ class ProductDetailsFragment : BaseFragment<
                                 "size list is empty ${sizeList.isEmpty()}\n" +
                                 "selling price is : $sellingPrice\n" +
                                 "color price is : ${colorList[position].price}\n" +
-                                "final price is : ${sellingPrice + colorList[position].price.toInt()}",
+                                "final price is : ${sellingPrice + colorList[position].price.toFloat()}",
                     )
 
                 } else {
-                    finalPrice = sellingPrice + finalSize!!.price.toInt() + colorList[position].price.toInt()
+                    finalPrice = sellingPrice + finalSize!!.price.toFloat() + colorList[position].price.toFloat()
 
                     Log.e(
                         "color",
@@ -661,7 +678,7 @@ class ProductDetailsFragment : BaseFragment<
                                 "selling price is : $sellingPrice\n" +
                                 "final size price is : ${finalSize!!.price}\n" +
                                 "color price is : ${colorList[position].price}\n" +
-                                "final price is : ${sellingPrice + finalSize!!.price.toInt() + colorList[position].price.toInt() }",
+                                "final price is : ${sellingPrice + finalSize!!.price.toFloat() + colorList[position].price.toFloat() }",
                     )
                 }
 

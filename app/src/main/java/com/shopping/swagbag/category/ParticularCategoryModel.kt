@@ -98,7 +98,7 @@ data class ParticularCategoryModel(
             val options: List<Option>,
             @SerializedName("packaging_charge")
             val packagingCharge: String, // 40
-            val point: Int, // 20
+            val point: String, // 20
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-01-30T00:00:00.000Z
             val price: Float, // 70
@@ -202,7 +202,7 @@ data class ParticularCategoryModel(
             val options: List<Option>,
             @SerializedName("packaging_charge")
             val packagingCharge: String, // 1
-            val point: Double, // 0.1
+            val point: String, // 0.1
             @SerializedName("point_exp_date")
             val pointExpDate: String, // 2022-04-06T00:00:00.000Z
             val price: Float, // 70

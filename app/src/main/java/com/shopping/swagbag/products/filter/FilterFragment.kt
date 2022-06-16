@@ -56,7 +56,7 @@ class FilterFragment : Fragment(R.layout.fragment_filter), RecycleItemClick {
         with(viewBinding){
             rvFilterList.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = ProductFilterAdapter(context, DummyData().getProductFilter(), this@FilterFragment)
+                //adapter = ProductFilterAdapter(context, DummyData().getProductFilter(), this@FilterFragment)
             }
         }
     }

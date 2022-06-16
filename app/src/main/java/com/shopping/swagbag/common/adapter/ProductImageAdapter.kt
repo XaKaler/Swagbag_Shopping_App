@@ -9,13 +9,15 @@ import android.widget.LinearLayout
 import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.model.BestProductModel
 import java.util.*
 
 
 class ProductImageAdapter(
     private val context: Context,
-    private val image: List<BestProductModel.File>
+    private val image: List<BestProductModel.File>,
+    private val itemClick: RecycleViewItemClick
 ) : PagerAdapter() {
 
     override fun getCount() = image.size
@@ -38,6 +40,11 @@ class ProductImageAdapter(
             .error(R.drawable.glide_error)
             .placeholder(R.drawable.glide_error)
             .into(imageView)
+
+        //click liseners
+        imageView.setOnClickListener {
+            itemClick.onItemClickWithName("image click", position)
+        }
 
         // Adding the View
         Objects.requireNonNull(container).addView(itemView)

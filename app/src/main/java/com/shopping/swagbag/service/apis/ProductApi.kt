@@ -3,6 +3,7 @@ package com.shopping.swagbag.service.apis
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
 import com.shopping.swagbag.products.ProductSearchModel
+import com.shopping.swagbag.products.filter.FilterModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.products.product_details.ProductReviewModel
@@ -165,4 +166,7 @@ interface ProductApi {
         @Field("rating")rating: String,
         @Field("review")review: String
     ): ProductReviewModel
+
+    @GET("filters")
+    suspend fun getFilter(@Query("name")category: String): FilterModel
 }

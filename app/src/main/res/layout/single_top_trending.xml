@@ -4,43 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:id="@+id/cateConstLayout"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/product_category_image_height"
     >
 
 
     <ImageView
-        android:id="@+id/productImg"
+        android:id="@+id/topTrendingImg"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/image_size_250"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="@dimen/product_category_image_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/found_nothing" />
+        app:srcCompat="@drawable/found_nothing"  />
 
-    <View
-        android:id="@+id/view37"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/black"
-        android:alpha="0.2"
-        app:layout_constraintBottom_toBottomOf="@+id/productImg"
-        app:layout_constraintEnd_toEndOf="@+id/productImg"
-        app:layout_constraintStart_toStartOf="@+id/productImg"
-        app:layout_constraintTop_toTopOf="@+id/productImg" />
-
-    <TextView
-        android:id="@+id/tvCatName"
-        style="@style/roboto_medium_18_davys_grey."
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_5"
-        android:text="Shop man"
-        android:visibility="gone"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/productImg"
-        app:layout_constraintEnd_toEndOf="@+id/productImg"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,9 @@ import com.shopping.swagbag.service.apis.ProductApi
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
+import kotlinx.android.synthetic.main.single_navigation_menu.*
 import kotlin.system.exitProcess
+import kotlin.text.Typography.section
 
 
 class Home :
@@ -79,10 +81,10 @@ RecycleViewItemClick{
 
     private fun setData(){
         setAutoImageSlider(homeResult.result.slider)
-        setTopTrending(homeResult.result.section)
+        setTopTrending(homeResult.result.masterCategory)
         setCategoryToBeg(homeResult.result.masterCategory)
         setDealOfTheDay(homeResult.result.deals)
-        setBestOffer(homeResult.result.randomCategory)
+        //setBestOffer(homeResult.result.randomCategory)
         setFeatureBrands(homeResult.result.featured)
         showOfferImages()
     }
@@ -125,37 +127,30 @@ RecycleViewItemClick{
             }
         }
     }
-
-    private fun setTopTrending(sections: List<HomeModel.Result.Section>) {
+    private fun setTopTrending(sections: List<HomeModel.Result.MasterCategory>) {
         val topTrendingData = ArrayList<TopTrendingModel>()
 
         // collect data from section
         for (singleSection in sections) {
-            for (singleData in singleSection.data) {
-                if (topTrendingData.size == 6)
-                    break
-                else {
-                    singleData.run {
-                        topTrendingData.add(
-                            TopTrendingModel(
-                                active,
-                                brand,
-                                category,
-                                createdDate,
-                                deleted,
-                                file,
-                                id,
-                                masterCategory,
-                                product,
-                                section,
-                                updateDate,
-                                url,
-                                v
-                            )
+            singleSection.run {
+                    topTrendingData.add(
+                        TopTrendingModel(
+                            active,
+                            "",
+                            "",
+                            createdDate,
+                            deleted,
+                            file,
+                            id,
+                            "",
+                            "",
+                            6,
+                            updateDate,
+                            "",
+                            v
                         )
-                    }
+                    )
                 }
-            }
         }
 
         with(viewBinding) {
@@ -213,7 +208,7 @@ RecycleViewItemClick{
         }
 
     }
-
+/*
     private fun setBestOffer(data: List<HomeModel.Result.RandomCategory>) {
         val allTimeSliderModel = ArrayList<AllTimeSliderModel>()
         for (item in data) {
@@ -237,7 +232,7 @@ RecycleViewItemClick{
             }
         }
 
-    }
+    }*/
 
     private fun setDealOfTheDay(data: List<HomeModel.Result.Deal>) {
         val bestProductModel = ArrayList<BestProductModel>()

@@ -94,4 +94,6 @@ class ProductRepository(private val api: ProductApi) : BaseRepository() {
         rating: String,
         review: String,
     ) = safeApiCall { api.addReview(userId, product, name, email, mobile, rating, review) }
+
+    suspend fun getFilter(category: String) = safeApiCall { api.getFilter(category) }
 }

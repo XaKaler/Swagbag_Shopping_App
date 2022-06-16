@@ -36,13 +36,18 @@ class BestProductAdapter(
                         .placeholder(R.drawable.logo)
                         .into(imgBestProduct)*/
 
-
-                    val productAdapter = ProductImageAdapter(context, singleData.file)
+                    //set image slider adapter
+                    val productAdapter =  ProductImageAdapter(context, singleData.file, object: RecycleViewItemClick{
+                        override fun onItemClickWithName(name: String, position: Int) {
+                            itemClick.onItemClickWithName(singleData.name, position)
+                        }
+                    })
                     imgBestProduct.adapter = productAdapter
 
                     // set text
                     tvBestProductName.text = singleData.name
                     tvBestProductDetails.text = singleData.description
+
 
                     itemView.setOnClickListener{
                         itemClick.onItemClickWithName(singleData.name, position)

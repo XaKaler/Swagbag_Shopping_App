@@ -174,7 +174,7 @@
             tools:listitem="@layout/single_best_products" />
 
         <TextView
-            android:id="@+id/heading5"
+            android:id="@+id/tvCategoryToBeg"
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -192,18 +192,19 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading5"
+            app:layout_constraintTop_toBottomOf="@id/tvCategoryToBeg"
             tools:itemCount="1"
             tools:listitem="@layout/single_category_to_beg" />
 
 
             <!--android:text="Best offers"-->
         <TextView
-            android:id="@+id/heading6"
+            android:id="@+id/tvBestOffer"
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/all_time_margin_start"
+            android:text="Best offers"
             android:layout_marginTop="@dimen/space_between_views"
             android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
@@ -218,7 +219,7 @@
             android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading6">
+            app:layout_constraintTop_toBottomOf="@id/tvBestOffer">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -258,7 +259,7 @@
 
 
         <TextView
-            android:id="@+id/heading7"
+            android:id="@+id/tvDealOfTheDay"
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -277,13 +278,13 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading7"
+            app:layout_constraintTop_toBottomOf="@id/tvDealOfTheDay"
             tools:itemCount="1"
             tools:listitem="@layout/single_slider_products" />
 
 
         <TextView
-            android:id="@+id/heading8"
+            android:id="@+id/tvFeatureBrands"
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -302,7 +303,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/heading8"
+            app:layout_constraintTop_toBottomOf="@id/tvFeatureBrands"
             tools:itemCount="1"
             tools:listitem="@layout/single_slider_products" />
 
@@ -333,7 +334,7 @@
             tools:listitem="@layout/single_best_products" />
 
         <TextView
-            android:id="@+id/textView232"
+            android:id="@+id/tvTopTrending"
             style="@style/sunflower_normal_14_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -350,7 +351,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView232"
+            app:layout_constraintTop_toBottomOf="@+id/tvTopTrending"
             tools:itemCount="1"
             tools:listitem="@layout/single_top_trending" />
 

@@ -160,6 +160,9 @@ data class ProductDetailModel(
         val cuisine: Any?, // null
         val deal: Int, // 1
         val deleted: Int, // 0
+        val details: String,
+        @SerializedName("additional_description")
+        val additionalDescription: String,
         val desc: String, // <div>Wrap yourself in the dreamiest spring with this perky beige and pink mini dress. Tailored in a wrap design, the dress features an all-over floral print and cutesy balloon sleeves.</div><div><br></div><div>Style Tip: Pair the dress with a hairband and strappy flats.</div><div><br></div><div><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Dispatch: Within&nbsp;</span><span id="shipHours" style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">48-72</span><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Hours</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><b style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">*Note:</b><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">&nbsp;Delivery of orders may take longer due to region-wise lockdown and diversion of routes.</span><br style="margin: 0px; padding: 0px; color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;"><span style="color: rgb(153, 153, 153); font-family: Lato, sans-serif; font-size: 12px;">Return/Exchange: If you are not completely satisfied with your purchase, simply select the option of return/exchange within 15 days of receiving your order from your order details page and we will process your return, no questions asked.</span><br></div>
         @SerializedName("discounted_price")
         val discountedPrice: Any?, // null

@@ -2,13 +2,15 @@
 buildscript {
     ext.kotlin_version = '1.6.10'
     ext{
-        nav_version = "2.4.1"
+        nav_version = "2.4.2"
+        glide_version = "4.13.2"
         kotlin_coroutine_version = "1.5.2"
         lifecycle_version = "2.4.1"
     }
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'

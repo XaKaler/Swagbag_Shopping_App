@@ -51,7 +51,7 @@
                 app:layout_constraintStart_toStartOf="@+id/productName"
                 app:layout_constraintTop_toBottomOf="@+id/productName">
 
-                <TextView
+      <!--          <TextView
                     android:id="@+id/textView59"
                     style="@style/roboto_normal_12_davys_grey"
                     android:layout_width="wrap_content"
@@ -71,19 +71,18 @@
                     android:textColor="@color/spanish_grey"
                     app:layout_constraintBottom_toBottomOf="@+id/textView59"
                     app:layout_constraintStart_toEndOf="@+id/textView59"
-                    app:layout_constraintTop_toTopOf="@+id/textView59" />
+                    app:layout_constraintTop_toTopOf="@+id/textView59" />-->
 
                 <TextView
                     android:id="@+id/textView63"
                     style="@style/roboto_normal_12_davys_grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimen_7"
                     android:text="@string/Rs"
                     android:textColor="@color/day_dark_liver_night_white"
-                    app:layout_constraintBottom_toBottomOf="@+id/oldRate"
-                    app:layout_constraintStart_toEndOf="@+id/oldRate"
-                    app:layout_constraintTop_toTopOf="@+id/oldRate" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/newRate"

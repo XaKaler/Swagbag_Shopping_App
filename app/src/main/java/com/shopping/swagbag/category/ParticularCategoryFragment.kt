@@ -162,8 +162,8 @@ RecycleViewItemClick{
 
         with(viewBinding) {
             rvTopTrending.apply {
-                addItemDecoration(GridSpaceItemDecoration(20))
                 layoutManager = GridLayoutManager(context, 2)
+                addItemDecoration(GridSpaceItemDecoration(20))
                 adapter = TopTrendingAdapter(context, topTrendingData)
             }
         }

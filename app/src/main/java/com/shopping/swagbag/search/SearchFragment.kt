@@ -15,7 +15,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.shopping.swagbag.R
+import com.shopping.swagbag.common.Dialogs
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleViewItemClick
 import com.shopping.swagbag.common.base.BaseFragment
@@ -79,8 +81,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
             }
             false
         })
-
         searchBar.requestFocus()
+
         setToolbar()
     }
 
@@ -147,10 +149,21 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
                     false
                 ) { result ->
                     when (result) {
-                        "Default" -> {showSearchResult(currentMasterCategoryItems)}
-                        "Latest" -> {currentMasterCategoryItems}
-                        "Sort forward price low" -> {}
-                        "Sort forward price high" -> {}
+                        "Default" -> {
+                            showSearchResult(currentMasterCategoryItems)
+                        }
+                        "Latest" -> {
+                            currentMasterCategoryItems.sortByDescending { r -> r.createdDate }
+                            showSearchResult(currentMasterCategoryItems)
+                        }
+                        "Sort forward price low" -> {
+                            currentMasterCategoryItems.sortBy { r -> r.price }
+                            showSearchResult(currentMasterCategoryItems)
+                        }
+                        "Sort forward price high" -> {
+                            currentMasterCategoryItems.sortByDescending { r -> r.price }
+                            showSearchResult(currentMasterCategoryItems)
+                        }
                     }
                 }
             }
@@ -170,6 +183,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding,
                         }
                     }
                 }
+            }
+
+            //filter
+            tvFilter.setOnClickListener {
+                context?.let { it1 -> Dialogs(it1, layoutInflater).showFilterBottomSheetDialog("men") }
             }
         }
     }

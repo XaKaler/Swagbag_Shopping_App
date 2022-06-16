@@ -7,7 +7,7 @@
     tools:context=".products.product_details.ProductDetailsFragment">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+        android:id="@+id/productDetailsMainLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/card4"
@@ -169,7 +169,6 @@
 
             <TextView
                 android:id="@+id/productName"
-                android:textColor="@color/day_dark_liver_night_white"
                 style="@style/roboto_normal_18_davys_grey"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -177,11 +176,12 @@
                 android:layout_marginTop="@dimen/space_between_views"
                 android:letterSpacing="0.05"
                 android:text="@string/varanga_women_magenta_gold_toned_embroidered_kurta_with_trousers_dupatta"
+                android:textColor="@color/day_dark_liver_night_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/sliderView"
                 app:layout_constraintTop_toBottomOf="@+id/sliderView" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/textView59"
                 style="@style/roboto_normal_18_davys_grey"
                 android:layout_width="wrap_content"
@@ -201,18 +201,17 @@
                 android:textColor="@color/spanish_grey"
                 app:layout_constraintBottom_toBottomOf="@+id/textView59"
                 app:layout_constraintStart_toEndOf="@+id/textView59"
-                app:layout_constraintTop_toTopOf="@+id/textView59" />
+                app:layout_constraintTop_toTopOf="@+id/textView59" />-->
 
             <TextView
                 android:id="@+id/textView63"
                 style="@style/roboto_normal_18_davys_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_7"
+                android:layout_marginTop="10dp"
                 android:text="@string/Rs"
-                app:layout_constraintBottom_toBottomOf="@+id/oldRate"
-                app:layout_constraintStart_toEndOf="@+id/oldRate"
-                app:layout_constraintTop_toTopOf="@+id/oldRate" />
+                app:layout_constraintStart_toStartOf="@+id/productName"
+                app:layout_constraintTop_toBottomOf="@+id/productName" />
 
             <TextView
                 android:id="@+id/newRate"
@@ -244,8 +243,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/inclusive_of_all_taxes"
                 android:textColor="@color/jungle_green"
-                app:layout_constraintStart_toStartOf="@+id/textView59"
-                app:layout_constraintTop_toBottomOf="@+id/oldRate" />
+                app:layout_constraintStart_toStartOf="@+id/textView63"
+                app:layout_constraintTop_toBottomOf="@+id/textView63" />
 
 
             <com.google.android.material.card.MaterialCardView
@@ -788,24 +787,71 @@
 
                     <TextView
                         android:textColor="@color/day_dark_liver_night_white"
-                        android:id="@+id/textView834"
+                        android:id="@+id/tvDetails"
                         style="@style/roboto_medium_14_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/product_details"
+                        android:text="Details"
+                        android:textAllCaps="true"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
                         android:id="@+id/productInDetail"
                         style="@style/roboto_normal_12_davys_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_5"
-                        android:text="@string/product_paragrah"
-                        app:layout_constraintStart_toStartOf="@+id/textView834"
-                        app:layout_constraintTop_toBottomOf="@+id/textView834" />
+                        android:text="@string/empty_card_lines"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        app:layout_constraintStart_toStartOf="@+id/tvDetails"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDetails" />
+
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description"
+                        android:textAllCaps="true"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        android:textColor="@color/day_dark_liver_night_white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/productInDetail" />
+
+                    <TextView
+                        android:id="@+id/description"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:text="@string/empty_card_lines"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        app:layout_constraintStart_toStartOf="@+id/tvDetails"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+                    <TextView
+                        android:id="@+id/tvAdditionalDescription"
+                        style="@style/roboto_medium_14_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Additional Information"
+                        android:textAllCaps="true"
+                        android:layout_marginTop="@dimen/space_between_view_and_subview"
+                        android:textColor="@color/day_dark_liver_night_white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+                    <TextView
+                        android:id="@+id/additionalDescription"
+                        style="@style/roboto_normal_12_davys_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:text="@string/empty_card_lines"
+                        android:textColor="@color/day_dark_liver_night_Spanish_Gray"
+                        app:layout_constraintStart_toStartOf="@+id/tvDetails"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAdditionalDescription" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

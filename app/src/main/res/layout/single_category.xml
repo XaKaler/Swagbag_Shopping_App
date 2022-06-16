@@ -7,17 +7,14 @@
     android:layout_height="wrap_content"
     >
 
-
-
     <ImageView
         android:id="@+id/imgCat"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/product_category_image_height"
-        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/found_nothing" />
-
+<!--
     <View
         android:id="@+id/view37"
         android:layout_width="0dp"
@@ -35,15 +32,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_5"
-        android:text="Shop man"
-        android:minLines="2"
-        android:maxLines="2"
-        android:textAlignment="center"
         android:gravity="center"
+        android:maxLines="2"
+        android:minLines="2"
+        android:text="Shop man"
+        android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/white"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

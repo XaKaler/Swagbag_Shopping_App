@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shopping.swagbag.brand.BrandModel
 import com.shopping.swagbag.home.HomeModel
+import com.shopping.swagbag.products.filter.FilterModel
 import com.shopping.swagbag.products.product_details.AddToCartModel
 import com.shopping.swagbag.products.product_details.ProductDetailModel
 import com.shopping.swagbag.products.product_details.ProductReviewModel
@@ -24,7 +25,6 @@ import com.shopping.swagbag.user.wishlist.withproduct.AddToWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.ClearWishlistModel
 import com.shopping.swagbag.user.wishlist.withproduct.DeleteSingleWishModel
 import com.shopping.swagbag.user.wishlist.withproduct.GetWishlistModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
@@ -307,6 +307,17 @@ class ProductViewModel(
             result.value = Resource.Loading
             result.value =
                 repository.addReview(userId, product, name, email, mobile, rating, review)
+        }
+
+        return result
+    }
+
+    fun getFilter(category: String): LiveData<Resource<FilterModel>>{
+        val result = MutableLiveData<Resource<FilterModel>>()
+
+        viewModelScope.launch {
+            result.value = Resource.Loading
+            result.value = repository.getFilter(category)
         }
 
         return result

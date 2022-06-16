@@ -29,6 +29,7 @@ class ProductColorAdapter(
         fun bind(singleData: ProductOptionModel, position: Int, itemClick: RecycleViewItemClick){
             with(viewBinding){
                 // set color
+                Log.e("color", singleData.toString())
 
                 val newColor = singleData.value.toColorInt()
                 color.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP)

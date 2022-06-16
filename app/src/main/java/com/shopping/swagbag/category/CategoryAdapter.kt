@@ -27,11 +27,12 @@ class CategoryAdapter(
                 // set image
                 Glide.with(context)
                     .load(singleData.file)
+                    .centerCrop()
                     .error(R.drawable.ic_launcher_foreground)
                     .placeholder(R.drawable.ic_swagbug_logo)
                     .into(imgCat)
 
-                tvCatName.text = "Shop ${singleData.name}"
+                //tvCatName.text = "Shop ${singleData.name}"
 
                 cateConstLayout.setOnClickListener {
 

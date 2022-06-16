@@ -34,11 +34,7 @@ class ProductAdapter(
                 // set text
                 tvProductName.text = singleData.name
                 tvProductDetails.text = singleData.shortDesc
-                tvProductPrice.text = singleData.sellingPrice
-                tvProductPriceBeforeDiscount.text = singleData.price
-
-                tvProductPriceBeforeDiscount.paintFlags = tvProductPriceBeforeDiscount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                textView22.paintFlags = textView22.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                tvProductPrice.text = "${context.getString(R.string.Rs)} ${singleData.price}"
 
                 singlePrdouct.setOnClickListener{
                     val activity = context as Activity

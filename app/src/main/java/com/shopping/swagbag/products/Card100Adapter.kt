@@ -23,9 +23,9 @@ class Card10Adapter(
         RecyclerView.ViewHolder(viewBinding.root) {
 
         fun bind(singleData: ProductDetailModel.Related, position: Int, itemClick: RecycleViewItemClick){
-            with(viewBinding){
+            with(viewBinding){/*
                 oldRate.paintFlags = oldRate.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                textView59.paintFlags = textView59.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                textView59.paintFlags = textView59.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG*/
 
                 // set
                 Glide
@@ -36,8 +36,8 @@ class Card10Adapter(
                 // set text
                 productName.text = singleData.name
                 productDetails.text = singleData.shortDesc
-                newRate.text = singleData.sellingPrice.toString()
-                oldRate.text = singleData.price.toString()
+                newRate.text = singleData.price.toString()
+               // oldRate.text = singleData.price.toString()
 
                 if(singleData.discountedPrice == null || singleData.discountedPrice == 0)
                     off.visibility = View.GONE
