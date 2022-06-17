@@ -164,7 +164,7 @@ RecycleViewItemClick{
                                 "",
                                 "",
                                 "",
-                                sections[position].id,
+                                sections[position].slug,
                                 ""
                             )
                             val action = HomeDirections.actionHome2ToProductsFragment(

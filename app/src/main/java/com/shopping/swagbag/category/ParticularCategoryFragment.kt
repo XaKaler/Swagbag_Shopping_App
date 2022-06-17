@@ -26,7 +26,6 @@ import com.shopping.swagbag.common.model.AllTimeSliderModel
 import com.shopping.swagbag.common.model.BestProductModel
 import com.shopping.swagbag.common.model.TopTrendingModel
 import com.shopping.swagbag.databinding.FragmentParticularCategoryBinding
-import com.shopping.swagbag.home.HomeDirections
 import com.shopping.swagbag.home.TopTrendingAdapter
 import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.products.ProductSearchParameters
@@ -40,7 +39,7 @@ class ParticularCategoryFragment :
             CategoryRepository>(FragmentParticularCategoryBinding::inflate),
 RecycleViewItemClick{
 
-    private lateinit var categoryData: ParticularCategoryModel
+    private lateinit var categoryData: ParticularCategoryModel.Result
     private lateinit var mainActivity: MainActivity
     private lateinit var categoryName: String
 
@@ -83,7 +82,11 @@ RecycleViewItemClick{
                 )
             }?.let { it2 -> ColorDrawable(it2) }
 
-        getCategoryData()
+
+        if (this::categoryData.isInitialized)
+            setData()
+        else
+            getCategoryData()
     }
 
     private fun getCategoryData() {
@@ -104,25 +107,26 @@ RecycleViewItemClick{
                 is Resource.Success -> {
                     stopShowingLoading()
 
-                    // remove foreground color so
-                    viewBinding.scrlParticularCategory.foreground = null
-
-                    val result = it.value.result
-                    categoryData = it.value
-                   setTopTrending(result.section)
-                    showOfferImages()
-                    setCategoryToBeg(result.category)
-                    setBestOffer(result.featured)
-                    setDealOfTheDay(result.deals)
-                    setFeatureBrands(result.brand)
-
-
+                    categoryData = it.value.result
+                    setData()
                 }
 
-                is Resource.Failure -> Log.e("TAG", "getCategoryData: $it", )
+                is Resource.Failure -> Log.e("TAG", "getCategoryData: $it")
             }
         }
 
+    }
+
+    private fun setData() {
+        // remove foreground color so
+        viewBinding.scrlParticularCategory.foreground = null
+
+        setTopTrending(categoryData.section)
+        showOfferImages()
+        setCategoryToBeg(categoryData.category)
+        setBestOffer(categoryData.featured)
+        setDealOfTheDay(categoryData.deals)
+        setFeatureBrands(categoryData.brand)
     }
 
     override fun getFragmentBinding(
@@ -141,7 +145,7 @@ RecycleViewItemClick{
 
         for (singleData in data) {
             singleData.run {
-                topTrendingData.add(
+                product?.let {
                     TopTrendingModel(
                         active,
                         brand,
@@ -150,14 +154,18 @@ RecycleViewItemClick{
                         deleted,
                         file,
                         id,
-                        masterCategory,
-                        product,
+                        masterCategory.slug,
+                        it.slug,
                         section,
                         updateDate,
                         url,
                         v
                     )
-                )
+                }?.let {
+                    topTrendingData.add(
+                        it
+                    )
+                }
             }
         }
 
@@ -179,7 +187,7 @@ RecycleViewItemClick{
                                         "",
                                         "",
                                         "",
-                                        data[position].masterCategory,
+                                        data[position].masterCategory.slug,
                                         ""
                                     )
                                     val action = ParticularCategoryFragmentDirections.actionParticularCategoryFragmentToProductsFragment(
@@ -201,7 +209,7 @@ RecycleViewItemClick{
                                         "",
                                         "",
                                         "",
-                                        data[position].masterCategory,
+                                        data[position].masterCategory.slug,
                                         ""
                                     )
                                     val action = ParticularCategoryFragmentDirections.actionParticularCategoryFragmentToProductsFragment(
@@ -218,7 +226,7 @@ RecycleViewItemClick{
 
                                     val action =
                                         ParticularCategoryFragmentDirections.actionGlobalProductDetailsFragment(
-                                            data[position].product
+                                            data[position].product!!.slug
                                         )
                                     findNavController().navigate(action)
                                 }
@@ -257,7 +265,7 @@ RecycleViewItemClick{
                     item.file,
                     item.id,
                     item.name,
-                    item.descriptionAfterContent,
+                    "",
                 )
             )
         }
@@ -272,7 +280,7 @@ RecycleViewItemClick{
                             "products" -> {
                                 mainActivity.hideToolbarAndBottomNavigation()
                                 val productSearchParameters = ProductSearchParameters(
-                                    "", "", "", categoryData.result.category[position].id,
+                                    "", "", "", categoryData.category[position].id,
                                     "", "", "", categoryName, ""
                                 )
 
