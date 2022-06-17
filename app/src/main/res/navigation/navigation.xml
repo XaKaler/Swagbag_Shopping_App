@@ -806,6 +806,9 @@
         <argument
             android:name="categoryId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_particularCategoryFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
     </fragment>
     <action
         android:id="@+id/action_global_particularCategoryFragment"

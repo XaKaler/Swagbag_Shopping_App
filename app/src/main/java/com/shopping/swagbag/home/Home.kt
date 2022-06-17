@@ -9,18 +9,15 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.shopping.swagbag.category.CategoryToBegModel
 import com.shopping.swagbag.common.GridSpaceItemDecoration
 import com.shopping.swagbag.common.RecycleViewItemClick
-import com.shopping.swagbag.common.adapter.AllTimeSliderAdapter
 import com.shopping.swagbag.common.adapter.AutoImageSliderAdapter
 import com.shopping.swagbag.common.adapter.BestProductAdapter
 import com.shopping.swagbag.common.adapter.CategoryToBegAdapter
 import com.shopping.swagbag.common.base.BaseFragment
-import com.shopping.swagbag.common.model.AllTimeSliderModel
 import com.shopping.swagbag.common.model.BestProductModel
 import com.shopping.swagbag.common.model.TopTrendingModel
 import com.shopping.swagbag.databinding.FragmentHomeBinding
@@ -34,9 +31,7 @@ import com.shopping.swagbag.service.apis.ProductApi
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
-import kotlinx.android.synthetic.main.single_navigation_menu.*
 import kotlin.system.exitProcess
-import kotlin.text.Typography.section
 
 
 class Home :
@@ -157,7 +152,31 @@ RecycleViewItemClick{
             rvTopTrending.apply {
                 addItemDecoration(GridSpaceItemDecoration(20))
                 layoutManager = GridLayoutManager(context, 2)
-                adapter = TopTrendingAdapter(context, topTrendingData)
+                adapter =
+                    TopTrendingAdapter(context, topTrendingData, object : RecycleViewItemClick {
+                        override fun onItemClickWithName(name: String, position: Int) {
+                            mainActivity.hideToolbarAndBottomNavigation()
+                            val productSearchParameters = ProductSearchParameters(
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                sections[position].id,
+                                ""
+                            )
+                            val action = HomeDirections.actionHome2ToProductsFragment(
+                                Gson().toJson(
+                                    productSearchParameters,
+                                    ProductSearchParameters::class.java
+                                )
+                            )
+                            findNavController().navigate(action)
+
+                        }
+                    })
             }
         }
     }
@@ -253,7 +272,7 @@ RecycleViewItemClick{
                     item.shortDesc,
                     file,
                     item.id,
-                    item.name
+                    item.slug
                 )
             )
         }
@@ -285,7 +304,7 @@ RecycleViewItemClick{
                     item.shortDesc,
                     file,
                     item.id,
-                    item.name
+                    item.slug
                 )
             )
         }
@@ -334,9 +353,9 @@ RecycleViewItemClick{
     override fun getFragmentRepository() =
         ProductRepository(remoteDataSource.getBaseUrl().create(ProductApi::class.java))
 
-    override fun onItemClickWithName(tag: String, position: Int) {
+    override fun onItemClickWithName(name: String, position: Int) {
         mainActivity.hideToolbarAndBottomNavigation()
-        val action = ProductDetailsFragmentDirections.actionGlobalProductDetailsFragment(tag)
+        val action = ProductDetailsFragmentDirections.actionGlobalProductDetailsFragment(name)
         findNavController().navigate(action)
     }
 

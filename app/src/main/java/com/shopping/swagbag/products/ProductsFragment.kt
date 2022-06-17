@@ -87,7 +87,7 @@ class ProductsFragment : BaseFragment<
             }
 
             //set master category name
-            masterCategoryName.text = productSearchParameters.master
+            //masterCategoryName.text = productSearchParameters.master
 
             //filter product according to master category
             tvFilter.setOnClickListener {

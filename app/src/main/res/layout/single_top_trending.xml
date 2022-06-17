@@ -11,6 +11,7 @@
     <ImageView
         android:id="@+id/topTrendingImg"
         android:layout_width="wrap_content"
+        android:scaleType="center"
         android:layout_height="@dimen/product_category_image_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

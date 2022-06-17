@@ -26,6 +26,7 @@ import com.shopping.swagbag.common.model.AllTimeSliderModel
 import com.shopping.swagbag.common.model.BestProductModel
 import com.shopping.swagbag.common.model.TopTrendingModel
 import com.shopping.swagbag.databinding.FragmentParticularCategoryBinding
+import com.shopping.swagbag.home.HomeDirections
 import com.shopping.swagbag.home.TopTrendingAdapter
 import com.shopping.swagbag.main_activity.MainActivity
 import com.shopping.swagbag.products.ProductSearchParameters
@@ -164,7 +165,66 @@ RecycleViewItemClick{
             rvTopTrending.apply {
                 layoutManager = GridLayoutManager(context, 2)
                 addItemDecoration(GridSpaceItemDecoration(20))
-                adapter = TopTrendingAdapter(context, topTrendingData)
+                adapter =
+                    TopTrendingAdapter(context, topTrendingData, object : RecycleViewItemClick {
+                        override fun onItemClickWithName(name: String, position: Int) {
+                            when (name) {
+                                "brand" -> {
+                                    mainActivity.hideToolbarAndBottomNavigation()
+                                    val productSearchParameters = ProductSearchParameters(
+                                        "",
+                                        data[position].brand,
+                                        "",
+                                        "",
+                                        "",
+                                        "",
+                                        "",
+                                        data[position].masterCategory,
+                                        ""
+                                    )
+                                    val action = ParticularCategoryFragmentDirections.actionParticularCategoryFragmentToProductsFragment(
+                                        Gson().toJson(
+                                            productSearchParameters,
+                                            ProductSearchParameters::class.java
+                                        )
+                                    )
+                                    findNavController().navigate(action)
+                                }
+
+                                "category" -> {
+                                    mainActivity.hideToolbarAndBottomNavigation()
+                                    val productSearchParameters = ProductSearchParameters(
+                                        "",
+                                        "",
+                                        "",
+                                        data[position].category,
+                                        "",
+                                        "",
+                                        "",
+                                        data[position].masterCategory,
+                                        ""
+                                    )
+                                    val action = ParticularCategoryFragmentDirections.actionParticularCategoryFragmentToProductsFragment(
+                                        Gson().toJson(
+                                            productSearchParameters,
+                                            ProductSearchParameters::class.java
+                                        )
+                                    )
+                                    findNavController().navigate(action)
+                                }
+
+                                "product" -> {
+                                    mainActivity.hideToolbarAndBottomNavigation()
+
+                                    val action =
+                                        ParticularCategoryFragmentDirections.actionGlobalProductDetailsFragment(
+                                            data[position].product
+                                        )
+                                    findNavController().navigate(action)
+                                }
+                            }
+                        }
+                    })
             }
         }
     }

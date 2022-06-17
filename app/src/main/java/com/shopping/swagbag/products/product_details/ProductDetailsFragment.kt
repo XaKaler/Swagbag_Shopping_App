@@ -395,7 +395,7 @@ class ProductDetailsFragment : BaseFragment<
         val sharingIntent = Intent(Intent.ACTION_SEND)
         sharingIntent.type = "text/plain"
         val shareBody =
-            "https://uae.swagbag.com/${product.result.masterCategory}/product/${product.result.slug}"
+            "https://uae.swagbag.com/${product.result.masterCategory[0]}/product/${product.result.slug}"
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here")
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
         startActivity(Intent.createChooser(sharingIntent, "Share via"))
@@ -425,7 +425,7 @@ class ProductDetailsFragment : BaseFragment<
             } else if (sizeList.isNotEmpty() && colorList.isEmpty()) {
                 if (finalSize == null)
                     toast("Choose size")
-                else
+                else {
                     optionList.add(
                         AddToCartProductOptionModel(
                             "Size",
@@ -433,6 +433,8 @@ class ProductDetailsFragment : BaseFragment<
                             finalSize!!.price
                         )
                     )
+                    checkCart(optionList)
+                }
             } else if (sizeList.isNotEmpty() || colorList.isNotEmpty()) {
                 // add size
                 if (finalSize == null || finalColor == null) {
@@ -543,12 +545,15 @@ class ProductDetailsFragment : BaseFragment<
         }
     }
 
-    private fun addToCart(userId: String, optionList: ArrayList<AddToCartProductOptionModel>) {
+    private fun addToCart(userId: String, optionList: ArrayList<AddToCartProductOptionModel>)
+    {
 
-        jsArray = JSONArray(optionList)
+        jsArray = JSONArray(optionList.toArray())
+
+        Log.e("option", optionList.toString())
 
         viewModel
-            .addToCart("1", product.result.id, userId, jsArray)
+            .addToCart("1", product.result.id, userId, JSONArray(optionList.toArray()))
             .observe(
                 viewLifecycleOwner
             ) {
